@@ -36,10 +36,25 @@ print ("data is from {0}".format(starturl))
 print
 print ("Year is: {0}".format(year))
 print ("**************************")
-pdb.set_trace()
 
-with contextlib.closing(urlopen(url)) as page:
-    soup = BeautifulSoup(page, "html5lib")
+url = []
+if (year == int(now.year)):
+    url.append("{0}/_/seasontype/2".format(starturl))
+    for week in range(2, 16):
+        url.append("{0}/_/week/{1}/seasontype/2".format(starturl, week))
+    url.append(starturl)       
+else:
+    url.append("{0}/_/year/{1}/seasontype/2".format(starturl, year))
+    for week in range(2, 16):
+        url.append("{0}/_/week/{1}/year/{2}/seasontype/2".format(starturl, week, year))        
+    url.append("{0}/_/year/{1}".format(starturl, year))        
+
+soup = []
+for item in url:
+    with contextlib.closing(urlopen(item)) as page:
+        soup.append(BeautifulSoup(page, "html5lib"))
+
+pdb.set_trace()
 
 region = soup.findAll("div", {"class": "regtitle"})
 R=[]
