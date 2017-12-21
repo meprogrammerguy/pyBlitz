@@ -1,0 +1,7 @@
+http://www.espn.com/college-football/schedule/_/seasontype/2 current year week1
+http://www.espn.com/college-football/schedule/_/week/2/seasontype/2 current year week2
+http://www.espn.com/college-football/schedule current year bowls
+==
+http://www.espn.com/college-football/schedule/_/year/2016/seasontype/2 other year week1
+http://www.espn.com/college-football/schedule/_/week/2/year/2016/seasontype/2 other year week2
+http://www.espn.com/college-football/schedule/_/year/2016 other year bowls
