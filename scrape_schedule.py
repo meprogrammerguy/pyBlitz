@@ -54,9 +54,21 @@ for item in url:
     with contextlib.closing(urlopen(item)) as page:
         soup.append(BeautifulSoup(page, "html5lib"))
 
+dates = soup[0].findAll("h2", {"class": "table-caption"})
+for date in dates:
+    print (date.find(text=True))
+
+tables=soup[0].findAll('table', {"class": "schedule"})
+for table in tables:
+    teams=table.findAll('abbr')
+    print (teams[0]['title'])
+    pdb.set_trace()
+
+teams = soup[0].findAll("a", {"class": "team-name"})
+for team in teams:
+    print (team.find(text=True))
 pdb.set_trace()
 
-region = soup.findAll("div", {"class": "regtitle"})
 R=[]
 for row in region:
     R.append(row.find(text=True))
