@@ -55,11 +55,11 @@ for item in url:
         soup.append(BeautifulSoup(page, "html5lib"))
 
 dates = soup[0].findAll("h2", {"class": "table-caption"})
-for date in dates:
-    print (date.find(text=True))
-
 tables=soup[0].findAll('table', {"class": "schedule"})
+dateidx = 0
 for table in tables:
+    print (dates[dateidx].find(text=True))
+    dateidx+=1
     teams=table.findAll('abbr')
     home=table.findAll('td', {"class": "home"})
     neutral=table.findAll('tr', {'class':['odd', 'even']})
