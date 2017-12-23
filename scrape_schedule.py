@@ -61,7 +61,19 @@ for date in dates:
 tables=soup[0].findAll('table', {"class": "schedule"})
 for table in tables:
     teams=table.findAll('abbr')
-    print (teams[0]['title'])
+    home=table.findAll('td', {"class": "home"})
+    neutral=table.findAll('tr', {'class':['odd', 'even']})
+    index = 0
+    count = 0
+    for team in teams:
+        if (index % 2 == 0):
+            print (team['title'])
+            print (home[count].div['data-home-text'])
+            print (neutral[count]['data-is-neutral-site'])
+            count+=1
+        else:
+            print (team['title'])
+        index+=1
     pdb.set_trace()
 
 teams = soup[0].findAll("a", {"class": "team-name"})
