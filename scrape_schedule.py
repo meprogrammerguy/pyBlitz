@@ -11,6 +11,10 @@ from collections import OrderedDict
 import contextlib
 import sys
 import datetime
+from pathlib import Path
+
+def num_there(s):
+    return any(i.isdigit() for i in s)
 
 year = 0
 now = datetime.datetime.now()
@@ -36,6 +40,10 @@ print ("data is from {0}".format(starturl))
 print
 print ("Year is: {0}".format(year))
 print ("**************************")
+
+for p in Path(".").glob("week*.*"):
+    p.unlink()
+#pdb.set_trace()
 
 url = []
 if (year == int(now.year)):
@@ -66,11 +74,29 @@ for page in pages:
     B=[]
     C=[]
     D=[]
+    F=[]
+    G=[]
     for table in tables:
         #print (dates[dateidx].find(text=True))
         teams=table.findAll('abbr')
         home=table.findAll('td', {"class": "home"})
         scores=table.findAll('td')
+        E=[]
+        for score in scores:
+            data = score.find(text=True)
+            #pdb.set_trace()
+            if data is not None and ',' in data and num_there(data):
+                E.append(data)
+            else:
+                E.append("?")
+        if loop == len(pages):
+            #pdb.set_trace()
+            for item in range(2, len(E), 7):
+                F.append(E[item])
+        else:
+            for item in range(2, len(E), 6):
+                F.append(E[item])
+        #pdb.set_trace()
         neutral=table.findAll('tr', {'class':['odd', 'even']})
         line = 0
         count = 0
@@ -82,8 +108,8 @@ for page in pages:
                     A.append("?")
                 #print (team['title'])
                 B.append(team['title'])
-                if loop == len(pages) and dateidx == 5:
-                    pdb.set_trace()
+                #if loop == len(pages) and dateidx == 5:
+                    #pdb.set_trace()
                 #pdb.set_trace()
                 if loop != len(pages):
                     if (neutral[count]['data-is-neutral-site'] == 'true'):
@@ -92,6 +118,7 @@ for page in pages:
                         C.append(team['title'])
                 #print (home[count].div['data-home-text'])
                 #print (neutral[count]['data-is-neutral-site'])
+                G.append(F[index])
                 count+=1
                 index+=1
                 IDX.append(index)
@@ -100,14 +127,15 @@ for page in pages:
                 D.append(team['title'])
             line+=1
         dateidx+=1
-    if loop == len(pages):
-        pdb.set_trace()
+    #if loop == len(pages):
+        #pdb.set_trace()
     df=pd.DataFrame(IDX, columns=['Index'])
     df['Date']=A
     df['TeamA']=B
     if C:
         df['Home']=C
     df['TeamB']=D
+    df['Score']=G
     
     filename = "week{0}.json".format(loop)
     with open(filename, 'w') as f:
