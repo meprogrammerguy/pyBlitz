@@ -43,7 +43,6 @@ print ("**************************")
 
 for p in Path(".").glob("week*.*"):
     p.unlink()
-#pdb.set_trace()
 
 url = []
 if (year == int(now.year)):
@@ -77,26 +76,22 @@ for page in pages:
     F=[]
     G=[]
     for table in tables:
-        #print (dates[dateidx].find(text=True))
         teams=table.findAll('abbr')
         home=table.findAll('td', {"class": "home"})
         scores=table.findAll('td')
         E=[]
         for score in scores:
             data = score.find(text=True)
-            #pdb.set_trace()
             if data is not None and ',' in data and num_there(data):
                 E.append(data)
             else:
                 E.append("?")
         if loop == len(pages):
-            #pdb.set_trace()
             for item in range(2, len(E), 7):
                 F.append(E[item])
         else:
             for item in range(2, len(E), 6):
                 F.append(E[item])
-        #pdb.set_trace()
         neutral=table.findAll('tr', {'class':['odd', 'even']})
         line = 0
         count = 0
@@ -106,34 +101,26 @@ for page in pages:
                     A.append(dates[dateidx].find(text=True))
                 else:
                     A.append("?")
-                #print (team['title'])
                 B.append(team['title'])
-                #if loop == len(pages) and dateidx == 5:
-                    #pdb.set_trace()
-                #pdb.set_trace()
                 if loop != len(pages):
                     if (neutral[count]['data-is-neutral-site'] == 'true'):
                         C.append("Neutral")
                     else:
                         C.append(team['title'])
-                #print (home[count].div['data-home-text'])
-                #print (neutral[count]['data-is-neutral-site'])
+                else:
+                    C.append("Neutral")
                 G.append(F[index])
                 count+=1
                 index+=1
                 IDX.append(index)
             else:
-                #print (team['title'])
                 D.append(team['title'])
             line+=1
         dateidx+=1
-    #if loop == len(pages):
-        #pdb.set_trace()
     df=pd.DataFrame(IDX, columns=['Index'])
     df['Date']=A
     df['TeamA']=B
-    if C:
-        df['Home']=C
+    df['Home']=C
     df['TeamB']=D
     df['Score']=G
     
@@ -154,7 +141,6 @@ for page in pages:
             csvwriter.writerow(header)
             count += 1
         csvwriter.writerow(row.values())
-    #pdb.set_trace()
     sched_sheet.close()
 print ("done.")
 
