@@ -11,6 +11,13 @@ from pathlib import Path
 
 print ("Merge Teams Tool")
 print ("**************************")
+
+file = 'merge.csv'
+if (os.path.exists(file)):
+    print ("Warning *** The merge.csv file already exists ***")
+    print ("        *** delete this file if you want to re-create it. ***")
+    exit()
+
 file = 'week1.json'
 if (not os.path.exists(file)):
     print ("schedule files are missing, run the scrape_schedule tool to create")
