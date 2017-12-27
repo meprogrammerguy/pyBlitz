@@ -58,7 +58,7 @@ dict_merge["scheduled team"] = []
 dict_merge["corrected stats team"] = []
 values = []
 for item in sched_teams:
-    key = process.extractOne(item, stats_teams, scorer=fuzz.token_sort_ratio)
+    key = process.extractOne(item, stats_teams, scorer=fuzz.QRatio)
     dict_merge["match ratio"].append(key[1])
     dict_merge["stats team"].append(key[0])
     dict_merge["scheduled team"].append(item)
