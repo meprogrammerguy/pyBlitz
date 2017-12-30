@@ -2,30 +2,40 @@
 
 import json
 import pdb
-from fuzzywuzzy import fuzz
-from fuzzywuzzy import process
 import csv
 from collections import OrderedDict
 import os.path
 from pathlib import Path
 
-print ("Merge Teams Tool")
-print ("**************************")
+def FindTeams(stats_team, fixed_team, stats_teams):
+    Found = False
+    for team in stats_teams:
+        if (team.rstrip() == stats_team.rstrip() and fixed_team.rstrip() == ""):
+            Found = True
+            break
+        if (team.rstrip() == fixed_team.rstrip()):
+            Found = True
+            break
+    return Found
+
+print ("Merge spreadsheet validation Tool")
+print ("****************************************************************")
+print (" ")
+print ("Makes sure that your merge spreadsheet is set up correctly")
+print ("    == be aware that some teams may not be there")
+print ("    == for these match-ups a prediction will not be possible")
+print ("    == (but a very, very, good guess is to go with the other team)")
+print (" ")
 
 file = 'merge.csv'
-if (os.path.exists(file)):
-    print ("Warning *** The merge.csv file already exists ***")
-    print ("        *** delete this file if you want to re-create it. ***")
-    exit()
-
-file = 'week1.json'
 if (not os.path.exists(file)):
-    print ("schedule files are missing, run the scrape_schedule tool to create")
+    print ("merge.csv file is missing, run the merge_teams tool to create")
     exit()
-
-for p in Path(".").glob("week*.json"):
-    with open(p) as sched_files:
-        dict_sched = json.load(sched_files, object_pairs_hook=OrderedDict)
+dict_merge = []
+with open(file) as merge_file:
+    reader = csv.DictReader(merge_file)
+    for row in reader:
+        dict_merge.append(row)
 
 file = 'stats.json'
 if (not os.path.exists(file)):
@@ -35,39 +45,16 @@ with open(file) as stats_file:
     dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
 
 AllTeams=[]
-for item in dict_sched.values():
-    AllTeams.append(item["TeamA"])
-    AllTeams.append(item["TeamB"])
-team_set = set(AllTeams)
-sched_teams = list(team_set)
-sched_teams.sort()
-
-AllTeams=[]
 for item in  dict_stats.values():
     AllTeams.append(item["Team"])
 team_set = set(AllTeams)
 stats_teams = list(team_set)
 stats_teams.sort()
 
-merge_sheet = open('merge.csv', 'w', newline='')
-csvwriter = csv.writer(merge_sheet)
-dict_merge = OrderedDict()
-dict_merge["match ratio"] = []
-dict_merge["stats team"] = []
-dict_merge["scheduled team"] = []
-dict_merge["corrected stats team"] = []
-values = []
-for item in sched_teams:
-    key = process.extractOne(item, stats_teams, scorer=fuzz.QRatio)
-    dict_merge["match ratio"].append(key[1])
-    dict_merge["stats team"].append(key[0])
-    dict_merge["scheduled team"].append(item)
-    dict_merge["corrected stats team"].append("")
-    values.append([key[1], key[0], item,  ""])
-
-
-csvwriter.writerow(dict_merge.keys())
-for value in values:
-    csvwriter.writerow(value)
-merge_sheet.close()
+for team in dict_merge:
+    #pdb.set_trace()
+    found = FindTeams(team["stats team"], team["corrected stats team"], stats_teams)
+    if (not found):
+        print ("warning: {0} was not found in the stats table ***".format(team["scheduled team"]))
+ 
 print ("done.")
