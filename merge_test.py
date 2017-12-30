@@ -10,10 +10,10 @@ from pathlib import Path
 def FindTeams(stats_team, fixed_team, stats_teams):
     Found = False
     for team in stats_teams:
-        if (team.rstrip() == stats_team.rstrip() and fixed_team.rstrip() == ""):
+        if (team.strip() == stats_team.strip() and fixed_team.strip() == ""):
             Found = True
             break
-        if (team.rstrip() == fixed_team.rstrip()):
+        if (team.strip() == fixed_team.strip()):
             Found = True
             break
     return Found
