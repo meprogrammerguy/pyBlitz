@@ -1,0 +1,24 @@
+[[source]]
+
+url = "https://pypi.python.org/simple"
+verify_ssl = true
+name = "pypi"
+
+
+[dev-packages]
+
+
+
+[packages]
+
+"beautifulsoup4" = "*"
+pandas = "*"
+"html5lib" = "*"
+fuzzywuzzy = "*"
+python-levenshtein = "*"
+scipy = "*"
+
+
+[requires]
+
+python_version = "3.6"

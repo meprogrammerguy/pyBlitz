@@ -124,14 +124,14 @@ for page in pages:
     df['TeamB']=D
     df['Score']=G
     
-    filename = "week{0}.json".format(loop)
+    filename = "sched{0}.json".format(loop)
     with open(filename, 'w') as f:
         f.write(df.to_json(orient='index'))
 
     with open(filename) as sched_json:
         dict_sched = json.load(sched_json, object_pairs_hook=OrderedDict)
 
-    filename = "week{0}.csv".format(loop)
+    filename = "sched{0}.csv".format(loop)
     sched_sheet = open(filename, 'w', newline='')
     csvwriter = csv.writer(sched_sheet)
     count = 0

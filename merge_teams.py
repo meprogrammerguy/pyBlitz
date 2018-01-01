@@ -18,12 +18,12 @@ if (os.path.exists(file)):
     print ("        *** delete this file if you want to re-create it. ***")
     exit()
 
-file = 'week1.json'
+file = 'sched1.json'
 if (not os.path.exists(file)):
     print ("schedule files are missing, run the scrape_schedule tool to create")
     exit()
 
-for p in Path(".").glob("week*.json"):
+for p in Path(".").glob("sched*.json"):
     with open(p) as sched_files:
         dict_sched = json.load(sched_files, object_pairs_hook=OrderedDict)
 
