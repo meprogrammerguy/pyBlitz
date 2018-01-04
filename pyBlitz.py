@@ -33,7 +33,7 @@ def findTeams(first, second, verbose = True, file = "stats.json"):
         return {}, {}
     return teama, teamb
 
-def Chance(teama, teamb, std = 15.53, homeAdvantage = 7.897, homeTeam = 'none', verbose = True):
+def Chance(teama, teamb, std = 15.38, homeAdvantage = 7.897, homeTeam = 'none', verbose = True):
     EffMgn = Line(teama, teamb, verbose = False, homeTeam = homeTeam, homeAdvantage = homeAdvantage)
     if (verbose):
         print ("Chance(efficiency margin) {0}".format(EffMgn))
@@ -46,32 +46,35 @@ def Chance(teama, teamb, std = 15.53, homeAdvantage = 7.897, homeTeam = 'none', 
     return aPercent, bPercent
 
 def Tempo(teama, teamb, verbose = True):
-    Tdiff = (float(teama['AdjT']) + float(teamb['AdjT'])) / 200.0
+    #Tdiff = (float(teama['PLpG']) * float(teama['PTpP']) + (float(teamb['PLpG']) * float(teamb['PTpP']))) / 200.0
+    Tdiff = (float(teama['PLpG']) * float(teamb['OPTpP']) + (float(teamb['PLpG']) * float(teama['OPTpP']))) / 200.0
     if (verbose):
         print ("Tempo(tempo) {0}".format(Tdiff * 100))
     return Tdiff
 
 def Test(verbose):
     result = 0
-    # Purdue, Northwestern on 3/5/17
-    # Actual Score: Edwards leads No. 16 Purdue past Northwestern, 69-65
-    # venue was: Welsh-Ryan Arena in Evanston, IL (Northwestern was the home team)
-    teama = {'Team':"purdue", 'AdjEM':24.31, 'AdjT':69.5, 'Result1':58, 'Result2':69}
-    teamb = {'Team':"northwestern", 'AdjEM':15.83, 'AdjT':65.8, 'Result1':42,'Result2':67}
+    # Alabama, Clemson on 1/1/18 (stats from 1/3/18)
+    # Actual Score: 24-6
+    # venue was: Mercedes-Benz Superdome in New Orleans, Louisiana (Neutral Field "The Sugar Bowl")
+    teama = {'Team':"alabama", 'S&P+M':20.8, 'PLpG':64.7, 'OPTpP':.246, 'OOPTpG':19, 'Result1':52, 'Result2':17}
+    teamb = {'Team':"clemson", 'S&P+M':15.3, 'PLpG':79.3, 'OPTpP':.199, 'OOPTpG':10, 'Result1':48,'Result2':16}
     if (verbose):
-        print ("Test #1 Purdue at Northwestern on 3/5/17")
-        print ("        Northwestern is Home team, testing Chance() routine)")
-    chancea, chanceb =  Chance(teama, teamb, homeTeam = teamb["Team"], verbose = verbose, homeAdvantage = 3.5)
+        print ("Test #1 Alabama vs Clemson on 1/1/18")
+        print ("        Neutral field, Testing Chance() routine")
+    chancea, chanceb =  Chance(teama, teamb, homeTeam = 'none', verbose = verbose)
     if (teama['Result1'] == chancea):
         result += 1
     if (teamb['Result1'] == chanceb):
         result += 1
     if (verbose and result == 2):
         print ("Test #1 - pass")
+    else:
+        print ("Test #1 - fail")
     if (verbose):
-        print ("Test #2 Purdue at Northwestern on 3/5/17")
-        print ("        Northwestern is Home team, testing Score() routine)")
-    scorea, scoreb = Score(teama, teamb, verbose = verbose, homeTeam = teamb["Team"], homeAdvantage = 3.5)
+        print ("Test #2 Alabama vs Clemson on 1/1/18")
+        print ("        Neutral field, testing Score() routine")
+    scorea, scoreb = Score(teama, teamb, verbose = verbose, homeTeam = 'none')
     if (teama['Result2'] == scorea):
         result += 1
     if (teamb['Result2'] == scoreb):
@@ -97,7 +100,8 @@ def Line(teama, teamb, verbose = True, homeAdvantage = 7.897, homeTeam = 'none')
     tempo = Tempo(teama, teamb, False)
     if (verbose):
         print ("Line(tempo) {0}".format(tempo * 100))
-    EMdiff = (float(teama['AdjEM']) - float(teamb['AdjEM'])) * tempo
+    EMdiff = (float(teama['S&P+M']) - float(teamb['S&P+M'])) * tempo
+    #pdb.set_trace()
     EffMgn = 0
     if homeTeam == teama["Team"]:
         EffMgn = EMdiff + homeAdvantage
