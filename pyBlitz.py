@@ -46,7 +46,6 @@ def Chance(teama, teamb, std = 15.38, homeAdvantage = 7.897, homeTeam = 'none', 
     return aPercent, bPercent
 
 def Tempo(teama, teamb, verbose = True):
-    #Tdiff = (float(teama['PLpG']) * float(teama['PTpP']) + (float(teamb['PLpG']) * float(teamb['PTpP']))) / 200.0
     Tdiff = (float(teama['PLpG']) * float(teamb['OPTpP']) + (float(teamb['PLpG']) * float(teama['OPTpP']))) / 200.0
     if (verbose):
         print ("Tempo(tempo) {0}".format(Tdiff * 100))
@@ -101,7 +100,6 @@ def Line(teama, teamb, verbose = True, homeAdvantage = 7.897, homeTeam = 'none')
     if (verbose):
         print ("Line(tempo) {0}".format(tempo * 100))
     EMdiff = (float(teama['S&P+M']) - float(teamb['S&P+M'])) * tempo
-    #pdb.set_trace()
     EffMgn = 0
     if homeTeam == teama["Team"]:
         EffMgn = EMdiff + homeAdvantage

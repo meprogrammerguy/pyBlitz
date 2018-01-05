@@ -9,20 +9,24 @@ from collections import OrderedDict
 import json
 import csv
 import contextlib
+import os
 
-url = "http://www.footballoutsiders.com/stats/ncaa"
-
-#url = "http://www.footballoutsiders.com/stats/ncaa2016" #past year testing override
+urls = []
+urls.append("https://www.teamrankings.com/college-football/stat/plays-per-game")
+urls.append("https://www.teamrankings.com/college-football/stat/opponent-points-per-play")
+urls.append("https://www.teamrankings.com/college-football/stat/opponent-points-per-game")
 
 print ("Scrape Statistics Tool")
 print ("**************************")
-print ("data is from {0}".format(url))
+ratings_table = []
+for url in urls:
+    print ("data is from {0}".format(url))
+    with contextlib.closing(urlopen(url)) as page:
+        soup = BeautifulSoup(page, "html5lib")
+    ratings_table.append(soup.find('table', {"class":"tr-table datatable scrollable"}))
+
 print ("**************************")
-
-with contextlib.closing(urlopen(url)) as page:
-    soup = BeautifulSoup(page, "html5lib")
-ratings_table=soup.find('table', {"class":"stats"})
-
+pdb.set_trace()
 IDX=[]
 A=[]
 B=[]
@@ -57,12 +61,14 @@ df['OS&P+']=F
 df['DS&P+']=G
 df['STS&P+']=H
 
-with open('stats.json', 'w') as f:
+path = "data/"
+
+with open(path + 'teamrankings.json', 'w') as f:
     f.write(df.to_json(orient='index'))
 
-with open("stats.json") as stats_json:
+with open(path + "teamrankings.json") as stats_json:
     dict_stats = json.load(stats_json, object_pairs_hook=OrderedDict)
-stats_sheet = open('stats.csv', 'w', newline='')
+stats_sheet = open(path + 'teamrankings.csv', 'w', newline='')
 csvwriter = csv.writer(stats_sheet)
 count = 0
 for row in dict_stats.values():
