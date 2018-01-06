@@ -18,28 +18,28 @@ def FindTeams(stats_team, fixed_team, stats_teams):
             break
     return Found
 
-print ("Merge spreadsheet validation Tool")
+print ("Test Schedule spreadsheet validation Tool")
 print ("****************************************************************")
 print (" ")
-print ("Makes sure that your merge spreadsheet is set up correctly")
-print ("    == be aware that some teams may not be there")
+print ("Makes sure that your merge Schedule spreadsheet is set up correctly")
+print ("    == be aware that some teams may not be there (unranked teams)")
 print ("    == for these match-ups a prediction will not be possible")
 print ("    == (but a very, very, good guess is to go with the other team)")
 print (" ")
 
-file = 'merge.csv'
+file = 'merge_schedule.csv'
 if (not os.path.exists(file)):
-    print ("merge.csv file is missing, run the merge_teams tool to create")
+    print ("merge_schedule.csv file is missing, run the merge_schedule tool to create")
     exit()
 dict_merge = []
 with open(file) as merge_file:
     reader = csv.DictReader(merge_file)
     for row in reader:
         dict_merge.append(row)
-
-file = 'stats.json'
+path = "data/"
+file = '{0}outsiders.json'.format(path)
 if (not os.path.exists(file)):
-    print ("statistics file is missing, run the scrape_stats tool to create")
+    print ("outsiders file is missing, run the scrape_outsiders tool to create")
     exit()
 with open(file) as stats_file:
     dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
@@ -50,6 +50,16 @@ for item in  dict_stats.values():
 team_set = set(AllTeams)
 stats_teams = list(team_set)
 stats_teams.sort()
+
+found = False
+for team in dict_merge:
+    if (team["corrected stats team"].strip()!=""):
+        found = True
+
+if (not found):
+    print ("*** Warning: Have you set up your merge_schedule? There are NO fixes entered ***")
+    print ("*** Make sure all of your match-ups are correct and then re-run this script ***")
+    exit()
 
 for team in dict_merge:
     #pdb.set_trace()

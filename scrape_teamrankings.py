@@ -14,7 +14,7 @@ import os
 urls = []
 urls.append("https://www.teamrankings.com/college-football/stat/plays-per-game")
 urls.append("https://www.teamrankings.com/college-football/stat/opponent-points-per-play")
-urls.append("https://www.teamrankings.com/college-football/stat/opponent-points-per-game")
+#urls.append("https://www.teamrankings.com/college-football/stat/opponent-points-per-game")
 
 print ("Scrape Statistics Tool")
 print ("**************************")
@@ -26,40 +26,30 @@ for url in urls:
     ratings_table.append(soup.find('table', {"class":"tr-table datatable scrollable"}))
 
 print ("**************************")
-pdb.set_trace()
 IDX=[]
 A=[]
 B=[]
 C=[]
-D=[]
-E=[]
-F=[]
-G=[]
-H=[]
 index=0
-for row in ratings_table.findAll("tr"):
+for row in ratings_table[0].findAll("tr"):
     col=row.findAll('td')
-    if len(col)>0 and col[0].find(text=True)!="Team":
+    if len(col)>0 and col[1].find(text=True)!="Team":
         index+=1
         IDX.append(index)
-        A.append(col[0].find(text=True))
-        B.append(col[1].find(text=True))
-        C.append(col[2].find(text=True))
-        D.append(col[3].find(text=True))
-        E.append(col[4].find(text=True))
-        F.append(col[6].find(text=True))
-        G.append(col[8].find(text=True))
-        H.append(col[10].find(text=True))
+        A.append(col[1].find(text=True))
+        B.append(col[3].find(text=True))
+for team in A:
+    for row in ratings_table[1].findAll("tr"):
+        col=row.findAll('td')
+        if len(col)>0 and col[1].find(text=True)==team:
+            C.append(col[3].find(text=True))
+            #pdb.set_trace()
+            break
 
 df=pd.DataFrame(IDX,columns=['Index'])
 df['Team']=A
-df['Rec']=B
-df['2ndO']=C
-df['S&P+P']=D
-df['S&P+M']=E
-df['OS&P+']=F
-df['DS&P+']=G
-df['STS&P+']=H
+df['PLpG3']=B
+df['OPTpP3']=C
 
 path = "data/"
 

@@ -9,12 +9,12 @@ from collections import OrderedDict
 import os.path
 from pathlib import Path
 
-print ("Merge Teams Tool")
+print ("Merge Schedule Tool")
 print ("**************************")
 
-file = 'merge.csv'
+file = 'merge_schedule.csv'
 if (os.path.exists(file)):
-    print ("Warning *** The merge.csv file already exists ***")
+    print ("Warning *** The merge_schedule.csv file already exists ***")
     print ("        *** delete this file if you want to re-create it. ***")
     exit()
 
@@ -27,9 +27,9 @@ for p in Path(".").glob("sched*.json"):
     with open(p) as sched_files:
         dict_sched = json.load(sched_files, object_pairs_hook=OrderedDict)
 
-file = 'stats.json'
+file = 'data/outsiders.json'
 if (not os.path.exists(file)):
-    print ("statistics file is missing, run the scrape_stats tool to create")
+    print ("outsiders file is missing, run the scrape_outsiders tool to create")
     exit()
 with open(file) as stats_file:
     dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
@@ -49,7 +49,7 @@ team_set = set(AllTeams)
 stats_teams = list(team_set)
 stats_teams.sort()
 
-merge_sheet = open('merge.csv', 'w', newline='')
+merge_sheet = open('merge_schedule.csv', 'w', newline='')
 csvwriter = csv.writer(merge_sheet)
 dict_merge = OrderedDict()
 dict_merge["match ratio"] = []

@@ -46,7 +46,7 @@ def Chance(teama, teamb, std = 15.38, homeAdvantage = 7.897, homeTeam = 'none', 
     return aPercent, bPercent
 
 def Tempo(teama, teamb, verbose = True):
-    Tdiff = (float(teama['PLpG']) * float(teamb['OPTpP']) + (float(teamb['PLpG']) * float(teama['OPTpP']))) / 200.0
+    Tdiff = (float(teama['PLpG']) * float(teamb['OPTpP3']) + (float(teamb['PLpG']) * float(teama['OPTpP3']))) / 200.0
     if (verbose):
         print ("Tempo(tempo) {0}".format(Tdiff * 100))
     return Tdiff
@@ -56,8 +56,8 @@ def Test(verbose):
     # Alabama, Clemson on 1/1/18 (stats from 1/3/18)
     # Actual Score: 24-6
     # venue was: Mercedes-Benz Superdome in New Orleans, Louisiana (Neutral Field "The Sugar Bowl")
-    teama = {'Team':"alabama", 'S&P+M':20.8, 'PLpG':64.7, 'OPTpP':.246, 'OOPTpG':19, 'Result1':52, 'Result2':17}
-    teamb = {'Team':"clemson", 'S&P+M':15.3, 'PLpG':79.3, 'OPTpP':.199, 'OOPTpG':10, 'Result1':48,'Result2':16}
+    teama = {'Team':"alabama", 'S&P+M':20.8, 'PLpG':64.7, 'OPTpP3':.246, 'Result1':52, 'Result2':17}
+    teamb = {'Team':"clemson", 'S&P+M':15.3, 'PLpG':79.3, 'OPTpP3':.199, 'Result1':48,'Result2':16}
     if (verbose):
         print ("Test #1 Alabama vs Clemson on 1/1/18")
         print ("        Neutral field, Testing Chance() routine")

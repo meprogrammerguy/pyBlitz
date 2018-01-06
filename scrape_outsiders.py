@@ -27,12 +27,6 @@ ratings_table=soup.find('table', {"class":"stats"})
 IDX=[]
 A=[]
 B=[]
-C=[]
-D=[]
-E=[]
-F=[]
-G=[]
-H=[]
 index=0
 for row in ratings_table.findAll("tr"):
     col=row.findAll('td')
@@ -40,23 +34,11 @@ for row in ratings_table.findAll("tr"):
         index+=1
         IDX.append(index)
         A.append(col[0].find(text=True))
-        B.append(col[1].find(text=True))
-        C.append(col[2].find(text=True))
-        D.append(col[3].find(text=True))
-        E.append(col[4].find(text=True))
-        F.append(col[6].find(text=True))
-        G.append(col[8].find(text=True))
-        H.append(col[10].find(text=True))
+        B.append(col[4].find(text=True))
 
 df=pd.DataFrame(IDX,columns=['Index'])
 df['Team']=A
-df['Rec']=B
-df['2ndO']=C
-df['S&P+P']=D
-df['S&P+M']=E
-df['OS&P+']=F
-df['DS&P+']=G
-df['STS&P+']=H
+df['S&P+M']=B
 
 path = "data/"
 

@@ -41,7 +41,9 @@ print
 print ("Year is: {0}".format(year))
 print ("**************************")
 
-for p in Path(".").glob("week*.*"):
+path = "data/"
+
+for p in Path(path).glob("sched*.*"):
     p.unlink()
 
 url = []
@@ -124,14 +126,14 @@ for page in pages:
     df['TeamB']=D
     df['Score']=G
     
-    filename = "sched{0}.json".format(loop)
+    filename = "{0}sched{1}.json".format(path, loop)
     with open(filename, 'w') as f:
         f.write(df.to_json(orient='index'))
 
     with open(filename) as sched_json:
         dict_sched = json.load(sched_json, object_pairs_hook=OrderedDict)
 
-    filename = "sched{0}.csv".format(loop)
+    filename = "{0}sched{1}.csv".format(path, loop)
     sched_sheet = open(filename, 'w', newline='')
     csvwriter = csv.writer(sched_sheet)
     count = 0
