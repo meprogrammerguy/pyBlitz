@@ -18,18 +18,17 @@ def FindTeams(stats_team, fixed_team, stats_teams):
             break
     return Found
 
-print ("Merge spreadsheet validation Tool")
+print ("Test stats spreadsheet validation Tool")
 print ("****************************************************************")
 print (" ")
-print ("Makes sure that your merge spreadsheets are set up correctly")
-print ("    == be aware that some teams may not be there (unranked teams)")
-print ("    == for these match-ups a prediction will not be possible")
-print ("    == (but a very, very, good guess is to go with the other team)")
+print ("Makes sure that your merge stats spreadsheet is set up correctly")
+print ("    == be aware that all teams need to match up")
+print ("    == if they do not a prediction will not be possible")
 print (" ")
 
-file = 'merge_schedule.csv'
+file = 'merge_stats.csv'
 if (not os.path.exists(file)):
-    print ("merge_schedule.csv file is missing, run the merge_schedule tool to create")
+    print ("merge_stats.csv file is missing, run the merge_stats tool to create")
     exit()
 dict_merge = []
 with open(file) as merge_file:
@@ -53,18 +52,17 @@ stats_teams.sort()
 
 found = False
 for team in dict_merge:
-    if (team["corrected stats team"].strip()!=""):
+    if (team["corrected outsiders"].strip()!=""):
         found = True
 
 if (not found):
-    print ("*** Warning: Have you set up your merge_schedule? There are NO fixes entered ***")
+    print ("*** Warning: Have you set up your merge_stats? There are NO fixes entered ***")
     print ("*** Make sure all of your match-ups are correct and then re-run this script ***")
     exit()
 
 for team in dict_merge:
-    #pdb.set_trace()
-    found = FindTeams(team["stats team"], team["corrected stats team"], stats_teams)
+    found = FindTeams(team["outsiders"], team["corrected outsiders"], stats_teams)
     if (not found):
-        print ("warning: {0} was not found in the stats table ***".format(team["scheduled team"]))
+        print ("warning: {0} was not found in the outsiders table ***".format(team["teamrankings"]))
  
 print ("done.")
