@@ -13,8 +13,9 @@ import os
 
 urls = []
 urls.append("https://www.teamrankings.com/college-football/stat/plays-per-game")
+urls.append("https://www.teamrankings.com/college-football/stat/points-per-play")
+urls.append("https://www.teamrankings.com/college-football/stat/opponent-points-per-game")
 urls.append("https://www.teamrankings.com/college-football/stat/opponent-points-per-play")
-#urls.append("https://www.teamrankings.com/college-football/stat/opponent-points-per-game")
 
 print ("Scrape Statistics Tool")
 print ("**************************")
@@ -30,6 +31,8 @@ IDX=[]
 A=[]
 B=[]
 C=[]
+D=[]
+E=[]
 index=0
 for row in ratings_table[0].findAll("tr"):
     col=row.findAll('td')
@@ -43,13 +46,26 @@ for team in A:
         col=row.findAll('td')
         if len(col)>0 and col[1].find(text=True)==team:
             C.append(col[3].find(text=True))
-            #pdb.set_trace()
+            break
+for team in A:
+    for row in ratings_table[2].findAll("tr"):
+        col=row.findAll('td')
+        if len(col)>0 and col[1].find(text=True)==team:
+            D.append(col[3].find(text=True))
+            break
+for team in A:
+    for row in ratings_table[3].findAll("tr"):
+        col=row.findAll('td')
+        if len(col)>0 and col[1].find(text=True)==team:
+            E.append(col[3].find(text=True))
             break
 
 df=pd.DataFrame(IDX,columns=['Index'])
 df['Team']=A
 df['PLpG3']=B
-df['OPTpP3']=C
+df['PTpP3']=C
+df['OPLpG3']=D
+df['OPTpP3']=E
 
 path = "data/"
 
