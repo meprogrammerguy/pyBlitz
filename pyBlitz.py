@@ -46,10 +46,11 @@ def Chance(teama, teamb, std = 15.38, homeAdvantage = 7.897, homeTeam = 'none', 
     return aPercent, bPercent
 
 def Tempo(teama, teamb, verbose = True):
-    Tdiffa = (float(teama['PLpG3']) * float(teama['PTpP3']) + (float(teama['OPLpG3']) * float(teama['OPTpP3'])))
-    Tdiffb = (float(teamb['PLpG3']) * float(teamb['PTpP3']) + (float(teamb['OPLpG3']) * float(teamb['OPTpP3'])))
-    Tdiff = (Tdiffa + Tdiffb)/200.0
-    #pdb.set_trace()
+    TdiffaScore = float(teama['PLpG3']) * float(teama['PTpP3'])
+    TdiffaOScore = float(teama['OPLpG3']) * float(teama['OPTpP3'])
+    TdiffbScore = float(teamb['PLpG3']) * float(teamb['PTpP3'])
+    TdiffbOScore = float(teamb['OPLpG3']) * float(teamb['OPTpP3'])
+    Tdiff = ((TdiffaScore + TdiffbScore) - (TdiffaOScore + TdiffbOScore))/200.0
     if (verbose):
         print ("Tempo(tempo) {0}".format(Tdiff * 100))
     return Tdiff
@@ -60,8 +61,8 @@ def Test(verbose):
     # Actual Score: 24-6
     # venue was: Mercedes-Benz Superdome in New Orleans, Louisiana (Neutral Field "The Sugar Bowl")
 
-    teama = {'Team':"alabama", 'S&P+M':20.8, 'PLpG3':64.7, 'PTpP3':.356, 'OPLpG3':18.7, 'OPTpP3':.246, 'Result1':54, 'Result2':29}
-    teamb = {'Team':"clemson", 'S&P+M':15.3, 'PLpG3':79.3, 'PTpP3':.328, 'OPLpG3':12.3, 'OPTpP3':.199, 'Result1':46,'Result2':27}
+    teama = {'Team':"alabama", 'S&P+M':20.8, 'PLpG3':64.7, 'PTpP3':.356, 'OPLpG3':18.7, 'OPTpP3':.246, 'Result1':64, 'Result2':24}
+    teamb = {'Team':"clemson", 'S&P+M':15.3, 'PLpG3':79.3, 'PTpP3':.328, 'OPLpG3':12.3, 'OPTpP3':.199, 'Result1':36,'Result2':18}
 
     if (verbose):
         print ("Test #1 Alabama vs Clemson on 1/1/18")
@@ -103,10 +104,7 @@ def Score(teama, teamb, verbose = True, homeAdvantage = 7.897, homeTeam = 'none'
     return aScore, bScore
 
 def Line(teama, teamb, verbose = True, homeAdvantage = 7.897, homeTeam = 'none'):
-    tempo = Tempo(teama, teamb, False)
-    if (verbose):
-        print ("Line(tempo) {0}".format(tempo * 100))
-    EMdiff = (float(teama['S&P+M']) - float(teamb['S&P+M'])) * tempo
+    EMdiff = (float(teama['S&P+M']) - float(teamb['S&P+M']))
     EffMgn = 0
     if homeTeam == teama["Team"]:
         EffMgn = EMdiff + homeAdvantage
