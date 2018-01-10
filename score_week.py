@@ -21,8 +21,7 @@ def main(argv):
     verbose = False
     test = False
     try:
-        opts, args = getopt.getopt(argv, "hs:c:m:o:w:vt", ["help", "stat_file=", "schedule_files=", "merge_file=", "output_files=", 
-                                         "--week=", "verbose", "test"])
+        opts, args = getopt.getopt(argv, "hs:c:m:o:w:vt", ["help", "stat_file=", "merge_file=", "--week=", "verbose", "test"])
     except getopt.GetoptError as err:
         print(err)
         usage()
@@ -41,14 +40,8 @@ def main(argv):
             stat_file = a
         elif o in ("-w", "--week"):
             week = a
-        elif o in ("-c", "--schedule_files"):
-            schedule_files = []
-            schedule_files.append(a)
         elif o in ("-m", "--merge_file"):
             merge_file = a
-        elif o in ("-o", "--output_files"):
-            output_file = []
-            output_files.append(a)
         else:
             assert False, "unhandled option"
     if (test):
@@ -65,12 +58,11 @@ def usage():
     usage = """
     -h --help                 Prints this help
     -v --verbose              Increases the information level
-    -s --stat_file            stats file                      (json file format)
-    -c --schedule_files       schedule files                  (json file format)
-    -m --merge_file           merge file                      (csv/spreadsheet file format)
-    -o --output_files         output files                    (csv/spreadsheet file format)
+    -s --stat_file            stats file (json file format)
+    -m --merge_file           merge file (csv/spreadsheet file format)
     -t --test                 runs test routine to check calculations
-    -w --week                 week to predict [current, all, 1-16] default is current
+    -w --week                 week to predict
+                                [current, all, 1-16] default is current
     """
     print (usage) 
 
@@ -90,14 +82,8 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, output_files,
     print ("Weekly Prediction Tool")
     print ("**************************")
     print ("Statistics file:\t{0}".format(stat_file))
-    print ("Schedule  files:")
-    for item in schedule_files:
-        print ("\t\t{0}".format(item))
     print ("Team Merge file:\t{0}".format(merge_file))
-    print ("Output    files:")
-    for item in output_files:
-        print ("\t\t{0}".format(item))
-    print ("running for Week: {0}".format(week))
+    print ("\trunning for Week: {0}".format(week))
     print ("**************************")
     pdb.set_trace()
     list_picks = []
