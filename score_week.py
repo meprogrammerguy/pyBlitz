@@ -1,26 +1,28 @@
 #!/usr/bin/env python3
 
 import sys, getopt
-import gamePredict
-import pyMadness
+import pyBlitz
 from collections import OrderedDict
 import json
 import csv
 import pdb
-import os.path
+#import os.path
+from pathlib import Path
+
+
+path = "data/"
 
 def main(argv):
-    stat_file = "stats.json"
-    bracket_file = "bracket.json"
-    merge_file = "merge.csv"
-    output_file = "predict.csv"
-    input_file = "predict.csv"
+    stat_file = path + "stats.json"
+    schedule_files = GetSchedFiles("sched*.json")
+    merge_file = "merge_schedule.csv"
+    output_files = GetOutputFiles(len(schedule_files), "week", "csv")
+    week = "current"
     verbose = False
     test = False
-    gamepredict = False
     try:
-        opts, args = getopt.getopt(argv, "hs:b:m:o:i:vtg", ["help", "stat_file=", "bracket_file=", "merge_file=", "output_file=", 
-                                         "input_file=", "verbose", "test", "gamepredict"])
+        opts, args = getopt.getopt(argv, "hs:c:m:o:w:vt", ["help", "stat_file=", "schedule_files=", "merge_file=", "output_files=", 
+                                         "--week=", "verbose", "test"])
     except getopt.GetoptError as err:
         print(err)
         usage()
@@ -32,21 +34,21 @@ def main(argv):
             verbose = True
         elif o in ("-t", "--test"):
             test = True
-        elif o in ("-g", "--gamepredict"):
-            gamepredict = True
         elif o in ("-h", "--help"):
             usage()
             sys.exit
         elif o in ("-s", "--stat_file"):
             stat_file = a
-        elif o in ("-b", "--bracket_file"):
-            bracket_file = a
-        elif o in ("-b", "--merge_file"):
+        elif o in ("-w", "--week"):
+            week = a
+        elif o in ("-c", "--schedule_files"):
+            schedule_files = []
+            schedule_files.append(a)
+        elif o in ("-m", "--merge_file"):
             merge_file = a
-        elif o in ("-o", "--output_file"):
-            output_file = a
-        elif o in ("-i", "--input_file"):
-            input_file = a
+        elif o in ("-o", "--output_files"):
+            output_file = []
+            output_files.append(a)
         else:
             assert False, "unhandled option"
     if (test):
@@ -56,7 +58,7 @@ def main(argv):
         else:
             print ("Test result - fail")
     else:
-        PredictTournament(stat_file, bracket_file, merge_file, input_file, output_file, verbose, gamepredict)
+        PredictTournament(week, stat_file, schedule_files, merge_file, output_files, verbose)
         print ("{0} has been created.".format(output_file))
 
 def usage():
@@ -64,28 +66,40 @@ def usage():
     -h --help                 Prints this help
     -v --verbose              Increases the information level
     -s --stat_file            stats file                      (json file format)
-    -b --bracket_file         bracket file                    (json file format)
+    -c --schedule_files       schedule files                  (json file format)
     -m --merge_file           merge file                      (csv/spreadsheet file format)
-    -i --input_file           input file gets pick overrides  (csv/spreadsheet file format)
-    -o --output_file          output file                     (csv/spreadsheet file format)
-    -g --gamepredict          obtain data from gamepredict.us (default is False, runs slower)
+    -o --output_files         output files                    (csv/spreadsheet file format)
     -t --test                 runs test routine to check calculations
+    -w --week                 week to predict [current, all, 1-16] default is current
     """
     print (usage) 
 
-def PredictTournament(stat_file, bracket_file, merge_file, input_file, output_file, verbose, gamepredict):
-    print ("Tournament Prediction Tool")
+def GetSchedFiles(templatename):
+    file_list = []
+    for p in Path(path).glob(templatename):
+        file_list.append(p)
+    return file_list
+
+def GetOutputFiles(count, name, filetype):
+    file_list = []
+    for idx in range(count):
+        file_list.append("{0}{1}.{2}".format(name, idx+1, filetype))
+    return file_list
+
+def PredictTournament(week, stat_file, schedule_files, merge_file, output_files, verbose):
+    print ("Weekly Prediction Tool")
     print ("**************************")
-    print ("Statistics file: {0}".format(stat_file))
-    print ("Brackets   file: {0}".format(bracket_file))
-    print ("Team Merge file: {0}".format(merge_file))
-    print ("Input      file: {0}".format(input_file))
-    print ("Output     file: {0}".format(output_file))
-    if (gamepredict):
-        print (" ")
-        print ("===> (data will come from gamepredict.us) <===")
-        print (" ")
+    print ("Statistics file:\t{0}".format(stat_file))
+    print ("Schedule  files:")
+    for item in schedule_files:
+        print ("\t\t{0}".format(item))
+    print ("Team Merge file:\t{0}".format(merge_file))
+    print ("Output    files:")
+    for item in output_files:
+        print ("\t\t{0}".format(item))
+    print ("running for Week: {0}".format(week))
     print ("**************************")
+    pdb.set_trace()
     list_picks = []
     if (os.path.exists(input_file)):
         file = input_file
