@@ -6,9 +6,9 @@ from collections import OrderedDict
 import json
 import csv
 import pdb
-#import os.path
+import os.path
 from pathlib import Path
-
+from datetime import datetime
 
 path = "data/"
 
@@ -16,12 +16,11 @@ def main(argv):
     stat_file = path + "stats.json"
     schedule_files = GetSchedFiles("sched*.json")
     merge_file = "merge_schedule.csv"
-    output_files = GetOutputFiles(len(schedule_files), "week", "csv")
     week = "current"
     verbose = False
     test = False
     try:
-        opts, args = getopt.getopt(argv, "hs:c:m:o:w:vt", ["help", "stat_file=", "merge_file=", "--week=", "verbose", "test"])
+        opts, args = getopt.getopt(argv, "hs:m:w:vt", ["help", "stat_file=", "merge_file=", "--week=", "verbose", "test"])
     except getopt.GetoptError as err:
         print(err)
         usage()
@@ -51,7 +50,7 @@ def main(argv):
         else:
             print ("Test result - fail")
     else:
-        PredictTournament(week, stat_file, schedule_files, merge_file, output_files, verbose)
+        PredictTournament(week, stat_file, schedule_files, merge_file, verbose)
         print ("{0} has been created.".format(output_file))
 
 def usage():
@@ -78,55 +77,53 @@ def GetOutputFiles(count, name, filetype):
         file_list.append("{0}{1}.{2}".format(name, idx+1, filetype))
     return file_list
 
-def PredictTournament(week, stat_file, schedule_files, merge_file, output_files, verbose):
+def CurrentStatsFile(filename):
+    stat = os.path.getmtime(filename)
+    stat_date = datetime.fromtimestamp(stat)
+    if stat_date.date() < datetime.now().date():
+        return False
+    return True
+
+def RefreshStats():
+    import scrape_outsiders
+    import scrape_teamrankings
+    import combine_stats
+
+def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
     print ("Weekly Prediction Tool")
     print ("**************************")
     print ("Statistics file:\t{0}".format(stat_file))
     print ("Team Merge file:\t{0}".format(merge_file))
     print ("\trunning for Week: {0}".format(week))
     print ("**************************")
-    pdb.set_trace()
-    list_picks = []
-    if (os.path.exists(input_file)):
-        file = input_file
-        with open(file) as input_file:
-            reader = csv.DictReader(input_file)
-            for row in reader:
-                if (row["ScoreA"] >= row["ScoreB"] and row["Pick"] == "TeamB"):
-                    list_picks.append([row["Index"], row["Pick"]])
-                elif (row["ScoreA"] < row["ScoreB"] and row["Pick"] == "TeamA"):
-                    list_picks.append([row["Index"], row["Pick"]])
-    if (len(list_picks) == 0):
-        print ("No pick Overrides")
-    elif (len(list_picks) == 1):
-        print ("Overriding one calculated pick")
-    else:
-        print ("Overriding {0} calculated pick(s)".format(len(list_picks)))
     dict_merge = []
     if (not os.path.exists(merge_file)):
-        print ("merge file is missing, run the merge_teams tool to create")
+        print ("merge file is missing, run the merge_schedule tool to create")
         exit()
-    file = merge_file
-    with open(file) as merge_file:
+    with open(merge_file) as merge_file:
         reader = csv.DictReader(merge_file)
         for row in reader:
             dict_merge.append(row)
-    if (not os.path.exists(bracket_file)):
-        print ("brackets file is missing, run the scrape_bracket tool to create")
+    if (not os.path.exists(schedule_files[0])):
+        print ("schedule files are missing, run the scrape_schedule tool to create")
         exit()
-    file = bracket_file
-    with open(file) as bracket_file:
-        dict_bracket = json.load(bracket_file, object_pairs_hook=OrderedDict)
+    if (not CurrentStatsFile(stat_file)):
+        RefreshStats()
+    if (not os.path.exists(stat_file)):
+        print ("statistics file is missing, run the combine_stats tool to create")
+        exit()
+    with open(stat_file) as stats_file:
+        dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
+    pdb.set_trace()
+    dict_schedule = {}
+    for file in schedule_files:
+        file = schedule_file
+        with open(file) as schedule_file:
+            dict_schedule.append(json.load(schedule_file, object_pairs_hook=OrderedDict))
     for item in dict_bracket.values():
         teama, teamb = FindTeams(item["TeamA"], item["TeamB"], dict_merge)
         item[2] = teama
         item[6] = teamb
-    if (not os.path.exists(stat_file)):
-        print ("statistics file is missing, run the scrape_stats tool to create")
-        exit()
-    file = stat_file
-    with open(file) as stats_file:
-        dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
     dict_predict = []
     dict_predict = LoadPredict(dict_predict, dict_bracket) 
     for round in range(0, 7):
