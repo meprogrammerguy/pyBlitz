@@ -9,6 +9,7 @@ import pdb
 import os.path
 from pathlib import Path
 from datetime import datetime
+import re
 
 path = "data/"
 
@@ -65,16 +66,18 @@ def usage():
     """
     print (usage) 
 
-def GetSchedFiles(templatename):
-    file_list = []
-    for p in Path(path).glob(templatename):
-        file_list.append(p)
-    return file_list
+def GetIndex(item):
+    idx = re.findall(r'\d+', str(item))
+    return int(idx[0])
 
-def GetOutputFiles(count, name, filetype):
+def GetSchedFiles(templatename):
+    file_dict = {}
+    for p in Path(path).glob(templatename):
+        idx = GetIndex(p)
+        file_dict[idx] = str(p)
     file_list = []
-    for idx in range(count):
-        file_list.append("{0}{1}.{2}".format(name, idx+1, filetype))
+    for idx in range(len(file_dict)):
+        file_list.append(file_dict[idx + 1])
     return file_list
 
 def CurrentStatsFile(filename):
@@ -83,6 +86,11 @@ def CurrentStatsFile(filename):
     if stat_date.date() < datetime.now().date():
         return False
     return True
+
+def CurrentWeek(week):
+    currentweek = False
+    pdb.set_trace()
+    return currentweek
 
 def RefreshStats():
     import scrape_outsiders
@@ -114,12 +122,12 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
         exit()
     with open(stat_file) as stats_file:
         dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
-    pdb.set_trace()
-    dict_schedule = {}
+    list_schedule = []
     for file in schedule_files:
-        file = schedule_file
         with open(file) as schedule_file:
-            dict_schedule.append(json.load(schedule_file, object_pairs_hook=OrderedDict))
+            list_schedule.append(json.load(schedule_file, object_pairs_hook=OrderedDict))
+    for idx in range(len(schedule_files)):
+        pdb.set_trace()
     for item in dict_bracket.values():
         teama, teamb = FindTeams(item["TeamA"], item["TeamB"], dict_merge)
         item[2] = teama
