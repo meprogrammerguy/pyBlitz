@@ -66,22 +66,25 @@ def usage():
     """
     print (usage) 
 
-def EarliestUnpickedWeek(scheduled_files):
-    item = len(scheduled_files)
+def EarliestUnpickedWeek(list_schedule):
+    item = len(list_schedule)
     return item
 
-def GetWeekRange(week, scheduled_files):
+def GetWeekRange(week, list_schedule):
+    max_range = len(list_schedule)
     if (week[0].lower() == "a"):
-        return range(0, len(scheduled_files))
+        return range(0, max_range)
     if (week[0].lower() == "c"):
-        return range(EarliestUnpickedWeek(scheduled_files) - 1, len(scheduled_files))
+        return range(EarliestUnpickedWeek(list_schedule) - 1, max_range)
     idx = GetIndex(week)
-    if ((idx < 1) or (idx > len(scheduled_files))):
-        return range(EarliestUnpickedWeek(scheduled_files) - 1, len(scheduled_files))
+    if ((idx < 1) or (idx > max_range)):
+        return range(EarliestUnpickedWeek(list_schedule) - 1, max_range)
     return range(int(week) - 1, int(week))
 
 def GetIndex(item):
     idx = re.findall(r'\d+', str(item))
+    if (len(idx) == 0):
+        idx.append("0")
     return int(idx[0])
 
 def GetSchedFiles(templatename):
@@ -140,7 +143,7 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
     for file in schedule_files:
         with open(file) as schedule_file:
             list_schedule.append(json.load(schedule_file, object_pairs_hook=OrderedDict))
-    weeks = GetWeekRange(week, schedule_files)
+    weeks = GetWeekRange(week, list_schedule)
     pdb.set_trace()
     for idx in range(len(schedule_files)):
         if (idx in weeks):
