@@ -67,23 +67,24 @@ def usage():
     print (usage) 
 
 def EarliestUnpickedWeek(list_schedule):
-    item = len(list_schedule)
     current_date = datetime.now().date()
     for i, e in reversed(list(enumerate(list_schedule))):
         for item in e.values():
-            pdb.set_trace()
             str_date = "{0}, {1}".format(item["Date"], item["Year"])
-    return item
+            dt_obj = datetime.strptime(str_date, '%A, %B %d, %Y')
+            if (current_date >= dt_obj.date()):
+                return i
+    return 0
 
 def GetWeekRange(week, list_schedule):
     max_range = len(list_schedule)
     if (week[0].lower() == "a"):
         return range(0, max_range)
     if (week[0].lower() == "c"):
-        return range(EarliestUnpickedWeek(list_schedule) - 1, max_range)
+        return range(EarliestUnpickedWeek(list_schedule), EarliestUnpickedWeek(list_schedule) + 1)
     idx = GetIndex(week)
     if ((idx < 1) or (idx > max_range)):
-        return range(EarliestUnpickedWeek(list_schedule) - 1, max_range)
+        return range(EarliestUnpickedWeek(list_schedule), EarliestUnpickedWeek(list_schedule) + 1)
     return range(int(week) - 1, int(week))
 
 def GetIndex(item):

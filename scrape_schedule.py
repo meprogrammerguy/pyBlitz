@@ -101,10 +101,14 @@ for page in pages:
         for team in teams:
             if (line % 2 == 0):
                 if dateidx < len(dates):
-                    A.append(dates[dateidx].find(text=True))
+                    theDate = dates[dateidx].find(text=True)
                 else:
-                    A.append("?")
-                Y.append(year)
+                    theDate = "?"
+                A.append(theDate)
+                if "January" not in theDate: 
+                    Y.append(year)
+                else:
+                    Y.append(year + 1)
                 B.append(team['title'])
                 if loop != len(pages):
                     if (neutral[count]['data-is-neutral-site'] == 'true'):
