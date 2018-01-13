@@ -21,7 +21,7 @@ def main(argv):
     verbose = False
     test = False
     try:
-        opts, args = getopt.getopt(argv, "hs:m:w:vt", ["help", "stat_file=", "merge_file=", "--week=", "verbose", "test"])
+        opts, args = getopt.getopt(argv, "hs:m:w:vt", ["help", "stat_file=", "merge_file=", "week=", "verbose", "test"])
     except getopt.GetoptError as err:
         print(err)
         usage()
@@ -65,6 +65,20 @@ def usage():
                                 [current, all, 1-16] default is current
     """
     print (usage) 
+
+def EarliestUnpickedWeek(scheduled_files):
+    item = len(scheduled_files)
+    return item
+
+def GetWeekRange(week, scheduled_files):
+    if (week[0].lower() == "a"):
+        return range(0, len(scheduled_files))
+    if (week[0].lower() == "c"):
+        return range(EarliestUnpickedWeek(scheduled_files) - 1, len(scheduled_files))
+    idx = GetIndex(week)
+    if ((idx < 1) or (idx > len(scheduled_files))):
+        return range(EarliestUnpickedWeek(scheduled_files) - 1, len(scheduled_files))
+    return range(int(week) - 1, int(week))
 
 def GetIndex(item):
     idx = re.findall(r'\d+', str(item))
@@ -126,8 +140,12 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
     for file in schedule_files:
         with open(file) as schedule_file:
             list_schedule.append(json.load(schedule_file, object_pairs_hook=OrderedDict))
+    weeks = GetWeekRange(week, schedule_files)
+    pdb.set_trace()
     for idx in range(len(schedule_files)):
-        pdb.set_trace()
+        if (idx in weeks):
+            pdb.set_trace()
+    pdb.set_trace()
     for item in dict_bracket.values():
         teama, teamb = FindTeams(item["TeamA"], item["TeamB"], dict_merge)
         item[2] = teama
