@@ -115,6 +115,9 @@ def RefreshStats():
     import combine_stats
 
 def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
+    idx = GetIndex(week)
+    if ((idx < 1) or (idx > len(schedule_files))):
+        week = "current"
     print ("Weekly Prediction Tool")
     print ("**************************")
     print ("Statistics file:\t{0}".format(stat_file))
@@ -148,7 +151,6 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
     for idx in range(len(schedule_files)):
         if (idx in weeks):
             pdb.set_trace()
-    pdb.set_trace()
     for item in dict_bracket.values():
         teama, teamb = FindTeams(item["TeamA"], item["TeamB"], dict_merge)
         item[2] = teama
