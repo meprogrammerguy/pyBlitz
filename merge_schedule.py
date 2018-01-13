@@ -18,14 +18,15 @@ if (os.path.exists(file)):
     print ("        *** delete this file if you want to re-create it. ***")
     exit()
 
-file = 'sched1.json'
+file = 'data/sched1.json'
 if (not os.path.exists(file)):
     print ("schedule files are missing, run the scrape_schedule tool to create")
     exit()
 
-for p in Path(".").glob("sched*.json"):
+list_sched = []
+for p in Path(".").glob("data/sched*.json"):
     with open(p) as sched_files:
-        dict_sched = json.load(sched_files, object_pairs_hook=OrderedDict)
+        list_sched.append(json.load(sched_files, object_pairs_hook=OrderedDict))
 
 file = 'data/outsiders.json'
 if (not os.path.exists(file)):
@@ -35,9 +36,10 @@ with open(file) as stats_file:
     dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
 
 AllTeams=[]
-for item in dict_sched.values():
-    AllTeams.append(item["TeamA"])
-    AllTeams.append(item["TeamB"])
+for e in list_sched:
+    for item in e.values():
+        AllTeams.append(item["TeamA"])
+        AllTeams.append(item["TeamB"])
 team_set = set(AllTeams)
 sched_teams = list(team_set)
 sched_teams.sort()

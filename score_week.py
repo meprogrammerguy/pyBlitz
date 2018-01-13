@@ -146,13 +146,14 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
     list_schedule = []
     for file in schedule_files:
         with open(file) as schedule_file:
-            dict_schedule = json.load(schedule_file, object_pairs_hook=OrderedDict)
-            list_schedule.append(dict_schedule)
+            list_schedule.append(json.load(schedule_file, object_pairs_hook=OrderedDict))
     weeks = GetWeekRange(week, list_schedule)
-    pdb.set_trace()
     for idx in range(len(schedule_files)):
         if (idx in weeks):
-            pdb.set_trace()
+            for item in list_schedule[idx].values():
+                teama, teamb = FindTeams(item["TeamA"], item["TeamB"], dict_merge)
+                pdb.set_trace()
+    pdb.set_trace()
     for item in dict_bracket.values():
         teama, teamb = FindTeams(item["TeamA"], item["TeamB"], dict_merge)
         item[2] = teama
@@ -173,14 +174,14 @@ def FindTeams(teama, teamb, dict_merge):
     FoundA = ""
     FoundB = ""
     for item in dict_merge:
-        if (teama == item["bracket team"]):
+        if (teama == item["scheduled team"]):
             FoundA = item["stats team"]
-            if (item["fixed stats team"]):
-                FoundA = item["fixed stats team"]
-        if (teamb == item["bracket team"]):
+            if (item["corrected stats team"]):
+                FoundA = item["corrected stats team"]
+        if (teamb == item["scheduled team"]):
             FoundB = item["stats team"]
-            if (item["fixed stats team"]):
-                FoundB = item["fixed stats team"]
+            if (item["corrected stats team"]):
+                FoundB = item["corrected stats team"]
         if (FoundA and FoundB):
             break
     return FoundA, FoundB
