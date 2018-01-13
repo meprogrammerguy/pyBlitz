@@ -71,6 +71,7 @@ for page in pages:
     dateidx = 0
     index = 0
     IDX=[]
+    Y=[]
     A=[]
     B=[]
     C=[]
@@ -103,6 +104,7 @@ for page in pages:
                     A.append(dates[dateidx].find(text=True))
                 else:
                     A.append("?")
+                Y.append(year)
                 B.append(team['title'])
                 if loop != len(pages):
                     if (neutral[count]['data-is-neutral-site'] == 'true'):
@@ -120,6 +122,7 @@ for page in pages:
             line+=1
         dateidx+=1
     df=pd.DataFrame(IDX, columns=['Index'])
+    df['Year']=Y
     df['Date']=A
     df['TeamA']=B
     df['Home']=C
