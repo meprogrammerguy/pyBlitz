@@ -68,6 +68,11 @@ def usage():
 
 def EarliestUnpickedWeek(list_schedule):
     item = len(list_schedule)
+    current_date = datetime.now().date()
+    for i, e in reversed(list(enumerate(list_schedule))):
+        for item in e.values():
+            pdb.set_trace()
+            str_date = "{0}, {1}".format(item["Date"], item["Year"])
     return item
 
 def GetWeekRange(week, list_schedule):
@@ -103,11 +108,6 @@ def CurrentStatsFile(filename):
     if stat_date.date() < datetime.now().date():
         return False
     return True
-
-def CurrentWeek(week):
-    currentweek = False
-    pdb.set_trace()
-    return currentweek
 
 def RefreshStats():
     import scrape_outsiders
@@ -145,7 +145,8 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
     list_schedule = []
     for file in schedule_files:
         with open(file) as schedule_file:
-            list_schedule.append(json.load(schedule_file, object_pairs_hook=OrderedDict))
+            dict_schedule = json.load(schedule_file, object_pairs_hook=OrderedDict)
+            list_schedule.append(dict_schedule)
     weeks = GetWeekRange(week, list_schedule)
     pdb.set_trace()
     for idx in range(len(schedule_files)):
