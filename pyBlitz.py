@@ -17,10 +17,10 @@ def findTeams(first, second, verbose = True, file = "data/stats.json"):
         dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
 
     for item in dict_stats.values():
-        if (item["Team"].lower() == first.lower()):
+        if (item["Team"].lower().strip() == first.lower().strip()):
             teama = item
             count += 1
-        if (item["Team"].lower() == second.lower()):
+        if (item["Team"].lower().strip() == second.lower().strip()):
             teamb = item
             count += 1
         if (count == 2):

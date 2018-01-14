@@ -131,9 +131,10 @@ def FindTeams(teama, teamb, dict_merge):
     return FoundA, FoundB
 
 def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
-    idx = GetIndex(week)
-    if ((idx < 1) or (idx > len(schedule_files))):
-        week = "current"
+    if (not "a" in week.lower().strip()):
+        idx = GetIndex(week)
+        if ((idx < 1) or (idx > len(schedule_files))):
+            week = "current"
     print ("Weekly Prediction Tool")
     print ("**************************")
     print ("Statistics file:\t{0}".format(stat_file))
@@ -166,22 +167,27 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
     for idx in range(len(schedule_files)):
         if (idx in weeks):
             list_predict = []
-            list_predict.append(["Index", "TeamA", "ChanceA", "ScoreA", "TeamB", "ChanceB", "ScoreB", "Pick"]) 
+            list_predict.append(["Index", "Date", "TeamA", "ChanceA", "ScoreA", "TeamB", "ChanceB", "ScoreB"])
+            index = 0
             for item in list_schedule[idx].values():
                 teama, teamb = FindTeams(item["TeamA"], item["TeamB"], dict_merge)
                 home = item["Home"]
                 if (not "Neutral" in home):
                     home = teama
                 dict_score = pyBlitz.Calculate(teama, teamb, home, verbose)
-                pdb.set_trace()
-                output_file = "week{0}.csv".format(idx + 1)
-                predict_sheet = open(output_file, 'w', newline='')
-                csvwriter = csv.writer(predict_sheet)
-                count = 0
-                for row in list_predict:
-                    csvwriter.writerow(row)
-                predict_sheet.close()
-    print ("{0} has been created.".format(output_file))
+                index += 1
+                if (len(dict_score) > 0):
+                    list_predict.append([str(index), item["Date"], item["TeamA"], dict_score["chancea"],
+                        dict_score["scorea"], item["TeamB"], dict_score["chanceb"], dict_score["scoreb"]])
+                else:
+                    list_predict.append([str(index), item["Date"], item["TeamA"], "?", "?", item["TeamB"], "?", "?"])
+            output_file = "week{0}.csv".format(idx + 1)
+            predict_sheet = open(output_file, 'w', newline='')
+            csvwriter = csv.writer(predict_sheet)
+            for row in list_predict:
+                csvwriter.writerow(row)
+            predict_sheet.close()
+            print ("{0} has been created.".format(output_file))
     print ("done.")
 
 if __name__ == "__main__":
