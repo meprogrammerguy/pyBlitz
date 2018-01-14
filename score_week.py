@@ -52,7 +52,6 @@ def main(argv):
             print ("Test result - fail")
     else:
         PredictTournament(week, stat_file, schedule_files, merge_file, verbose)
-        print ("{0} has been created.".format(output_file))
 
 def usage():
     usage = """
@@ -115,6 +114,22 @@ def RefreshStats():
     import scrape_teamrankings
     import combine_stats
 
+def FindTeams(teama, teamb, dict_merge):
+    FoundA = ""
+    FoundB = ""
+    for item in dict_merge:
+        if (teama == item["scheduled team"]):
+            FoundA = item["stats team"]
+            if (item["corrected stats team"]):
+                FoundA = item["corrected stats team"]
+        if (teamb == item["scheduled team"]):
+            FoundB = item["stats team"]
+            if (item["corrected stats team"]):
+                FoundB = item["corrected stats team"]
+        if (FoundA and FoundB):
+            break
+    return FoundA, FoundB
+
 def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
     idx = GetIndex(week)
     if ((idx < 1) or (idx > len(schedule_files))):
@@ -150,117 +165,24 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
     weeks = GetWeekRange(week, list_schedule)
     for idx in range(len(schedule_files)):
         if (idx in weeks):
+            list_predict = []
+            list_predict.append(["Index", "TeamA", "ChanceA", "ScoreA", "TeamB", "ChanceB", "ScoreB", "Pick"]) 
             for item in list_schedule[idx].values():
                 teama, teamb = FindTeams(item["TeamA"], item["TeamB"], dict_merge)
+                home = item["Home"]
+                if (not "Neutral" in home):
+                    home = teama
+                dict_score = pyBlitz.Calculate(teama, teamb, home, verbose)
                 pdb.set_trace()
-    pdb.set_trace()
-    for item in dict_bracket.values():
-        teama, teamb = FindTeams(item["TeamA"], item["TeamB"], dict_merge)
-        item[2] = teama
-        item[6] = teamb
-    dict_predict = []
-    dict_predict = LoadPredict(dict_predict, dict_bracket) 
-    for round in range(0, 7):
-        dict_predict = PredictRound(round, dict_predict, gamepredict, verbose)
-        dict_predict = PromoteRound(round, dict_predict, list_picks)
-    predict_sheet = open(output_file, 'w', newline='')
-    csvwriter = csv.writer(predict_sheet)
-    count = 0
-    for row in dict_predict:
-        csvwriter.writerow(row)
-    predict_sheet.close()
-
-def FindTeams(teama, teamb, dict_merge):
-    FoundA = ""
-    FoundB = ""
-    for item in dict_merge:
-        if (teama == item["scheduled team"]):
-            FoundA = item["stats team"]
-            if (item["corrected stats team"]):
-                FoundA = item["corrected stats team"]
-        if (teamb == item["scheduled team"]):
-            FoundB = item["stats team"]
-            if (item["corrected stats team"]):
-                FoundB = item["corrected stats team"]
-        if (FoundA and FoundB):
-            break
-    return FoundA, FoundB
-
-def LoadPredict(dict_predict, dict_bracket):
-    dict_predict.append(["Index", "SeedA", "TeamA", "ChanceA", "ScoreA",
-                                      "SeedB", "TeamB", "ChanceB", "ScoreB", "Region", "Venue", "Round", "Pick"])
-    index = 0
-    for item in dict_bracket.values():
-        if (item["Round"] != "Round"):
-            index += 1
-            dict_predict.append([index, item["SeedA"], item[2], "?%", "?",
-                                        item["SeedB"], item[6], "?%", "?", item["Region"], item["Venue"], item["Round"], "?"])
-    return dict_predict
-
-def PredictRound(round, dict_predict, gamepredict, verbose):
-    for item in dict_predict:
-        if (item[11] != "Round" and (round == int(item[11]))): #Round
-            if (gamepredict):
-                dict_score = gamePredict.Score(item[2], item[6], True, verbose) #This will be slow
-            else:
-                dict_score = pyMadness.Calculate(item[2], item[6], True, verbose)
-            item[3] = dict_score["chancea"]
-            item[4] = dict_score["scorea"]
-            item[7] = dict_score["chanceb"]
-            item[8] = dict_score["scoreb"]
-            if (int(item[4]) >= int(item[8])):
-                item[12] = "TeamA"
-            else:
-                item[12] = "TeamB"
-    return dict_predict
-
-def PromoteRound(round, dict_predict, list_picks):
-    if (int(round) != 6):
-        promote = []
-        for item in dict_predict:
-            if (item[0] != "Index" and int(round) == int(item[11])):
-                slot, index = GetNextIndex(item[0])
-                flip = False
-                #pdb.set_trace()
-                for pick in list_picks:
-                    if (int(pick[0]) == int(item[0])):
-                        flip = True
-                        #pdb.set_trace()
-                        item[12] = pick[1]
-                        break
-                if (int(item[4]) >= int(item[8])):
-                    if (flip):
-                        print ("picking {0} over {1} in round {2} in match {3}".format(item[6], item[2], item[11], item[0]))
-                        promote.append([index, slot, item[6]])
-                    else:
-                        promote.append([index, slot, item[2]])
-                else:
-                    if (flip):
-                        print ("picking {0} over {1} in round {2} in match {3}".format(item[2], item[6], item[11], item[0]))
-                        promote.append([index, slot, item[2]])
-                    else:
-                        promote.append([index, slot, item[6]])
-
-        for item in dict_predict:
-            for team in promote:
-                if (team[0] == item[0]):
-                    if (team[1] == 1):
-                        item[2] = team[2]
-                    else:
-                        item[6] = team[2]
-    return dict_predict 
-
-def GetNextIndex(index):
-    # Hundreds position is slot number 1 or 2 rest of the number is the index
-    next_slot = [254, 205, 209, 235, # First Four 
-                 113, 213, 114, 214, 115, 215, 116, 216, 117, 217, 118, 218, 119, 219, 165, # East
-                 128, 228, 129, 229, 130, 230, 131, 231, 132, 232, 133, 233, 134, 234, 265, # West
-                 143, 243, 144, 244, 145, 245, 146, 246, 147, 247, 148, 248, 149, 249, 166, # Midwest
-                 158, 258, 159, 259, 160, 260, 161, 261, 162, 262, 163, 263, 164, 264, 266, # South
-                 167, 267] # Final Four
-
-    slot = int(next_slot[index - 1] / 100)
-    return slot, (next_slot[index - 1] - (slot * 100))
+                output_file = "week{0}.csv".format(idx + 1)
+                predict_sheet = open(output_file, 'w', newline='')
+                csvwriter = csv.writer(predict_sheet)
+                count = 0
+                for row in list_predict:
+                    csvwriter.writerow(row)
+                predict_sheet.close()
+    print ("{0} has been created.".format(output_file))
+    print ("done.")
 
 if __name__ == "__main__":
   main(sys.argv[1:])
