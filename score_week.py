@@ -167,7 +167,8 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
     for idx in range(len(schedule_files)):
         if (idx in weeks):
             list_predict = []
-            list_predict.append(["Index", "Date", "TeamA", "ChanceA", "ScoreA", "TeamB", "ChanceB", "ScoreB"])
+            list_predict.append(["Index", "Year", "Date", "TeamA", "ChanceA", "ScoreA",
+                "TeamB", "ChanceB", "ScoreB"])
             index = 0
             for item in list_schedule[idx].values():
                 teama, teamb = FindTeams(item["TeamA"], item["TeamB"], dict_merge)
@@ -177,10 +178,12 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
                 dict_score = pyBlitz.Calculate(teama, teamb, home, verbose)
                 index += 1
                 if (len(dict_score) > 0):
-                    list_predict.append([str(index), item["Date"], item["TeamA"], dict_score["chancea"],
-                        dict_score["scorea"], item["TeamB"], dict_score["chanceb"], dict_score["scoreb"]])
+                    list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"],
+                        dict_score["chancea"], dict_score["scorea"], item["TeamB"],
+                        dict_score["chanceb"], dict_score["scoreb"]])
                 else:
-                    list_predict.append([str(index), item["Date"], item["TeamA"], "?", "?", item["TeamB"], "?", "?"])
+                    list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"],
+                        "?", "?", item["TeamB"], "?", "?"])
             output_file = "week{0}.csv".format(idx + 1)
             predict_sheet = open(output_file, 'w', newline='')
             csvwriter = csv.writer(predict_sheet)
