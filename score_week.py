@@ -172,9 +172,9 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
             index = 0
             for item in list_schedule[idx].values():
                 teama, teamb = FindTeams(item["TeamA"], item["TeamB"], dict_merge)
-                home = item["Home"]
-                if (not "Neutral" in home):
-                    home = teama
+                home = False
+                if (not "Neutral" in item["Home"]):
+                    home = True
                 dict_score = pyBlitz.Calculate(teama, teamb, home, verbose)
                 index += 1
                 if (len(dict_score) > 0):
