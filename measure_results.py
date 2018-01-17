@@ -8,25 +8,70 @@ import csv
 from collections import OrderedDict
 import os.path
 from pathlib import Path
+from datetime import datetime
+import re
+
+def GetIndex(item):
+    idx = re.findall(r'\d+', str(item))
+    if (len(idx) == 0):
+        idx.append("0")
+    return int(idx[0])
+
+def GetFiles(path, templatename):
+    file_dict = {}
+    for p in Path(path).glob(templatename):
+        idx = GetIndex(p)
+        file_dict[idx] = str(p)
+    file_list = []
+    for idx in range(len(file_dict)):
+        file_list.append(file_dict[idx + 1])
+    return file_list
+
+def CurrentScheduleFiles(filename):
+    stat = os.path.getmtime(filename)
+    stat_date = datetime.fromtimestamp(stat)
+    if stat_date.date() < datetime.now().date():
+        return False
+    return True
+
+def RefreshScheduleFiles():
+    import scrape_schedule
+
+def GetActualScores(scores):
+    idx = re.findall(r'\d+', str(scores))
+    return idx[0], idx[1]
 
 print ("Measure Actual Results Tool")
 print ("**************************")
 
-file = 'merge_schedule.csv'
-if (os.path.exists(file)):
-    print ("Warning *** The merge_schedule.csv file already exists ***")
-    print ("        *** delete this file if you want to re-create it. ***")
-    exit()
+if (not CurrentScheduleFiles('data/sched1.json')):
+    RefreshScheduleFiles()
 
 file = 'data/sched1.json'
 if (not os.path.exists(file)):
     print ("schedule files are missing, run the scrape_schedule tool to create")
     exit()
 
+sched_files = GetFiles("data/", "sched*.json")
 list_sched = []
-for p in Path(".").glob("data/sched*.json"):
-    with open(p) as sched_files:
-        list_sched.append(json.load(sched_files, object_pairs_hook=OrderedDict))
+for file in sched_files:
+    with open(file) as sched_file:
+        list_sched.append(json.load(sched_file, object_pairs_hook=OrderedDict))
+
+week_files = GetFiles(".", "week*.csv")
+list_week = []
+for file in week_files:
+    with open(file) as week_file:
+        reader = csv.DictReader(week_file)
+        for row in reader:
+            list_week.append(row)
+
+for idx in range(len(list_sched)):
+    index = 0
+    for item in list_sched[idx].values():
+        scorea, scoreb = GetActualScores(item["Score"])
+        print (list_week[idx]["ChanceA"])
+        pdb.set_trace()
 
 file = 'data/outsiders.json'
 if (not os.path.exists(file)):

@@ -45,7 +45,7 @@ def main(argv):
         else:
             assert False, "unhandled option"
     if (test):
-        testResult = pyMadness.Test(verbose)
+        testResult = pyBlitz.Test(verbose)
         if (testResult):
             print ("Test result - pass")
         else:
