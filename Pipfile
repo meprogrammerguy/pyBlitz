@@ -17,6 +17,9 @@ pandas = "*"
 fuzzywuzzy = "*"
 python-levenshtein = "*"
 scipy = "*"
+requests = "*"
+robobrowser = "*"
+selenium = "*"
 
 
 [requires]

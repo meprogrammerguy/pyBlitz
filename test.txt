@@ -1,0 +1,2 @@
+curl "http://www.bornpowerindex.com/M_COL_FB_CLASS.shtml" > page.html
+curl -X POST -F 'html=@page.html' http://domain.tld/upload http://www.bornpowerindex.com/M_COL_FB_CLASS.shtml/cgi-bin/DBRetrieve.pl

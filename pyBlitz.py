@@ -98,7 +98,8 @@ def Score(teama, teamb, verbose = True, homeAdvantage = 3.5, homeTeam = 'none'):
     if (verbose):
         print ("Score(efficiency margin) {0}".format(EffMgn))
     aScore = int(round((tempo * 100) + (EffMgn / 2.0)))
-    bScore = int(round((tempo * 100) - (EffMgn / 2.0)))
+    bScore = int(round((tempo * 100) - (EffMgn /2.0)))
+    #pdb.set_trace()
     if (verbose):
         print ("Score({0}) {1}".format(teama["Team"], aScore), "vs. Score({0}) {1}".format(teamb["Team"], bScore))
     return aScore, bScore
@@ -107,8 +108,9 @@ def Line(teama, teamb, verbose = True, homeAdvantage = 3.5, homeTeam = 'none'):
     tempo = Tempo(teama, teamb, False)
     if (verbose):
         print ("Line(tempo) {0}".format(tempo * 100))
-    #EMdiff = (float(teama['S&P+M']) - float(teamb['S&P+M'])) * tempo
-    EMdiff = (float(teama['S&P+M']) - float(teamb['S&P+M']))
+    EMdiff = (float(teama['S&P+M']) - float(teamb['S&P+M'])) * (tempo * 100)
+    #EMdiff = (float(teama['S&P+M']) - float(teamb['S&P+M']))
+    #pdb.set_trace()
     EffMgn = 0
     if homeTeam == teama["Team"]:
         EffMgn = EMdiff + homeAdvantage

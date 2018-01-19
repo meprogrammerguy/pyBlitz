@@ -14,7 +14,7 @@ import re
 def GetIndex(item):
     idx = re.findall(r'\d+', str(item))
     if (len(idx) == 0):
-        idx.append("0")
+        idx.append("-1")
     return int(idx[0])
 
 def GetFiles(path, templatename):
@@ -39,7 +39,10 @@ def RefreshScheduleFiles():
 
 def GetActualScores(scores):
     idx = re.findall(r'\d+', str(scores))
-    return idx[0], idx[1]
+    if (len(idx) == 0):
+        idx.append("-1")
+        idx.append("-1")
+    return int(idx[0]), int(idx[1])
 
 print ("Measure Actual Results Tool")
 print ("**************************")
@@ -68,33 +71,29 @@ for file in week_files:
 
 for idx in range(len(list_sched)):
     index = 0
+    total = 0
+    skip = 0
+    correct = 0
+    loop = 0
     for item in list_sched[idx].values():
+        total += 1
         scorea, scoreb = GetActualScores(item["Score"])
-        print (list_week[idx]["ChanceA"])
-        pdb.set_trace()
-
-file = 'data/outsiders.json'
-if (not os.path.exists(file)):
-    print ("outsiders file is missing, run the scrape_outsiders tool to create")
-    exit()
-with open(file) as stats_file:
-    dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
-
-AllTeams=[]
-for e in list_sched:
-    for item in e.values():
-        AllTeams.append(item["TeamA"])
-        AllTeams.append(item["TeamB"])
-team_set = set(AllTeams)
-sched_teams = list(team_set)
-sched_teams.sort()
-
-AllTeams=[]
-for item in  dict_stats.values():
-    AllTeams.append(item["Team"])
-team_set = set(AllTeams)
-stats_teams = list(team_set)
-stats_teams.sort()
+        chancea = GetIndex(list_week[loop]["ChanceA"])
+        chanceb = GetIndex(list_week[loop]["ChanceB"])
+        loop += 1
+        if (chancea < 0 or chanceb < 0 or scorea < 0 or scoreb < 0):
+            print ("skip " + item["Score"])
+            skip += 1
+        else:
+            print ("not skip " + item["Score"])
+            if (chancea > 50 and scorea > scoreb):
+                print ("1) chance={0}, scorea={1}, scoreb={2}".format(chancea, scorea, scoreb))
+                correct += 1
+            if (chanceb > 50 and scoreb > scorea):
+                print ("2) chance={0}, scorea={1}, scoreb={2}".format(chanceb, scorea, scoreb))
+                correct += 1
+    print ("total={0}, skip={1}, correct={2}".format(total, skip, correct))
+    pdb.set_trace()
 
 merge_sheet = open('merge_schedule.csv', 'w', newline='')
 csvwriter = csv.writer(merge_sheet)
