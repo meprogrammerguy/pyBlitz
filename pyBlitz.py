@@ -33,7 +33,7 @@ def findTeams(first, second, verbose = True, file = "data/stats.json"):
         return {}, {}
     return teama, teamb
 
-def Chance(teama, teamb, std = 15.38, homeAdvantage = 3.5, homeTeam = 'none', verbose = True):
+def Chance(teama, teamb, std = 15.38, homeAdvantage = 7.897, homeTeam = 'none', verbose = True):
     EffMgn = Line(teama, teamb, verbose = False, homeTeam = homeTeam, homeAdvantage = homeAdvantage)
     if (verbose):
         print ("Chance(efficiency margin) {0}".format(EffMgn))
@@ -90,7 +90,7 @@ def Test(verbose):
         return True
     return False
 
-def Score(teama, teamb, verbose = True, homeAdvantage = 3.5, homeTeam = 'none'):
+def Score(teama, teamb, verbose = True, homeAdvantage = 7.897, homeTeam = 'none'):
     tempo = Tempo(teama, teamb, False)
     if (verbose):
         print ("Score(tempo) {0}".format(tempo * 100))
@@ -104,7 +104,7 @@ def Score(teama, teamb, verbose = True, homeAdvantage = 3.5, homeTeam = 'none'):
         print ("Score({0}) {1}".format(teama["Team"], aScore), "vs. Score({0}) {1}".format(teamb["Team"], bScore))
     return aScore, bScore
 
-def Line(teama, teamb, verbose = True, homeAdvantage = 3.5, homeTeam = 'none'):
+def Line(teama, teamb, verbose = True, homeAdvantage = 7.897, homeTeam = 'none'):
     tempo = Tempo(teama, teamb, False)
     if (verbose):
         print ("Line(tempo) {0}".format(tempo * 100))
