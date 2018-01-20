@@ -8,13 +8,10 @@ import pdb
 from scipy.stats import norm
 from collections import OrderedDict
 
-def findTeams(first, second, verbose = True, file = "data/stats.json"):
+def findTeams(first, second, dict_stats, verbose = True):
     teama = {}
     teamb = {}
     count = 0
-
-    with open(file) as stats_file:
-        dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
 
     for item in dict_stats.values():
         if (item["Team"].lower().strip() == first.lower().strip()):
@@ -33,16 +30,21 @@ def findTeams(first, second, verbose = True, file = "data/stats.json"):
         return {}, {}
     return teama, teamb
 
-def Chance(teama, teamb, std = 15.38, homeAdvantage = 7.897, homeTeam = 'none', verbose = True):
+def GetPercent(line, dict_percent):
+    return 50, 50
+
+def Chance(teama, teamb, dict_percent, homeAdvantage = 7.897, homeTeam = 'none', verbose = True):
     EffMgn = Line(teama, teamb, verbose = False, homeTeam = homeTeam, homeAdvantage = homeAdvantage)
     if (verbose):
         print ("Chance(efficiency margin) {0}".format(EffMgn))
-    bPercent = norm.cdf(0, EffMgn, std)
-    aPercent = 1.0 - bPercent
-    aPercent = int(round(aPercent * 100.0))
-    bPercent = int(round(bPercent * 100.0))
+    aPercent, bPercent = GetPercent(EffMgn, dict_percent)
     if (verbose):
-        print ("Chance({0}) {1}%".format(teama["Team"], aPercent), "vs. Chance({0}) {1}%".format(teamb["Team"], bPercent))
+        if "none" in homeTeam:
+            print ("Chance({0}) {1}%".format(teama["Team"], aPercent),
+                "vs. Chance({0}) {1}%".format(teamb["Team"], bPercent))
+        else:
+            print ("Chance({0}) {1}%".format(teama["Team"], aPercent),
+                "at Chance({0}) {1}%".format(teamb["Team"], bPercent))
     return aPercent, bPercent
 
 def Tempo(teama, teamb, verbose = True):
@@ -50,9 +52,9 @@ def Tempo(teama, teamb, verbose = True):
     TdiffaOScore = float(teama['OPLpG3']) * float(teama['OPTpP3'])
     TdiffbScore = float(teamb['PLpG3']) * float(teamb['PTpP3'])
     TdiffbOScore = float(teamb['OPLpG3']) * float(teamb['OPTpP3'])
-    Tdiff = ((TdiffaScore + TdiffbScore) - (TdiffaOScore + TdiffbOScore))/200.0
+    Tdiff = (TdiffaScore + TdiffbScore + TdiffaOScore + TdiffbOScore)/2.0
     if (verbose):
-        print ("Tempo(tempo) {0}".format(Tdiff * 100))
+        print ("Tempo(tempo) {0}".format(Tdiff))
     return Tdiff
 
 def Test(verbose):
@@ -61,13 +63,16 @@ def Test(verbose):
     # Actual Score: 24-6
     # venue was: Mercedes-Benz Superdome in New Orleans, Louisiana (Neutral Field "The Sugar Bowl")
 
-    teama = {'Team':"alabama", 'S&P+M':20.8, 'PLpG3':64.7, 'PTpP3':.356, 'OPLpG3':18.7, 'OPTpP3':.246, 'Result1':64, 'Result2':24}
-    teamb = {'Team':"clemson", 'S&P+M':15.3, 'PLpG3':79.3, 'PTpP3':.328, 'OPLpG3':12.3, 'OPTpP3':.199, 'Result1':36,'Result2':18}
+    teama = {'Team':"alabama", 'Ranking':118.5, 'PLpG3':64.7, 'PTpP3':.356, 'OPLpG3':18.7, 'OPTpP3':.246, 'Result1':50, 'Result2':17}
+    teamb = {'Team':"clemson", 'Ranking':113, 'PLpG3':79.3, 'PTpP3':.328, 'OPLpG3':12.3, 'OPTpP3':.199, 'Result1':50,'Result2':11}
+
+    with open("data/bettingtalk.json") as percent_file:
+        dict_percent = json.load(percent_file, object_pairs_hook=OrderedDict)
 
     if (verbose):
         print ("Test #1 Alabama vs Clemson on 1/1/18")
         print ("        Neutral field, Testing Chance() routine")
-    chancea, chanceb =  Chance(teama, teamb, homeTeam = 'none', verbose = verbose)
+    chancea, chanceb =  Chance(teama, teamb, dict_percent, homeTeam = 'none', verbose = verbose)
     if (teama['Result1'] == chancea):
         result += 1
     if (teamb['Result1'] == chanceb):
@@ -93,24 +98,18 @@ def Test(verbose):
 def Score(teama, teamb, verbose = True, homeAdvantage = 7.897, homeTeam = 'none'):
     tempo = Tempo(teama, teamb, False)
     if (verbose):
-        print ("Score(tempo) {0}".format(tempo * 100))
+        print ("Score(tempo) {0}".format(tempo))
     EffMgn = Line(teama, teamb, verbose = False, homeTeam = homeTeam, homeAdvantage = homeAdvantage)
     if (verbose):
         print ("Score(efficiency margin) {0}".format(EffMgn))
-    aScore = int(round((tempo * 100) + (EffMgn / 2.0)))
-    bScore = int(round((tempo * 100) - (EffMgn /2.0)))
-    #pdb.set_trace()
+    aScore = round((tempo/2.0) + (EffMgn / 2.0))
+    bScore = round((tempo/2.0) - (EffMgn /2.0))
     if (verbose):
         print ("Score({0}) {1}".format(teama["Team"], aScore), "vs. Score({0}) {1}".format(teamb["Team"], bScore))
     return aScore, bScore
 
 def Line(teama, teamb, verbose = True, homeAdvantage = 7.897, homeTeam = 'none'):
-    tempo = Tempo(teama, teamb, False)
-    if (verbose):
-        print ("Line(tempo) {0}".format(tempo * 100))
-    EMdiff = (float(teama['S&P+M']) - float(teamb['S&P+M'])) * (tempo * 100)
-    #EMdiff = (float(teama['S&P+M']) - float(teamb['S&P+M']))
-    #pdb.set_trace()
+    EMdiff = (float(teama['Ranking']) - float(teamb['Ranking']))
     EffMgn = 0
     if homeTeam == teama["Team"]:
         EffMgn = EMdiff + homeAdvantage
@@ -131,15 +130,21 @@ def Calculate(first, second, neutral, verbose):
             info = "Visiting team: {0} verses Home team: {1}".format(first, second)
             print (info)
 
-    teama, teamb = findTeams(first, second, verbose = verbose)
+    with open("data/stats.json") as stats_file:
+        dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
+
+    with open("data/bettingtalk.json") as percent_file:
+        dict_percent = json.load(percent_file, object_pairs_hook=OrderedDict)
+
+    teama, teamb = findTeams(first, second, dict_stats, verbose = verbose)
     if (not teama or not teamb):
         return {}
     if (not neutral):
-        chancea, chanceb =  Chance(teama, teamb, homeTeam = teamb["Team"], verbose = verbose)
+        chancea, chanceb =  Chance(teama, teamb, dict_percent, homeTeam = teamb["Team"], verbose = verbose)
         scorea, scoreb = Score(teama, teamb, verbose = verbose, homeTeam = teamb["Team"])
         line = Line(teama, teamb, verbose = verbose, homeTeam = teamb["Team"])
     else:
-        chancea, chanceb =  Chance(teama, teamb, verbose = verbose)
+        chancea, chanceb =  Chance(teama, teamb, dict_percent, verbose = verbose)
         scorea, scoreb = Score(teama, teamb, verbose = verbose)
         line = Line(teama, teamb, verbose = verbose)
 
