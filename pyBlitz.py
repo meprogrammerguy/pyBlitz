@@ -7,6 +7,7 @@ import html5lib
 import pdb
 from scipy.stats import norm
 from collections import OrderedDict
+import re
 
 def findTeams(first, second, dict_stats, verbose = True):
     teama = {}
@@ -30,8 +31,38 @@ def findTeams(first, second, dict_stats, verbose = True):
         return {}, {}
     return teama, teamb
 
+def GetFloat(item):
+    idx = re.findall('\d{1,2}[\.]{1}\d{1,2}', str(item))
+    if (len(idx) == 0):
+        idx.append("-1")
+    return float(idx[0])
+
 def GetPercent(line, dict_percent):
-    return 50, 50
+    aPercent = 0
+    bPercent = 0
+    flip = False
+    if (line < 0):
+        line = abs(line)
+        flip = True
+    if (line >= 20):
+        if (flip):
+            bPercent = 100
+            aPercent = 0
+        else:
+            aPercent = 100
+            bPercent = 0
+    else:
+        for item in dict_percent.values():
+            spread = float(item['Spread'])
+            if (spread >= line and line < (spread + .5)):
+                if (flip):
+                    bPercent = GetFloat(item["Favorite"])
+                    aPercent = GetFloat(item["Underdog"])
+                else:
+                    aPercent = GetFloat(item["Favorite"])
+                    bPercent = GetFloat(item["Underdog"])
+                break          
+    return aPercent, bPercent
 
 def Chance(teama, teamb, dict_percent, homeAdvantage = 7.897, homeTeam = 'none', verbose = True):
     EffMgn = Line(teama, teamb, verbose = False, homeTeam = homeTeam, homeAdvantage = homeAdvantage)
@@ -63,8 +94,8 @@ def Test(verbose):
     # Actual Score: 24-6
     # venue was: Mercedes-Benz Superdome in New Orleans, Louisiana (Neutral Field "The Sugar Bowl")
 
-    teama = {'Team':"alabama", 'Ranking':118.5, 'PLpG3':64.7, 'PTpP3':.356, 'OPLpG3':18.7, 'OPTpP3':.246, 'Result1':50, 'Result2':17}
-    teamb = {'Team':"clemson", 'Ranking':113, 'PLpG3':79.3, 'PTpP3':.328, 'OPLpG3':12.3, 'OPTpP3':.199, 'Result1':50,'Result2':11}
+    teama = {'Team':"alabama", 'Ranking':118.5, 'PLpG3':64.7, 'PTpP3':.356, 'OPLpG3':18.7, 'OPTpP3':.246, 'Result1':65.1, 'Result2':17}
+    teamb = {'Team':"clemson", 'Ranking':113, 'PLpG3':79.3, 'PTpP3':.328, 'OPLpG3':12.3, 'OPTpP3':.199, 'Result1':34.9,'Result2':11}
 
     with open("data/bettingtalk.json") as percent_file:
         dict_percent = json.load(percent_file, object_pairs_hook=OrderedDict)
