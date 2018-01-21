@@ -8,6 +8,8 @@ import pdb
 from collections import OrderedDict
 import re
 
+homeAdvantage = 7.897
+
 def findTeams(first, second, dict_stats, verbose = True):
     teama = {}
     teamb = {}
@@ -36,14 +38,14 @@ def GetFloat(item):
         idx.append("-1")
     return float(idx[0])
 
-def GetPercent(line, dict_percent):
+def GetPercent(thespread, dict_percent):
     aPercent = 0
     bPercent = 0
     flip = False
-    if (line < 0):
-        line = abs(line)
+    if (thespread < 0):
+        thespread = abs(thespread)
         flip = True
-    if (line >= 20):
+    if (thespread >= 19.5):
         if (flip):
             bPercent = 100
             aPercent = 0
@@ -63,7 +65,7 @@ def GetPercent(line, dict_percent):
                 break
             else:
                 spread = float(item['Spread'])
-            if (spread >= line and line < (spread + .5)):
+            if (spread >= thespread and thespread < (spread + .5)):
                 if (flip):
                     bPercent = GetFloat(item["Favorite"])
                     aPercent = GetFloat(item["Underdog"])
@@ -73,13 +75,13 @@ def GetPercent(line, dict_percent):
                 break          
     return aPercent, bPercent
 
-def Chance(teama, teamb, dict_percent, homeAdvantage = 7.897, homeTeam = 'none', verbose = True):
-    EffMgn = Line(teama, teamb, verbose = False, homeTeam = homeTeam, homeAdvantage = homeAdvantage)
+def Chance(teama, teamb, dict_percent, homeTeam = 'Neutral', verbose = True):
+    EffMgn = Spread(teama, teamb, verbose = False, homeTeam = homeTeam)
     if (verbose):
         print ("Chance(efficiency margin) {0}".format(EffMgn))
     aPercent, bPercent = GetPercent(EffMgn, dict_percent)
     if (verbose):
-        if "none" in homeTeam:
+        if homeTeam == "Neutral":
             print ("Chance({0}) {1}%".format(teama["Team"], aPercent),
                 "vs. Chance({0}) {1}%".format(teamb["Team"], bPercent))
         else:
@@ -112,7 +114,7 @@ def Test(verbose):
     if (verbose):
         print ("Test #1 Alabama vs Clemson on 1/1/18")
         print ("        Neutral field, Testing Chance() routine")
-    chancea, chanceb =  Chance(teama, teamb, dict_percent, homeTeam = 'none', verbose = verbose)
+    chancea, chanceb =  Chance(teama, teamb, dict_percent, homeTeam = 'Neutral', verbose = verbose)
     if (teama['Result1'] == chancea):
         result += 1
     if (teamb['Result1'] == chanceb):
@@ -126,7 +128,7 @@ def Test(verbose):
     if (verbose):
         print ("Test #2 Alabama vs Clemson on 1/1/18")
         print ("        Neutral field, testing Score() routine")
-    scorea, scoreb = Score(teama, teamb, verbose = verbose, homeTeam = 'none')
+    scorea, scoreb = Score(teama, teamb, verbose = verbose, homeTeam = 'Neutral')
     if (teama['Result2'] == scorea):
         result += 1
     if (teamb['Result2'] == scoreb):
@@ -135,30 +137,30 @@ def Test(verbose):
         return True
     return False
 
-def Score(teama, teamb, verbose = True, homeAdvantage = 7.897, homeTeam = 'none'):
+def Score(teama, teamb, verbose = True, homeTeam = 'Neutral'):
     tempo = Tempo(teama, teamb, False)
     if (verbose):
         print ("Score(tempo) {0}".format(tempo))
-    EffMgn = Line(teama, teamb, verbose = False, homeTeam = homeTeam, homeAdvantage = homeAdvantage)
+    EffMgn = Spread(teama, teamb, verbose = False, homeTeam = homeTeam)
     if (verbose):
         print ("Score(efficiency margin) {0}".format(EffMgn))
     aScore = round((tempo/2.0) + (EffMgn / 2.0))
     bScore = round((tempo/2.0) - (EffMgn /2.0))
     if (verbose):
-        print ("Score({0}) {1}".format(teama["Team"], aScore), "vs. Score({0}) {1}".format(teamb["Team"], bScore))
+        print ("Score({0}) {1} at Score({2}) {3}".format(teama["Team"], aScore, teamb["Team"], bScore))
     return aScore, bScore
 
-def Line(teama, teamb, verbose = True, homeAdvantage = 7.897, homeTeam = 'none'):
+def Spread(teama, teamb, verbose = True, homeTeam = 'Neutral'):
     EMdiff = (float(teama['Ranking']) - float(teamb['Ranking']))
     EffMgn = 0
-    if homeTeam == teama["Team"]:
+    if (homeTeam.lower().strip() == teama["Team"].lower().strip()):
         EffMgn = EMdiff + homeAdvantage
-    elif homeTeam == teamb["Team"]:
+    elif (homeTeam.lower().strip() == teamb["Team"].lower().strip()):
         EffMgn = EMdiff - homeAdvantage
     else:
         EffMgn = EMdiff
     if (verbose):
-        print ("Line(efficiency margin) {0}".format(EffMgn))
+        print ("Spread(efficiency margin) {0}".format(EffMgn))
     return EffMgn
 
 def Calculate(first, second, neutral, verbose):
@@ -182,15 +184,15 @@ def Calculate(first, second, neutral, verbose):
     if (not neutral):
         chancea, chanceb =  Chance(teama, teamb, dict_percent, homeTeam = teamb["Team"], verbose = verbose)
         scorea, scoreb = Score(teama, teamb, verbose = verbose, homeTeam = teamb["Team"])
-        line = Line(teama, teamb, verbose = verbose, homeTeam = teamb["Team"])
+        spread = Spread(teama, teamb, verbose = verbose, homeTeam = teamb["Team"])
     else:
         chancea, chanceb =  Chance(teama, teamb, dict_percent, verbose = verbose)
         scorea, scoreb = Score(teama, teamb, verbose = verbose)
-        line = Line(teama, teamb, verbose = verbose)
+        spread = Spread(teama, teamb, verbose = verbose)
 
     tempo = Tempo(teama, teamb, verbose = verbose)
 
-    dict_score = {'teama':first, 'scorea':"{0}".format(scorea), 'chancea':"{0}%".format(chancea) ,'teamb':second, 'scoreb':"{0}".format(scoreb), 'chanceb':"{0}%".format(chanceb), 'line':int(round(line)), 'tempo':"{0}".format(int(round(tempo * 100))) }
+    dict_score = {'teama':first, 'scorea':"{0}".format(scorea), 'chancea':"{0}%".format(chancea) ,'teamb':second, 'scoreb':"{0}".format(scoreb), 'chanceb':"{0}%".format(chanceb), 'spread': round(spread, 3), 'tempo':"{0}".format(int(round(tempo * 100))) }
     if (verbose):
         print ("Calculate(dict_score) {0}".format(dict_score))
     return dict_score
