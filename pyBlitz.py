@@ -146,6 +146,10 @@ def Score(teama, teamb, verbose = True, homeTeam = 'Neutral'):
         print ("Score(efficiency margin) {0}".format(EffMgn))
     aScore = round((tempo/2.0) + (EffMgn / 2.0))
     bScore = round((tempo/2.0) - (EffMgn /2.0))
+    if (aScore < 0):
+        aScore = 0
+    if (bScore < 0):
+        bScore = 0
     if (verbose):
         print ("Score({0}) {1} at Score({2}) {3}".format(teama["Team"], aScore, teamb["Team"], bScore))
     return aScore, bScore
