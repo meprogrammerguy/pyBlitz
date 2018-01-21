@@ -173,10 +173,10 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
             index = 0
             for item in list_schedule[idx].values():
                 teama, teamb = FindTeams(item["TeamA"], item["TeamB"], dict_merge)
-                home = False
-                if (not "Neutral" in item["Home"]):
-                    home = True
-                dict_score = pyBlitz.Calculate(teama, teamb, home, verbose)
+                neutral = False
+                if (item["Home"].lower().strip() == "neutral"):
+                    neutral = True
+                dict_score = pyBlitz.Calculate(teama, teamb, neutral, verbose)
                 index += 1
                 if (len(dict_score) > 0):
                     list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"],
