@@ -11,11 +11,15 @@ import csv
 import contextlib
 import os
 
+# Please note, I have written this scraper in case you want to learn/use it
+# Be aware that the statistics in this scraper are not currently used in any of my calculations
+# ( that doesn't mean that you can't )
+
 url = "http://www.footballoutsiders.com/stats/ncaa"
 
 #url = "http://www.footballoutsiders.com/stats/ncaa2016" #past year testing override
 
-print ("Scrape Statistics Tool")
+print ("Scrape Outsiders Tool")
 print ("**************************")
 print ("data is from {0}".format(url))
 print ("**************************")

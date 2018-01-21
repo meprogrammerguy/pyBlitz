@@ -15,7 +15,7 @@ path = "data/"
 print ("Combine Stats Tool")
 print ("**************************")
 print (" ")
-print ("This tool combines outsiders and teamrankings into one stats spreadsheet")
+print ("This tool combines bornpowerindex and teamrankings into one stats spreadsheet")
 print ("Make sure that your merge_stats spreadsheet is correct first")
 print (" ")
 
@@ -30,12 +30,12 @@ with open(file) as merge_file:
     for row in reader:
         dict_merge.append(row)
 
-file = '{0}outsiders.json'.format(path)
+file = '{0}bornpowerindex.json'.format(path)
 if (not os.path.exists(file)):
-    print ("outsiders file is missing, run the scrape_outsiders tool to create")
+    print ("bornpowerindex file is missing, run the scrape_bornpowerindex tool to create")
     exit()
 with open(file) as stats_file:
-    dict_outsiders = json.load(stats_file, object_pairs_hook=OrderedDict)
+    dict_bpi = json.load(stats_file, object_pairs_hook=OrderedDict)
 
 
 file = '{0}teamrankings.json'.format(path)
@@ -54,15 +54,15 @@ F=[]
 index = 0
 for item in dict_merge:
     teamrankings = item['teamrankings']
-    team = item['corrected outsiders']
+    team = item['corrected BPI']
     if (team.strip() == ""):
-        team = item['outsiders']
-    for row in dict_outsiders.values():
-        if(row['Team']==team):
+        team = item['BPI']
+    for row in dict_bpi.values():
+        if(row['School']==team):
             index+=1
             IDX.append(str(index))
             A.append(team)
-            B.append(row['S&P+M'])
+            B.append(row['Ranking'])
             break
     for row in dict_teamrankings.values():
         if(row['Team']==teamrankings):
@@ -74,7 +74,7 @@ for item in dict_merge:
 
 df=pd.DataFrame(IDX,columns=['Index'])
 df['Team']=A
-df['S&P+M']=B
+df['Ranking']=B
 df['PLpG3']=C
 df['PTpP3']=D
 df['OPLpG3']=E

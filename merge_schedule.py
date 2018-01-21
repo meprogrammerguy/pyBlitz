@@ -28,9 +28,9 @@ for p in Path(".").glob("data/sched*.json"):
     with open(p) as sched_files:
         list_sched.append(json.load(sched_files, object_pairs_hook=OrderedDict))
 
-file = 'data/outsiders.json'
+file = 'data/bornpowerindex.json'
 if (not os.path.exists(file)):
-    print ("outsiders file is missing, run the scrape_outsiders tool to create")
+    print ("bornpowerindex file is missing, run the scrape_bornpowerindex tool to create")
     exit()
 with open(file) as stats_file:
     dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
@@ -46,7 +46,7 @@ sched_teams.sort()
 
 AllTeams=[]
 for item in  dict_stats.values():
-    AllTeams.append(item["Team"])
+    AllTeams.append(item["School"])
 team_set = set(AllTeams)
 stats_teams = list(team_set)
 stats_teams.sort()

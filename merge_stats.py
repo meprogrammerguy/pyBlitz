@@ -18,12 +18,12 @@ if (os.path.exists(file)):
     print ("        *** delete this file if you want to re-create it. ***")
     exit()
 
-file = 'data/outsiders.json'
+file = 'data/bornpowerindex.json'
 if (not os.path.exists(file)):
-    print ("outsiders file is missing, run the scrape_outsiders tool to create")
+    print ("bornpowerindex file is missing, run the scrape_bornpowerindex tool to create")
     exit()
 with open(file) as stats_file:
-    dict_outsiders = json.load(stats_file, object_pairs_hook=OrderedDict)
+    dict_bpi = json.load(stats_file, object_pairs_hook=OrderedDict)
 
 
 file = 'data/teamrankings.json'
@@ -34,11 +34,11 @@ with open(file) as stats_file:
     dict_teamrankings = json.load(stats_file, object_pairs_hook=OrderedDict)
 
 AllTeams=[]
-for item in  dict_outsiders.values():
-    AllTeams.append(item["Team"])
+for item in  dict_bpi.values():
+    AllTeams.append(item["School"])
 team_set = set(AllTeams)
-outsiders = list(team_set)
-outsiders.sort()
+bpi = list(team_set)
+bpi.sort()
 
 AllTeams=[]
 for item in  dict_teamrankings.values():
@@ -51,16 +51,16 @@ merge_sheet = open('merge_stats.csv', 'w', newline='')
 csvwriter = csv.writer(merge_sheet)
 dict_merge = OrderedDict()
 dict_merge["match ratio"] = []
-dict_merge["outsiders"] = []
+dict_merge["BPI"] = []
 dict_merge["teamrankings"] = []
-dict_merge["corrected outsiders"] = []
+dict_merge["corrected BPI"] = []
 values = []
 for item in teamrankings:
-    key = process.extractOne(item, outsiders, scorer=fuzz.QRatio)
+    key = process.extractOne(item, bpi, scorer=fuzz.QRatio)
     dict_merge["match ratio"].append(key[1])
-    dict_merge["outsiders"].append(key[0])
+    dict_merge["BPI"].append(key[0])
     dict_merge["teamrankings"].append(item)
-    dict_merge["corrected outsiders"].append("")
+    dict_merge["corrected BPI"].append("")
     values.append([key[1], key[0], item,  ""])
 
 

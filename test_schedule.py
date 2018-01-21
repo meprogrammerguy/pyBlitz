@@ -37,16 +37,16 @@ with open(file) as merge_file:
     for row in reader:
         dict_merge.append(row)
 path = "data/"
-file = '{0}outsiders.json'.format(path)
+file = '{0}bornpowerindex.json'.format(path)
 if (not os.path.exists(file)):
-    print ("outsiders file is missing, run the scrape_outsiders tool to create")
+    print ("bornpowerindex file is missing, run the scrape_bornpowerindex tool to create")
     exit()
 with open(file) as stats_file:
     dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
 
 AllTeams=[]
 for item in  dict_stats.values():
-    AllTeams.append(item["Team"])
+    AllTeams.append(item["School"])
 team_set = set(AllTeams)
 stats_teams = list(team_set)
 stats_teams.sort()
@@ -62,7 +62,6 @@ if (not found):
     exit()
 
 for team in dict_merge:
-    #pdb.set_trace()
     found = FindTeams(team["stats team"], team["corrected stats team"], stats_teams)
     if (not found):
         print ("warning: {0} was not found in the stats table ***".format(team["scheduled team"]))

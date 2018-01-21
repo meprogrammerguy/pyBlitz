@@ -110,7 +110,8 @@ def CurrentStatsFile(filename):
     return True
 
 def RefreshStats():
-    import scrape_outsiders
+    import scrape_bettingtalk
+    import scrape_bornpowerindex
     import scrape_teamrankings
     import combine_stats
 

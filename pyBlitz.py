@@ -5,7 +5,6 @@ from urllib.request import urlopen
 from bs4 import BeautifulSoup
 import html5lib
 import pdb
-from scipy.stats import norm
 from collections import OrderedDict
 import re
 
@@ -53,7 +52,17 @@ def GetPercent(line, dict_percent):
             bPercent = 0
     else:
         for item in dict_percent.values():
-            spread = float(item['Spread'])
+            if ("+" in item['Spread']):
+                spread = 20
+                if (flip):
+                    bPercent = 100
+                    aPercent = 0
+                else:
+                    aPercent = 100
+                    bPercent = 0
+                break
+            else:
+                spread = float(item['Spread'])
             if (spread >= line and line < (spread + .5)):
                 if (flip):
                     bPercent = GetFloat(item["Favorite"])

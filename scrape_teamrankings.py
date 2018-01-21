@@ -17,7 +17,7 @@ urls.append("https://www.teamrankings.com/college-football/stat/points-per-play"
 urls.append("https://www.teamrankings.com/college-football/stat/opponent-points-per-game")
 urls.append("https://www.teamrankings.com/college-football/stat/opponent-points-per-play")
 
-print ("Scrape Statistics Tool")
+print ("Scrape Team Rankings Tool")
 print ("**************************")
 ratings_table = []
 for url in urls:
