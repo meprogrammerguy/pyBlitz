@@ -1,8 +1,22 @@
 #!/usr/bin/env python3
 
 import sys, getopt
-
+import os.path
+from datetime import datetime
 import pyBlitz
+
+def CurrentStatsFile(filename):
+    stat = os.path.getmtime(filename)
+    stat_date = datetime.fromtimestamp(stat)
+    if stat_date.date() < datetime.now().date():
+        return False
+    return True
+
+def RefreshStats():
+    import scrape_bettingtalk
+    import scrape_bornpowerindex
+    import scrape_teamrankings
+    import combine_stats
 
 def main(argv):
     first = ""
@@ -48,6 +62,8 @@ def main(argv):
         if (not first and not second):
             print ("you must input the team names to run this tool, (first and second arguments)")
             exit()
+        if (not CurrentStatsFile("data/stats.json")):
+            RefreshStats()
         dict_score = {}
         dict_score = pyBlitz.Calculate(first, second, neutral, verbose)
 
