@@ -29,12 +29,14 @@ index=0
 for row in tables[1].findAll("tr"):
     col=row.findAll('td')
     if len(col)>0:
-        tag = str(col[0].find(text=True)).lower().strip()
+        tag = str(col[0].find(text=True)).strip()
+        tag2 = str(col[0].find(href=True)).lower().strip()
         if (tag != "none" and tag != "team"):
-            index+=1
-            IDX.append(index)
-            A.append(col[0].find(text=True))
-            B.append(col[1].find(text=True))
+            if ("#f" in tag2):
+                index+=1
+                IDX.append(index)
+                A.append(tag)
+                B.append(col[1].find(text=True))
 
 df=pd.DataFrame(IDX,columns=['Index'])
 df['Team']=A

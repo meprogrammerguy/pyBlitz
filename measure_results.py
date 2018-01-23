@@ -40,6 +40,7 @@ def CurrentScheduleFiles(filename):
 
 def RefreshScheduleFiles():
     import scrape_schedule
+    import scrape_abbreviation
 
 def GetActualScores(scores):
     idx = re.findall(r'\d+', str(scores))
