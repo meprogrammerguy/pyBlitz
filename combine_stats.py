@@ -51,6 +51,7 @@ C=[]
 D=[]
 E=[]
 F=[]
+G=[]
 index = 0
 for item in dict_merge:
     teamrankings = item['teamrankings']
@@ -63,22 +64,24 @@ for item in dict_merge:
             IDX.append(str(index))
             A.append(team)
             B.append(row['Ranking'])
+            C.append(row['Class'])
             break
     for row in dict_teamrankings.values():
         if(row['Team']==teamrankings):
-            C.append(row['PLpG3'])
-            D.append(row['PTpP3'])
-            E.append(row['OPLpG3'])
-            F.append(row['OPTpP3'])
+            D.append(row['PLpG3'])
+            E.append(row['PTpP3'])
+            F.append(row['OPLpG3'])
+            G.append(row['OPTpP3'])
             break
 
 df=pd.DataFrame(IDX,columns=['Index'])
 df['Team']=A
 df['Ranking']=B
-df['PLpG3']=C
-df['PTpP3']=D
-df['OPLpG3']=E
-df['OPTpP3']=F
+df['Class']=C
+df['PLpG3']=D
+df['PTpP3']=E
+df['OPLpG3']=F
+df['OPTpP3']=G
 
 with open(path + 'stats.json', 'w') as f:
     f.write(df.to_json(orient='index'))

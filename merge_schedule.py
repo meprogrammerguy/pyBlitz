@@ -54,19 +54,18 @@ stats_teams.sort()
 merge_sheet = open('merge_schedule.csv', 'w', newline='')
 csvwriter = csv.writer(merge_sheet)
 dict_merge = OrderedDict()
+dict_merge["scheduled team"] = []
 dict_merge["match ratio"] = []
 dict_merge["stats team"] = []
-dict_merge["scheduled team"] = []
 dict_merge["corrected stats team"] = []
 values = []
 for item in sched_teams:
     key = process.extractOne(item, stats_teams, scorer=fuzz.QRatio)
+    dict_merge["scheduled team"].append(item)
     dict_merge["match ratio"].append(key[1])
     dict_merge["stats team"].append(key[0])
-    dict_merge["scheduled team"].append(item)
     dict_merge["corrected stats team"].append("")
-    values.append([key[1], key[0], item,  ""])
-
+    values.append([item, key[1], key[0],  ""])
 
 csvwriter.writerow(dict_merge.keys())
 for value in values:

@@ -50,18 +50,18 @@ stats_teams.sort()
 merge_sheet = open('merge_abbreviation.csv', 'w', newline='')
 csvwriter = csv.writer(merge_sheet)
 dict_merge = OrderedDict()
+dict_merge["abbr team"] = []
 dict_merge["match ratio"] = []
 dict_merge["stats team"] = []
-dict_merge["abbr team"] = []
 dict_merge["corrected stats team"] = []
 values = []
 for item in teams_abbr:
     key = process.extractOne(item, stats_teams, scorer=fuzz.QRatio)
+    dict_merge["abbr team"].append(item)
     dict_merge["match ratio"].append(key[1])
     dict_merge["stats team"].append(key[0])
-    dict_merge["abbr team"].append(item)
     dict_merge["corrected stats team"].append("")
-    values.append([key[1], key[0], item,  ""])
+    values.append([item, key[1], key[0], ""])
 
 
 csvwriter.writerow(dict_merge.keys())

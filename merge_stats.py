@@ -50,19 +50,18 @@ teamrankings.sort()
 merge_sheet = open('merge_stats.csv', 'w', newline='')
 csvwriter = csv.writer(merge_sheet)
 dict_merge = OrderedDict()
+dict_merge["teamrankings"] = []
 dict_merge["match ratio"] = []
 dict_merge["BPI"] = []
-dict_merge["teamrankings"] = []
 dict_merge["corrected BPI"] = []
 values = []
 for item in teamrankings:
     key = process.extractOne(item, bpi, scorer=fuzz.QRatio)
+    dict_merge["teamrankings"].append(item)
     dict_merge["match ratio"].append(key[1])
     dict_merge["BPI"].append(key[0])
-    dict_merge["teamrankings"].append(item)
     dict_merge["corrected BPI"].append("")
-    values.append([key[1], key[0], item,  ""])
-
+    values.append([item, key[1], key[0], ""])
 
 csvwriter.writerow(dict_merge.keys())
 for value in values:
