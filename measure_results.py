@@ -42,7 +42,9 @@ def RefreshScheduleFiles():
     import scrape_schedule
     import scrape_abbreviation
 
-def GetActualScores(scores):
+def GetActualScores(abbra, abbrb, scores):
+    items = re.split(r'(,|\s)\s*', str(scores))
+    pdb.set_trace()
     idx = re.findall(r'\d+', str(scores))
     if (len(idx) == 0):
         idx.append("-1")
@@ -82,12 +84,14 @@ for idx in range(len(list_sched)):
     print ("week{0}".format(idx + 1))
     for item in list_sched[idx].values():
         total += 1
-        scoreb, scorea = GetActualScores(item["Score"])
-        #pdb.set_trace()
         chancea = GetPercent(list_week[index]["ChanceA"])
+        abbra = list_week[index]["AbbrA"]
+        abbrb = list_week[index]["AbbrA"]
+        scorea, scoreb = GetActualScores(abbra, abbrb, item["Score"])
+        pdb.set_trace()
         index += 1
-        if (chancea < 0 or scorea < 0 or scoreb < 0):
-            print ("skip " + item["Score"])
+        if (chancea < 0 or scorea < 0 or scoreb < 0 or abbra.strip() == "" or abbrb.strip() == ""):
+            print ("skip {0} at {1} score {2}".format(abbra, abbrb, item["Score"]))
             skip += 1
         else:
             print ("not skip {0}% - {1}".format(chancea, item["Score"]))

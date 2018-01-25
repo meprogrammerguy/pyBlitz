@@ -54,26 +54,32 @@ F=[]
 G=[]
 index = 0
 for item in dict_merge:
-    teamrankings = item['teamrankings']
-    team = item['corrected BPI']
+    teamrankings = item['teamrankings'].lower().strip()
+    team = item['corrected BPI'].lower().strip()
     if (team.strip() == ""):
-        team = item['BPI']
+        team = item['BPI'].lower().strip()
     for row in dict_bpi.values():
-        if(row['School']==team):
+        if(row['School'].lower().strip()==team):
             index+=1
             IDX.append(str(index))
             A.append(team)
             B.append(row['Ranking'])
             C.append(row['Class'])
             break
+    found = False
     for row in dict_teamrankings.values():
-        if(row['Team']==teamrankings):
+        if(row['Team'].lower().strip()==teamrankings):
+            found = True
             D.append(row['PLpG3'])
             E.append(row['PTpP3'])
             F.append(row['OPLpG3'])
             G.append(row['OPTpP3'])
             break
-
+    if (not found):
+        D.append("?")
+        E.append("?")
+        F.append("?")
+        G.append("?")
 df=pd.DataFrame(IDX,columns=['Index'])
 df['Team']=A
 df['Ranking']=B
