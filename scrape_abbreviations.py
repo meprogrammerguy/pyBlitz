@@ -25,7 +25,11 @@ tables=soup.findAll("table")
 IDX=[]
 A=[]
 B=[]
-index=0
+index=1
+# Add any Missing Teams Here
+IDX.append(index)
+A.append("ALABAMA-BIRMINGHAM")
+B.append("UAB")
 for row in tables[1].findAll("tr"):
     col=row.findAll('td')
     if len(col)>0:

@@ -125,6 +125,7 @@ for page in pages:
                 D.append(team['title'])
             line+=1
         dateidx+=1
+
     df=pd.DataFrame(IDX, columns=['Index'])
     df['Year']=Y
     df['Date']=A

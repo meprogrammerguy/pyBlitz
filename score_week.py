@@ -17,6 +17,8 @@ def main(argv):
     stat_file = path + "stats.json"
     schedule_files = GetSchedFiles("sched*.json")
     merge_file = "merge_schedule.csv"
+    abbr_file = path + "abbreviation.json"
+    abbr_merge_file = "merge_abbreviation.csv"
     week = "current"
     verbose = False
     test = False
@@ -51,7 +53,7 @@ def main(argv):
         else:
             print ("Test result - fail")
     else:
-        PredictTournament(week, stat_file, schedule_files, merge_file, verbose)
+        PredictTournament(week, stat_file, schedule_files, merge_file, verbose, abbr_file, abbr_merge_file)
 
 def usage():
     usage = """
@@ -119,11 +121,11 @@ def FindTeams(teama, teamb, dict_merge):
     FoundA = ""
     FoundB = ""
     for item in dict_merge:
-        if (teama == item["scheduled team"]):
+        if (teama.lower().strip()== item["scheduled team"].lower().strip()):
             FoundA = item["stats team"]
             if (item["corrected stats team"]):
                 FoundA = item["corrected stats team"]
-        if (teamb == item["scheduled team"]):
+        if (teamb.lower().strip() == item["scheduled team"].lower().strip()):
             FoundB = item["stats team"]
             if (item["corrected stats team"]):
                 FoundB = item["corrected stats team"]
@@ -131,7 +133,31 @@ def FindTeams(teama, teamb, dict_merge):
             break
     return FoundA, FoundB
 
-def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
+def FindAbbr(teama, teamb, dict_abbr, dict_abbr_merge):
+    FoundA = ""
+    FoundB = ""
+    AbbrA = ""
+    AbbrB = ""
+    for item in dict_abbr_merge:
+        stats = item["stats team"].lower().strip()
+        if (item["corrected stats team"].lower().strip()):
+            stats =  item["corrected stats team"].lower().strip()
+        if (teama.lower().strip() == stats):
+            FoundA = item["abbr team"].lower().strip()
+        if (teamb.lower().strip() == stats):
+            FoundB = item["abbr team"].lower().strip()
+        if (FoundA and FoundB):
+            break
+    for item in dict_abbr.values():
+        if (item["Team"].lower().strip() == FoundA):
+            AbbrA = item["Abbreviation"]
+        if (item["Team"].lower().strip() == FoundB):
+            AbbrB = item["Abbreviation"]
+        if (AbbrA and AbbrB):
+            break
+    return AbbrA, AbbrB
+
+def PredictTournament(week, stat_file, schedule_files, merge_file, verbose, abbr_file, abbr_merge_file):
     if (not "a" in week.lower().strip()):
         idx = GetIndex(week)
         if ((idx < 1) or (idx > len(schedule_files))):
@@ -150,6 +176,14 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
         reader = csv.DictReader(merge_file)
         for row in reader:
             dict_merge.append(row)
+    if (not os.path.exists(abbr_merge_file)):
+        print ("abbreviation merge file is missing, run the merge_abbreviation tool to create")
+        exit()
+    dict_abbr_merge = []
+    with open(abbr_merge_file) as abbr_merge_file:
+        reader = csv.DictReader(abbr_merge_file)
+        for row in reader:
+            dict_abbr_merge.append(row)
     if (not os.path.exists(schedule_files[0])):
         print ("schedule files are missing, run the scrape_schedule tool to create")
         exit()
@@ -160,6 +194,11 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
         exit()
     with open(stat_file) as stats_file:
         dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
+    if (not os.path.exists(abbr_file)):
+        print ("abbreviation file is missing, run the scrape_abbreviations tool to create")
+        exit()
+    with open(abbr_file) as abbrs_file:
+        dict_abbr = json.load(abbrs_file, object_pairs_hook=OrderedDict)
     list_schedule = []
     for file in schedule_files:
         with open(file) as schedule_file:
@@ -168,30 +207,31 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
     for idx in range(len(schedule_files)):
         if (idx in weeks):
             list_predict = []
-            list_predict.append(["Index", "Year", "Date", "TeamA", "ChanceA", "ScoreA",
-                "Spread", "TeamB", "ChanceB", "ScoreB"])
+            list_predict.append(["Index", "Year", "Date", "TeamA", "AbbrA", "ChanceA", "ScoreA",
+                "Spread", "TeamB", "AbbrB", "ChanceB", "ScoreB"])
             index = 0
             for item in list_schedule[idx].values():
                 teama, teamb = FindTeams(item["TeamA"], item["TeamB"], dict_merge)
+                abbra, abbrb = FindAbbr(teama, teamb, dict_abbr, dict_abbr_merge)
                 neutral = False
                 if (item["Home"].lower().strip() == "neutral"):
                     neutral = True
                 dict_score = pyBlitz.Calculate(teama, teamb, neutral, verbose)
                 index += 1
                 if (len(dict_score) > 0):
-                    list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"],
+                    list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], abbra,
                         dict_score["chancea"], dict_score["scorea"], dict_score["spread"], item["TeamB"],
-                        dict_score["chanceb"], dict_score["scoreb"]])
+                        abbrb, dict_score["chanceb"], dict_score["scoreb"]])
                 else:
                     if (teama == "?" and teamb != "?"):
-                        list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], "0%",
-                            "?", "?", item["TeamB"], "100%", "?"])
+                        list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], "?", "0%",
+                            "?", "?", item["TeamB"], abbrb, "100%", "?"])
                     if (teamb == "?" and teama != "?"):
-                        list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], "100%",
-                            "?", "?", item["TeamB"], "0%", "?"])
+                        list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], abbra, "100%",
+                            "?", "?", item["TeamB"], "?", "0%", "?"])
                     if (teamb == "?" and teama == "?"):
-                        list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], "?",
-                            "?", "?", item["TeamB"], "?", "?"])
+                        list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], "?", "?",
+                            "?", "?", item["TeamB"], "?", "?", "?"])
             output_file = "week{0}.csv".format(idx + 1)
             predict_sheet = open(output_file, 'w', newline='')
             csvwriter = csv.writer(predict_sheet)
