@@ -123,36 +123,43 @@ def FindTeams(teama, teamb, dict_merge):
     for item in dict_merge:
         if (teama.lower().strip()== item["scheduled team"].lower().strip()):
             FoundA = item["stats team"]
-            if (item["corrected stats team"]):
+            if (item["corrected stats team"].strip()):
                 FoundA = item["corrected stats team"]
         if (teamb.lower().strip() == item["scheduled team"].lower().strip()):
             FoundB = item["stats team"]
-            if (item["corrected stats team"]):
+            if (item["corrected stats team"].strip()):
                 FoundB = item["corrected stats team"]
         if (FoundA and FoundB):
             break
     return FoundA, FoundB
 
 def FindAbbr(teama, teamb, dict_abbr, dict_abbr_merge):
-    FoundA = ""
-    FoundB = ""
+    FoundTeamA = ""
+    FoundTeamB = ""
+    FoundAbbrA = ""
+    FoundAbbrB = ""
     AbbrA = ""
     AbbrB = ""
     for item in dict_abbr_merge:
         stats = item["stats team"].lower().strip()
         if (item["corrected stats team"].lower().strip()):
             stats =  item["corrected stats team"].lower().strip()
+        abbr = item["abbreviation"].strip()
+        if (item["corrected abbr"].strip()):
+            abbr =  item["corrected abbr"].strip()
         if (teama.lower().strip() == stats):
-            FoundA = item["abbr team"].lower().strip()
+            FoundTeamA = item["abbr team"].lower().strip()
+            FoundAbbrA = abbr
         if (teamb.lower().strip() == stats):
-            FoundB = item["abbr team"].lower().strip()
-        if (FoundA and FoundB):
+            FoundTeamB = item["abbr team"].lower().strip()
+            FoundAbbrB = abbr
+        if (FoundTeamA and FoundTeamB):
             break
     for item in dict_abbr.values():
-        if (item["Team"].lower().strip() == FoundA):
-            AbbrA = item["Abbreviation"]
-        if (item["Team"].lower().strip() == FoundB):
-            AbbrB = item["Abbreviation"]
+        if (item["Team"].lower().strip() == FoundTeamA):
+            AbbrA = FoundAbbrA
+        if (item["Team"].lower().strip() == FoundTeamB):
+            AbbrB = FoundAbbrB
         if (AbbrA and AbbrB):
             break
     return AbbrA, AbbrB
@@ -232,6 +239,9 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose, abbr
                     if (teamb == "?" and teama == "?"):
                         list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], "?", "?",
                             "?", "?", item["TeamB"], "?", "?", "?"])
+                    if (teamb != "?" and teama != "?"):
+                        list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], abbra, "?",
+                            "?", "?", item["TeamB"], abbrb, "?", "?"])
             output_file = "week{0}.csv".format(idx + 1)
             predict_sheet = open(output_file, 'w', newline='')
             csvwriter = csv.writer(predict_sheet)

@@ -9,6 +9,14 @@ from collections import OrderedDict
 import os.path
 from pathlib import Path
 
+def GetAbbr(team, dict_abbr):
+    abbr = ""
+    for item in  dict_abbr.values():
+        if (item["Team"].lower().strip() == team.lower().strip()):
+            abbr = item["Abbreviation"]
+            break
+    return abbr.strip()
+
 print ("Merge Abbreviation Tool")
 print ("**************************")
 
@@ -54,6 +62,8 @@ dict_merge["abbr team"] = []
 dict_merge["match ratio"] = []
 dict_merge["stats team"] = []
 dict_merge["corrected stats team"] = []
+dict_merge["abbreviation"] = []
+dict_merge["corrected abbr"] = []
 values = []
 for item in teams_abbr:
     key = process.extractOne(item, stats_teams, scorer=fuzz.QRatio)
@@ -61,7 +71,10 @@ for item in teams_abbr:
     dict_merge["match ratio"].append(key[1])
     dict_merge["stats team"].append(key[0])
     dict_merge["corrected stats team"].append("")
-    values.append([item, key[1], key[0], ""])
+    abbr = GetAbbr(item, dict_abbr)
+    dict_merge["abbreviation"].append(abbr)
+    dict_merge["corrected abbr"].append("")
+    values.append([item, key[1], key[0], "", abbr, ""])
 
 
 csvwriter.writerow(dict_merge.keys())

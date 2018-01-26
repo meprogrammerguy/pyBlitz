@@ -13,6 +13,9 @@ import re
 
 def GetPercent(item):
     newstr = item.replace("%", "")
+    newstr = newstr.replace("?", "")
+    if (newstr.strip()==""):
+        return -1
     return float(newstr)
 
 def GetIndex(item):
@@ -40,16 +43,27 @@ def CurrentScheduleFiles(filename):
 
 def RefreshScheduleFiles():
     import scrape_schedule
-    import scrape_abbreviation
+    import scrape_abbreviations
 
 def GetActualScores(abbra, abbrb, scores):
-    items = re.split(r'(,|\s)\s*', str(scores))
-    pdb.set_trace()
-    idx = re.findall(r'\d+', str(scores))
-    if (len(idx) == 0):
-        idx.append("-1")
-        idx.append("-1")
-    return int(idx[0]), int(idx[1])
+    items = re.split(r'(,|\s)\s*', str(scores).lower())
+    if (items[0].strip() == "?"):   # Cancelled Game
+        return -1, -1
+    if (len(items) != 7):
+        return -1, -1
+    if (abbra.lower().strip() not in items):
+        print ("Missing Abbreviation [{0}] in Score {1}".format(abbra, scores))
+        return -1, -1
+    if (abbrb.lower().strip() not in items):
+        print ("Missing Abbreviation [{0}] in Score {1}".format(abbrb, scores))
+        return -1, -1
+    if (abbra.lower().strip() == items[0].lower().strip()):
+        scorea = int(items[2])
+        scoreb = int(items[6])
+    else:
+        scorea = int(items[6])
+        scoreb = int(items[2])
+    return scorea, scoreb
 
 print ("Measure Actual Results Tool")
 print ("**************************")
@@ -77,30 +91,32 @@ for file in week_files:
             list_week.append(row)
 
 index = 0
+alltotal = 0
+allskip = 0
+allcorrect = 0
 for idx in range(len(list_sched)):
     total = 0
     skip = 0
     correct = 0
-    print ("week{0}".format(idx + 1))
     for item in list_sched[idx].values():
         total += 1
         chancea = GetPercent(list_week[index]["ChanceA"])
         abbra = list_week[index]["AbbrA"]
-        abbrb = list_week[index]["AbbrA"]
-        scorea, scoreb = GetActualScores(abbra, abbrb, item["Score"])
-        pdb.set_trace()
+        abbrb = list_week[index]["AbbrB"]
         index += 1
+        scorea, scoreb = GetActualScores(abbra, abbrb, item["Score"])
         if (chancea < 0 or scorea < 0 or scoreb < 0 or abbra.strip() == "" or abbrb.strip() == ""):
-            print ("skip {0} at {1} score {2}".format(abbra, abbrb, item["Score"]))
             skip += 1
         else:
-            print ("not skip {0}% - {1}".format(chancea, item["Score"]))
-            if (chancea >= 50 and (scorea > scoreb)):
-                print ("1) chancea={0}, scorea={1}, scoreb={2}".format(chancea, scorea, scoreb))
+            if (chancea >= 50 and (scorea >= scoreb)):
                 correct += 1
-            if (chancea < 50 and (scoreb > scorea)):
-                print ("2) chancea={0}, scorea={1}, scoreb={2}".format(chancea, scorea, scoreb))
+            if (chancea < 50 and (scorea < scoreb)):
                 correct += 1
-    print ("total={0}, skip={1}, correct={2}".format(total, skip, correct))
-    pdb.set_trace()
+    print ("week{0} total={1}, skip={2}, correct={3} Percent={4}%".format(idx + 1, total, skip,
+        correct, round(correct / (total - skip) * 100., 2)))
+    alltotal = alltotal + total
+    allskip = allskip + skip
+    allcorrect = allcorrect + correct
+print ("Totals total={0}, skip={1}, correct={2} Percent={3}%".format(alltotal, allskip,
+    allcorrect, round(allcorrect / (alltotal - allskip) * 100., 2)))
 print ("done.")
