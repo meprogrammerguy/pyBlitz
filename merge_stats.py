@@ -8,6 +8,10 @@ import csv
 from collections import OrderedDict
 import os.path
 from pathlib import Path
+import re
+
+def CleanString(data):
+    return re.sub(' +',' ', data)
 
 print ("Merge Stats Tool")
 print ("**************************")
@@ -57,9 +61,9 @@ dict_merge["corrected BPI"] = []
 values = []
 for item in teamrankings:
     key = process.extractOne(item, bpi, scorer=fuzz.QRatio)
-    dict_merge["teamrankings"].append(item)
+    dict_merge["teamrankings"].append(CleanString(item))
     dict_merge["match ratio"].append(key[1])
-    dict_merge["BPI"].append(key[0])
+    dict_merge["BPI"].append(CleanString(key[0]))
     dict_merge["corrected BPI"].append("")
     values.append([item, key[1], key[0], ""])
 

@@ -10,6 +10,10 @@ import json
 import csv
 import contextlib
 import os
+import re
+
+def CleanString(data):
+    return re.sub(' +',' ', data)
 
 url = "https://www.reddit.com/r/CFB/wiki/abbreviations"
 
@@ -44,7 +48,7 @@ for row in tables[1].findAll("tr"):
             if ("#f" in tag2):
                 index+=1
                 IDX.append(index)
-                A.append(tag)
+                A.append(CleanString(tag))
                 B.append(col[1].find(text=True))
 
 df=pd.DataFrame(IDX,columns=['Index'])

@@ -10,6 +10,10 @@ import json
 import csv
 import contextlib
 import os
+import re
+
+def CleanString(data):
+    return re.sub(' +',' ', data)
 
 # Please note, I have written this scraper in case you want to learn/use it
 # Be aware that the statistics in this scraper are not currently used in any of my calculations
@@ -37,7 +41,7 @@ for row in ratings_table.findAll("tr"):
     if len(col)>0 and col[0].find(text=True)!="Team":
         index+=1
         IDX.append(index)
-        A.append(col[0].find(text=True))
+        A.append(CleanString(col[0].find(text=True)))
         B.append(col[4].find(text=True))
 
 df=pd.DataFrame(IDX,columns=['Index'])

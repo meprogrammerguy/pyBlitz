@@ -12,6 +12,10 @@ import contextlib
 import sys
 import datetime
 from pathlib import Path
+import re
+
+def CleanString(data):
+    return re.sub(' +',' ', data)
 
 def num_there(s):
     return any(i.isdigit() for i in s)
@@ -109,12 +113,12 @@ for page in pages:
                     Y.append(year)
                 else:
                     Y.append(year + 1)
-                B.append(team['title'])
+                B.append(CleanString(team['title']))
                 if loop != len(pages):
                     if (neutral[count]['data-is-neutral-site'] == 'true'):
                         C.append("Neutral")
                     else:
-                        C.append(team['title'])
+                        C.append(CleanString(team['title']))
                 else:
                     C.append("Neutral")
                 G.append(F[index])
@@ -122,7 +126,7 @@ for page in pages:
                 index+=1
                 IDX.append(index)
             else:
-                D.append(team['title'])
+                D.append(CleanString(team['title']))
             line+=1
         dateidx+=1
 

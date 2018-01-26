@@ -8,6 +8,10 @@ import csv
 from collections import OrderedDict
 import os.path
 from pathlib import Path
+import re
+
+def CleanString(data):
+    return re.sub(' +',' ', data)
 
 def GetAbbr(team, dict_abbr):
     abbr = ""
@@ -67,9 +71,9 @@ dict_merge["corrected abbr"] = []
 values = []
 for item in teams_abbr:
     key = process.extractOne(item, stats_teams, scorer=fuzz.QRatio)
-    dict_merge["abbr team"].append(item)
+    dict_merge["abbr team"].append(CleanString(item))
     dict_merge["match ratio"].append(key[1])
-    dict_merge["stats team"].append(key[0])
+    dict_merge["stats team"].append(CleanString(key[0]))
     dict_merge["corrected stats team"].append("")
     abbr = GetAbbr(item, dict_abbr)
     dict_merge["abbreviation"].append(abbr)

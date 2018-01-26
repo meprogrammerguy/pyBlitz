@@ -16,10 +16,10 @@ def findTeams(first, second, dict_stats, verbose = True):
     count = 0
 
     for item in dict_stats.values():
-        if (item["Team"].lower().strip() == first.lower().strip()):
+        if (item["BPI"].lower().strip() == first.lower().strip()):
             teama = item
             count += 1
-        if (item["Team"].lower().strip() == second.lower().strip()):
+        if (item["BPI"].lower().strip() == second.lower().strip()):
             teamb = item
             count += 1
         if (count == 2):
@@ -157,9 +157,9 @@ def Score(teama, teamb, verbose = True, homeTeam = 'Neutral'):
 def Spread(teama, teamb, verbose = True, homeTeam = 'Neutral'):
     EMdiff = (float(teama['Ranking']) - float(teamb['Ranking']))
     EffMgn = 0
-    if (homeTeam.lower().strip() == teama["Team"].lower().strip()):
+    if (homeTeam.lower().strip() == teama["BPI"].lower().strip()):
         EffMgn = EMdiff + homeAdvantage
-    elif (homeTeam.lower().strip() == teamb["Team"].lower().strip()):
+    elif (homeTeam.lower().strip() == teamb["BPI"].lower().strip()):
         EffMgn = EMdiff - homeAdvantage
     else:
         EffMgn = EMdiff
@@ -186,9 +186,9 @@ def Calculate(first, second, neutral, verbose):
     if (not teama or not teamb):
         return {}
     if (not neutral):
-        chancea, chanceb =  Chance(teama, teamb, dict_percent, homeTeam = teamb["Team"], verbose = verbose)
-        scorea, scoreb = Score(teama, teamb, verbose = verbose, homeTeam = teamb["Team"])
-        spread = Spread(teama, teamb, verbose = verbose, homeTeam = teamb["Team"])
+        chancea, chanceb =  Chance(teama, teamb, dict_percent, homeTeam = teamb["BPI"], verbose = verbose)
+        scorea, scoreb = Score(teama, teamb, verbose = verbose, homeTeam = teamb["BPI"])
+        spread = Spread(teama, teamb, verbose = verbose, homeTeam = teamb["BPI"])
     else:
         chancea, chanceb =  Chance(teama, teamb, dict_percent, verbose = verbose)
         scorea, scoreb = Score(teama, teamb, verbose = verbose)

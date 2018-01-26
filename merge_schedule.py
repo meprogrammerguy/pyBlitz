@@ -8,6 +8,10 @@ import csv
 from collections import OrderedDict
 import os.path
 from pathlib import Path
+import re
+
+def CleanString(data):
+    return re.sub(' +',' ', data)
 
 print ("Merge Schedule Tool")
 print ("**************************")
@@ -61,9 +65,9 @@ dict_merge["corrected stats team"] = []
 values = []
 for item in sched_teams:
     key = process.extractOne(item, stats_teams, scorer=fuzz.QRatio)
-    dict_merge["scheduled team"].append(item)
+    dict_merge["scheduled team"].append(CleanString(item))
     dict_merge["match ratio"].append(key[1])
-    dict_merge["stats team"].append(key[0])
+    dict_merge["stats team"].append(CleanString(key[0]))
     dict_merge["corrected stats team"].append("")
     values.append([item, key[1], key[0],  ""])
 

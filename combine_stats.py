@@ -9,6 +9,10 @@ import csv
 from collections import OrderedDict
 import os.path
 from pathlib import Path
+import re
+
+def CleanString(data):
+    return re.sub(' +',' ', data)
 
 path = "data/"
 
@@ -52,42 +56,46 @@ D=[]
 E=[]
 F=[]
 G=[]
+H=[]
 index = 0
 for item in dict_merge:
-    teamrankings = item['teamrankings'].lower().strip()
-    team = item['corrected BPI'].lower().strip()
-    if (team.strip() == ""):
-        team = item['BPI'].lower().strip()
+    teamrankings = CleanString(item['teamrankings'])
+    team = CleanString(item['BPI'])
+    if (item['corrected BPI'].strip() != ""):
+        team = CleanString(item['corrected BPI'])
+    
+    row_bpi = []
     for row in dict_bpi.values():
-        if(row['School'].lower().strip()==team):
+        if(row['School'].lower().strip()==team.lower().strip()):
+            row_bpi = row  
+            break
+    for row in dict_teamrankings.values():
+        if(row['Team'].lower().strip()==teamrankings.lower().strip()):
             index+=1
             IDX.append(str(index))
             A.append(team)
-            B.append(row['Ranking'])
-            C.append(row['Class'])
+            B.append(teamrankings)
+            if (row_bpi):
+                C.append(row_bpi['Ranking'])
+                D.append(row_bpi['Class'])
+            else:
+                C.append("?")
+                D.append("?")
+            E.append(row['PLpG3'])
+            F.append(row['PTpP3'])
+            G.append(row['OPLpG3'])
+            H.append(row['OPTpP3'])
             break
-    found = False
-    for row in dict_teamrankings.values():
-        if(row['Team'].lower().strip()==teamrankings):
-            found = True
-            D.append(row['PLpG3'])
-            E.append(row['PTpP3'])
-            F.append(row['OPLpG3'])
-            G.append(row['OPTpP3'])
-            break
-    if (not found):
-        D.append("?")
-        E.append("?")
-        F.append("?")
-        G.append("?")
+
 df=pd.DataFrame(IDX,columns=['Index'])
-df['Team']=A
-df['Ranking']=B
-df['Class']=C
-df['PLpG3']=D
-df['PTpP3']=E
-df['OPLpG3']=F
-df['OPTpP3']=G
+df['BPI']=A
+df['teamrankings']=B
+df['Ranking']=C
+df['Class']=D
+df['PLpG3']=E
+df['PTpP3']=F
+df['OPLpG3']=G
+df['OPTpP3']=H
 
 with open(path + 'stats.json', 'w') as f:
     f.write(df.to_json(orient='index'))
