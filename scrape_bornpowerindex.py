@@ -138,7 +138,7 @@ for row in table5[0].findAll("tr"):
     if len(col)>0 and col[0].find(text=True)!="School":
         index+=1
         IDX.append(index)
-        A.append(CleanStringcol[0].find(text=True)))
+        A.append(CleanString(col[0].find(text=True)))
         B.append(col[1].find(text=True))
         C.append(col[2].find(text=True))
 for row in table6[0].findAll("tr"):
@@ -146,7 +146,7 @@ for row in table6[0].findAll("tr"):
     if len(col)>0 and col[0].find(text=True)!="School":
         index+=1
         IDX.append(index)
-        A.append(CleanStringcol[0].find(text=True)))
+        A.append(CleanString(col[0].find(text=True)))
         B.append(col[1].find(text=True))
         C.append(col[2].find(text=True))
 
