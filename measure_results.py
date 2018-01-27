@@ -10,6 +10,14 @@ import os.path
 from pathlib import Path
 from datetime import datetime
 import re
+import pandas as pd
+import sys
+
+def CalcPercent(total, skip, correct):
+    try:
+        return  round(correct / (total - skip) * 100., 2)
+    except ZeroDivisionError:
+        return None
 
 def GetPercent(item):
     newstr = item.replace("%", "")
@@ -43,19 +51,20 @@ def CurrentScheduleFiles(filename):
 
 def RefreshScheduleFiles():
     import scrape_schedule
-    import scrape_abbreviations
 
 def GetActualScores(abbra, abbrb, scores):
     items = re.split(r'(,|\s)\s*', str(scores).lower())
-    if (items[0].strip() == "?"):   # Cancelled Game
+    if (items[0].strip() == "?"):   # Cancelled, Postponed or not yet Played Game
         return -1, -1
     if (len(items) != 7):
         return -1, -1
     if (abbra.lower().strip() not in items):
-        print ("Missing Abbreviation [{0}] in Score {1}".format(abbra, scores))
+        if (verbose):
+            print ("Missing Abbreviation [{0}] [{1}] in Score {2}".format(abbra, abbrb, scores))
         return -1, -1
     if (abbrb.lower().strip() not in items):
-        print ("Missing Abbreviation [{0}] in Score {1}".format(abbrb, scores))
+        if (verbose):
+            print ("Missing Abbreviation [{0}] [{1}] in Score {2}".format(abbra, abbrb, scores))
         return -1, -1
     if (abbra.lower().strip() == items[0].lower().strip()):
         scorea = int(items[2])
@@ -65,15 +74,35 @@ def GetActualScores(abbra, abbrb, scores):
         scoreb = int(items[2])
     return scorea, scoreb
 
-print ("Measure Actual Results Tool")
-print ("**************************")
+verbose = False
+if (len(sys.argv)==1):
+    verbose = False
+elif (len(sys.argv)==2):
+    verbose = True
+else:
+    print ("???")
+    print ("error, usage: no arg be quiet, 1 arg be verbose")
+    print ("./measure_results.py")
+    print ("./measure_results.py --verbose")
+    print ("???")
+    sys.exit("error: incorrect number of arguments")
+
+    print ("Measure Actual Results Tool")
+    print ("**************************")
 
 if (not CurrentScheduleFiles('data/sched1.json')):
     RefreshScheduleFiles()
 
 file = 'data/sched1.json'
 if (not os.path.exists(file)):
-    print ("schedule files are missing, run the scrape_schedule tool to create")
+    if (verbose):
+        print ("schedule files are missing, run the scrape_schedule tool to create")
+    exit()
+
+file = 'week1.csv'
+if (not os.path.exists(file)):
+    if (verbose):
+        print ("Weekly files are missing, run the score_week tool to create")
     exit()
 
 sched_files = GetFiles("data/", "sched*.json")
@@ -90,10 +119,17 @@ for file in week_files:
         for row in reader:
             list_week.append(row)
 
+IDX=[]
+A=[]
+B=[]
+C=[]
+D=[]
+E=[]
 index = 0
 alltotal = 0
 allskip = 0
 allcorrect = 0
+count = 0
 for idx in range(len(list_sched)):
     total = 0
     skip = 0
@@ -112,11 +148,58 @@ for idx in range(len(list_sched)):
                 correct += 1
             if (chancea < 50 and (scorea < scoreb)):
                 correct += 1
-    print ("week{0} total={1}, skip={2}, correct={3} Percent={4}%".format(idx + 1, total, skip,
-        correct, round(correct / (total - skip) * 100., 2)))
+    count += 1
+    IDX.append(count)
+    A.append(idx + 1)
+    B.append(total)
+    C.append(skip)
+    D.append(correct)
+    E.append(CalcPercent(total, skip, correct))
+    if (verbose):
+        print ("week{0} total={1}, skip={2}, correct={3} Percent={4}%".format(idx + 1, total, skip,
+            correct, CalcPercent(total, skip, correct)))
     alltotal = alltotal + total
     allskip = allskip + skip
     allcorrect = allcorrect + correct
-print ("Totals total={0}, skip={1}, correct={2} Percent={3}%".format(alltotal, allskip,
-    allcorrect, round(allcorrect / (alltotal - allskip) * 100., 2)))
+count += 1
+IDX.append(count)
+A.append(99)
+B.append(alltotal)
+C.append(allskip)
+D.append(allcorrect)
+E.append(CalcPercent(alltotal, allskip, allcorrect))
+
+if (verbose):
+    print ("====================================================================")
+    print ("Totals total={0}, skip={1}, correct={2} Percent={3}%".format(alltotal, allskip,
+        allcorrect, CalcPercent(alltotal, allskip, allcorrect)))
+    print ("====================================================================")
+
+df=pd.DataFrame(IDX,columns=['Index'])
+df['Week']=A
+df['Total Games']=B
+df['Count Unpredicted']=C
+df['Count Correct']=D
+df['Percent Correct']=E
+
+path = "data/"
+now = datetime.now()
+file = "{0}{1}_{2}.json".format(path, 'results', now.year)
+with open(file, 'w') as f:
+    f.write(df.to_json(orient='index'))
+
+with open(file) as results_json:
+    dict_results = json.load(results_json, object_pairs_hook=OrderedDict)
+
+file = "{0}{1}_{2}.csv".format(path, 'results', now.year)
+results_sheet = open(file, 'w', newline='')
+csvwriter = csv.writer(results_sheet)
+count = 0
+for row in dict_results.values():
+    if (count == 0):
+        header = row.keys()
+        csvwriter.writerow(header)
+        count += 1
+    csvwriter.writerow(row.values())
+results_sheet.close()
 print ("done.")

@@ -82,11 +82,11 @@ def Chance(teama, teamb, dict_percent, homeTeam = 'Neutral', verbose = True):
     aPercent, bPercent = GetPercent(EffMgn, dict_percent)
     if (verbose):
         if homeTeam == "Neutral":
-            print ("Chance({0}) {1}%".format(teama["Team"], aPercent),
-                "vs. Chance({0}) {1}%".format(teamb["Team"], bPercent))
+            print ("Chance({0}) {1}%".format(teama["BPI"], aPercent),
+                "vs. Chance({0}) {1}%".format(teamb["BPI"], bPercent))
         else:
-            print ("Chance({0}) {1}%".format(teama["Team"], aPercent),
-                "at Chance({0}) {1}%".format(teamb["Team"], bPercent))
+            print ("Chance({0}) {1}%".format(teama["BPI"], aPercent),
+                "at Chance({0}) {1}%".format(teamb["BPI"], bPercent))
     return aPercent, bPercent
 
 def Tempo(teama, teamb, verbose = True):
@@ -151,7 +151,7 @@ def Score(teama, teamb, verbose = True, homeTeam = 'Neutral'):
     if (bScore < 0):
         bScore = 0
     if (verbose):
-        print ("Score({0}) {1} at Score({2}) {3}".format(teama["Team"], aScore, teamb["Team"], bScore))
+        print ("Score({0}) {1} at Score({2}) {3}".format(teama["BPI"], aScore, teamb["BPI"], bScore))
     return aScore, bScore
 
 def Spread(teama, teamb, verbose = True, homeTeam = 'Neutral'):
@@ -183,8 +183,33 @@ def Calculate(first, second, neutral, verbose):
         dict_percent = json.load(percent_file, object_pairs_hook=OrderedDict)
 
     teama, teamb = findTeams(first, second, dict_stats, verbose = verbose)
-    if (not teama or not teamb):
+    if (not teama and not teamb):
+        if (verbose):
+            print ("Both [{0}] and [{1}] were missing from stats, no prediction is possible"
+                .format(first, second))
         return {}
+    if (not teama):
+        if (verbose):
+            print ("[{0}] is missing from stats, will predict [{1}] will win".format(first, second))
+        dict_score = {'teama':first, 'scorea':"0", 'chancea':"0%" ,'teamb':second, 'scoreb':"0",
+            'chanceb':"100%", 'spread': 0, 'tempo':"0"}
+        return dict_score
+    if (not teamb):
+        if (verbose):
+            print ("[{0}] is missing from stats, will predict [{1}] will win".format(second, first))
+        dict_score = {'teama':first, 'scorea':"0", 'chancea':"100%" ,'teamb':second, 'scoreb':"0",
+            'chanceb':"0%", 'spread': 0, 'tempo':"0"}
+        return dict_score
+    classa = teama["Class"].lower().strip()
+    classb = teamb["Class"].lower().strip()
+    if (classa == "1a" and classb != "1a"):
+        dict_score = {'teama':first, 'scorea':"0", 'chancea':"100%" ,'teamb':second, 'scoreb':"0",
+            'chanceb':"0%", 'spread': 0, 'tempo':"0"}
+        return dict_score
+    if (classa != "1a" and classb == "1a"):
+        dict_score = {'teama':first, 'scorea':"0", 'chancea':"0%" ,'teamb':second, 'scoreb':"0",
+            'chanceb':"100%", 'spread': 0, 'tempo':"0"}
+        return dict_score
     if (not neutral):
         chancea, chanceb =  Chance(teama, teamb, dict_percent, homeTeam = teamb["BPI"], verbose = verbose)
         scorea, scoreb = Score(teama, teamb, verbose = verbose, homeTeam = teamb["BPI"])

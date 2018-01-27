@@ -115,7 +115,9 @@ def RefreshStats():
     import scrape_bettingtalk
     import scrape_bornpowerindex
     import scrape_teamrankings
+    import scrape_abbreviations
     import combine_stats
+    import measure_results
 
 def FindTeams(teama, teamb, dict_merge):
     FoundA = ""
@@ -249,7 +251,28 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose, abbr
                 csvwriter.writerow(row)
             predict_sheet.close()
             print ("{0} has been created.".format(output_file))
-    print ("done.")
 
+    now = datetime.now()    # How are we doing? Let's find Out!
+    file = "{0}{1}_{2}.json".format(path, "results", now.year)
+
+    if (os.path.exists(file)):
+        dict_results = []
+        last_week = GetIndex(week) - 1
+        with open(file) as results_file:
+            dict_results.append(json.load(results_file, object_pairs_hook=OrderedDict))
+        if (len(dict_results) > 0):
+            for idx in range(len(dict_results)):
+                for item in dict_results[idx].values():
+                    if (last_week > 0 and last_week == item["Week"]):
+                        print ("=================================================")
+                        print ("For week{0}, winning percent was: {1}%".
+                            format(last_week, item["Percent Correct"]))
+                        print ("=================================================")
+                    if (item["Week"] == 99):
+                        print ("=================================================")
+                        print ("For this year so far, winning percent is: {0}%".
+                            format(item["Percent Correct"]))
+                        print ("=================================================")
+    print ("done.")
 if __name__ == "__main__":
   main(sys.argv[1:])
