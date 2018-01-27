@@ -14,11 +14,12 @@ def CleanString(data):
 
 path = "data/"
 
-print ("Combine Stats Tool")
+print ("Combine Merge Tool")
 print ("**************************")
 print (" ")
-print ("This tool combines bornpowerindex and teamrankings into one stats spreadsheet")
-print ("Make sure that your merge_stats spreadsheet is correct first")
+print ("This tool combines your merge spreadsheets into one master merge spreadsheet")
+print ("Make sure that your merge_stats, merge_abbreviation, and merge_schedule")
+print ("spreadsheets are correct first")
 print (" ")
 
 file = 'merge_stats.csv'
@@ -71,44 +72,32 @@ for item in dict_merge:
         if(row['Team'].lower().strip()==teamrankings.lower().strip()):
             index+=1
             IDX.append(str(index))
-            A.append(team)
-            B.append(teamrankings)
-            if (row_bpi):
-                C.append(row_bpi['Ranking'])
-                D.append(row_bpi['Class'])
+            if (not row_bpi):
+                warning = team + " - ?" #This indicates there is a problem with the main key
+                A.append(warning)
             else:
-                C.append("?")
-                D.append("?")
-            E.append(row['PLpG3'])
-            F.append(row['PTpP3'])
-            G.append(row['OPLpG3'])
-            H.append(row['OPTpP3'])
+                A.append(team)
+            B.append(teamrankings)
             break
 
 df=pd.DataFrame(IDX,columns=['Index'])
 df['BPI']=A
 df['teamrankings']=B
-df['Ranking']=C
-df['Class']=D
-df['PLpG3']=E
-df['PTpP3']=F
-df['OPLpG3']=G
-df['OPTpP3']=H
 
-with open(path + 'stats.json', 'w') as f:
+with open(path + 'merge.json', 'w') as f:
     f.write(df.to_json(orient='index'))
 
-with open(path + "stats.json") as stats_json:
-    dict_stats = json.load(stats_json, object_pairs_hook=OrderedDict)
+with open(path + "merge.json") as merge_json:
+    dict_merge = json.load(merge_json, object_pairs_hook=OrderedDict)
 
-stats_sheet = open(path + 'stats.csv', 'w', newline='')
-csvwriter = csv.writer(stats_sheet)
+merge_sheet = open(path + 'merge.csv', 'w', newline='')
+csvwriter = csv.writer(merge_sheet)
 count = 0
-for row in dict_stats.values():
+for row in dict_merge.values():
     if (count == 0):
         header = row.keys()
         csvwriter.writerow(header)
         count += 1
     csvwriter.writerow(row.values())
-stats_sheet.close()
+merge_sheet.close()
 print ("done.")
