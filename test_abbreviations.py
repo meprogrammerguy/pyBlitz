@@ -14,29 +14,17 @@ import scrape_schedule
 
 path = "data/"
 
-def GetMergeAbbr(teama, teamb, dict_merge):
-    abbra = ""
-    abbrb = ""
-    items = re.split(r'(,|\s)\s*', str(scores).lower())
+def GetSchedAbbr(scores):
+    abbrw = ""
+    abbrl = ""
+    items = re.split(r'(,|\s)\s*', str(scores))
     if (items[0].strip() == "?"):   # Cancelled, Postponed or not yet Played Game
-        return -1, -1
+        return abbrw, abbrl
     if (len(items) != 7):
-        return -1, -1
-    if (abbra.lower().strip() not in items):
-        if (verbose):
-            print ("Missing Abbreviation [{0}] [{1}] in Score {2}".format(abbra, abbrb, scores))
-        return -1, -1
-    if (abbrb.lower().strip() not in items):
-        if (verbose):
-            print ("Missing Abbreviation [{0}] [{1}] in Score {2}".format(abbra, abbrb, scores))
-        return -1, -1
-    if (abbra.lower().strip() == items[0].lower().strip()):
-        scorea = int(items[2])
-        scoreb = int(items[6])
-    else:
-        scorea = int(items[6])
-        scoreb = int(items[2])
-    return scorea, scoreb
+        return abbrw, abbrl
+    abbrw = items[0]
+    abbrl = items[4]
+    return abbrw, abbrl
 
 def GetCount(item):
     idx = re.findall(r'\d+', str(item))
@@ -94,15 +82,14 @@ list_schedule = []
 for file in schedule_files:
     with open(file) as schedule_file:
         list_schedule.append(json.load(schedule_file, object_pairs_hook=OrderedDict))
-scrape_schedule.year = year
-scrape_schedule.main(sys.argv[1:])
-pdb.set_trace()
 AllAbbr=[]
 for idx in range(len(schedule_files)):
     for item in list_schedule[idx].values():
-        abbra, abbrb = GetMergeAbbr(item["TeamA"], item["TeamB"], dict_merge)
-        AllAbbr.append(abbra)
-        AllAbbr.append(abbrb)
+        abbrw, abbrl = GetSchedAbbr(item["Score"])
+        if (abbrw):
+            AllAbbr.append(abbrw)
+        if (abbrl):
+            AllAbbr.append(abbrl)
 abbr_set = set(AllAbbr)
 abbr_codes = list(abbr_set)
 abbr_codes.sort()
@@ -122,5 +109,8 @@ for team in dict_merge:
     found = FindTeams(team["stats team"], team["corrected stats team"], stats_teams)
     if (not found):
         print ("warning: {0} was not found in the stats table ***".format(team["scheduled team"]))
+
+scrape_schedule.year = year
+scrape_schedule.main(sys.argv[1:])
  
 print ("done.")
