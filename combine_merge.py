@@ -9,6 +9,24 @@ import os.path
 from pathlib import Path
 import re
 
+path = "data/"
+
+def GetCount(item):
+    idx = re.findall(r'\d+', str(item))
+    if (len(idx) == 0):
+        idx.append("0")
+    return int(idx[0])
+
+def GetSchedFiles(templatename):
+    file_dict = {}
+    for p in Path(path).glob(templatename):
+        idx = GetCount(p)
+        file_dict[idx] = str(p)
+    file_list = []
+    for idx in range(len(file_dict)):
+        file_list.append(file_dict[idx + 1])
+    return file_list
+
 def GetIndex(BPI_list, team):
     index = -1
     loop = -1
@@ -20,8 +38,6 @@ def GetIndex(BPI_list, team):
 
 def CleanString(data):
     return re.sub(' +',' ', data)
-
-path = "data/"
 
 print ("Combine Merge Tool")
 print ("**************************")
@@ -75,6 +91,22 @@ if (not os.path.exists(file)):
 with open(file) as abbr_file:
     dict_abbr = json.load(abbr_file, object_pairs_hook=OrderedDict)
 
+dict_sched_merge = []
+file = 'merge_schedule.csv'
+if (not os.path.exists(file)):
+    print ("merge_schedule file is missing, run the merge_schedule tool to create")
+    exit()
+with open(file) as sched_file:
+    reader = csv.DictReader(sched_file)
+    for row in reader:
+        dict_sched_merge.append(row)
+
+schedule_files = GetSchedFiles("sched*.json")
+list_schedule = []
+for file in schedule_files:
+    with open(file) as schedule_file:
+        list_schedule.append(json.load(schedule_file, object_pairs_hook=OrderedDict))
+
 IDX=[]
 A=[]
 B=[]
@@ -107,9 +139,9 @@ for item in dict_stats_merge:
 
 for item in dict_abbr_merge:
     abbr_team = CleanString(item['abbr team'])
-    stats = item["stats team"].lower().strip()
+    stats = CleanString(item["stats team"].lower().strip())
     if (item["corrected stats team"].lower().strip()):
-        stats =  item["corrected stats team"].lower().strip()
+        stats =  CleanString(item["corrected stats team"].lower().strip())
     abbr = item["abbreviation"].strip()
     if (item["corrected abbr"].strip()):
         abbr =  item["corrected abbr"].strip()
@@ -120,6 +152,23 @@ for item in dict_abbr_merge:
                 D[index] = abbr_team
                 E[index] = abbr
                 break
+
+for item in dict_sched_merge:
+    scheduled = CleanString(item['scheduled team'])
+    stats = CleanString(item["stats team"].lower().strip())
+    if (item["corrected stats team"].lower().strip()):
+        stats =  CleanString(item["corrected stats team"].lower().strip())
+    index = GetIndex(A, stats)    
+    for idx in range(len(schedule_files)):
+        for row in list_schedule[idx].values():
+            if(row['TeamA'].lower().strip()==scheduled.lower().strip()):
+                if (index > -1):
+                    C[index] = scheduled
+                    break
+            if(row['TeamB'].lower().strip()==scheduled.lower().strip()):
+                if (index > -1):
+                    C[index] = scheduled
+                    break
 
 df=pd.DataFrame(IDX,columns=['Index'])
 df['BPI']=A
