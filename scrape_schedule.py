@@ -14,6 +14,12 @@ import datetime
 from pathlib import Path
 import re
 
+def GetNumber(item):
+    idx = re.findall(r'\d+', str(item))
+    if (len(idx) == 0):
+        idx.append("-1")
+    return int(idx[0])
+
 def CleanString(data):
     return re.sub(' +',' ', data)
 
@@ -22,19 +28,11 @@ def num_there(s):
 
 year = 0
 now = datetime.datetime.now()
-if (len(sys.argv)==1):
-    year = int(now.year)
-elif (len(sys.argv)==2):
-    year = int(sys.argv[1])
-    if (year < 100):
-        year += 2000
-else:
-    print ("???")
-    print ("error, usage: no arg is current year, 1 arg is year to scrape (like this)")
-    print ("./scrape_schedule.py")
-    print ("./scrape_schedule.py 2016")
-    print ("???")
-    sys.exit("error: incorrect number of arguments")
+year = int(now.year)
+if (len(sys.argv)==2):
+    year = GetNumber(sys.argv[1])
+    if (year < 2002 or year > int(now.year)):
+        year = int(now.year)
 
 starturl = "http://www.espn.com/college-football/schedule"
 
