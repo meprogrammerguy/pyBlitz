@@ -116,6 +116,7 @@ def RefreshStats():
     import scrape_bornpowerindex
     import scrape_teamrankings
     import scrape_abbreviations
+    import combine_merge
     import combine_stats
     import measure_results
 
