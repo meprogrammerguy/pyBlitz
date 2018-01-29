@@ -24,7 +24,8 @@ def GetSchedFiles(templatename):
         file_dict[idx] = str(p)
     file_list = []
     for idx in range(len(file_dict)):
-        file_list.append(file_dict[idx + 1])
+        if (idx > 0):
+            file_list.append(file_dict[idx])
     return file_list
 
 def GetIndex(BPI_list, team):

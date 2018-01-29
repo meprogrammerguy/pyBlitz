@@ -14,16 +14,22 @@ import scrape_schedule
 
 path = "data/"
 
-def GetKey(abbr, dict_merge):
+def GetTeams(dict_merge):
+    A=[]
+    for team in dict_merge.values():
+        A.append(team["BPI"])
+    return A
+
+def GetKey(abbr, dict_merge, team_list):
     key = {}
-    loop = 0
-    index = 0
+    loop = -1
+    index = -1
     for team in dict_merge.values():
         loop += 1
         if (abbr == team["abbr"]):
-            if (index != 0):
-                print ("*** Duplicate: abbreviation {0} is at index {1} and index {2} in merge file"
-                    .format(abbr, index, loop)) 
+            if (index != -1):
+                print ("*** {0} is used for {1}[{2}] and {3}[{4}] in merge file"
+                    .format(abbr, team_list[index], index, team_list[loop], loop))
             else:
                 index = loop
                 key = team
@@ -57,23 +63,12 @@ def GetSchedFiles(templatename):
         file_list.append(file_dict[idx + 1])
     return file_list
 
-def FindTeams(stats_team, fixed_team, stats_teams):
-    Found = False
-    for team in stats_teams:
-        if (team.strip() == stats_team.strip() and fixed_team.strip() == ""):
-            Found = True
-            break
-        if (team.strip() == fixed_team.strip()):
-            Found = True
-            break
-    return Found
-
 print ("Test Abbreviation spreadsheet validation Tool")
 print ("****************************************************************")
 print (" ")
 print ("Makes sure that your abbreviations are set up correctly")
 print ("    Tool will compare the scraped schedule abbreviations to the abbreviations")
-print ("    from the combine_merge Tool")
+print ("    from the combine_merge Tool and show anything that is strange")
 print (" ")
 
 file = '{0}merge.json'.format(path)
@@ -109,12 +104,15 @@ abbr_set = set(AllAbbr)
 abbr_codes = list(abbr_set)
 abbr_codes.sort()
 
+team_list = GetTeams(dict_merge)
+
 for item in abbr_codes:
-    team, index = GetKey(item, dict_merge)
+    team, index = GetKey(item, dict_merge, team_list)
     if (index == -1):
         print ("*** warning: could not find schedule abbreviation {0} in merge file".format(item))
 
 scrape_schedule.year = year
 scrape_schedule.main(sys.argv[1:])
- 
+
+print ("****************************************************************")
 print ("done.")
