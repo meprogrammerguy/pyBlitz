@@ -14,6 +14,18 @@ import scrape_schedule
 
 path = "data/"
 
+def GetKey(abbr, dict_merge):
+    key = {}
+    loop = -1
+    index = -1
+    for team in dict_merge.values():
+        loop += 1
+        if (abbr in team["abbr"]):
+            index = loop
+            key = team
+            break
+    return key, index
+
 def GetSchedAbbr(scores):
     abbrw = ""
     abbrl = ""
@@ -93,22 +105,11 @@ for idx in range(len(schedule_files)):
 abbr_set = set(AllAbbr)
 abbr_codes = list(abbr_set)
 abbr_codes.sort()
-pdb.set_trace()
 
-found = False
-for team in dict_merge:
-    if (team["corrected stats team"].strip()!=""):
-        found = True
-
-if (not found):
-    print ("*** Warning: Have you set up your merge_schedule? There are NO fixes entered ***")
-    print ("*** Make sure all of your match-ups are correct and then re-run this script ***")
-    exit()
-
-for team in dict_merge:
-    found = FindTeams(team["stats team"], team["corrected stats team"], stats_teams)
-    if (not found):
-        print ("warning: {0} was not found in the stats table ***".format(team["scheduled team"]))
+for item in abbr_codes:
+    team, index = GetKey(item, dict_merge)
+    if (index == -1):
+        print ("*** warning: could not find abbreviation {0} in merge file".format(item))
 
 scrape_schedule.year = year
 scrape_schedule.main(sys.argv[1:])
