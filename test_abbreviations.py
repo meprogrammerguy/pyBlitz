@@ -16,14 +16,17 @@ path = "data/"
 
 def GetKey(abbr, dict_merge):
     key = {}
-    loop = -1
-    index = -1
+    loop = 0
+    index = 0
     for team in dict_merge.values():
         loop += 1
-        if (abbr in team["abbr"]):
-            index = loop
-            key = team
-            break
+        if (abbr == team["abbr"]):
+            if (index != 0):
+                print ("*** Duplicate: abbreviation {0} is at index {1} and index {2} in merge file"
+                    .format(abbr, index, loop)) 
+            else:
+                index = loop
+                key = team
     return key, index
 
 def GetSchedAbbr(scores):
@@ -109,7 +112,7 @@ abbr_codes.sort()
 for item in abbr_codes:
     team, index = GetKey(item, dict_merge)
     if (index == -1):
-        print ("*** warning: could not find abbreviation {0} in merge file".format(item))
+        print ("*** warning: could not find schedule abbreviation {0} in merge file".format(item))
 
 scrape_schedule.year = year
 scrape_schedule.main(sys.argv[1:])
