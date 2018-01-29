@@ -12,6 +12,15 @@ import contextlib
 import os
 import re
 
+index = 0
+
+def AddSchool(team, abbr):
+    global index
+    index += 1
+    IDX.append(index)
+    A.append(team)
+    B.append(abbr)
+
 def CleanString(data):
     return re.sub(' +',' ', data)
 
@@ -29,16 +38,12 @@ tables=soup.findAll("table")
 IDX=[]
 A=[]
 B=[]
-index=0
+
 # Add any Missing Teams Here
-index += 1
-IDX.append(index)
-A.append("ALABAMA-BIRMINGHAM")
-B.append("UAB")
-index += 1
-IDX.append(index)
-A.append("LOUISIANA COLLEGE")
-B.append("ULL")
+AddSchool("ALABAMA-BIRMINGHAM", "UAB")
+AddSchool("LOUISIANA COLLEGE", "LC")
+# Add any Missing Teams Here
+
 for row in tables[1].findAll("tr"):
     col=row.findAll('td')
     if len(col)>0:

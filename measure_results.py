@@ -13,6 +13,8 @@ import re
 import pandas as pd
 import sys
 
+import scrape_schedule
+
 def CalcPercent(total, skip, correct):
     try:
         return  round(correct / (total - skip) * 100., 2)
@@ -33,13 +35,16 @@ def GetIndex(item):
     return int(idx[0])
 
 def GetFiles(path, templatename):
-    file_dict = {}
+    A = []
     for p in Path(path).glob(templatename):
-        idx = GetIndex(p)
-        file_dict[idx] = str(p)
+        A.append(str(p))
     file_list = []
-    for idx in range(len(file_dict)):
-        file_list.append(file_dict[idx + 1])
+    for item in range(0, 17):
+        file_list.append("?")
+    for item in A:
+        idx = GetIndex(item)
+        file_list[idx] = item
+    file_list = [x for x in file_list if x != "?"]
     return file_list
 
 def CurrentScheduleFiles(filename):
@@ -50,7 +55,10 @@ def CurrentScheduleFiles(filename):
     return True
 
 def RefreshScheduleFiles():
-    import scrape_schedule
+    now = datetime.datetime.now()
+    year = int(now.year)
+    scrape_schedule.year = year
+    scrape_schedule.main(sys.argv[1:])
 
 def GetActualScores(abbra, abbrb, scores):
     items = re.split(r'(,|\s)\s*', str(scores).lower())
@@ -150,13 +158,13 @@ for idx in range(len(list_sched)):
                 correct += 1
     count += 1
     IDX.append(count)
-    A.append(idx + 1)
+    A.append(GetIndex(sched_files[idx]))
     B.append(total)
     C.append(skip)
     D.append(correct)
     E.append(CalcPercent(total, skip, correct))
     if (verbose):
-        print ("week{0} total={1}, skip={2}, correct={3} Percent={4}%".format(idx + 1, total, skip,
+        print ("week{0} total={1}, skip={2}, correct={3} Percent={4}%".format(GetIndex(sched_files[idx]), total, skip,
             correct, CalcPercent(total, skip, correct)))
     alltotal = alltotal + total
     allskip = allskip + skip

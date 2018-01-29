@@ -95,13 +95,16 @@ def GetIndex(item):
     return int(idx[0])
 
 def GetSchedFiles(templatename):
-    file_dict = {}
+    A = []
     for p in Path(path).glob(templatename):
-        idx = GetIndex(p)
-        file_dict[idx] = str(p)
+        A.append(str(p))
     file_list = []
-    for idx in range(len(file_dict)):
-        file_list.append(file_dict[idx + 1])
+    for item in range(0, 17):
+        file_list.append("?")
+    for item in A:
+        idx = GetIndex(item)
+        file_list[idx] = item
+    file_list = [x for x in file_list if x != "?"]
     return file_list
 
 def CurrentStatsFile(filename):
@@ -245,7 +248,7 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose, abbr
                     if (teamb != "?" and teama != "?"):
                         list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], abbra, "?",
                             "?", "?", item["TeamB"], abbrb, "?", "?"])
-            output_file = "week{0}.csv".format(idx + 1)
+            output_file = "week{0}.csv".format(GetIndex(schedule_files[idx]))
             predict_sheet = open(output_file, 'w', newline='')
             csvwriter = csv.writer(predict_sheet)
             for row in list_predict:

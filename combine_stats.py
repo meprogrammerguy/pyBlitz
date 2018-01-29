@@ -21,16 +21,13 @@ print ("This tool combines bornpowerindex and teamrankings into one stats spread
 print ("Make sure that your merge_stats spreadsheet is correct first")
 print (" ")
 
-file = 'merge_stats.csv'
+file = '{0}merge.json'.format(path)
 if (not os.path.exists(file)):
-    print ("Warning *** The merge_stats.csv file does not exist ***")
-    print ("        *** run merge_stats.py tool and then come back ***")
+    print ("Warning *** The merge.json file does not exist ***")
+    print ("        *** run combine_merge tool and then come back ***")
     exit()
-dict_merge = []
 with open(file) as merge_file:
-    reader = csv.DictReader(merge_file)
-    for row in reader:
-        dict_merge.append(row)
+    dict_merge = json.load(merge_file, object_pairs_hook=OrderedDict)
 
 file = '{0}bornpowerindex.json'.format(path)
 if (not os.path.exists(file)):
@@ -56,17 +53,16 @@ F=[]
 G=[]
 H=[]
 index = 0
-for item in dict_merge:
+for item in dict_merge.values():
     teamrankings = CleanString(item['teamrankings'])
     team = CleanString(item['BPI'])
-    if (item['corrected BPI'].strip() != ""):
-        team = CleanString(item['corrected BPI'])
     
     row_bpi = []
     for row in dict_bpi.values():
         if(row['School'].lower().strip()==team.lower().strip()):
             row_bpi = row  
             break
+
     for row in dict_teamrankings.values():
         if(row['Team'].lower().strip()==teamrankings.lower().strip()):
             index+=1

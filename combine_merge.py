@@ -18,14 +18,16 @@ def GetCount(item):
     return int(idx[0])
 
 def GetSchedFiles(templatename):
-    file_dict = {}
+    A = []
     for p in Path(path).glob(templatename):
-        idx = GetCount(p)
-        file_dict[idx] = str(p)
+        A.append(str(p))
     file_list = []
-    for idx in range(len(file_dict)):
-        if (idx > 0):
-            file_list.append(file_dict[idx])
+    for item in range(0, 17):
+        file_list.append("?")
+    for item in A:
+        idx = GetCount(item)
+        file_list[idx] = item
+    file_list = [x for x in file_list if x != "?"]
     return file_list
 
 def GetIndex(BPI_list, team):
