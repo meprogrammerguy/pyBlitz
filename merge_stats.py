@@ -10,6 +10,8 @@ import os.path
 from pathlib import Path
 import re
 
+import settings
+
 def CleanString(data):
     return re.sub(' +',' ', data)
 
@@ -22,7 +24,7 @@ if (os.path.exists(file)):
     print ("        *** delete this file if you want to re-create it. ***")
     exit()
 
-file = 'data/bornpowerindex.json'
+file = '{0}bornpowerindex.json'.format(settings.data_path)
 if (not os.path.exists(file)):
     print ("bornpowerindex file is missing, run the scrape_bornpowerindex tool to create")
     exit()
@@ -30,7 +32,7 @@ with open(file) as stats_file:
     dict_bpi = json.load(stats_file, object_pairs_hook=OrderedDict)
 
 
-file = 'data/teamrankings.json'
+file = '{0}teamrankings.json'.format(settings.data_path)
 if (not os.path.exists(file)):
     print ("teamrankings file is missing, run the scrape_teamrankings tool to create")
     exit()

@@ -13,6 +13,7 @@ import re
 import pandas as pd
 import sys
 
+import settings
 import scrape_schedule
 
 def CalcPercent(total, skip, correct):
@@ -101,7 +102,7 @@ else:
 if (not CurrentScheduleFiles('data/sched1.json')):
     RefreshScheduleFiles()
 
-file = 'data/sched1.json'
+file = '{0}sched1.json'.format(settings.data_path)
 if (not os.path.exists(file)):
     if (verbose):
         print ("schedule files are missing, run the scrape_schedule tool to create")
@@ -113,7 +114,7 @@ if (not os.path.exists(file)):
         print ("Weekly files are missing, run the score_week tool to create")
     exit()
 
-sched_files = GetFiles("data/", "sched*.json")
+sched_files = GetFiles(settings.data_path, "sched*.json")
 list_sched = []
 for file in sched_files:
     with open(file) as sched_file:
@@ -144,7 +145,7 @@ for idx in range(len(list_sched)):
     correct = 0
     for item in list_sched[idx].values():
         total += 1
-        chancea = GetPercent(list_week[index]["ChanceA"])
+        chancea = GetPercent(list_week[index]["ChanceA"]) # fix this area, index out of range
         abbra = list_week[index]["AbbrA"]
         abbrb = list_week[index]["AbbrB"]
         index += 1
@@ -190,16 +191,15 @@ df['Count Unpredicted']=C
 df['Count Correct']=D
 df['Percent Correct']=E
 
-path = "data/"
 now = datetime.now()
-file = "{0}{1}_{2}.json".format(path, 'results', now.year)
+file = "{0}{1}_{2}.json".format(settings.data_path, 'results', now.year)
 with open(file, 'w') as f:
     f.write(df.to_json(orient='index'))
 
 with open(file) as results_json:
     dict_results = json.load(results_json, object_pairs_hook=OrderedDict)
 
-file = "{0}{1}_{2}.csv".format(path, 'results', now.year)
+file = "{0}{1}_{2}.csv".format(settings.data_path, 'results', now.year)
 results_sheet = open(file, 'w', newline='')
 csvwriter = csv.writer(results_sheet)
 count = 0

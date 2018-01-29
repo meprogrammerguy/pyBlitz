@@ -11,13 +11,13 @@ from pathlib import Path
 from datetime import datetime
 import re
 
-path = "data/"
+import settings
 
 def main(argv):
-    stat_file = path + "stats.json"
+    stat_file = settings.data_path + "stats.json"
     schedule_files = GetSchedFiles("sched*.json")
     merge_file = "merge_schedule.csv"
-    abbr_file = path + "abbreviation.json"
+    abbr_file = settings.data_path + "abbreviation.json"
     abbr_merge_file = "merge_abbreviation.csv"
     week = "current"
     verbose = False
@@ -96,7 +96,7 @@ def GetIndex(item):
 
 def GetSchedFiles(templatename):
     A = []
-    for p in Path(path).glob(templatename):
+    for p in Path(settings.data_path).glob(templatename):
         A.append(str(p))
     file_list = []
     for item in range(0, 17):
@@ -257,7 +257,7 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose, abbr
             print ("{0} has been created.".format(output_file))
 
     now = datetime.now()    # How are we doing? Let's find Out!
-    file = "{0}{1}_{2}.json".format(path, "results", now.year)
+    file = "{0}{1}_{2}.json".format(settings.data_path, "results", now.year)
 
     if (os.path.exists(file)):
         dict_results = []

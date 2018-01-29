@@ -10,6 +10,8 @@ import os.path
 from pathlib import Path
 import re
 
+import settings
+
 def CleanString(data):
     return re.sub(' +',' ', data)
 
@@ -22,7 +24,7 @@ if (os.path.exists(file)):
     print ("        *** delete this file if you want to re-create it. ***")
     exit()
 
-file = 'data/sched1.json'
+file = '{0}sched1.json'.format(settings.data_path)
 if (not os.path.exists(file)):
     print ("schedule files are missing, run the scrape_schedule tool to create")
     exit()
@@ -32,7 +34,7 @@ for p in Path(".").glob("data/sched*.json"):
     with open(p) as sched_files:
         list_sched.append(json.load(sched_files, object_pairs_hook=OrderedDict))
 
-file = 'data/bornpowerindex.json'
+file = '{0}bornpowerindex.json'.format(settings.data_path)
 if (not os.path.exists(file)):
     print ("bornpowerindex file is missing, run the scrape_bornpowerindex tool to create")
     exit()

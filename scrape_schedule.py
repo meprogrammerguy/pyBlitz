@@ -14,6 +14,8 @@ import datetime
 from pathlib import Path
 import re
 
+import settings
+
 def GetNumber(item):
     idx = re.findall(r'\d+', str(item))
     if (len(idx) == 0):
@@ -44,9 +46,7 @@ def main(argv):
     print ("Year is: {0}".format(year))
     print ("**************************")
 
-    path = "data/"
-
-    for p in Path(path).glob("sched*.*"):
+    for p in Path(settings.data_path).glob("sched*.*"):
         p.unlink()
 
     url = []
@@ -139,14 +139,14 @@ def main(argv):
         df['TeamB']=D
         df['Score']=G
         if (not df.empty):    
-            filename = "{0}sched{1}.json".format(path, loop)
+            filename = "{0}sched{1}.json".format(settings.data_path, loop)
             with open(filename, 'w') as f:
                 f.write(df.to_json(orient='index'))
 
             with open(filename) as sched_json:
                 dict_sched = json.load(sched_json, object_pairs_hook=OrderedDict)
 
-            filename = "{0}sched{1}.csv".format(path, loop)
+            filename = "{0}sched{1}.csv".format(settings.data_path, loop)
             sched_sheet = open(filename, 'w', newline='')
             csvwriter = csv.writer(sched_sheet)
             count = 0

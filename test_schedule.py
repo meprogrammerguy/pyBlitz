@@ -7,6 +7,8 @@ from collections import OrderedDict
 import os.path
 from pathlib import Path
 
+import settings
+
 def FindTeams(stats_team, fixed_team, stats_teams):
     Found = False
     for team in stats_teams:
@@ -36,8 +38,7 @@ with open(file) as merge_file:
     reader = csv.DictReader(merge_file)
     for row in reader:
         dict_merge.append(row)
-path = "data/"
-file = '{0}bornpowerindex.json'.format(path)
+file = '{0}bornpowerindex.json'.format(settings.data_path)
 if (not os.path.exists(file)):
     print ("bornpowerindex file is missing, run the scrape_bornpowerindex tool to create")
     exit()

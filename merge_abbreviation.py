@@ -10,6 +10,8 @@ import os.path
 from pathlib import Path
 import re
 
+import settings
+
 def CleanString(data):
     return re.sub(' +',' ', data)
 
@@ -30,7 +32,7 @@ if (os.path.exists(file)):
     print ("        *** delete this file if you want this tool to re-create it. ***")
     exit()
 
-file = 'data/abbreviation.json'
+file = '{0}abbreviation.json'.format(settings.data_path)
 if (not os.path.exists(file)):
     print ("abbreviation files are missing, run the scrape_abbreviation tool to create")
     exit()
@@ -38,7 +40,7 @@ if (not os.path.exists(file)):
 with open(file) as abbr_file:
     dict_abbr = json.load(abbr_file, object_pairs_hook=OrderedDict)
 
-file = 'data/bornpowerindex.json'
+file = '{0}bornpowerindex.json'.format(settings.data_path)
 if (not os.path.exists(file)):
     print ("bornpowerindex file is missing, run the scrape_bornpowerindex tool to create")
     exit()

@@ -9,7 +9,7 @@ import os.path
 from pathlib import Path
 import re
 
-path = "data/"
+import settings
 
 def GetCount(item):
     idx = re.findall(r'\d+', str(item))
@@ -19,7 +19,7 @@ def GetCount(item):
 
 def GetSchedFiles(templatename):
     A = []
-    for p in Path(path).glob(templatename):
+    for p in Path(settings.data_path).glob(templatename):
         A.append(str(p))
     file_list = []
     for item in range(0, 17):
@@ -72,7 +72,7 @@ with open(file) as abbr_file:
     for row in reader:
         dict_abbr_merge.append(row)
 
-file = '{0}bornpowerindex.json'.format(path)
+file = '{0}bornpowerindex.json'.format(settings.data_path)
 if (not os.path.exists(file)):
     print ("bornpowerindex file is missing, run the scrape_bornpowerindex tool to create")
     exit()
@@ -80,14 +80,14 @@ with open(file) as stats_file:
     dict_bpi = json.load(stats_file, object_pairs_hook=OrderedDict)
 
 
-file = '{0}teamrankings.json'.format(path)
+file = '{0}teamrankings.json'.format(settings.data_path)
 if (not os.path.exists(file)):
     print ("teamrankings file is missing, run the scrape_teamrankings tool to create")
     exit()
 with open(file) as stats_file:
     dict_teamrankings = json.load(stats_file, object_pairs_hook=OrderedDict)
 
-file = '{0}abbreviation.json'.format(path)
+file = '{0}abbreviation.json'.format(settings.data_path)
 if (not os.path.exists(file)):
     print ("abbreviation file is missing, run the scrape_abbreviation tool to create")
     exit()
@@ -181,13 +181,13 @@ df['abbr team']=D
 df['abbr']=E
 df['class']=F
 
-with open(path + 'merge.json', 'w') as f:
+with open(settings.data_path + 'merge.json', 'w') as f:
     f.write(df.to_json(orient='index'))
 
-with open(path + "merge.json") as merge_json:
+with open(settings.data_path + "merge.json") as merge_json:
     dict_merge = json.load(merge_json, object_pairs_hook=OrderedDict)
 
-merge_sheet = open(path + 'merge.csv', 'w', newline='')
+merge_sheet = open(settings.data_path + 'merge.csv', 'w', newline='')
 csvwriter = csv.writer(merge_sheet)
 count = 0
 for row in dict_merge.values():

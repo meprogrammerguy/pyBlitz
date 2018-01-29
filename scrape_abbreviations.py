@@ -12,6 +12,8 @@ import contextlib
 import os
 import re
 
+import settings
+
 index = 0
 
 def AddSchool(team, abbr):
@@ -60,14 +62,12 @@ df=pd.DataFrame(IDX,columns=['Index'])
 df['Team']=A
 df['Abbreviation']=B
 
-path = "data/"
-
-with open(path + 'abbreviation.json', 'w') as f:
+with open(settings.data_path + 'abbreviation.json', 'w') as f:
     f.write(df.to_json(orient='index'))
 
-with open(path + "abbreviation.json") as stats_json:
+with open(settings.data_path + "abbreviation.json") as stats_json:
     dict_stats = json.load(stats_json, object_pairs_hook=OrderedDict)
-stats_sheet = open(path + 'abbreviation.csv', 'w', newline='')
+stats_sheet = open(settings.data_path + 'abbreviation.csv', 'w', newline='')
 csvwriter = csv.writer(stats_sheet)
 count = 0
 for row in dict_stats.values():

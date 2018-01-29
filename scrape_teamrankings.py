@@ -12,6 +12,8 @@ import contextlib
 import os
 import re
 
+import settings
+
 def CleanString(data):
     return re.sub(' +',' ', data)
 
@@ -71,14 +73,12 @@ df['PTpP3']=C
 df['OPLpG3']=D
 df['OPTpP3']=E
 
-path = "data/"
-
-with open(path + 'teamrankings.json', 'w') as f:
+with open(settings.data_path + 'teamrankings.json', 'w') as f:
     f.write(df.to_json(orient='index'))
 
-with open(path + "teamrankings.json") as stats_json:
+with open(settings.data_path + "teamrankings.json") as stats_json:
     dict_stats = json.load(stats_json, object_pairs_hook=OrderedDict)
-stats_sheet = open(path + 'teamrankings.csv', 'w', newline='')
+stats_sheet = open(settings.data_path + 'teamrankings.csv', 'w', newline='')
 csvwriter = csv.writer(stats_sheet)
 count = 0
 for row in dict_stats.values():

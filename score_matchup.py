@@ -3,6 +3,7 @@
 import sys, getopt
 import os.path
 from datetime import datetime
+
 import pyBlitz
 
 def CurrentStatsFile(filename):

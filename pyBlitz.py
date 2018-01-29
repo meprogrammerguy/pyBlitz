@@ -8,7 +8,7 @@ import pdb
 from collections import OrderedDict
 import re
 
-homeAdvantage = 7.897
+import settings
 
 def findTeams(first, second, dict_stats, verbose = True):
     teama = {}
@@ -158,9 +158,9 @@ def Spread(teama, teamb, verbose = True, homeTeam = 'Neutral'):
     EMdiff = (float(teama['Ranking']) - float(teamb['Ranking']))
     EffMgn = 0
     if (homeTeam.lower().strip() == teama["BPI"].lower().strip()):
-        EffMgn = EMdiff + homeAdvantage
+        EffMgn = EMdiff + settings.homeAdvantage
     elif (homeTeam.lower().strip() == teamb["BPI"].lower().strip()):
-        EffMgn = EMdiff - homeAdvantage
+        EffMgn = EMdiff - settings.homeAdvantage
     else:
         EffMgn = EMdiff
     if (verbose):

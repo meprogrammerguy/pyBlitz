@@ -10,9 +10,8 @@ import datetime
 import re
 import sys, getopt
 
+import settings
 import scrape_schedule
-
-path = "data/"
 
 def GetTeams(dict_merge):
     A=[]
@@ -55,7 +54,7 @@ def GetCount(item):
 
 def GetSchedFiles(templatename):
     file_dict = {}
-    for p in Path(path).glob(templatename):
+    for p in Path(settings.data_path).glob(templatename):
         idx = GetCount(p)
         file_dict[idx] = str(p)
     file_list = []
@@ -71,7 +70,7 @@ print ("    Tool will compare the scraped schedule abbreviations to the abbrevia
 print ("    from the combine_merge Tool and show anything that is strange")
 print (" ")
 
-file = '{0}merge.json'.format(path)
+file = '{0}merge.json'.format(settings.data_path)
 if (not os.path.exists(file)):
     print ("merge.json file is missing, run the combine_merge tool to create")
     exit()

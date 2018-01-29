@@ -11,6 +11,8 @@ import csv
 import contextlib
 import os
 
+import settings
+
 url = "http://www.bettingtalk.com/win-probability-percentage-point-spread-nfl-nba"
 
 print ("Scrape Percentage by Spread Tool")
@@ -41,14 +43,12 @@ df['Spread']=A
 df['Favorite']=B
 df['Underdog']=C
 
-path = "data/"
-
-with open(path + 'bettingtalk.json', 'w') as f:
+with open(settings.data_path + 'bettingtalk.json', 'w') as f:
     f.write(df.to_json(orient='index'))
 
-with open(path + "bettingtalk.json") as stats_json:
+with open(settings.data_path + "bettingtalk.json") as stats_json:
     dict_stats = json.load(stats_json, object_pairs_hook=OrderedDict)
-stats_sheet = open(path + 'bettingtalk.csv', 'w', newline='')
+stats_sheet = open(settings.data_path + 'bettingtalk.csv', 'w', newline='')
 csvwriter = csv.writer(stats_sheet)
 count = 0
 for row in dict_stats.values():
