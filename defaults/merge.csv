@@ -1,0 +1,763 @@
+Index,BPI,teamrankings,scheduled,abbr team,abbr,class
+1,AIR FORCE,Air Force,Air Force Falcons,Air Force,AFA,1A
+2,AKRON,Akron,Akron Zips,Akron,AKR,1A
+3,ALABAMA,Alabama,Alabama Crimson Tide,Alabama,ALA,1A
+4,ALABAMA-BIRMINGHAM,UAB,UAB Blazers,ALABAMA-BIRMINGHAM,UAB,1A
+5,APPALACHIAN STATE,App State,Appalachian State Mountaineers,Appalachian State,APP,1A
+6,ARIZONA,Arizona,Arizona Wildcats,Arizona,ARIZ,1A
+7,ARIZONA STATE,Arizona St,Arizona State Sun Devils,Arizona State,ASU,1A
+8,ARKANSAS,Arkansas,Arkansas Razorbacks,Arkansas,ARK,1A
+9,ARKANSAS STATE,Arkansas St,Arkansas State Red Wolves,Arkansas State,ARST,1A
+10,ARMY,Army,Army Black Knights,Army,ARMY,1A
+11,AUBURN,Auburn,Auburn Tigers,Auburn,AUB,1A
+12,BALL STATE,Ball State,Ball State Cardinals,Ball State,BALL,1A
+13,BAYLOR,Baylor,Baylor Bears,Baylor,BAY,1A
+14,BOISE,Boise State,Boise State Broncos,Boise State,BSU,1A
+15,BOSTON COLLEGE,Boston Col,Boston College Eagles,Boston College,BC,1A
+16,BOWLING GREEN,Bowling Grn,Bowling Green Falcons,Bowling Green,BGSU,1A
+17,BRIGHAM YOUNG,BYU,BYU Cougars,BYU,BYU,1A
+18,BUFFALO,Buffalo,Buffalo Bulls,Buffalo,BUFF,1A
+19,CALIFORNIA,California,California Golden Bears,Cal,CAL,1A
+20,CENTRAL FLORIDA,Central FL,UCF Knights,UCF,UCF,1A
+21,CENTRAL MICHIGAN,Central Mich,Central Michigan Chippewas,Central Michigan,CMU,1A
+22,CINCINNATI,Cincinnati,Cincinnati Bearcats,Cincinnati,CIN,1A
+23,CLEMSON,Clemson,Clemson Tigers,Clemson,CLEM,1A
+24,COASTAL CAROLINA,Coastal Car,Coastal Carolina Chanticleers,Coastal Carolina,CCU,1A
+25,COLORADO,Colorado,Colorado Buffaloes,Colorado,COLO,1A
+26,COLORADO STATE,Colorado St,Colorado State Rams,Colorado State,CSU,1A
+27,CONNECTICUT,Connecticut,Connecticut Huskies,UConn,CONN,1A
+28,DUKE,Duke,Duke Blue Devils,Duke,DUKE,1A
+29,EAST CAROLINA,E Carolina,East Carolina Pirates,ECU,ECU,1A
+30,EASTERN MICHIGAN,E Michigan,Eastern Michigan Eagles,Eastern Michigan,EMU,1A
+31,FLORIDA,Florida,Florida Gators,Florida,FLA,1A
+32,FLORIDA ATLANTIC,Fla Atlantic,Florida Atlantic Owls,FAU,FAU,1A
+33,FLORIDA INTERNATIONAL,Florida Intl,Florida Intl Golden Panthers,FIU,FIU,1A
+34,FLORIDA STATE,Florida St,Florida State Seminoles,Florida State,FSU,1A
+35,FRESNO STATE,Fresno St,Fresno State Bulldogs,Fresno State,FRES,1A
+36,GEORGIA,Georgia,Georgia Bulldogs,Georgia,UGA,1A
+37,GEORGIA SOUTHERN,GA Southern,Georgia Southern Eagles,Georgia Southern,GASO,1A
+38,GEORGIA STATE,Georgia State,Georgia State Panthers,Georgia State,GAST,1A
+39,GEORGIA TECH,GA Tech,Georgia Tech Yellow Jackets,Georgia Tech,GT,1A
+40,HAWAI’I,Hawaii,Hawai'i Rainbow Warriors,Hawaii,HAW,1A
+41,HOUSTON,Houston,Houston Cougars,Houston,HOU,1A
+42,IDAHO,Idaho,Idaho Vandals,Idaho,IDHO,1A
+43,ILLINOIS,Illinois,Illinois Fighting Illini,Illinois,ILL,1A
+44,INDIANA,Indiana,Indiana Hoosiers,Indiana,IND,1A
+45,IOWA,Iowa,Iowa Hawkeyes,Iowa,IOWA,1A
+46,IOWA STATE,Iowa State,Iowa State Cyclones,Iowa State,ISU,1A
+47,KANSAS,Kansas,Kansas Jayhawks,Kansas,KU,1A
+48,KANSAS STATE,Kansas St,Kansas State Wildcats,Kansas State,KSU,1A
+49,KENT STATE,Kent State,Kent State Golden Flashes,Kent State,KENT,1A
+50,KENTUCKY,Kentucky,Kentucky Wildcats,Kentucky,UK,1A
+51,LA-LAFAYETTE,LA Lafayette,?,Louisiana Lafayette,ULL,1A
+52,LA-MONROE,LA Monroe,Louisiana Monroe Warhawks,Louisiana Monroe,ULM,1A
+53,LOUISIANA STATE,LSU,LSU Tigers,LSU,LSU,1A
+54,LOUISIANA TECH,LA Tech,Louisiana Tech Bulldogs,Louisiana Tech,LT,1A
+55,LOUISVILLE,Louisville,Louisville Cardinals,Louisville,LOU,1A
+56,MARSHALL,Marshall,Marshall Thundering Herd,Marshall,MRSH,1A
+57,MARYLAND,Maryland,Maryland Terrapins,Maryland,MD,1A
+58,MASSACHUSETTS,U Mass,UMass Minutemen,UMass,UMASS,1A
+59,MEMPHIS,Memphis,Memphis Tigers,Memphis,MEM,1A
+60,MIAMI OF OHIO,Miami (OH),Miami (OH) RedHawks,Miami (OH),M-OH,1A
+61,MIAMI-FL,Miami (FL),Miami Hurricanes,Miami (FL),MIAMI,1A
+62,MICHIGAN,Michigan,Michigan Wolverines,Michigan,MICH,1A
+63,MICHIGAN STATE,Michigan St,Michigan State Spartans,Michigan State,MSU,1A
+64,MIDDLE TENNESSEE STATE,Middle Tenn,Middle Tennessee Blue Raiders,Middle Tennessee,MTSU,1A
+65,MINNESOTA,Minnesota,Minnesota Golden Gophers,Minnesota,MINN,1A
+66,MISSISSIPPI,Mississippi,Ole Miss Rebels,Ole Miss,MISS,1A
+67,MISSISSIPPI STATE,Miss State,Mississippi State Bulldogs,Mississippi State,MSST,1A
+68,MISSOURI,Missouri,Missouri Tigers,Missouri,MIZ,1A
+69,NAVY,Navy,Navy Midshipmen,Navy,NAVY,1A
+70,NEBRASKA,Nebraska,Nebraska Cornhuskers,Nebraska,NEB,1A
+71,NEVADA,Nevada,Nevada Wolf Pack,Nevada,NEV,1A
+72,NEVADA-LAS VEGAS,UNLV,UNLV Rebels,UNLV,UNLV,1A
+73,NEW MEXICO,New Mexico,New Mexico Lobos,New Mexico,UNM,1A
+74,NEW MEXICO STATE,N Mex State,New Mexico State Aggies,New Mexico State,NMSU,1A
+75,NO. CAROLINA STATE,NC State,NC State Wolfpack,NC State,NCST,1A
+76,NORTH CAROLINA,N Carolina,North Carolina Tar Heels,North Carolina,UNC,1A
+77,NORTH TEXAS,North Texas,North Texas Mean Green,North Texas,UNT,1A
+78,NORTHERN ILLINOIS,N Illinois,Northern Illinois Huskies,Northern Illinois,NIU,1A
+79,NORTHWESTERN,Northwestern,Northwestern Wildcats,Northwestern,NW,1A
+80,NOTRE DAME,Notre Dame,Notre Dame Fighting Irish,Notre Dame,ND,1A
+81,OHIO STATE,Ohio State,Ohio State Buckeyes,Ohio State,OSU,1A
+82,OHIO UNIV.,Ohio,Ohio Bobcats,Ohio,OHIO,1A
+83,OKLAHOMA,Oklahoma,Oklahoma Sooners,Oklahoma,OKLA,1A
+84,OKLAHOMA STATE,Oklahoma St,Oklahoma State Cowboys,Oklahoma State,OKST,1A
+85,OLD DOMINION,Old Dominion,Old Dominion Monarchs,Old Dominion,ODU,1A
+86,OREGON,Oregon,Oregon Ducks,Oregon,ORE,1A
+87,OREGON STATE,Oregon St,Oregon State Beavers,Oregon State,ORST,1A
+88,PENN STATE,Penn State,Penn State Nittany Lions,Penn State,PSU,1A
+89,PITTSBURGH,Pittsburgh,Pittsburgh Panthers,Pittsburgh,PITT,1A
+90,PURDUE,Purdue,Purdue Boilermakers,Purdue,PUR,1A
+91,RICE,Rice,Rice Owls,Rice,RICE,1A
+92,RUTGERS,Rutgers,Rutgers Scarlet Knights,Rutgers,RUTG,1A
+93,SAN DIEGO STATE,San Diego St,San Diego State Aztecs,San Diego State,SDSU,1A
+94,SAN JOSE STATE,San Jose St,San Jose State Spartans,San José State,SJSU,1A
+95,SOUTH ALABAMA,S Alabama,South Alabama Jaguars,South Alabama,USA,1A
+96,SOUTH CAROLINA,S Carolina,South Carolina Gamecocks,South Carolina,SC,1A
+97,SOUTH FLORIDA,S Florida,South Florida Bulls,South Florida,USF,1A
+98,SOUTHERN MISSISSIPPI,S Mississippi,Southern Mississippi Golden Eagles,Southern Miss,USM,1A
+99,SOUTHERN CALIFORNIA,USC,USC Trojans,USC,USC,1A
+100,SOUTHERN METHODIST,S Methodist,SMU Mustangs,SMU,SMU,1A
+101,STANFORD,Stanford,Stanford Cardinal,Stanford,STAN,1A
+102,SYRACUSE,Syracuse,Syracuse Orange,Syracuse,SYR,1A
+103,TEMPLE,Temple,Temple Owls,Temple,TEM,1A
+104,TENNESSEE,Tennessee,Tennessee Volunteers,Tennessee,TENN,1A
+105,TEXAS,Texas,Texas Longhorns,Texas,TEX,1A
+106,TEXAS STATE-SAN MARCOS,Texas State,Texas State Bobcats,Texas State,TXST,1A
+107,TEXAS A&M,Texas A&M,Texas A&M Aggies,Texas A&M,TA&M,1A
+108,TEXAS CHRISTIAN,TX Christian,TCU Horned Frogs,TCU,TCU,1A
+109,TEXAS TECH,Texas Tech,Texas Tech Red Raiders,Texas Tech,TTU,1A
+110,TEXAS-EL PASO,TX El Paso,UTEP Miners,UTEP,UTEP,1A
+111,TEXAS-SAN ANTONIO,TX-San Ant,UT San Antonio Roadrunners,UTSA,UTSA,1A
+112,TOLEDO,Toledo,Toledo Rockets,Toledo,TOL,1A
+113,TROY STATE,Troy,Troy Trojans,Troy,TROY,1A
+114,TULANE,Tulane,Tulane Green Wave,Tulane,TULN,1A
+115,TULSA,Tulsa,Tulsa Golden Hurricane,Tulsa,TLSA,1A
+116,U.C.L.A.,UCLA,UCLA Bruins,UCLA,UCLA,1A
+117,UNC - CHARLOTTE,Charlotte,Charlotte 49ers,Charlotte,CHAR,1A
+118,UTAH,Utah,Utah Utes,Utah,UTAH,1A
+119,UTAH STATE,Utah State,Utah State Aggies,Utah State,USU,1A
+120,VANDERBILT,Vanderbilt,Vanderbilt Commodores,Vanderbilt,VAN,1A
+121,VIRGINIA,Virginia,Virginia Cavaliers,Virginia,UVA,1A
+122,VIRGINIA TECH,VA Tech,Virginia Tech Hokies,Virginia Tech,VT,1A
+123,WAKE FOREST,Wake Forest,Wake Forest Demon Deacons,Wake Forest,WAKE,1A
+124,WASHINGTON,Washington,Washington Huskies,Washington,WASH,1A
+125,WASHINGTON STATE,Wash State,Washington State Cougars,Washington State,WSU,1A
+126,WEST VIRGINIA,W Virginia,West Virginia Mountaineers,West Virginia,WVU,1A
+127,WESTERN KENTUCKY,W Kentucky,Western Kentucky Hilltoppers,WKU,WKU,1A
+128,WESTERN MICHIGAN,W Michigan,Western Michigan Broncos,Western Michigan,WMU,1A
+129,WISCONSIN,Wisconsin,Wisconsin Badgers,Wisconsin,WIS,1A
+130,WYOMING,Wyoming,Wyoming Cowboys,Wyoming,WYO,1A
+131,ADAMS STATE,?,?,?,?,DIVISION 2
+132,ALBANY STATE-GEORGIA,?,?,?,?,DIVISION 2
+133,ALDERSON-BROADDUS,?,?,?,?,DIVISION 2
+134,AMERICAN INTERNATIONAL,?,?,?,?,DIVISION 2
+135,ANGELO STATE,?,?,?,?,DIVISION 2
+136,ARKANSAS TECH,?,?,?,?,DIVISION 2
+137,ARKANSAS-MONTICELLO,?,?,?,?,DIVISION 2
+138,ASHLAND UNIVERSITY,?,?,?,?,DIVISION 2
+139,ASSUMPTION COLLEGE,?,?,?,?,DIVISION 2
+140,AUGUSTANA-S.D.,?,?,?,?,DIVISION 2
+141,AZUSA PACIFIC,?,?,?,?,DIVISION 2
+142,BEMIDJI STATE,?,?,?,?,DIVISION 2
+143,BENEDICT-S.C,?,?,?,?,DIVISION 2
+144,BENTLEY COLLEGE,?,?,?,?,DIVISION 2
+145,BLACK HILLS STATE,?,?,?,?,DIVISION 2
+146,BLOOMSBURG UNIVERSITY,?,?,?,?,DIVISION 2
+147,BOWIE STATE,?,?,?,?,DIVISION 2
+148,CALIFORNIA-PA.,?,?,?,?,DIVISION 2
+149,CARSON-NEWMAN,?,?,?,?,DIVISION 2
+150,CATAWBA COLLEGE,?,?,?,?,DIVISION 2
+151,CENTRAL MISSOURI STATE,?,?,?,?,DIVISION 2
+152,CENTRAL OKLAHOMA,?,?,?,?,DIVISION 2
+153,CENTRAL STATE – OHIO,?,?,?,?,DIVISION 2
+154,CENTRAL WASHINGTON,?,?,?,?,DIVISION 2
+155,CHADRON STATE,?,?,?,?,DIVISION 2
+156,CHARLESTON-WEST VIRGINIA,?,?,?,?,DIVISION 2
+157,CHEYNEY UNIVERSITY,?,?,?,?,DIVISION 2
+158,CHOWAN COLLEGE,?,?,?,?,DIVISION 2
+159,CLARION,?,?,?,?,DIVISION 2
+160,CLARK-ATLANTA,?,?,?,?,DIVISION 2
+161,COLORADO MINES,?,?,?,?,DIVISION 2
+162,COLORADO ST- PUEBLO,?,?,?,?,DIVISION 2
+163,CONCORD COLLEGE,?,?,?,?,DIVISION 2
+164,CONCORDIA STATE-ST.PAUL,?,?,?,?,DIVISION 2
+165,CROOKSTON-MINNESOTA,?,?,?,?,DIVISION 2
+166,DAVENPORT MI,?,?,?,?,DIVISION 2
+167,DELTA STATE,?,?,?,?,DIVISION 2
+168,DIXIE STATE-UTAH,?,?,?,?,DIVISION 2
+169,DULUTH-MINNESOTA,?,?,?,?,DIVISION 2
+170,EAST CENTRAL-OKLAHOMA,?,?,?,?,DIVISION 2
+171,EAST STROUDSBURG,?,?,?,?,DIVISION 2
+172,EASTERN NEW MEXICO,?,?,?,?,DIVISION 2
+173,EDINBORO UNIVERSITY,?,?,?,?,DIVISION 2
+174,ELIZABETH CITY STATE,?,?,?,?,DIVISION 2
+175,EMPORIA STATE,?,?,?,?,DIVISION 2
+176,FAIRMONT STATE,?,?,?,?,DIVISION 2
+177,FAYETTEVILLE STATE,?,?,?,?,DIVISION 2
+178,FERRIS STATE,?,?,?,?,DIVISION 2
+179,FINDLAY,?,?,?,?,DIVISION 2
+180,FLORIDA TECH,?,?,?,?,DIVISION 2
+181,FORT HAYS STATE,?,?,?,?,DIVISION 2
+182,FORT LEWIS,?,?,?,?,DIVISION 2
+183,FORT VALLEY STATE,?,?,?,?,DIVISION 2
+184,GANNON,?,?,?,?,DIVISION 2
+185,GLENVILLE STATE,?,?,?,?,DIVISION 2
+186,GRAND VALLEY STATE,?,?,?,?,DIVISION 2
+187,HARDING,?,?,?,?,DIVISION 2
+188,HENDERSON STATE,?,?,?,?,DIVISION 2
+189,HILLSDALE COLLEGE,?,?,?,?,DIVISION 2
+190,HUMBOLDT STATE,?,?,?,?,DIVISION 2
+191,INDIANA-PA.,?,?,?,?,DIVISION 2
+192,INDIANAPOLIS,?,?,?,?,DIVISION 2
+193,JOHNSON C. SMITH,?,?,?,?,DIVISION 2
+194,KENTUCKY STATE,?,?,?,?,DIVISION 2
+195,KENTUCKY WESLEYAN,?,?,?,?,DIVISION 2
+196,KUTZTOWN UNIVERSITY,?,?,?,?,DIVISION 2
+197,L.I.U. - POST,?,?,?,?,DIVISION 2
+198,LAKE ERIE,?,?,?,?,DIVISION 2
+199,LANE COLLEGE,?,?,?,?,DIVISION 2
+200,LENOIR-RHYNE,?,?,?,?,DIVISION 2
+201,LIMESTONE,?,?,?,?,DIVISION 2
+202,LINCOLN-MO.,?,?,?,?,DIVISION 2
+203,LINCOLN-PA,?,?,?,?,DIVISION 2
+204,LINDENWOOD - MO,?,?,?,?,DIVISION 2
+205,LIVINGSTONE COLLEGE,?,?,?,?,DIVISION 2
+206,LOCK HAVEN,?,?,?,?,DIVISION 2
+207,MALONE,?,?,?,?,DIVISION 2
+208,MARS HILL,?,?,?,?,DIVISION 2
+209,MARY,?,?,?,?,DIVISION 2
+210,McKENDREE,?,?,?,?,DIVISION 2
+211,MERCYHURST,?,?,?,?,DIVISION 2
+212,MERRIMACK,?,?,?,?,DIVISION 2
+213,MESA STATE-COLORADO,?,?,?,?,DIVISION 2
+214,MICHIGAN TECH,?,?,?,?,DIVISION 2
+215,MIDWESTERN STATE,?,?,?,?,DIVISION 2
+216,MILES COLLEGE,?,?,?,?,DIVISION 2
+217,MILLERSVILLE,?,?,?,?,DIVISION 2
+218,MINNESOTA STATE- MANKATO,?,?,?,?,DIVISION 2
+219,MINOT STATE,?,?,?,?,DIVISION 2
+220,MISSOURI S&T,?,?,?,?,DIVISION 2
+221,MISSOURI SOUTHERN ,?,?,?,?,DIVISION 2
+222,MISSOURI WESTERN,?,?,?,?,DIVISION 2
+223,MOORHEAD ST.-MINNESOTA,?,?,?,?,DIVISION 2
+224,MOREHOUSE COLLEGE,?,?,?,?,DIVISION 2
+225,NEBRASKA KEARNEY,?,?,?,?,DIVISION 2
+226,NEW HAVEN,?,?,?,?,DIVISION 2
+227,NEW MEXICO HIGHLANDS,?,?,?,?,DIVISION 2
+228,NEWBERRY,?,?,?,?,DIVISION 2
+229,NO. EAST OKLAHOMA ST.,?,?,?,?,DIVISION 2
+230,NO.WEST OKLAHOMA,?,?,?,?,DIVISION 2
+231,NORTH ALABAMA,?,?,?,?,DIVISION 2
+232,NORTH GREENVILLE-S.C.,?,?,?,?,DIVISION 2
+233,NORTHERN MICHIGAN,?,?,?,?,DIVISION 2
+234,NORTHERN STATE - SD,?,?,?,?,DIVISION 2
+235,NORTHWEST MISSOURI ST.,?,?,?,?,DIVISION 2
+236,NORTHWOOD,?,?,?,?,DIVISION 2
+237,NOTRE DAME - OHIO,?,?,?,?,DIVISION 2
+238,OHIO DOMINICAN,?,?,?,?,DIVISION 2
+239,OKLAHOMA BAPTIST,?,?,?,?,DIVISION 2
+240,OUACHITA BAPTIST,?,?,?,?,DIVISION 2
+241,PACE,?,?,?,?,DIVISION 2
+242,PITTSBURG STATE,?,?,?,?,DIVISION 2
+243,QUINCY UNIVERSITY,?,?,?,?,DIVISION 2
+244,SAGINAW VALLEY STATE,?,?,?,?,DIVISION 2
+245,SAINT CLOUD STATE,?,?,?,?,DIVISION 2
+246,SETON HILL,?,?,?,?,DIVISION 2
+247,SHAW,?,?,?,?,DIVISION 2
+248,SHEPHERD COLLEGE,?,?,?,?,DIVISION 2
+249,SHIPPENSBURG,?,?,?,?,DIVISION 2
+250,SHORTER,?,?,?,?,DIVISION 2
+251,SIMON FRASER,?,?,?,?,DIVISION 2
+252,SIOUX FALLS,?,?,?,?,DIVISION 2
+253,SLIPPERY ROCK,?,?,?,?,DIVISION 2
+254,SO. EAST. OKLAHOMA ST.,?,?,?,?,DIVISION 2
+255,SO. WEST. OKLAHOMA ST.,?,?,?,?,DIVISION 2
+256,SO.WESTERN STATE-MINNE.,?,?,?,?,DIVISION 2
+257,SOUTH DAKOTA MINES,?,?,?,?,DIVISION 2
+258,SOUTHERN ARKANSAS,?,?,?,?,DIVISION 2
+259,SOUTHERN CONNECTICUT,?,?,?,?,DIVISION 2
+260,SOUTHERN NAZARENE,?,?,?,?,DIVISION 2
+261,SOUTHWEST BAPTIST,?,?,?,?,DIVISION 2
+262,ST. AUGUSTINE,?,?,?,?,DIVISION 2
+263,ST.ANSELM,?,?,?,?,DIVISION 2
+264,STONEHILL COLLEGE,?,?,?,?,DIVISION 2
+265,TAMU - COMMERCE,?,?,?,?,DIVISION 2
+266,TAMU - KINGSVILLE,?,?,?,?,DIVISION 2
+267,TARLETON STATE,?,?,?,?,DIVISION 2
+268,TEXAS PERMIAN BASIN,?,?,?,?,DIVISION 2
+269,TIFFIN,?,?,?,?,DIVISION 2
+270,TRUMAN STATE,?,?,?,?,DIVISION 2
+271,TUSCULUM,?,?,?,?,DIVISION 2
+272,TUSKEGEE UNIVERSITY,?,?,?,?,DIVISION 2
+273,UNC-PEMBROKE,?,?,?,?,DIVISION 2
+274,UPPER IOWA,?,?,?,?,DIVISION 2
+275,URBANA,?,?,?,?,DIVISION 2
+276,VALDOSTA STATE,?,?,?,?,DIVISION 2
+277,VIRGINIA STATE,?,?,?,?,DIVISION 2
+278,VIRGINIA UNION,?,?,?,?,DIVISION 2
+279,VIRGINIA-WISE,?,?,?,?,DIVISION 2
+280,WALSH,?,?,?,?,DIVISION 2
+281,WASHBURN,?,?,?,?,DIVISION 2
+282,WAYNE STATE-MICHIGAN,?,?,?,?,DIVISION 2
+283,WAYNE STATE-NEBRASKA,?,?,?,?,DIVISION 2
+284,WEST ALABAMA,?,?,?,?,DIVISION 2
+285,WEST CHESTER,?,?,?,?,DIVISION 2
+286,WEST FLORIDA,?,?,?,?,DIVISION 2
+287,WEST GEORGIA,?,?,?,?,DIVISION 2
+288,WEST LIBERTY STATE,?,?,?,?,DIVISION 2
+289,WEST TEXAS A&M,?,?,?,?,DIVISION 2
+290,WEST VIRGINIA STATE,?,?,?,?,DIVISION 2
+291,WEST VIRGINIA WESLEYAN,?,?,?,?,DIVISION 2
+292,WESTERN NEW MEXICO,?,?,?,?,DIVISION 2
+293,WESTERN OREGON,?,?,?,?,DIVISION 2
+294,WESTERN STATE-COLO.,?,?,?,?,DIVISION 2
+295,WILLIAM JEWELL,?,?,?,?,DIVISION 2
+296,WINGATE,?,?,?,?,DIVISION 2
+297,WINONA STATE,?,?,?,?,DIVISION 2
+298,WINSTON-SALEM,?,?,?,?,DIVISION 2
+299,ADRIAN,?,?,?,?,DIVISION 3
+300,ALBION,?,?,?,?,DIVISION 3
+301,ALBRIGHT,?,?,?,?,DIVISION 3
+302,ALFRED,?,?,?,?,DIVISION 3
+303,ALFRED STATE,?,?,?,?,DIVISION 3
+304,ALLEGHENY,?,?,?,?,DIVISION 3
+305,ALMA,?,?,?,?,DIVISION 3
+306,AMHERST,?,?,?,?,DIVISION 3
+307,ANDERSON,?,?,?,?,DIVISION 3
+308,ANNA MARIA,?,?,?,?,DIVISION 3
+309,APPRENTICE-NEWPORT NEWS,?,?,?,?,DIVISION 3
+310,AUGSBURG,?,?,?,?,DIVISION 3
+311,AUGUSTANA-ILL.,?,?,?,?,DIVISION 3
+312,AURORA,?,?,?,?,DIVISION 3
+313,AUSTIN COLLEGE,?,?,?,?,DIVISION 3
+314,AVERETT COLLEGE,?,?,?,?,DIVISION 3
+315,BALDWIN-WALLACE,?,?,?,?,DIVISION 3
+316,BATES,?,?,?,?,DIVISION 3
+317,BECKER,?,?,?,?,DIVISION 3
+318,BELHAVEN,?,?,?,?,DIVISION 3
+319,BELOIT,?,?,?,?,DIVISION 3
+320,BENEDICTINE-ILL.,?,?,?,?,DIVISION 3
+321,BERRY,?,?,?,?,DIVISION 3
+322,BETHANY-WEST VIRGINIA,?,?,?,?,DIVISION 3
+323,BETHEL-MINNESOTA,?,?,?,?,DIVISION 3
+324,BIRMINGHAM-SOUTHERN,?,?,?,?,DIVISION 3
+325,BLUFFTON,?,?,?,?,DIVISION 3
+326,BOWDOIN,?,?,?,?,DIVISION 3
+327,BREVARD -NC,?,?,?,?,DIVISION 3
+328,BRIDGEWATER-MASS.,?,?,?,?,DIVISION 3
+329,BRIDGEWATER-VA.,?,?,?,?,DIVISION 3
+330,BROCKPORT STATE,?,?,?,?,DIVISION 3
+331,BUENA VISTA,?,?,?,?,DIVISION 3
+332,BUFFALO STATE,?,?,?,?,DIVISION 3
+333,CALIFORNIA LUTHERAN,?,?,?,?,DIVISION 3
+334,CAPITAL,?,?,?,?,DIVISION 3
+335,CARLETON,?,?,?,?,DIVISION 3
+336,CARNEGIE MELLON,?,?,?,?,DIVISION 3
+337,CARROLL-WISCONSIN,?,?,?,?,DIVISION 3
+338,CARTHAGE,?,?,?,?,DIVISION 3
+339,CASE WESTERN,?,?,?,?,DIVISION 3
+340,CASTLETON STATE,?,?,?,?,DIVISION 3
+341,CATHOLIC UNIVERSITY,?,?,?,?,DIVISION 3
+342,CENTRAL COLLEGE-IOWA,?,?,?,?,DIVISION 3
+343,CENTRE,?,?,?,?,DIVISION 3
+344,CHAPMAN,?,?,?,?,DIVISION 3
+345,CHICAGO,?,?,?,?,DIVISION 3
+346,CHRISTOPHER NEWPORT,?,?,?,?,DIVISION 3
+347,CLAREMONT-MUDD- SCRIPPS,?,?,?,?,DIVISION 3
+348,COAST GUARD,?,?,?,?,DIVISION 3
+349,COE,?,?,?,?,DIVISION 3
+350,COLBY,?,?,?,?,DIVISION 3
+351,CONCORDIA- CHICAGO,?,?,?,?,DIVISION 3
+352,CONCORDIA WISC.,?,?,?,?,DIVISION 3
+353,CONCORDIA-MOORHEAD,?,?,?,?,DIVISION 3
+354,CORNELL-IA.,?,?,?,?,DIVISION 3
+355,CORTLAND STATE,?,?,?,?,DIVISION 3
+356,CROWN,?,?,?,?,DIVISION 3
+357,CURRY,?,?,?,?,DIVISION 3
+358,DARTMOUTH-MASS.,?,?,?,?,DIVISION 3
+359,DEAN,?,?,?,?,DIVISION 3
+360,DEFIANCE,?,?,?,?,DIVISION 3
+361,DELAWARE VALLEY,?,?,?,?,DIVISION 3
+362,DENISON,?,?,?,?,DIVISION 3
+363,DEPAUW,?,?,?,?,DIVISION 3
+364,DICKINSON,?,?,?,?,DIVISION 3
+365,DUBUQUE,?,?,?,?,DIVISION 3
+366,EARLHAM,?,?,?,?,DIVISION 3
+367,EAST TEXAS BAPTIST,?,?,?,?,DIVISION 3
+368,ELMHURST,?,?,?,?,DIVISION 3
+369,EMORY & HENRY,?,?,?,?,DIVISION 3
+370,ENDICOTT,?,?,?,?,DIVISION 3
+371,EUREKA,?,?,?,?,DIVISION 3
+372,F.D.U.- FLORHAM PARK,?,?,?,?,DIVISION 3
+373,FERRUM COLLEGE,?,?,?,?,DIVISION 3
+374,FINLANDIA,?,?,?,?,DIVISION 3
+375,FITCHBURG,?,?,?,?,DIVISION 3
+376,FRAMINGHAM STATE,?,?,?,?,DIVISION 3
+377,FRANKLIN & MARSHALL,?,?,?,?,DIVISION 3
+378,FRANKLIN COLLEGE,?,?,?,?,DIVISION 3
+379,FROSTBURG,?,?,?,?,DIVISION 3
+380,GALLAUDET,?,?,?,?,DIVISION 3
+381,GENEVA,?,?,?,?,DIVISION 3
+382,GEORGE FOX,?,?,?,?,DIVISION 3
+383,GETTYSBURG,?,?,?,?,DIVISION 3
+384,GREENSBORO COLLEGE,?,?,?,?,DIVISION 3
+385,GREENVILLE,?,?,?,?,DIVISION 3
+386,GRINNELL,?,?,?,?,DIVISION 3
+387,GROVE CITY,?,?,?,?,DIVISION 3
+388,GUILFORD,?,?,?,?,DIVISION 3
+389,GUSTAVUS ADOLPHUS,?,?,?,?,DIVISION 3
+390,HAMILTON,?,?,?,?,DIVISION 3
+391,HAMLINE,?,?,?,?,DIVISION 3
+392,HAMPDEN-SYDNEY,?,?,?,?,DIVISION 3
+393,HANOVER,?,?,?,?,DIVISION 3
+394,HARDIN-SIMMONS,?,?,?,?,DIVISION 3
+395,HARTWICK,?,?,?,?,DIVISION 3
+396,HEIDELBERG,?,?,?,?,DIVISION 3
+397,HENDRIX,?,?,?,?,DIVISION 3
+398,HIRAM,?,?,?,?,DIVISION 3
+399,HOBART,?,?,?,?,DIVISION 3
+400,HOPE,?,?,?,?,DIVISION 3
+401,HOWARD PAYNE,?,?,?,?,DIVISION 3
+402,HUNTINGDON-ALA.,?,?,?,?,DIVISION 3
+403,HUSSON-MAINE,?,?,?,?,DIVISION 3
+404,ILLINOIS COLLEGE,?,?,?,?,DIVISION 3
+405,ILLINOIS WESLEYAN,?,?,?,?,DIVISION 3
+406,IOWA-WESLEYAN,?,?,?,?,DIVISION 3
+407,ITHACA,?,?,?,?,DIVISION 3
+408,JOHN CARROLL,?,?,?,?,DIVISION 3
+409,JOHNS HOPKINS,?,?,?,?,DIVISION 3
+410,JUNIATA,?,?,?,?,DIVISION 3
+411,KALAMAZOO,?,?,?,?,DIVISION 3
+412,KEAN,?,?,?,?,DIVISION 3
+413,KENYON,?,?,?,?,DIVISION 3
+414,KING’S COLLEGE,?,?,?,?,DIVISION 3
+415,KNOX,?,?,?,?,DIVISION 3
+416,LA VERNE,?,?,?,?,DIVISION 3
+417,LAGRANGE,?,?,?,?,DIVISION 3
+418,LAKE FOREST,?,?,?,?,DIVISION 3
+419,LAKELAND COLLEGE,?,?,?,?,DIVISION 3
+420,LAWRENCE,?,?,?,?,DIVISION 3
+421,LEBANON VALLEY,?,?,?,?,DIVISION 3
+422,LEWIS & CLARK,?,?,?,?,DIVISION 3
+423,LINFIELD,?,?,?,?,DIVISION 3
+424,LORAS,?,?,?,?,DIVISION 3
+425,LOUISIANA COLLEGE,?,Louisiana Ragin' Cajuns,LOUISIANA COLLEGE,LC,DIVISION 3
+426,LUTHER,?,?,?,?,DIVISION 3
+427,LYCOMING,?,?,?,?,DIVISION 3
+428,M.I.T.,?,?,?,?,DIVISION 3
+429,MACALESTER,?,?,?,?,DIVISION 3
+430,MACMURRAY,?,?,?,?,DIVISION 3
+431,MAINE MARITIME,?,?,?,?,DIVISION 3
+432,MANCHESTER COLLEGE,?,?,?,?,DIVISION 3
+433,MARIETTA,?,?,?,?,DIVISION 3
+434,MARTIN LUTHER-MN,?,?,?,?,DIVISION 3
+435,MARY HARDIN BAYLOR,?,?,?,?,DIVISION 3
+436,MARYVILLE COLLEGE,?,?,?,?,DIVISION 3
+437,MASS-MARITIME,?,?,?,?,DIVISION 3
+438,McDANIEL,?,?,?,?,DIVISION 3
+439,McMURRY,?,?,?,?,DIVISION 3
+440,MERCHANT MARINE,?,?,?,?,DIVISION 3
+441,METHODIST COLLEGE,?,?,?,?,DIVISION 3
+442,MIDDLEBURY,?,?,?,?,DIVISION 3
+443,MILLIKIN,?,?,?,?,DIVISION 3
+444,MILLSAPS,?,?,?,?,DIVISION 3
+445,MISERICORDIA,?,?,?,?,DIVISION 3
+446,MISSISSIPPI COLLEGE,?,?,?,?,DIVISION 3
+447,MONMOUTH-IL,?,?,Monmouth,MONM,DIVISION 3
+448,MONTCLAIR,?,?,?,?,DIVISION 3
+449,MORAVIAN,?,?,?,?,DIVISION 3
+450,MORRIS-MINNESOTA,?,?,?,?,DIVISION 3
+451,MORRISVILLE STATE - NY,?,?,?,?,DIVISION 3
+452,MOUNT IDA,?,?,?,?,DIVISION 3
+453,MOUNT SAINT JOSEPH,?,?,?,?,DIVISION 3
+454,MOUNT UNION,?,?,?,?,DIVISION 3
+455,MUHLENBERG COLLEGE,?,?,?,?,DIVISION 3
+456,MUSKINGUM,?,?,?,?,DIVISION 3
+457,NEBRASKA WESLEYAN,?,?,?,?,DIVISION 3
+458,NEW JERSEY,?,?,?,?,DIVISION 3
+459,NICHOLS,?,?,?,?,DIVISION 3
+460,NORTH CENTRAL-ILL,?,?,?,?,DIVISION 3
+461,NORTH PARK,?,?,?,?,DIVISION 3
+462,NORTHWESTERN-MN.,?,?,?,?,DIVISION 3
+463,NORWICH,?,?,?,?,DIVISION 3
+464,OBERLIN,?,?,?,?,DIVISION 3
+465,OCCIDENTAL,?,?,?,?,DIVISION 3
+466,OHIO NORTHERN,?,?,?,?,DIVISION 3
+467,OHIO WESLYAN,?,?,?,?,DIVISION 3
+468,OLIVET,?,?,?,?,DIVISION 3
+469,OTTERBEIN,?,?,?,?,DIVISION 3
+470,PACIFIC - OR,?,?,?,?,DIVISION 3
+471,PACIFIC LUTHERAN,?,?,?,?,DIVISION 3
+472,PLYMOUTH STATE,?,?,?,?,DIVISION 3
+473,POMONA PITZER,?,?,?,?,DIVISION 3
+474,PUGET SOUND,?,?,?,?,DIVISION 3
+475,RANDOLPH-MACON,?,?,?,?,DIVISION 3
+476,REDLANDS,?,?,?,?,DIVISION 3
+477,RENSSELAER POLY-TECH,?,?,?,?,DIVISION 3
+478,RHODES COLLEGE,?,?,?,?,DIVISION 3
+479,RIPON,?,?,?,?,DIVISION 3
+480,ROCHESTER,?,?,?,?,DIVISION 3
+481,ROCKFORD,?,?,?,?,DIVISION 3
+482,ROSE-HULMAN,?,?,?,?,DIVISION 3
+483,ROWAN,?,?,?,?,DIVISION 3
+484,SALISBURY,?,?,?,?,DIVISION 3
+485,SALVE REGINA,?,?,?,?,DIVISION 3
+486,SEWANEE,?,?,?,?,DIVISION 3
+487,SHENANDOAH COLLEGE,?,?,?,?,DIVISION 3
+488,SIMPSON,?,?,?,?,DIVISION 3
+489,SOUTHERN VIRGINIA,?,?,?,?,DIVISION 3
+490,SOUTHWESTERN - TX,?,?,?,?,DIVISION 3
+491,SPRINGFIELD,?,?,?,?,DIVISION 3
+492,ST. JOHN FISHER,?,?,?,?,DIVISION 3
+493,ST. LAWRENCE,?,?,?,?,DIVISION 3
+494,ST. SCHOLASTICA,?,?,?,?,DIVISION 3
+495,ST. VINCENT,?,?,?,?,DIVISION 3
+496,ST.JOHNS-MINNESOTA,?,?,?,?,DIVISION 3
+497,ST.NORBERT,?,?,?,?,DIVISION 3
+498,ST.OLAF,?,?,?,?,DIVISION 3
+499,ST.THOMAS,?,?,?,?,DIVISION 3
+500,STEVENSON,?,?,?,?,DIVISION 3
+501,SUL ROSS STATE,?,?,?,?,DIVISION 3
+502,SUNY - MARITIME,?,?,?,?,DIVISION 3
+503,SUSQUEHANNA,?,?,?,?,DIVISION 3
+504,TEXAS LUTHERAN,?,?,?,?,DIVISION 3
+505,THIEL,?,?,?,?,DIVISION 3
+506,THOMAS MORE,?,?,?,?,DIVISION 3
+507,TRINE,?,?,?,?,DIVISION 3
+508,TRINITY COLLEGE - CT,?,?,?,?,DIVISION 3
+509,TRINITY-TEXAS,?,?,?,?,DIVISION 3
+510,TUFTS,?,?,?,?,DIVISION 3
+511,UNION COLLEGE-NY ,?,?,?,?,DIVISION 3
+512,URSINUS COLLEGE,?,?,?,?,DIVISION 3
+513,UTICA,?,?,?,?,DIVISION 3
+514,WABASH,?,?,?,?,DIVISION 3
+515,WARTBURG,?,?,?,?,DIVISION 3
+516,WASHINGTON & JEFFERSON,?,?,?,?,DIVISION 3
+517,WASHINGTON & LEE,?,?,?,?,DIVISION 3
+518,WASHINGTON-MO.,?,?,?,?,DIVISION 3
+519,WAYNESBURG,?,?,?,?,DIVISION 3
+520,WESLEY COLLEGE,?,?,?,?,DIVISION 3
+521,WESLEYAN-CONN.,?,?,?,?,DIVISION 3
+522,WESLEYAN-NORTH CAROLINA,?,?,?,?,DIVISION 3
+523,WESTERN CONNECTICUT,?,?,?,?,DIVISION 3
+524,WESTERN NEW ENGLAND,?,?,?,?,DIVISION 3
+525,WESTFIELD-MASS.,?,?,?,?,DIVISION 3
+526,WESTMINSTER-MO.,?,?,?,?,DIVISION 3
+527,WESTMINSTER-PA,?,?,?,?,DIVISION 3
+528,WHEATON COLLEGE,?,?,?,?,DIVISION 3
+529,WHITTIER COLLEGE,?,?,?,?,DIVISION 3
+530,WHITWORTH,?,?,?,?,DIVISION 3
+531,WIDENER,?,?,?,?,DIVISION 3
+532,WILKES,?,?,?,?,DIVISION 3
+533,WILLAMETTE,?,?,?,?,DIVISION 3
+534,WILLIAM PATERSON,?,?,?,?,DIVISION 3
+535,WILLIAMS COLLEGE,?,?,?,?,DIVISION 3
+536,WILMINGTON OHIO,?,?,?,?,DIVISION 3
+537,WISCONSIN-EAU CLAIRE,?,?,?,?,DIVISION 3
+538,WISCONSIN-La CROSSE,?,?,?,?,DIVISION 3
+539,WISCONSIN-LUTHERAN,?,?,?,?,DIVISION 3
+540,WISCONSIN-OSHKOSH,?,?,?,?,DIVISION 3
+541,WISCONSIN-PLATTEVILLE,?,?,?,?,DIVISION 3
+542,WISCONSIN-RIVER FALLS,?,?,?,?,DIVISION 3
+543,WISCONSIN-STEVENS POINT,?,?,?,?,DIVISION 3
+544,WISCONSIN-STOUT,?,?,?,?,DIVISION 3
+545,WISCONSIN-WHITEWATER,?,?,?,?,DIVISION 3
+546,WITTENBERG,?,?,?,?,DIVISION 3
+547,WOOSTER,?,?,?,?,DIVISION 3
+548,WORCESTER STATE,?,?,?,?,DIVISION 3
+549,WORCESTER TECH (W.P.I.),?,?,?,?,DIVISION 3
+550,ABILENE CHRISTIAN,?,Abilene Christian Wildcats,Abilene Christian,ACU,Championship Subdivision
+551,ALABAMA A&M,?,Alabama A&M Bulldogs,Alabama A&M,AAMU,Championship Subdivision
+552,ALABAMA STATE,?,Alabama State Hornets,Alabama State,ALST,Championship Subdivision
+553,ALBANY-NY,?,Albany Great Danes,Albany,ALBY,Championship Subdivision
+554,ALCORN STATE,?,Alcorn State Braves,Alcorn State,ALCN,Championship Subdivision
+555,AUSTIN PEAY,?,Austin Peay Governors,Austin Peay,PEAY,Championship Subdivision
+556,BETHUNE-COOKMAN,?,Bethune-Cookman Wildcats,Bethune-Cookman,BCU,Championship Subdivision
+557,BROWN,?,?,Brown,BRWN,Championship Subdivision
+558,BRYANT COLLEGE,?,?,Bryant,BRY,Championship Subdivision
+559,BUCKNELL,?,?,Bucknell,BUCK,Championship Subdivision
+560,BUTLER,?,?,Butler,BUT,Championship Subdivision
+561,CAL-DAVIS,?,UC Davis Aggies,UC Davis,UCD,Championship Subdivision
+562,CAL-POLY (SAN LOUIS OBISPO),?,Cal Poly Mustangs,Cal Poly,CP,Championship Subdivision
+563,CAL-SACRAMENTO,?,Sacramento State Hornets,Sacramento State,SAC,Championship Subdivision
+564,CAMPBELL,?,?,Campbell,CAMP,Championship Subdivision
+565,CENTRAL ARKANSAS,?,Central Arkansas Bears,Central Arkansas,UCA,Championship Subdivision
+566,CENTRAL CONNECTICUT STATE,?,Central Connecticut Blue Devils,Central Connecticut,CCSU,Championship Subdivision
+567,CHARLESTON SOUTHERN,?,Charleston Southern Buccaneers,Charleston Southern,CHSO,Championship Subdivision
+568,CHATTANOOGA-TENNESSEE,?,Chattanooga Mocs,Chattanooga,CHAT,Championship Subdivision
+569,COLGATE,?,Colgate Raiders,Colgate,COLG,Championship Subdivision
+570,COLUMBIA,?,?,Columbia,CLMB,Championship Subdivision
+571,CORNELL,?,?,Cornell,COR,Championship Subdivision
+572,DARTMOUTH,?,?,Dartmouth,DART,Championship Subdivision
+573,DAVIDSON,?,?,Davidson,DAV,Championship Subdivision
+574,DAYTON,?,?,Dayton,DAY,Championship Subdivision
+575,DELAWARE,?,Delaware Blue Hens,Delaware,DEL,Championship Subdivision
+576,DELAWARE STATE,?,Delaware State Hornets,Delaware State,DSU,Championship Subdivision
+577,DRAKE,?,?,Drake,DRKE,Championship Subdivision
+578,DUQUESNE,?,?,Duquesne,DUQ,Championship Subdivision
+579,EAST TENNESSEE STATE,?,?,ETSU,ETSU,Championship Subdivision
+580,EASTERN ILLINOIS,?,Eastern Illinois Panthers,Eastern Illinois,EIU,Championship Subdivision
+581,EASTERN KENTUCKY,?,Eastern Kentucky Colonels,Eastern Kentucky,EKY,Championship Subdivision
+582,EASTERN WASHINGTON,?,Eastern Washington Eagles,Eastern Washington,EWU,Championship Subdivision
+583,ELON,?,Elon Phoenix,Elon,ELON,Championship Subdivision
+584,FLORIDA A&M,?,Florida A&M Rattlers,Florida A&M,FAMU,Championship Subdivision
+585,FORDHAM,?,Fordham Rams,Fordham,FOR,Championship Subdivision
+586,FURMAN,?,Furman Paladins,Furman,FUR,Championship Subdivision
+587,GARDNER-WEBB,?,Gardner-Webb Bulldogs,Gardner-Webb,WEBB,Championship Subdivision
+588,GEORGETOWN-DC,?,?,Georgetown,GTWN,Championship Subdivision
+589,GRAMBLING,?,Grambling Tigers,Grambling State,GRAM,Championship Subdivision
+590,HAMPTON,?,Hampton Pirates,Hampton,HAMP,Championship Subdivision
+591,HARVARD,?,?,Harvard,HARV,Championship Subdivision
+592,HOLY CROSS,?,Holy Cross Crusaders,Holy Cross,HC,Championship Subdivision
+593,HOUSTON BAPTIST,?,Houston Baptist Huskies,Houston Baptist,HBU,Championship Subdivision
+594,HOWARD,?,Howard Bison,Howard,HOW,Championship Subdivision
+595,IDAHO STATE,?,Idaho State Bengals,Idaho State,IDST,Championship Subdivision
+596,ILLINOIS STATE,?,?,Illinois State,ILST,Championship Subdivision
+597,INCARNATE WORD,?,Incarnate Word Cardinals,Incarnate Word,IW,Championship Subdivision
+598,INDIANA STATE,?,Indiana State Sycamores,Indiana State,INST,Championship Subdivision
+599,JACKSON STATE,?,Jackson State Tigers,Jackson State,JKST,Championship Subdivision
+600,JACKSONVILLE STATE,?,Jacksonville State Gamecocks,Jacksonville State,JVST,Championship Subdivision
+601,JACKSONVILLE-FLA,?,?,Jacksonville,JAC,Championship Subdivision
+602,JAMES MADISON,?,James Madison Dukes,James Madison,JMU,Championship Subdivision
+603,KENNESAW STATE,?,?,Kennesaw State,KENN,Championship Subdivision
+604,LAFAYETTE,?,?,Lafayette,LAF,Championship Subdivision
+605,LAMAR,?,Lamar Cardinals,Lamar,LAM,Championship Subdivision
+606,LEHIGH,?,?,Lehigh,LEH,Championship Subdivision
+607,LIBERTY,?,Liberty Flames,Liberty,LIB,Championship Subdivision
+608,MAINE,?,Maine Black Bears,Maine,MAINE,Championship Subdivision
+609,MARIST,?,?,Marist,MRST,Championship Subdivision
+610,MCNEESE STATE,?,?,McNeese State,MCNS,Championship Subdivision
+611,MERCER,?,Mercer Bears,Mercer,MER,Championship Subdivision
+612,MISSISSIPPI VALLEY STATE,?,?,Mississippi Valley State,MVSU,Championship Subdivision
+613,MISSOURI STATE,?,Missouri State Bears,Missouri State,MOST,Championship Subdivision
+614,MONMOUTH-NJ,?,?,?,?,Championship Subdivision
+615,MONTANA,?,Montana Grizzlies,Montana,MONT,Championship Subdivision
+616,MONTANA STATE,?,Montana State Bobcats,Montana State,MTST,Championship Subdivision
+617,MOREHEAD STATE,?,?,Morehead State,MORE,Championship Subdivision
+618,MORGAN STATE,?,Morgan State Bears,Morgan State,MORG,Championship Subdivision
+619,MURRAY STATE,?,Murray State Racers,Murray State,MURR,Championship Subdivision
+620,NEW HAMPSHIRE,?,New Hampshire Wildcats,New Hampshire,UNH,Championship Subdivision
+621,NICHOLLS STATE,?,Nicholls Colonels,Nicholls State,NICH,Championship Subdivision
+622,NORFOLK STATE,?,?,Norfolk State,NORF,Championship Subdivision
+623,NORTH CAROLINA A&T,?,North Carolina A&T Aggies,North Carolina A&T,NCAT,Championship Subdivision
+624,NORTH CAROLINA CENTRAL,?,North Carolina Central Eagles,NC Central,NCCU,Championship Subdivision
+625,NORTH DAKOTA,?,North Dakota Fighting Hawks,North Dakota,UND,Championship Subdivision
+626,NORTH DAKOTA STATE,?,?,North Dakota State,NDSU,Championship Subdivision
+627,NORTHERN ARIZONA,?,Northern Arizona Lumberjacks,Northern Arizona,NAU,Championship Subdivision
+628,NORTHERN COLORADO,?,Northern Colorado Bears,Northern Colorado,UNCO,Championship Subdivision
+629,NORTHERN IOWA,?,Northern Iowa Panthers,Northern Iowa,UNI,Championship Subdivision
+630,NORTHWESTERN STATE-LA,?,Northwestern State Demons,Northwestern State,NWST,Championship Subdivision
+631,PENNSYLVANIA,?,?,UPenn,PENN,Championship Subdivision
+632,PINE BLUFF-ARKANSAS,?,Arkansas-Pine Bluff Golden Lions,Arkansas-Pine Bluff,UAPB,Championship Subdivision
+633,PORTLAND STATE,?,Portland State Vikings,Portland State,PRST,Championship Subdivision
+634,PRAIRIE VIEW A&M,?,?,Prairie View A&M,PV,Championship Subdivision
+635,PRESBYTERIAN,?,Presbyterian College Blue Hose,Presbyterian,PRES,Championship Subdivision
+636,PRINCETON,?,?,Princeton,PRIN,Championship Subdivision
+637,RHODE ISLAND,?,Rhode Island Rams,Rhode Island,URI,Championship Subdivision
+638,RICHMOND,?,?,Richmond,RICH,Championship Subdivision
+639,ROBERT MORRIS - PA,?,?,Robert Morris (PA),RMU,Championship Subdivision
+640,S.F.AUSTIN,?,Stephen F. Austin Lumberjacks,Stephen F. Austin,SFA,Championship Subdivision
+641,SACRED HEART,?,?,Sacred Heart,SHU,Championship Subdivision
+642,SAM HOUSTON,?,?,Sam Houston State,SHSU,Championship Subdivision
+643,SAMFORD,?,Samford Bulldogs,Samford,SAM,Championship Subdivision
+644,SAN DIEGO,?,?,San Diego,USD,Championship Subdivision
+645,SAVANNAH STATE,?,Savannah State Tigers,Savannah State,SAV,Championship Subdivision
+646,SO. EAST LOUISIANA,?,Southeastern Louisiana Lions,Southeastern Louisiana,SELA,Championship Subdivision
+647,SOUTH CAROLINA STATE,?,?,South Carolina State,SCST,Championship Subdivision
+648,SOUTH DAKOTA,?,South Dakota Coyotes,South Dakota,SDAK,Championship Subdivision
+649,SOUTH DAKOTA STATE,?,?,South Dakota State,SDS,Championship Subdivision
+650,SOUTH EASTERN MISSOURI,?,Southeast Missouri State Redhawks,Southeast Missouri,SEMO,Championship Subdivision
+651,SOUTHERN ILLINOIS,?,Southern Illinois Salukis,Southern Illinois,SIU,Championship Subdivision
+652,SOUTHERN UNIVERSITY,?,Southern Jaguars,Southern University,SOU,Championship Subdivision
+653,SOUTHERN UTAH,?,Southern Utah Thunderbirds,Southern Utah,SUU,Championship Subdivision
+654,ST.FRANCIS-PA,?,?,St. Francis (PA),SFU,Championship Subdivision
+655,STETSON,?,?,Stetson,STET,Championship Subdivision
+656,STONY BROOK,?,Stony Brook Seawolves,Stony Brook,STON,Championship Subdivision
+657,TENNESSEE STATE,?,Tennessee State Tigers,Tennessee State,TNST,Championship Subdivision
+658,TENNESSEE TECH,?,Tennessee Tech Golden Eagles,Tennessee Tech,TNTC,Championship Subdivision
+659,TENNESSEE-MARTIN,?,UT Martin Skyhawks,Tennessee-Martin,UTM,Championship Subdivision
+660,TEXAS SOUTHERN,?,?,Texas Southern,TXSO,Championship Subdivision
+661,THE CITADEL,?,The Citadel Bulldogs,The Citadel,CIT,Championship Subdivision
+662,TOWSON,?,Towson Tigers,Towson,TOWS,Championship Subdivision
+663,VALPARAISO,?,?,Valparaiso,VALP,Championship Subdivision
+664,VILLANOVA,?,Villanova Wildcats,Villanova,NOVA,Championship Subdivision
+665,VIRGINIA MILITARY INSTITUTE,?,VMI Keydets,VMI,VMI,Championship Subdivision
+666,WAGNER,?,Wagner Seahawks,Wagner,WAG,Championship Subdivision
+667,WEBER STATE,?,Weber State Wildcats,Weber State,WEB,Championship Subdivision
+668,WESTERN CAROLINA,?,Western Carolina Catamounts,Western Carolina,WCU,Championship Subdivision
+669,WESTERN ILLINOIS,?,Western Illinois Leathernecks,Western Illinois,WIU,Championship Subdivision
+670,WILLIAM & MARY,?,William & Mary Tribe,William & Mary,W&M,Championship Subdivision
+671,WOFFORD,?,Wofford Terriers,Wofford,WOF,Championship Subdivision
+672,YALE,?,?,Yale,YALE,Championship Subdivision
+673,YOUNGSTOWN STATE,?,Youngstown State Penguins,Youngstown State,YSU,Championship Subdivision
+674,ARIZONA CHRISTIAN,?,?,?,?,NAIA
+675,AVE MARIA-FLA,?,?,?,?,NAIA
+676,AVILA,?,?,?,?,NAIA
+677,BACONE,?,?,?,?,NAIA
+678,BAKER,?,?,?,?,NAIA
+679,BENEDICTINE-KANSAS,?,?,?,?,NAIA
+680,BETHANY KANSAS,?,?,?,?,NAIA
+681,BETHEL KANSAS,?,?,?,?,NAIA
+682,BETHEL-TN.,?,?,?,?,NAIA
+683,BLUFIELD,?,?,?,?,NAIA
+684,BRIAR CLIFF,?,?,?,?,NAIA
+685,CAMPBELLSVILLE,?,?,?,?,NAIA
+686,CARROLL-MONTANA,?,?,?,?,NAIA
+687,CENTRAL METHODIST,?,?,?,?,NAIA
+688,CINCINNATI CHRISTIAN,?,?,?,?,NAIA
+689,COLLEGE OF IDAHO,?,?,?,?,NAIA
+690,CONCORDIA – MICHIGAN,?,?,?,?,NAIA
+691,CONCORDIA-NEBRASKA,?,?,?,?,NAIA
+692,CULVER-STOCKTON,?,?,?,?,NAIA
+693,CUMBERLAND-TN.,?,?,?,?,NAIA
+694,DAKOTA STATE-SD.,?,?,?,?,NAIA
+695,DAKOTA-WESLEYAN SD.,?,?,?,?,NAIA
+696,DICKINSON STATE,?,?,?,?,NAIA
+697,DOANE,?,?,?,?,NAIA
+698,DORDT,?,?,?,?,NAIA
+699,EASTERN OREGON,?,?,?,?,NAIA
+700,EDWARD WATERS,?,?,?,?,NAIA
+701,EVANGEL,?,?,?,?,NAIA
+702,FAULKNER - ALABAMA,?,?,?,?,NAIA
+703,FRIENDS,?,?,?,?,NAIA
+704,GEORGETOWN-KY.,?,?,?,?,NAIA
+705,GRACELAND,?,?,?,?,NAIA
+706,GRAND VIEW,?,?,?,?,NAIA
+707,HASTINGS,?,?,?,?,NAIA
+708,JAMESTOWN,?,?,?,?,NAIA
+709,KANSAS WESLEYAN,?,?,?,?,NAIA
+710,KENTUCKY CHRISTIAN,?,?,?,?,NAIA
+711,LANGSTON,?,?,?,?,NAIA
+712,LINDENWOOD - BELLEVILLE,?,?,?,?,NAIA
+713,LINSEY WILSON - KY,?,?,?,?,NAIA
+714,LYON COLLEGE,?,?,?,?,NAIA
+715,MARIAN - INDIANA,?,?,?,?,NAIA
+716,MAYVILLE STATE,?,?,?,?,NAIA
+717,McPHERSON,?,?,?,?,NAIA
+718,MID-AMERICA NAZARENE,?,?,?,?,NAIA
+719,MIDLAND - NE,?,?,?,?,NAIA
+720,MISSOURI BAPTIST,?,?,?,?,NAIA
+721,MISSOURI VALLEY,?,?,?,?,NAIA
+722,MONTANA - WESTERN,?,?,?,?,NAIA
+723,MONTANA STATE-NORTH,?,?,?,?,NAIA
+724,MONTANA TECH,?,?,?,?,NAIA
+725,MORNINGSIDE,?,?,?,?,NAIA
+726,NORTHWESTERN-IOWA,?,?,?,?,NAIA
+727,OLIVET NAZARENE,?,?,?,?,NAIA
+728,OTTAWA-KANSAS,?,?,?,?,NAIA
+729,PANHANDLE STATE - OK,?,?,?,?,NAIA
+730,PERU STATE,?,?,?,?,NAIA
+731,PIKEVILLE,?,?,?,?,NAIA
+732,POINT,?,?,?,?,NAIA
+733,PRESENTATION - SD,?,?,?,?,NAIA
+734,REINHARDT,?,?,?,?,NAIA
+735,ROBERT MORRIS-ILL,?,?,?,?,NAIA
+736,ROCKY MOUNTAIN,?,?,?,?,NAIA
+737,S W ASSMEMBLY OF GOD,?,?,?,?,NAIA
+738,SIENA HEIGHTS,?,?,?,?,NAIA
+739,SOUTHEASTERN -FLA,?,?,?,?,NAIA
+740,SOUTHERN OREGON,?,?,?,?,NAIA
+741,SOUTHWESTERN-KANSAS,?,?,?,?,NAIA
+742,ST. ANDREWS- N.C.,?,?,?,?,NAIA
+743,ST.AMBROSE,?,?,?,?,NAIA
+744,ST.FRANCIS-ILL,?,?,?,?,NAIA
+745,ST.FRANCIS-IND.,?,?,?,?,NAIA
+746,ST.MARY-KANSAS,?,?,?,?,NAIA
+747,ST.XAVIER,?,?,?,?,NAIA
+748,STERLING,?,?,?,?,NAIA
+749,TABOR,?,?,?,?,NAIA
+750,TAYLOR,?,?,?,?,NAIA
+751,TEXAS COLLEGE,?,?,?,?,NAIA
+752,TEXAS WESLEYAN,?,?,?,?,NAIA
+753,TRINITY INTERNATIONAL-ILL,?,?,?,?,NAIA
+754,UNION-KY.,?,?,?,?,NAIA
+755,UNIV. OF CUMBERLANDS-KY,?,?,?,?,NAIA
+756,VALLEY CITY STATE,?,?,?,?,NAIA
+757,WALDORF,?,?,?,?,NAIA
+758,WARNER,?,?,?,?,NAIA
+759,WAYLAND BAPTIST,?,?,?,?,NAIA
+760,WEBBER INTERNATIONAL,?,?,?,?,NAIA
+761,WILLIAM PENN,?,?,?,?,NAIA
+762,TRINITY BIBLE,?,?,?,?,INDEPENDENT

@@ -8,6 +8,8 @@
 *.csv
 # Allow
 !/defaults/
+!/defaults/*.json
+!/defaults/*.csv
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
