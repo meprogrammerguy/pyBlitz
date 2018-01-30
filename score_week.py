@@ -16,9 +16,9 @@ import settings
 def main(argv):
     stat_file = settings.data_path + "stats.json"
     schedule_files = GetSchedFiles("sched*.json")
-    merge_file = "merge_schedule.csv"
+    merge_file = settings.data_path + "merge_schedule.csv"
     abbr_file = settings.data_path + "abbreviation.json"
-    abbr_merge_file = "merge_abbreviation.csv"
+    abbr_merge_file = settings.data_path + "merge_abbreviation.csv"
     week = "current"
     verbose = False
     test = False

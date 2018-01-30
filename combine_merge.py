@@ -50,7 +50,7 @@ print ("Make sure that your merge_stats, merge_abbreviation, and merge_schedule"
 print ("spreadsheets are correct first")
 print (" ")
 
-file = 'merge_stats.csv'
+file = '{0}merge_stats.csv'.format(settings.data_path)
 if (not os.path.exists(file)):
     print ("Warning *** The merge_stats.csv file does not exist ***")
     print ("        *** run merge_stats tool and then come back ***")
@@ -61,7 +61,7 @@ with open(file) as stats_file:
     for row in reader:
         dict_stats_merge.append(row)
 
-file = 'merge_abbreviation.csv'
+file = '{0}merge_abbreviation.csv'.format(settings.data_path)
 if (not os.path.exists(file)):
     print ("Warning *** The merge_abbreviation.csv file does not exist ***")
     print ("        *** run merge_abbreviations tool and then come back ***")
@@ -95,7 +95,7 @@ with open(file) as abbr_file:
     dict_abbr = json.load(abbr_file, object_pairs_hook=OrderedDict)
 
 dict_sched_merge = []
-file = 'merge_schedule.csv'
+file = '{0}merge_schedule.csv'.format(settings.data_path)
 if (not os.path.exists(file)):
     print ("merge_schedule file is missing, run the merge_schedule tool to create")
     exit()

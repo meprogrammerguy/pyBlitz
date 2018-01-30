@@ -18,7 +18,7 @@ def CleanString(data):
 print ("Merge Stats Tool")
 print ("**************************")
 
-file = 'merge_stats.csv'
+file = '{0}merge_stats.csv'.format(settings.data_path)
 if (os.path.exists(file)):
     print ("Warning *** The merge_stats.csv file already exists ***")
     print ("        *** delete this file if you want to re-create it. ***")

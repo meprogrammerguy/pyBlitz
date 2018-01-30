@@ -56,13 +56,15 @@ def CurrentScheduleFiles(filename):
     return True
 
 def RefreshScheduleFiles():
-    now = datetime.datetime.now()
+    now = datetime.now()
     year = int(now.year)
     scrape_schedule.year = year
     scrape_schedule.main(sys.argv[1:])
 
 def GetActualScores(abbra, abbrb, scores):
     items = re.split(r'(,|\s)\s*', str(scores).lower())
+    if (not items):
+        return -1, -1
     if (items[0].strip() == "?"):   # Cancelled, Postponed or not yet Played Game
         return -1, -1
     if (len(items) != 7):
@@ -118,7 +120,9 @@ sched_files = GetFiles(settings.data_path, "sched*.json")
 list_sched = []
 for file in sched_files:
     with open(file) as sched_file:
-        list_sched.append(json.load(sched_file, object_pairs_hook=OrderedDict))
+        item = json.load(sched_file, object_pairs_hook=OrderedDict)
+        item['Week'] = GetIndex(file)
+        list_sched.append(item)
 
 week_files = GetFiles(".", "week*.csv")
 list_week = []
@@ -126,8 +130,8 @@ for file in week_files:
     with open(file) as week_file:
         reader = csv.DictReader(week_file)
         for row in reader:
+            row['Week'] = GetIndex(file)
             list_week.append(row)
-
 IDX=[]
 A=[]
 B=[]
@@ -143,11 +147,18 @@ for idx in range(len(list_sched)):
     total = 0
     skip = 0
     correct = 0
+    week = list_sched[idx]["Week"]
     for item in list_sched[idx].values():
+        if (item == week):
+            break
         total += 1
-        chancea = GetPercent(list_week[index]["ChanceA"]) # fix this area, index out of range
-        abbra = list_week[index]["AbbrA"]
-        abbrb = list_week[index]["AbbrB"]
+        chancea = -1
+        abbra = ""
+        abbrb = ""
+        if (index < len(list_week) and list_week[index]["Week"] == week):
+            chancea = GetPercent(list_week[index]["ChanceA"])
+            abbra = list_week[index]["AbbrA"]
+            abbrb = list_week[index]["AbbrB"]
         index += 1
         scorea, scoreb = GetActualScores(abbra, abbrb, item["Score"])
         if (chancea < 0 or scorea < 0 or scoreb < 0 or abbra.strip() == "" or abbrb.strip() == ""):
@@ -159,13 +170,13 @@ for idx in range(len(list_sched)):
                 correct += 1
     count += 1
     IDX.append(count)
-    A.append(GetIndex(sched_files[idx]))
+    A.append(week)
     B.append(total)
     C.append(skip)
     D.append(correct)
     E.append(CalcPercent(total, skip, correct))
     if (verbose):
-        print ("week{0} total={1}, skip={2}, correct={3} Percent={4}%".format(GetIndex(sched_files[idx]), total, skip,
+        print ("week{0} total={1}, skip={2}, correct={3} Percent={4}%".format(week, total, skip,
             correct, CalcPercent(total, skip, correct)))
     alltotal = alltotal + total
     allskip = allskip + skip
