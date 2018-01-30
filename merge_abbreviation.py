@@ -26,7 +26,7 @@ def GetAbbr(team, dict_abbr):
 print ("Merge Abbreviation Tool")
 print ("**************************")
 
-file = 'merge_abbreviation.csv'
+file = '{0}merge_abbreviation.csv'.format(settings.data_path)
 if (os.path.exists(file)):
     print ("Warning *** The merge_abbreviation.csv file already exists ***")
     print ("        *** delete this file if you want this tool to re-create it. ***")
@@ -61,7 +61,8 @@ team_set = set(AllTeams)
 stats_teams = list(team_set)
 stats_teams.sort()
 
-merge_sheet = open('merge_abbreviation.csv', 'w', newline='')
+file = "{0}merge_abbreviation.csv".format(settings.data_path)
+merge_sheet = open(file, 'w', newline='')
 csvwriter = csv.writer(merge_sheet)
 dict_merge = OrderedDict()
 dict_merge["abbr team"] = []

@@ -18,7 +18,7 @@ def CleanString(data):
 print ("Merge Schedule Tool")
 print ("**************************")
 
-file = 'merge_schedule.csv'
+file = '{0}merge_schedule.csv'.format(settings.data_path)
 if (os.path.exists(file)):
     print ("Warning *** The merge_schedule.csv file already exists ***")
     print ("        *** delete this file if you want to re-create it. ***")
@@ -30,7 +30,7 @@ if (not os.path.exists(file)):
     exit()
 
 list_sched = []
-for p in Path(".").glob("data/sched*.json"):
+for p in Path(settings.data_path).glob("sched*.json"):
     with open(p) as sched_files:
         list_sched.append(json.load(sched_files, object_pairs_hook=OrderedDict))
 
@@ -57,7 +57,8 @@ team_set = set(AllTeams)
 stats_teams = list(team_set)
 stats_teams.sort()
 
-merge_sheet = open('merge_schedule.csv', 'w', newline='')
+file = "{0}merge_schedule.csv".format(settings.data_path)
+merge_sheet = open(file, 'w', newline='')
 csvwriter = csv.writer(merge_sheet)
 dict_merge = OrderedDict()
 dict_merge["scheduled team"] = []

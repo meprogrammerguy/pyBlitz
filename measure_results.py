@@ -86,22 +86,13 @@ def GetActualScores(abbra, abbrb, scores):
     return scorea, scoreb
 
 verbose = False
-if (len(sys.argv)==1):
-    verbose = False
-elif (len(sys.argv)==2):
+if (len(sys.argv)==2):
     verbose = True
-else:
-    print ("???")
-    print ("error, usage: no arg be quiet, 1 arg be verbose")
-    print ("./measure_results.py")
-    print ("./measure_results.py --verbose")
-    print ("???")
-    sys.exit("error: incorrect number of arguments")
 
     print ("Measure Actual Results Tool")
     print ("**************************")
 
-if (not CurrentScheduleFiles('data/sched1.json')):
+if (not CurrentScheduleFiles(settings.data_path + 'sched1.json')):
     RefreshScheduleFiles()
 
 file = '{0}sched1.json'.format(settings.data_path)

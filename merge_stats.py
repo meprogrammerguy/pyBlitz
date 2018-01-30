@@ -53,7 +53,8 @@ team_set = set(AllTeams)
 teamrankings = list(team_set)
 teamrankings.sort()
 
-merge_sheet = open('merge_stats.csv', 'w', newline='')
+file = "{0}merge_stats.csv".format(settings.data_path)
+merge_sheet = open(file, 'w', newline='')
 csvwriter = csv.writer(merge_sheet)
 dict_merge = OrderedDict()
 dict_merge["teamrankings"] = []
