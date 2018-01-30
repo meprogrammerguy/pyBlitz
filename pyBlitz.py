@@ -105,10 +105,11 @@ def Test(verbose):
     # Actual Score: 24-6
     # venue was: Mercedes-Benz Superdome in New Orleans, Louisiana (Neutral Field "The Sugar Bowl")
 
-    teama = {'Team':"alabama", 'Ranking':118.5, 'PLpG3':64.7, 'PTpP3':.356, 'OPLpG3':18.7, 'OPTpP3':.246, 'Result1':65.1, 'Result2':17}
-    teamb = {'Team':"clemson", 'Ranking':113, 'PLpG3':79.3, 'PTpP3':.328, 'OPLpG3':12.3, 'OPTpP3':.199, 'Result1':34.9,'Result2':11}
+    teama = {'BPI':"alabama", 'Ranking':118.5, 'PLpG3':64.7, 'PTpP3':.356, 'OPLpG3':18.7, 'OPTpP3':.246, 'Result1':65.1, 'Result2':17}
+    teamb = {'BPI':"clemson", 'Ranking':113, 'PLpG3':79.3, 'PTpP3':.328, 'OPLpG3':12.3, 'OPTpP3':.199, 'Result1':34.9,'Result2':11}
 
-    with open("data/bettingtalk.json") as percent_file:
+    file = "{0}bettingtalk.json".format(settings.data_path)
+    with open(file) as percent_file:
         dict_percent = json.load(percent_file, object_pairs_hook=OrderedDict)
 
     if (verbose):
@@ -175,11 +176,12 @@ def Calculate(first, second, neutral, verbose):
         else:
             info = "Visiting team: {0} verses Home team: {1}".format(first, second)
             print (info)
-
-    with open("data/stats.json") as stats_file:
+    file = "{0}stats.json".format(settings.data_path)
+    with open(file) as stats_file:
         dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
 
-    with open("data/bettingtalk.json") as percent_file:
+    file = "{0}bettingtalk.json".format(settings.data_path)
+    with open(file) as percent_file:
         dict_percent = json.load(percent_file, object_pairs_hook=OrderedDict)
 
     teama, teamb = findTeams(first, second, dict_stats, verbose = verbose)
@@ -221,7 +223,7 @@ def Calculate(first, second, neutral, verbose):
 
     tempo = Tempo(teama, teamb, verbose = verbose)
 
-    dict_score = {'teama':first, 'scorea':"{0}".format(scorea), 'chancea':"{0}%".format(chancea) ,'teamb':second, 'scoreb':"{0}".format(scoreb), 'chanceb':"{0}%".format(chanceb), 'spread': round(spread, 3), 'tempo':"{0}".format(int(round(tempo * 100))) }
+    dict_score = {'teama':first, 'scorea':"{0}".format(scorea), 'chancea':"{0}%".format(chancea) ,'teamb':second, 'scoreb':"{0}".format(scoreb), 'chanceb':"{0}%".format(chanceb), 'spread': round(spread, 3), 'tempo':"{0}".format(int(round(tempo))) }
     if (verbose):
         print ("Calculate(dict_score) {0}".format(dict_score))
     return dict_score

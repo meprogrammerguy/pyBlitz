@@ -4,6 +4,7 @@ import sys, getopt
 import os.path
 from datetime import datetime
 
+import settings
 import pyBlitz
 
 def CurrentStatsFile(filename):
@@ -66,7 +67,8 @@ def main(argv):
         if (not first and not second):
             print ("you must input the team names to run this tool, (first and second arguments)")
             exit()
-        if (not CurrentStatsFile("data/stats.json")):
+        file = "{0}stats.json".format(settings.data_path)
+        if (not CurrentStatsFile(file)):
             RefreshStats()
         dict_score = {}
         dict_score = pyBlitz.Calculate(first, second, neutral, verbose)

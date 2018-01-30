@@ -16,9 +16,7 @@ import settings
 def main(argv):
     stat_file = settings.data_path + "stats.json"
     schedule_files = GetSchedFiles("sched*.json")
-    merge_file = settings.data_path + "merge_schedule.csv"
-    abbr_file = settings.data_path + "abbreviation.json"
-    abbr_merge_file = settings.data_path + "merge_abbreviation.csv"
+    merge_file = settings.data_path + "merge.json"
     week = "current"
     verbose = False
     test = False
@@ -53,7 +51,7 @@ def main(argv):
         else:
             print ("Test result - fail")
     else:
-        PredictTournament(week, stat_file, schedule_files, merge_file, verbose, abbr_file, abbr_merge_file)
+        PredictTournament(week, stat_file, schedule_files, merge_file, verbose)
 
 def usage():
     usage = """
@@ -126,51 +124,30 @@ def RefreshStats():
 def FindTeams(teama, teamb, dict_merge):
     FoundA = ""
     FoundB = ""
-    for item in dict_merge:
-        if (teama.lower().strip()== item["scheduled team"].lower().strip()):
-            FoundA = item["stats team"]
-            if (item["corrected stats team"].strip()):
-                FoundA = item["corrected stats team"]
-        if (teamb.lower().strip() == item["scheduled team"].lower().strip()):
-            FoundB = item["stats team"]
-            if (item["corrected stats team"].strip()):
-                FoundB = item["corrected stats team"]
+    for item in dict_merge.values():
+        if (teama.lower().strip()== item["scheduled"].lower().strip()):
+            FoundA = item["BPI"]
+        if (teamb.lower().strip() == item["scheduled"].lower().strip()):
+            FoundB = item["BPI"]
         if (FoundA and FoundB):
             break
     return FoundA, FoundB
 
-def FindAbbr(teama, teamb, dict_abbr, dict_abbr_merge):
-    FoundTeamA = ""
-    FoundTeamB = ""
+def FindAbbr(teama, teamb, dict_merge):
     FoundAbbrA = ""
     FoundAbbrB = ""
-    AbbrA = ""
-    AbbrB = ""
-    for item in dict_abbr_merge:
-        stats = item["stats team"].lower().strip()
-        if (item["corrected stats team"].lower().strip()):
-            stats =  item["corrected stats team"].lower().strip()
-        abbr = item["abbreviation"].strip()
-        if (item["corrected abbr"].strip()):
-            abbr =  item["corrected abbr"].strip()
+    for item in dict_merge.values():
+        stats = item["BPI"].lower().strip()
+        abbr = item["abbr"].strip()
         if (teama.lower().strip() == stats):
-            FoundTeamA = item["abbr team"].lower().strip()
             FoundAbbrA = abbr
         if (teamb.lower().strip() == stats):
-            FoundTeamB = item["abbr team"].lower().strip()
             FoundAbbrB = abbr
-        if (FoundTeamA and FoundTeamB):
+        if (FoundAbbrA and FoundAbbrB):
             break
-    for item in dict_abbr.values():
-        if (item["Team"].lower().strip() == FoundTeamA):
-            AbbrA = FoundAbbrA
-        if (item["Team"].lower().strip() == FoundTeamB):
-            AbbrB = FoundAbbrB
-        if (AbbrA and AbbrB):
-            break
-    return AbbrA, AbbrB
+    return FoundAbbrA, FoundAbbrB
 
-def PredictTournament(week, stat_file, schedule_files, merge_file, verbose, abbr_file, abbr_merge_file):
+def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
     if (not "a" in week.lower().strip()):
         idx = GetIndex(week)
         if ((idx < 1) or (idx > len(schedule_files))):
@@ -183,20 +160,10 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose, abbr
     print ("**************************")
     dict_merge = []
     if (not os.path.exists(merge_file)):
-        print ("merge file is missing, run the merge_schedule tool to create")
+        print ("master merge file is missing, run the combine_merge tool to create")
         exit()
     with open(merge_file) as merge_file:
-        reader = csv.DictReader(merge_file)
-        for row in reader:
-            dict_merge.append(row)
-    if (not os.path.exists(abbr_merge_file)):
-        print ("abbreviation merge file is missing, run the merge_abbreviation tool to create")
-        exit()
-    dict_abbr_merge = []
-    with open(abbr_merge_file) as abbr_merge_file:
-        reader = csv.DictReader(abbr_merge_file)
-        for row in reader:
-            dict_abbr_merge.append(row)
+        dict_merge = json.load(merge_file, object_pairs_hook=OrderedDict)
     if (not os.path.exists(schedule_files[0])):
         print ("schedule files are missing, run the scrape_schedule tool to create")
         exit()
@@ -207,15 +174,12 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose, abbr
         exit()
     with open(stat_file) as stats_file:
         dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
-    if (not os.path.exists(abbr_file)):
-        print ("abbreviation file is missing, run the scrape_abbreviations tool to create")
-        exit()
-    with open(abbr_file) as abbrs_file:
-        dict_abbr = json.load(abbrs_file, object_pairs_hook=OrderedDict)
     list_schedule = []
     for file in schedule_files:
         with open(file) as schedule_file:
-            list_schedule.append(json.load(schedule_file, object_pairs_hook=OrderedDict))
+            item = json.load(schedule_file, object_pairs_hook=OrderedDict)
+            #item["Week"] = GetIndex(file)
+            list_schedule.append(item)
     weeks = GetWeekRange(week, list_schedule)
     for idx in range(len(schedule_files)):
         if (idx in weeks):
@@ -225,7 +189,7 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose, abbr
             index = 0
             for item in list_schedule[idx].values():
                 teama, teamb = FindTeams(item["TeamA"], item["TeamB"], dict_merge)
-                abbra, abbrb = FindAbbr(teama, teamb, dict_abbr, dict_abbr_merge)
+                abbra, abbrb = FindAbbr(teama, teamb, dict_merge)
                 neutral = False
                 if (item["Home"].lower().strip() == "neutral"):
                     neutral = True
