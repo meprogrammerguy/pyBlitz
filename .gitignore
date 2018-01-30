@@ -6,6 +6,8 @@
 # Generated Files
 *.json
 *.csv
+# Allow
+!/defaults/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
