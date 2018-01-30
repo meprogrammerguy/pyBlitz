@@ -46,20 +46,23 @@ def GetSchedAbbr(scores):
     abbrl = items[4]
     return abbrw, abbrl
 
-def GetCount(item):
+def GetWeek(item):
     idx = re.findall(r'\d+', str(item))
     if (len(idx) == 0):
         idx.append("0")
     return int(idx[0])
 
 def GetSchedFiles(templatename):
-    file_dict = {}
+    A = []
     for p in Path(settings.data_path).glob(templatename):
-        idx = GetCount(p)
-        file_dict[idx] = str(p)
+        A.append(str(p))
     file_list = []
-    for idx in range(len(file_dict)):
-        file_list.append(file_dict[idx + 1])
+    for item in range(0, 17):
+        file_list.append("?")
+    for item in A:
+        idx = GetWeek(item)
+        file_list[idx] = item
+    file_list = [x for x in file_list if x != "?"]
     return file_list
 
 print ("Test Abbreviation spreadsheet validation Tool")

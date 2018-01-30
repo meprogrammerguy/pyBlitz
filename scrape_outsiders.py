@@ -23,8 +23,6 @@ def CleanString(data):
 
 url = "http://www.footballoutsiders.com/stats/ncaa"
 
-#url = "http://www.footballoutsiders.com/stats/ncaa2016" #past year testing override
-
 print ("Scrape Outsiders Tool")
 print ("**************************")
 print ("data is from {0}".format(url))
