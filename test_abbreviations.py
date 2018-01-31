@@ -112,6 +112,8 @@ for item in abbr_codes:
     team, index = GetKey(item, dict_merge, team_list)
     if (index == -1):
         print ("*** warning: could not find schedule abbreviation {0} in merge file".format(item))
+    #else:
+        #print ("merge [{0}], scheduled [{1}]".format(team_list[index], item))
 
 scrape_schedule.year = year
 scrape_schedule.main(sys.argv[1:])

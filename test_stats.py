@@ -9,16 +9,26 @@ from pathlib import Path
 
 import settings
 
-def FindTeams(stats_team, fixed_team, stats_teams):
-    Found = False
-    for team in stats_teams:
-        if (team.strip() == stats_team.strip() and fixed_team.strip() == ""):
-            Found = True
-            break
-        if (team.strip() == fixed_team.strip()):
-            Found = True
-            break
-    return Found
+def GetTeams(dict_merge):
+    A=[]
+    for team in dict_merge.values():
+        A.append(team["BPI"])
+    return A
+
+def GetKey(team, dict_merge, team_list):
+    key = {}
+    loop = -1
+    index = -1
+    for item in dict_merge.values():
+        loop += 1
+        if (team == item["teamrankings"]):
+            if (index != -1):
+                print ("*** [{0}] is used for {1}[{2}] and {3}[{4}] in merge file"
+                    .format(team, team_list[index], index, team_list[loop], loop))
+            else:
+                index = loop
+                key = team
+    return key, index
 
 print ("Test stats spreadsheet validation Tool")
 print ("****************************************************************")
@@ -48,5 +58,14 @@ for item in  dict_stats.values():
 team_set = set(AllTeams)
 stats_teams = list(team_set)
 stats_teams.sort()
+
+team_list = GetTeams(dict_merge)
  
+for item in stats_teams:
+    team, index = GetKey(item, dict_merge, team_list)
+    if (index == -1):
+        print ("*** warning: could not find teamrankings [{0}] in merge file".format(item))
+    #else:
+        #print ("BPI [{0}], teamrankings [{1}]".format(team_list[index], item))
+
 print ("done.")

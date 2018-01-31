@@ -6,8 +6,12 @@ import csv
 from collections import OrderedDict
 import os.path
 from pathlib import Path
+import datetime
+import re
+import sys, getopt
 
 import settings
+import scrape_schedule
 
 def GetTeams(dict_merge):
     A=[]
@@ -15,32 +19,20 @@ def GetTeams(dict_merge):
         A.append(team["BPI"])
     return A
 
-def GetKey(abbr, dict_merge, team_list):
+def GetKey(team, dict_merge, team_list):
     key = {}
     loop = -1
     index = -1
-    for team in dict_merge.values():
+    for item in dict_merge.values():
         loop += 1
-        if (abbr == team["abbr"]):
+        if (team == item["scheduled"]):
             if (index != -1):
                 print ("*** {0} is used for {1}[{2}] and {3}[{4}] in merge file"
-                    .format(abbr, team_list[index], index, team_list[loop], loop))
+                    .format(team, team_list[index], index, team_list[loop], loop))
             else:
                 index = loop
-                key = team
+                key = item
     return key, index
-
-def GetSchedAbbr(scores):
-    abbrw = ""
-    abbrl = ""
-    items = re.split(r'(,|\s)\s*', str(scores))
-    if (items[0].strip() == "?"):   # Cancelled, Postponed or not yet Played Game
-        return abbrw, abbrl
-    if (len(items) != 7):
-        return abbrw, abbrl
-    abbrw = items[0]
-    abbrl = items[4]
-    return abbrw, abbrl
 
 def GetWeek(item):
     idx = re.findall(r'\d+', str(item))
@@ -90,24 +82,23 @@ list_schedule = []
 for file in schedule_files:
     with open(file) as schedule_file:
         list_schedule.append(json.load(schedule_file, object_pairs_hook=OrderedDict))
-AllAbbr=[]
+AllTeam=[]
 for idx in range(len(schedule_files)):
     for item in list_schedule[idx].values():
-        abbrw, abbrl = GetSchedAbbr(item["Score"])
-        if (abbrw):
-            AllAbbr.append(abbrw)
-        if (abbrl):
-            AllAbbr.append(abbrl)
-abbr_set = set(AllAbbr)
-abbr_codes = list(abbr_set)
-abbr_codes.sort()
+        AllTeam.append(item["TeamA"])
+        AllTeam.append(item["TeamA"])
+team_set = set(AllTeam)
+teams = list(team_set)
+teams.sort()
 
 team_list = GetTeams(dict_merge)
 
-for item in abbr_codes:
+for item in teams:
     team, index = GetKey(item, dict_merge, team_list)
     if (index == -1):
-        print ("*** warning: could not find schedule abbreviation {0} in merge file".format(item))
+        print ("*** warning: could not find schedule team [{0}] in merge file".format(item))
+    #else:
+        #print ("BPI [{0}], teamrankings [{1}]".format(team_list[index], item))
 
 print ("****************************************************************")
 print ("done.")
