@@ -117,6 +117,9 @@ def RefreshStats():
     import scrape_bornpowerindex
     import scrape_teamrankings
     import scrape_abbreviations
+    import merge_abbreviation
+    import merge_schedule
+    import merge_stats
     import combine_merge
     import combine_stats
     import measure_results
@@ -148,6 +151,8 @@ def FindAbbr(teama, teamb, dict_merge):
     return FoundAbbrA, FoundAbbrB
 
 def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
+    now = datetime.now()
+    paths = "{0}{1}".format(settings.predict_root, int(now.year))
     if (not "a" in week.lower().strip()):
         idx = GetIndex(week)
         if ((idx < 1) or (idx > len(schedule_files))):
@@ -178,7 +183,6 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
     for file in schedule_files:
         with open(file) as schedule_file:
             item = json.load(schedule_file, object_pairs_hook=OrderedDict)
-            #item["Week"] = GetIndex(file)
             list_schedule.append(item)
     weeks = GetWeekRange(week, list_schedule)
     for idx in range(len(schedule_files)):
@@ -212,7 +216,8 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
                     if (teamb != "?" and teama != "?"):
                         list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], abbra, "?",
                             "?", "?", item["TeamB"], abbrb, "?", "?"])
-            output_file = "week{0}.csv".format(GetIndex(schedule_files[idx]))
+            Path(paths).mkdir(parents=True, exist_ok=True) 
+            output_file = "{0}/week{1}.csv".format(paths, GetIndex(schedule_files[idx]))
             predict_sheet = open(output_file, 'w', newline='')
             csvwriter = csv.writer(predict_sheet)
             for row in list_predict:
@@ -220,9 +225,8 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
             predict_sheet.close()
             print ("{0} has been created.".format(output_file))
 
-    now = datetime.now()    # How are we doing? Let's find Out!
-    file = "{0}{1}_{2}.json".format(settings.data_path, "results", now.year)
-
+    # How are we doing? Let's find Out!
+    file = "{0}/results.json".format(paths)
     if (os.path.exists(file)):
         dict_results = []
         last_week = GetIndex(week) - 1
