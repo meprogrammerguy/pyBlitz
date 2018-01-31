@@ -30,15 +30,17 @@ def GetPercent(item):
     return float(newstr)
 
 def GetIndex(item):
-    idx = re.findall(r'\d+', str(item))
+    filename = os.path.basename(str(item))
+    idx = re.findall(r'\d+', str(filename))
     if (len(idx) == 0):
         idx.append("-1")
     return int(idx[0])
 
 def GetFiles(path, templatename):
     A = []
-    for p in Path(path).glob(templatename):
-        A.append(str(p))
+    files = Path(path).glob(templatename)
+    for p in files:
+        A.append(p)
     file_list = []
     for item in range(0, 17):
         file_list.append("?")
@@ -85,6 +87,8 @@ def GetActualScores(abbra, abbrb, scores):
         scoreb = int(items[2])
     return scorea, scoreb
 
+now = datetime.now()
+predict_path = "{0}{1}/".format(settings.predict_root, int(now.year))
 verbose = False
 if (len(sys.argv)==2):
     verbose = True
@@ -101,7 +105,7 @@ if (not os.path.exists(file)):
         print ("schedule files are missing, run the scrape_schedule tool to create")
     exit()
 
-file = 'week1.csv'
+file = '{0}week1.csv'.format(predict_path)
 if (not os.path.exists(file)):
     if (verbose):
         print ("Weekly files are missing, run the score_week tool to create")
@@ -114,8 +118,7 @@ for file in sched_files:
         item = json.load(sched_file, object_pairs_hook=OrderedDict)
         item['Week'] = GetIndex(file)
         list_sched.append(item)
-
-week_files = GetFiles(".", "week*.csv")
+week_files = GetFiles(predict_path, "week*.csv")
 list_week = []
 for file in week_files:
     with open(file) as week_file:
@@ -193,15 +196,14 @@ df['Count Unpredicted']=C
 df['Count Correct']=D
 df['Percent Correct']=E
 
-now = datetime.now()
-file = "{0}{1}_{2}.json".format(settings.data_path, 'results', now.year)
+file = "{0}results.json".format(predict_path)
 with open(file, 'w') as f:
     f.write(df.to_json(orient='index'))
 
 with open(file) as results_json:
     dict_results = json.load(results_json, object_pairs_hook=OrderedDict)
 
-file = "{0}{1}_{2}.csv".format(settings.data_path, 'results', now.year)
+file = "{0}results.csv".format(predict_path)
 results_sheet = open(file, 'w', newline='')
 csvwriter = csv.writer(results_sheet)
 count = 0
