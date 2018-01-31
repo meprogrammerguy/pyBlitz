@@ -3,11 +3,15 @@
 import sys, getopt
 import os.path
 from datetime import datetime
+from pathlib import Path
 
 import settings
 import pyBlitz
+import scrape_schedule
 
 def CurrentStatsFile(filename):
+    if (not os.path.exists(filename)):
+        return False
     stat = os.path.getmtime(filename)
     stat_date = datetime.fromtimestamp(stat)
     if stat_date.date() < datetime.now().date():
@@ -15,10 +19,17 @@ def CurrentStatsFile(filename):
     return True
 
 def RefreshStats():
+    import scrape_abbreviations
     import scrape_bettingtalk
     import scrape_bornpowerindex
     import scrape_teamrankings
-    import scrape_abbreviations
+    now = datetime.now()
+    year = int(now.year)
+    scrape_schedule.year = year
+    scrape_schedule.main(sys.argv[1:])
+    import merge_abbreviation
+    import merge_schedule
+    import merge_stats
     import combine_merge
     import combine_stats
     import measure_results
@@ -55,8 +66,9 @@ def main(argv):
             assert False, "unhandled option"
     print ("Score Matchup Tool")
     print ("**************************")
-    usage()
-    print ("**************************")
+    if (verbose):
+        usage()
+        print ("**************************")
     if (test):
         testResult = pyBlitz.Test(verbose)
         if (testResult):
@@ -67,11 +79,19 @@ def main(argv):
         if (not first and not second):
             print ("you must input the team names to run this tool, (first and second arguments)")
             exit()
-        file = "{0}stats.json".format(settings.data_path)
-        if (not CurrentStatsFile(file)):
+
+        Path(settings.data_path).mkdir(parents=True, exist_ok=True) 
+        stat_file = "{0}stats.json".format(settings.data_path)
+        if (not CurrentStatsFile(stat_file)):
             RefreshStats()
-        dict_score = {}
-        dict_score = pyBlitz.Calculate(first, second, neutral, verbose)
+        ds = {}
+        ds = pyBlitz.Calculate(first, second, neutral, verbose)
+        if (neutral):
+            print ("{0} {1} vs {2} {3} {4}-{5}".format(ds["teama"], ds["chancea"], ds["teamb"], ds["chanceb"],
+                ds["scorea"], ds["scoreb"]))
+        else:
+            print ("{0} {1} at {2} {3} {4}-{5}".format(ds["teama"], ds["chancea"], ds["teamb"], ds["chanceb"],
+                ds["scorea"], ds["scoreb"]))
 
 def usage():
     usage = """

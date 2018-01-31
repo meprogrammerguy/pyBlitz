@@ -11,6 +11,7 @@ import csv
 import contextlib
 import os
 import re
+from pathlib import Path
 
 import settings
 
@@ -62,6 +63,7 @@ df=pd.DataFrame(IDX,columns=['Index'])
 df['Team']=A
 df['Abbreviation']=B
 
+Path(settings.data_path).mkdir(parents=True, exist_ok=True) 
 with open(settings.data_path + 'abbreviation.json', 'w') as f:
     f.write(df.to_json(orient='index'))
 

@@ -11,6 +11,7 @@ import csv
 import contextlib
 import os
 import re
+from pathlib import Path
 
 import settings
 
@@ -73,6 +74,7 @@ df['PTpP3']=C
 df['OPLpG3']=D
 df['OPTpP3']=E
 
+Path(settings.data_path).mkdir(parents=True, exist_ok=True) 
 with open(settings.data_path + 'teamrankings.json', 'w') as f:
     f.write(df.to_json(orient='index'))
 

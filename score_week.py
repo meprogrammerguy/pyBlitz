@@ -12,10 +12,10 @@ from datetime import datetime
 import re
 
 import settings
+import scrape_schedule
 
 def main(argv):
     stat_file = settings.data_path + "stats.json"
-    schedule_files = GetSchedFiles("sched*.json")
     merge_file = settings.data_path + "merge.json"
     week = "current"
     verbose = False
@@ -51,7 +51,7 @@ def main(argv):
         else:
             print ("Test result - fail")
     else:
-        PredictTournament(week, stat_file, schedule_files, merge_file, verbose)
+        PredictTournament(week, stat_file, merge_file, verbose)
 
 def usage():
     usage = """
@@ -106,6 +106,8 @@ def GetSchedFiles(templatename):
     return file_list
 
 def CurrentStatsFile(filename):
+    if (not os.path.exists(filename)):
+        return False
     stat = os.path.getmtime(filename)
     stat_date = datetime.fromtimestamp(stat)
     if stat_date.date() < datetime.now().date():
@@ -113,10 +115,14 @@ def CurrentStatsFile(filename):
     return True
 
 def RefreshStats():
+    import scrape_abbreviations
     import scrape_bettingtalk
     import scrape_bornpowerindex
     import scrape_teamrankings
-    import scrape_abbreviations
+    now = datetime.now()
+    year = int(now.year)
+    scrape_schedule.year = year
+    scrape_schedule.main(sys.argv[1:])
     import merge_abbreviation
     import merge_schedule
     import merge_stats
@@ -150,7 +156,7 @@ def FindAbbr(teama, teamb, dict_merge):
             break
     return FoundAbbrA, FoundAbbrB
 
-def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
+def PredictTournament(week, stat_file, merge_file, verbose):
     now = datetime.now()
     paths = "{0}{1}".format(settings.predict_root, int(now.year))
     if (not "a" in week.lower().strip()):
@@ -163,6 +169,9 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
     print ("Team Merge file:\t{0}".format(merge_file))
     print ("\trunning for Week: {0}".format(week))
     print ("**************************")
+    if (not CurrentStatsFile(stat_file)):
+        RefreshStats()
+    schedule_files = GetSchedFiles("sched*.json")
     dict_merge = []
     if (not os.path.exists(merge_file)):
         print ("master merge file is missing, run the combine_merge tool to create")
@@ -172,8 +181,6 @@ def PredictTournament(week, stat_file, schedule_files, merge_file, verbose):
     if (not os.path.exists(schedule_files[0])):
         print ("schedule files are missing, run the scrape_schedule tool to create")
         exit()
-    if (not CurrentStatsFile(stat_file)):
-        RefreshStats()
     if (not os.path.exists(stat_file)):
         print ("statistics file is missing, run the combine_stats tool to create")
         exit()

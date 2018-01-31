@@ -9,6 +9,7 @@ from collections import OrderedDict
 import json
 import csv
 import re
+from pathlib import Path
 
 import settings
 
@@ -157,6 +158,7 @@ df['School']=A
 df['Ranking']=B
 df['Class']=C
 
+Path(settings.data_path).mkdir(parents=True, exist_ok=True) 
 with open(settings.data_path + 'bornpowerindex.json', 'w') as f:
     f.write(df.to_json(orient='index'))
 

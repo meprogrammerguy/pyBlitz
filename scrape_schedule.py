@@ -139,6 +139,7 @@ def main(argv):
         df['TeamB']=D
         df['Score']=G
         if (not df.empty):    
+            Path(settings.data_path).mkdir(parents=True, exist_ok=True) 
             filename = "{0}sched{1}.json".format(settings.data_path, loop)
             with open(filename, 'w') as f:
                 f.write(df.to_json(orient='index'))

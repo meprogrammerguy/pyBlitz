@@ -10,6 +10,7 @@ import json
 import csv
 import contextlib
 import os
+from pathlib import Path
 
 import settings
 
@@ -43,6 +44,7 @@ df['Spread']=A
 df['Favorite']=B
 df['Underdog']=C
 
+Path(settings.data_path).mkdir(parents=True, exist_ok=True) 
 with open(settings.data_path + 'bettingtalk.json', 'w') as f:
     f.write(df.to_json(orient='index'))
 
