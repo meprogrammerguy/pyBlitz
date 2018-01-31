@@ -2,8 +2,6 @@
 
 import json
 import pdb
-from fuzzywuzzy import fuzz
-from fuzzywuzzy import process
 import csv
 from collections import OrderedDict
 import os.path
