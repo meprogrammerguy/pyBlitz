@@ -12,6 +12,14 @@ import re
 
 import settings
 
+def GetOverride(item, list_overrides):
+    field = ""
+    for ovr in list_overrides:
+        if (item.lower().strip() == ovr[0].lower().strip()):
+            field = ovr[1]
+            break
+    return field
+
 def CleanString(data):
     return re.sub(' +',' ', data)
 
@@ -19,10 +27,16 @@ print ("Merge Stats Tool")
 print ("**************************")
 
 file = '{0}merge_stats.csv'.format(settings.data_path)
+list_overrides = []
 if (os.path.exists(file)):
-    print ("Warning *** The merge_stats.csv file already exists ***")
-    print ("        *** delete this file if you want to re-create it. ***")
-    exit()
+    with open(file) as input_file:
+        reader = csv.DictReader(input_file)
+        for row in reader:
+            bpi = ""
+            if (row["corrected BPI"].strip() > ""):
+                bpi = row["corrected BPI"]
+            if (bpi):
+                list_overrides.append([row["teamrankings"], bpi])
 
 file = '{0}bornpowerindex.json'.format(settings.data_path)
 if (not os.path.exists(file)):
@@ -67,8 +81,9 @@ for item in teamrankings:
     dict_merge["teamrankings"].append(CleanString(item))
     dict_merge["match ratio"].append(key[1])
     dict_merge["BPI"].append(CleanString(key[0]))
-    dict_merge["corrected BPI"].append("")
-    values.append([item, key[1], key[0], ""])
+    ovr = GetOverride(item, list_overrides)
+    dict_merge["corrected BPI"].append(ovr)
+    values.append([item, key[1], key[0], ovr])
 
 csvwriter.writerow(dict_merge.keys())
 for value in values:
