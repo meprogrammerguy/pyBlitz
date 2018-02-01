@@ -86,6 +86,9 @@ def main(argv):
             RefreshStats()
         ds = {}
         ds = pyBlitz.Calculate(first, second, neutral, verbose)
+        if (not ds):
+            print ("Could not make a prediction?")
+            exit()
         if (neutral):
             print ("{0} {1} vs {2} {3} {4}-{5}".format(ds["teama"], ds["chancea"], ds["teamb"], ds["chanceb"],
                 ds["scorea"], ds["scoreb"]))

@@ -21,6 +21,7 @@ url = 'http://www.bornpowerindex.com/cgi-bin/DBRetrieve.pl'
 print ("Scrape Born Power Index Tool")
 print ("**************************")
 print ("data is from {0}".format(url))
+print ("Directory Location: {0}".format(settings.data_path))
 print ("**************************")
 
 data1 = {

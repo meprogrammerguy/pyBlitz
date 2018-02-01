@@ -24,7 +24,7 @@ def findTeams(first, second, dict_stats, verbose = True):
             count += 1
         if (count == 2):
             break
-    if (verbose and count < 2):
+    if (count < 2):
         if (not teama):
             print ("Could not find stats for {0}".format(first))
         if (not teamb):

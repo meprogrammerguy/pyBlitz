@@ -87,14 +87,15 @@ def GetWeekRange(week, list_schedule):
     return range(int(week) - 1, int(week))
 
 def GetIndex(item):
-    idx = re.findall(r'\d+', str(item))
+    filename = os.path.basename(str(item))
+    idx = re.findall(r'\d+', str(filename))
     if (len(idx) == 0):
         idx.append("0")
     return int(idx[0])
 
-def GetSchedFiles(templatename):
+def GetSchedFiles(path, templatename):
     A = []
-    for p in Path(settings.data_path).glob(templatename):
+    for p in Path(path).glob(templatename):
         A.append(str(p))
     file_list = []
     for item in range(0, 17):
@@ -158,7 +159,8 @@ def FindAbbr(teama, teamb, dict_merge):
 
 def PredictTournament(week, stat_file, merge_file, verbose):
     now = datetime.now()
-    paths = "{0}{1}".format(settings.predict_root, int(now.year))
+    week_path = "{0}{1}/".format(settings.predict_root, int(now.year))
+    sched_path = "{0}{1}/{2}".format(settings.predict_root, int(now.year), settings.predict_sched)
     if (not "a" in week.lower().strip()):
         idx = GetIndex(week)
         if ((idx < 1) or (idx > len(schedule_files))):
@@ -168,10 +170,11 @@ def PredictTournament(week, stat_file, merge_file, verbose):
     print ("Statistics file:\t{0}".format(stat_file))
     print ("Team Merge file:\t{0}".format(merge_file))
     print ("\trunning for Week: {0}".format(week))
+    print ("\tDirectory Location: {0}".format(week_path))
     print ("**************************")
     if (not CurrentStatsFile(stat_file)):
         RefreshStats()
-    schedule_files = GetSchedFiles("sched*.json")
+    schedule_files = GetSchedFiles(sched_path, "sched*.json")
     dict_merge = []
     if (not os.path.exists(merge_file)):
         print ("master merge file is missing, run the combine_merge tool to create")
@@ -223,8 +226,8 @@ def PredictTournament(week, stat_file, merge_file, verbose):
                     if (teamb != "?" and teama != "?"):
                         list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], abbra, "?",
                             "?", "?", item["TeamB"], abbrb, "?", "?"])
-            Path(paths).mkdir(parents=True, exist_ok=True) 
-            output_file = "{0}/week{1}.csv".format(paths, GetIndex(schedule_files[idx]))
+            Path(week_path).mkdir(parents=True, exist_ok=True) 
+            output_file = "{0}week{1}.csv".format(week_path, GetIndex(schedule_files[idx]))
             predict_sheet = open(output_file, 'w', newline='')
             csvwriter = csv.writer(predict_sheet)
             for row in list_predict:
@@ -233,7 +236,7 @@ def PredictTournament(week, stat_file, merge_file, verbose):
             print ("{0} has been created.".format(output_file))
 
     # How are we doing? Let's find Out!
-    file = "{0}/results.json".format(paths)
+    file = "{0}/results.json".format(week_path)
     if (os.path.exists(file)):
         dict_results = []
         last_week = GetIndex(week) - 1

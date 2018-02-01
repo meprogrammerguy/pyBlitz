@@ -19,6 +19,7 @@ url = "http://www.bettingtalk.com/win-probability-percentage-point-spread-nfl-nb
 print ("Scrape Percentage by Spread Tool")
 print ("**************************")
 print ("data is from {0}".format(url))
+print ("Directory Location: {0}".format(settings.data_path))
 print ("**************************")
 
 with contextlib.closing(urlopen(url)) as page:

@@ -33,6 +33,7 @@ for url in urls:
         soup = BeautifulSoup(page, "html5lib")
     ratings_table.append(soup.find('table', {"class":"tr-table datatable scrollable"}))
 
+print ("Directory Location: {0}".format(settings.data_path))
 print ("**************************")
 IDX=[]
 A=[]

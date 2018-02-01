@@ -9,6 +9,7 @@ from collections import OrderedDict
 import os.path
 from pathlib import Path
 import re
+from datetime import datetime
 
 import settings
 
@@ -23,6 +24,9 @@ def GetOverride(item, list_overrides):
 def CleanString(data):
     return re.sub(' +',' ', data)
 
+now = datetime.now()
+path = "{0}{1}/{2}".format(settings.predict_root, int(now.year), settings.predict_sched)
+ 
 print ("Merge Schedule Tool")
 print ("**************************")
 
@@ -38,13 +42,13 @@ if (os.path.exists(file)):
             if (bpi):
                 list_overrides.append([row["scheduled team"], bpi])
 
-file = '{0}sched1.json'.format(settings.data_path)
+file = '{0}sched1.json'.format(path)
 if (not os.path.exists(file)):
     print ("schedule files are missing, run the scrape_schedule tool to create")
     exit()
 
 list_sched = []
-for p in Path(settings.data_path).glob("sched*.json"):
+for p in Path(path).glob("sched*.json"):
     with open(p) as sched_files:
         list_sched.append(json.load(sched_files, object_pairs_hook=OrderedDict))
 

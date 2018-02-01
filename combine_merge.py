@@ -8,18 +8,20 @@ from collections import OrderedDict
 import os.path
 from pathlib import Path
 import re
+from datetime import datetime
 
 import settings
 
 def GetCount(item):
-    idx = re.findall(r'\d+', str(item))
+    filename = os.path.basename(str(item))
+    idx = re.findall(r'\d+', str(filename))
     if (len(idx) == 0):
         idx.append("0")
     return int(idx[0])
 
-def GetSchedFiles(templatename):
+def GetSchedFiles(path, templatename):
     A = []
-    for p in Path(settings.data_path).glob(templatename):
+    for p in Path(path).glob(templatename):
         A.append(str(p))
     file_list = []
     for item in range(0, 17):
@@ -104,7 +106,9 @@ with open(file) as sched_file:
     for row in reader:
         dict_sched_merge.append(row)
 
-schedule_files = GetSchedFiles("sched*.json")
+now = datetime.now()
+path = "{0}{1}/{2}".format(settings.predict_root, int(now.year), settings.predict_sched)
+schedule_files = GetSchedFiles(path, "sched*.json")
 list_schedule = []
 for file in schedule_files:
     with open(file) as schedule_file:

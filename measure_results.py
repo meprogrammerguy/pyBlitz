@@ -87,6 +87,7 @@ def GetActualScores(abbra, abbrb, scores):
 
 now = datetime.now()
 predict_path = "{0}{1}/".format(settings.predict_root, int(now.year))
+sched_path = "{0}{1}/{2}".format(settings.predict_root, int(now.year), settings.predict_sched)
 verbose = False
 if (len(sys.argv)==2):
     verbose = True
@@ -94,10 +95,10 @@ if (len(sys.argv)==2):
     print ("Measure Actual Results Tool")
     print ("**************************")
 
-if (not CurrentScheduleFiles(settings.data_path + 'sched1.json')):
+if (not CurrentScheduleFiles(sched_path  + 'sched1.json')):
     RefreshScheduleFiles()
 
-file = '{0}sched1.json'.format(settings.data_path)
+file = '{0}sched1.json'.format(sched_path)
 if (not os.path.exists(file)):
     if (verbose):
         print ("schedule files are missing, run the scrape_schedule tool to create")
@@ -109,7 +110,7 @@ if (not os.path.exists(file)):
         print ("Weekly files are missing, run the score_week tool to create")
     exit()
 
-sched_files = GetFiles(settings.data_path, "sched*.json")
+sched_files = GetFiles(sched_path, "sched*.json")
 list_sched = []
 for file in sched_files:
     with open(file) as sched_file:

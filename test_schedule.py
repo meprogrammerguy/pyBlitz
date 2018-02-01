@@ -35,14 +35,15 @@ def GetKey(team, dict_merge, team_list):
     return key, index
 
 def GetWeek(item):
-    idx = re.findall(r'\d+', str(item))
+    filename = os.path.basename(str(item))
+    idx = re.findall(r'\d+', str(filename))
     if (len(idx) == 0):
         idx.append("0")
     return int(idx[0])
 
-def GetSchedFiles(templatename):
+def GetSchedFiles(path, templatename):
     A = []
-    for p in Path(settings.data_path).glob(templatename):
+    for p in Path(path).glob(templatename):
         A.append(str(p))
     file_list = []
     for item in range(0, 17):
@@ -62,6 +63,10 @@ print ("    == for these match-ups a prediction will not be possible")
 print ("    == (but a very, very, good guess is to go with the other team)")
 print (" ")
 
+now = datetime.datetime.now()
+year = int(now.year)
+path = "{0}{1}/{2}".format(settings.predict_root, year, settings.predict_sched)
+
 file = '{0}merge.json'.format(settings.data_path)
 if (not os.path.exists(file)):
     print ("merge.json file is missing, run the combine_merge tool to create")
@@ -69,11 +74,10 @@ if (not os.path.exists(file)):
 with open(file) as merge_file:
     dict_merge = json.load(merge_file, object_pairs_hook=OrderedDict)
 
-now = datetime.datetime.now()
-year = int(now.year)
 scrape_schedule.year = year
 scrape_schedule.main(sys.argv[1:])
-schedule_files = GetSchedFiles("sched*.json")
+schedule_files = GetSchedFiles(path, "sched*.json")
+
 if (not os.path.exists(schedule_files[0])):
     print ("schedule files are missing, run the scrape_schedule tool to create")
     exit()

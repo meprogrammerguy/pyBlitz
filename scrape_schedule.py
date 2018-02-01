@@ -38,15 +38,18 @@ if (len(sys.argv)>=2):
 
 def main(argv):
     starturl = "http://www.espn.com/college-football/schedule"
+    path = "{0}{1}/{2}".format(settings.predict_root, year, settings.predict_sched)
 
     print ("Scrape Schedule Tool")
     print ("**************************")
     print ("data is from {0}".format(starturl))
     print
     print ("Year is: {0}".format(year))
+    print ("Directory location: {0}".format(path))
     print ("**************************")
 
-    for p in Path(settings.data_path).glob("sched*.*"):
+    Path(path).mkdir(parents=True, exist_ok=True) 
+    for p in Path(path).glob("sched*.*"):
         p.unlink()
 
     url = []
@@ -139,15 +142,14 @@ def main(argv):
         df['TeamB']=D
         df['Score']=G
         if (not df.empty):    
-            Path(settings.data_path).mkdir(parents=True, exist_ok=True) 
-            filename = "{0}sched{1}.json".format(settings.data_path, loop)
+            filename = "{0}sched{1}.json".format(path, loop)
             with open(filename, 'w') as f:
                 f.write(df.to_json(orient='index'))
 
             with open(filename) as sched_json:
                 dict_sched = json.load(sched_json, object_pairs_hook=OrderedDict)
 
-            filename = "{0}sched{1}.csv".format(settings.data_path, loop)
+            filename = "{0}sched{1}.csv".format(path, loop)
             sched_sheet = open(filename, 'w', newline='')
             csvwriter = csv.writer(sched_sheet)
             count = 0
