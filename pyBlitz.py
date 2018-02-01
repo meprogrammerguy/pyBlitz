@@ -24,14 +24,14 @@ def findTeams(first, second, dict_stats, verbose = True):
             count += 1
         if (count == 2):
             break
-    if (count < 2):
+    if (verbose and count < 2):
         if (not teama):
             print ("Could not find stats for {0}".format(first))
             return {}, teamb
         if (not teamb):
             print ("Could not find stats for {0}".format(second))
             return teama, {}
-    if (not teama and not teamb):
+    if (verbose and not teama and not teamb):
         print ("Could not find stats for either team: {0} or {1}".format(first, second))
         return {}, {}
     return teama, teamb
@@ -209,10 +209,14 @@ def Calculate(first, second, neutral, verbose):
     classa = teama["Class"].lower().strip()
     classb = teamb["Class"].lower().strip()
     if (classa == "1a" and classb != "1a"):
+        if (verbose):
+            print ("[{0}] team playing [{1} team, will predict 1A wins".format(classa, classb))
         dict_score = {'teama':first, 'scorea':"0", 'chancea':"100" ,'teamb':second, 'scoreb':"0",
             'chanceb':"0", 'spread': 0, 'tempo':"0"}
         return dict_score
     if (classa != "1a" and classb == "1a"):
+        if (verbose):
+            print ("[{0}] team playing [{1} team, will predict 1A wins".format(classa, classb))
         dict_score = {'teama':first, 'scorea':"0", 'chancea':"0" ,'teamb':second, 'scoreb':"0",
             'chanceb':"100", 'spread': 0, 'tempo':"0"}
         return dict_score

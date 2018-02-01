@@ -90,10 +90,10 @@ def main(argv):
             print ("Could not make a prediction?")
             exit()
         if (neutral):
-            print ("{0} {1} vs {2} {3} {4}-{5}".format(ds["teama"], ds["chancea"], ds["teamb"], ds["chanceb"],
+            print ("{0} {1}% vs {2} {3}% {4}-{5}".format(ds["teama"], ds["chancea"], ds["teamb"], ds["chanceb"],
                 ds["scorea"], ds["scoreb"]))
         else:
-            print ("{0} {1} at {2} {3} {4}-{5}".format(ds["teama"], ds["chancea"], ds["teamb"], ds["chanceb"],
+            print ("{0} {1}% at {2} {3}% {4}-{5}".format(ds["teama"], ds["chancea"], ds["teamb"], ds["chanceb"],
                 ds["scorea"], ds["scoreb"]))
 
 def usage():
