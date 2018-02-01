@@ -27,8 +27,12 @@ def findTeams(first, second, dict_stats, verbose = True):
     if (count < 2):
         if (not teama):
             print ("Could not find stats for {0}".format(first))
+            return {}, teamb
         if (not teamb):
             print ("Could not find stats for {0}".format(second))
+            return teama, {}
+    if (not teama and not teamb):
+        print ("Could not find stats for either team: {0} or {1}".format(first, second))
         return {}, {}
     return teama, teamb
 
@@ -193,24 +197,24 @@ def Calculate(first, second, neutral, verbose):
     if (not teama):
         if (verbose):
             print ("[{0}] is missing from stats, will predict [{1}] will win".format(first, second))
-        dict_score = {'teama':first, 'scorea':"0", 'chancea':"0%" ,'teamb':second, 'scoreb':"0",
-            'chanceb':"100%", 'spread': 0, 'tempo':"0"}
+        dict_score = {'teama':first, 'scorea':"0", 'chancea':"0" ,'teamb':second, 'scoreb':"0",
+            'chanceb':"100", 'spread': 0, 'tempo':"0"}
         return dict_score
     if (not teamb):
         if (verbose):
             print ("[{0}] is missing from stats, will predict [{1}] will win".format(second, first))
-        dict_score = {'teama':first, 'scorea':"0", 'chancea':"100%" ,'teamb':second, 'scoreb':"0",
-            'chanceb':"0%", 'spread': 0, 'tempo':"0"}
+        dict_score = {'teama':first, 'scorea':"0", 'chancea':"100" ,'teamb':second, 'scoreb':"0",
+            'chanceb':"0", 'spread': 0, 'tempo':"0"}
         return dict_score
     classa = teama["Class"].lower().strip()
     classb = teamb["Class"].lower().strip()
     if (classa == "1a" and classb != "1a"):
-        dict_score = {'teama':first, 'scorea':"0", 'chancea':"100%" ,'teamb':second, 'scoreb':"0",
-            'chanceb':"0%", 'spread': 0, 'tempo':"0"}
+        dict_score = {'teama':first, 'scorea':"0", 'chancea':"100" ,'teamb':second, 'scoreb':"0",
+            'chanceb':"0", 'spread': 0, 'tempo':"0"}
         return dict_score
     if (classa != "1a" and classb == "1a"):
-        dict_score = {'teama':first, 'scorea':"0", 'chancea':"0%" ,'teamb':second, 'scoreb':"0",
-            'chanceb':"100%", 'spread': 0, 'tempo':"0"}
+        dict_score = {'teama':first, 'scorea':"0", 'chancea':"0" ,'teamb':second, 'scoreb':"0",
+            'chanceb':"100", 'spread': 0, 'tempo':"0"}
         return dict_score
     if (not neutral):
         chancea, chanceb =  Chance(teama, teamb, dict_percent, homeTeam = teamb["BPI"], verbose = verbose)
@@ -223,7 +227,7 @@ def Calculate(first, second, neutral, verbose):
 
     tempo = Tempo(teama, teamb, verbose = verbose)
 
-    dict_score = {'teama':first, 'scorea':"{0}".format(scorea), 'chancea':"{0}%".format(chancea) ,'teamb':second, 'scoreb':"{0}".format(scoreb), 'chanceb':"{0}%".format(chanceb), 'spread': round(spread, 3), 'tempo':"{0}".format(int(round(tempo))) }
+    dict_score = {'teama':first, 'scorea':"{0}".format(scorea), 'chancea':"{0}".format(chancea) ,'teamb':second, 'scoreb':"{0}".format(scoreb), 'chanceb':"{0}".format(chanceb), 'spread': round(spread, 3), 'tempo':"{0}".format(int(round(tempo))) }
     if (verbose):
         print ("Calculate(dict_score) {0}".format(dict_score))
     return dict_score
