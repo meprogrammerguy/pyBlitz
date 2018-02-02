@@ -245,7 +245,7 @@ def PredictTournament(week, stat_file, merge_file, verbose):
             print ("{0} has been created.".format(output_file))
 
     # How are we doing? Let's find Out!
-    file = "{0}/results.json".format(week_path)
+    file = "{0}results.json".format(saved_path)
     if (os.path.exists(file)):
         dict_results = []
         last_week = GetIndex(week) - 1
