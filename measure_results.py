@@ -86,7 +86,7 @@ def GetActualScores(abbra, abbrb, scores):
     return scorea, scoreb
 
 now = datetime.now()
-predict_path = "{0}{1}/".format(settings.predict_root, int(now.year))
+saved_path = "{0}{1}/{2}".format(settings.predict_root, int(now.year), settings.predict_saved)
 sched_path = "{0}{1}/{2}".format(settings.predict_root, int(now.year), settings.predict_sched)
 verbose = False
 if (len(sys.argv)==2):
@@ -104,7 +104,7 @@ if (not os.path.exists(file)):
         print ("schedule files are missing, run the scrape_schedule tool to create")
     exit()
 
-file = '{0}week1.csv'.format(predict_path)
+file = '{0}week1.csv'.format(saved_path)
 if (not os.path.exists(file)):
     if (verbose):
         print ("Weekly files are missing, run the score_week tool to create")
@@ -117,7 +117,7 @@ for file in sched_files:
         item = json.load(sched_file, object_pairs_hook=OrderedDict)
         item['Week'] = GetIndex(file)
         list_sched.append(item)
-week_files = GetFiles(predict_path, "week*.csv")
+week_files = GetFiles(saved_path, "week*.csv")
 list_week = []
 for file in week_files:
     with open(file) as week_file:
@@ -195,14 +195,14 @@ df['Count Unpredicted']=C
 df['Count Correct']=D
 df['Percent Correct']=E
 
-file = "{0}results.json".format(predict_path)
+file = "{0}results.json".format(saved_path)
 with open(file, 'w') as f:
     f.write(df.to_json(orient='index'))
 
 with open(file) as results_json:
     dict_results = json.load(results_json, object_pairs_hook=OrderedDict)
 
-file = "{0}results.csv".format(predict_path)
+file = "{0}results.csv".format(saved_path)
 results_sheet = open(file, 'w', newline='')
 csvwriter = csv.writer(results_sheet)
 count = 0

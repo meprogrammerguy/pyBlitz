@@ -11,6 +11,7 @@ from pathlib import Path
 from datetime import datetime
 import re
 import scrape_schedule
+from shutil import copyfile
 
 import settings
 
@@ -147,11 +148,20 @@ def FindAbbr(teama, teamb, dict_merge):
             break
     return FoundAbbrA, FoundAbbrB
 
+def SaveOffFiles(path, file_list):
+    Path(path).mkdir(parents=True, exist_ok=True) 
+    for item in file_list:
+        filename = os.path.basename(str(item))
+        dest_file = "{0}{1}".format(path, filename)
+        if (not os.path.exists(dest_file)):
+            copyfile(item, dest_file)
+
 def PredictTournament(week, stat_file, merge_file, verbose):
     now = datetime.now()
     year = int(now.year)
     week_path = "{0}{1}/".format(settings.predict_root, year)
     sched_path = "{0}{1}/{2}".format(settings.predict_root, year, settings.predict_sched)
+    saved_path = "{0}{1}/{2}".format(settings.predict_root, year, settings.predict_saved)
     if (not "a" in week.lower().strip()):
         idx = GetIndex(week)
         if ((idx < 1) or (idx > len(schedule_files))):
@@ -163,6 +173,10 @@ def PredictTournament(week, stat_file, merge_file, verbose):
     print ("\trunning for Week: {0}".format(week))
     print ("\tDirectory Location: {0}".format(week_path))
     print ("**************************")
+    weekly_files = GetSchedFiles(week_path, "week*.csv")
+    SaveOffFiles(saved_path, weekly_files)
+    for p in Path(week_path).glob("week*.csv"):
+        p.unlink()
     if (not CurrentStatsFile(stat_file)):
         RefreshStats()
     schedule_files = GetSchedFiles(sched_path, "sched*.json")
