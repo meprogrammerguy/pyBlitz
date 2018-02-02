@@ -7,7 +7,6 @@ from pathlib import Path
 
 import settings
 import pyBlitz
-import scrape_schedule
 
 def CurrentStatsFile(filename):
     if (not os.path.exists(filename)):
@@ -19,20 +18,9 @@ def CurrentStatsFile(filename):
     return True
 
 def RefreshStats():
-    import scrape_abbreviations
-    import scrape_bettingtalk
     import scrape_bornpowerindex
     import scrape_teamrankings
-    now = datetime.now()
-    year = int(now.year)
-    scrape_schedule.year = year
-    scrape_schedule.main(sys.argv[1:])
-    import merge_abbreviation
-    import merge_schedule
-    import merge_stats
-    import combine_merge
     import combine_stats
-    import measure_results
 
 def main(argv):
     first = ""

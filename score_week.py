@@ -10,9 +10,9 @@ import os.path
 from pathlib import Path
 from datetime import datetime
 import re
+import scrape_schedule
 
 import settings
-import scrape_schedule
 
 def main(argv):
     stat_file = settings.data_path + "stats.json"
@@ -116,18 +116,8 @@ def CurrentStatsFile(filename):
     return True
 
 def RefreshStats():
-    import scrape_abbreviations
-    import scrape_bettingtalk
     import scrape_bornpowerindex
     import scrape_teamrankings
-    now = datetime.now()
-    year = int(now.year)
-    scrape_schedule.year = year
-    scrape_schedule.main(sys.argv[1:])
-    import merge_abbreviation
-    import merge_schedule
-    import merge_stats
-    import combine_merge
     import combine_stats
     import measure_results
 
@@ -159,8 +149,9 @@ def FindAbbr(teama, teamb, dict_merge):
 
 def PredictTournament(week, stat_file, merge_file, verbose):
     now = datetime.now()
-    week_path = "{0}{1}/".format(settings.predict_root, int(now.year))
-    sched_path = "{0}{1}/{2}".format(settings.predict_root, int(now.year), settings.predict_sched)
+    year = int(now.year)
+    week_path = "{0}{1}/".format(settings.predict_root, year)
+    sched_path = "{0}{1}/{2}".format(settings.predict_root, year, settings.predict_sched)
     if (not "a" in week.lower().strip()):
         idx = GetIndex(week)
         if ((idx < 1) or (idx > len(schedule_files))):
@@ -175,15 +166,19 @@ def PredictTournament(week, stat_file, merge_file, verbose):
     if (not CurrentStatsFile(stat_file)):
         RefreshStats()
     schedule_files = GetSchedFiles(sched_path, "sched*.json")
+    if (not schedule_files):
+        scrape_schedule.year = now.year
+        scrape_schedule.main(sys.argv[1:])
+        schedule_files = GetSchedFiles(sched_path, "sched*.json")
+    if (not schedule_files):
+        print ("schedule files are missing, run the scrape_schedule tool to create")
+        exit()
     dict_merge = []
     if (not os.path.exists(merge_file)):
         print ("master merge file is missing, run the combine_merge tool to create")
         exit()
     with open(merge_file) as merge_file:
         dict_merge = json.load(merge_file, object_pairs_hook=OrderedDict)
-    if (not os.path.exists(schedule_files[0])):
-        print ("schedule files are missing, run the scrape_schedule tool to create")
-        exit()
     if (not os.path.exists(stat_file)):
         print ("statistics file is missing, run the combine_stats tool to create")
         exit()

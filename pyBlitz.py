@@ -107,7 +107,7 @@ def Test(verbose):
     result = 0
     # Alabama, Clemson on 1/1/18 (stats from 1/7/18)
     # Actual Score: 24-6
-    # venue was: Mercedes-Benz Superdome in New Orleans, Louisiana (Neutral Field "The Sugar Bowl")
+    # venue was: Mercedes-Benz Super dome in New Orleans, Louisiana (Neutral Field "The Sugar Bowl")
 
     teama = {'BPI':"alabama", 'Ranking':118.5, 'PLpG3':64.7, 'PTpP3':.356, 'OPLpG3':18.7, 'OPTpP3':.246, 'Result1':65.1, 'Result2':17}
     teamb = {'BPI':"clemson", 'Ranking':113, 'PLpG3':79.3, 'PTpP3':.328, 'OPLpG3':12.3, 'OPTpP3':.199, 'Result1':34.9,'Result2':11}
@@ -231,7 +231,8 @@ def Calculate(first, second, neutral, verbose):
 
     tempo = Tempo(teama, teamb, verbose = verbose)
 
-    dict_score = {'teama':first, 'scorea':"{0}".format(scorea), 'chancea':"{0}".format(chancea) ,'teamb':second, 'scoreb':"{0}".format(scoreb), 'chanceb':"{0}".format(chanceb), 'spread': round(spread, 3), 'tempo':"{0}".format(int(round(tempo))) }
+    dict_score = {'teama':first, 'scorea':"{0}".format(scorea), 'chancea':"{0}".format(chancea) ,'teamb':second, 'scoreb':"{0}".format(scoreb), 'chanceb':"{0}"
+        .format(chanceb), 'spread': round(spread, 3), 'tempo':"{0}".format(int(round(tempo))) }
     if (verbose):
         print ("Calculate(dict_score) {0}".format(dict_score))
     return dict_score
