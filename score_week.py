@@ -152,10 +152,22 @@ def SaveOffFiles(path, file_list):
     Path(path).mkdir(parents=True, exist_ok=True) 
     for item in file_list:
         filename = os.path.basename(str(item))
+        week_path = os.path.dirname(item)
+        idx =  GetIndex(filename)
+        statname = "{0}/stats{1}.json".format(week_path, idx)
         dest_file = "{0}{1}".format(path, filename)
         if (not os.path.exists(dest_file)):
             copyfile(item, dest_file)
+        dest_file = "{0}stats{1}.json".format(path, idx)
+        if (not os.path.exists(dest_file)):
+            copyfile(statname, dest_file)
 
+def SaveStats(output_file, week_path, stat_file):
+    filename = os.path.basename(output_file)
+    idx =  GetIndex(filename)
+    dest_file = "{0}stats{1}.json".format(week_path, idx)
+    copyfile(stat_file, dest_file)
+    
 def PredictTournament(week, stat_file, merge_file, verbose):
     now = datetime.now()
     year = int(now.year)
@@ -237,6 +249,7 @@ def PredictTournament(week, stat_file, merge_file, verbose):
                             "?", "?", item["TeamB"], abbrb, "?", "?"])
             Path(week_path).mkdir(parents=True, exist_ok=True) 
             output_file = "{0}week{1}.csv".format(week_path, GetIndex(schedule_files[idx]))
+            SaveStats(output_file, week_path, stat_file)
             predict_sheet = open(output_file, 'w', newline='')
             csvwriter = csv.writer(predict_sheet)
             for row in list_predict:
