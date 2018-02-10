@@ -112,7 +112,7 @@ def Test(verbose):
     teama = {'BPI':"alabama", 'Ranking':118.5, 'PLpG3':64.7, 'PTpP3':.356, 'OPLpG3':18.7, 'OPTpP3':.246, 'Result1':65.1, 'Result2':17}
     teamb = {'BPI':"clemson", 'Ranking':113, 'PLpG3':79.3, 'PTpP3':.328, 'OPLpG3':12.3, 'OPTpP3':.199, 'Result1':34.9,'Result2':11}
 
-    file = "{0}bettingtalk.json".format(settings.data_path)
+    file = "{0}bettingtalk.json".format(settings.defaults_path)
     with open(file) as percent_file:
         dict_percent = json.load(percent_file, object_pairs_hook=OrderedDict)
 
