@@ -113,6 +113,9 @@ def Test(verbose):
     teamb = {'BPI':"clemson", 'Ranking':113, 'PLpG3':79.3, 'PTpP3':.328, 'OPLpG3':12.3, 'OPTpP3':.199, 'Result1':34.9,'Result2':11}
 
     file = "{0}bettingtalk.json".format(settings.defaults_path)
+    if (not os.path.exists(file)):
+        print ("bettingtalk file is missing, run the scrape_bettingtalk tool to create")
+        exit()
     with open(file) as percent_file:
         dict_percent = json.load(percent_file, object_pairs_hook=OrderedDict)
 
@@ -185,6 +188,9 @@ def Calculate(first, second, neutral, verbose):
         dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
 
     file = "{0}bettingtalk.json".format(settings.data_path)
+    if (not os.path.exists(file)):
+        print ("bettingtalk file is missing, run the scrape_bettingtalk tool to create")
+        exit()
     with open(file) as percent_file:
         dict_percent = json.load(percent_file, object_pairs_hook=OrderedDict)
 
