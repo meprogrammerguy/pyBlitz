@@ -20,6 +20,7 @@ scipy = "*"
 requests = "*"
 robobrowser = "*"
 selenium = "*"
+"bs4" = "*"
 
 
 [requires]
