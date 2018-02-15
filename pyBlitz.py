@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os.path
 import json
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
