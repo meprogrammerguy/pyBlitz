@@ -219,8 +219,7 @@ def PredictTournament(week, stat_file, merge_file, verbose):
     for idx in range(len(schedule_files)):
         if (idx in weeks):
             list_predict = []
-            list_predict.append(["Index", "Year", "Date", "TeamA", "AbbrA", "ChanceA", "ScoreA",
-                "Spread", "TeamB", "AbbrB", "ChanceB", "ScoreB"])
+            list_predict.append(["Index", "Year", "Date", "TeamA", "AbbrA", "ChanceA", "ScoreA", "Spread", "TeamB", "AbbrB", "ChanceB", "ScoreB", "Exceptions"])
             index = 0
             for item in list_schedule[idx].values():
                 teama, teamb = FindTeams(item["TeamA"], item["TeamB"], dict_merge)
@@ -228,25 +227,26 @@ def PredictTournament(week, stat_file, merge_file, verbose):
                 neutral = False
                 if (item["Home"].lower().strip() == "neutral"):
                     neutral = True
+                settings.exceptions = []
                 dict_score = pyBlitz.Calculate(teama, teamb, neutral, verbose)
+                errors = " "
+                if (settings.exceptions):
+                    for itm in settings.exceptions:
+                        errors += itm + ", "
+                errors = errors[:-2]
                 index += 1
                 if (len(dict_score) > 0):
-                    list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], abbra,
-                        dict_score["chancea"], dict_score["scorea"], dict_score["spread"], item["TeamB"],
-                        abbrb, dict_score["chanceb"], dict_score["scoreb"]])
+                    list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"],
+                        abbra, dict_score["chancea"], dict_score["scorea"], dict_score["spread"], item["TeamB"], abbrb, dict_score["chanceb"], dict_score["scoreb"], errors])
                 else:
                     if (teama == "?" and teamb != "?"):
-                        list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], "?", "0%",
-                            "?", "?", item["TeamB"], abbrb, "100%", "?"])
+                        list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], "?", "0%", "?", "?", item["TeamB"], abbrb, "100%", "?", "?", errors])
                     if (teamb == "?" and teama != "?"):
-                        list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], abbra, "100%",
-                            "?", "?", item["TeamB"], "?", "0%", "?"])
+                        list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], abbra, "100%", "?", "?", item["TeamB"], "?", "0%", "?", "?", errors])
                     if (teamb == "?" and teama == "?"):
-                        list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], "?", "?",
-                            "?", "?", item["TeamB"], "?", "?", "?"])
+                        list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], "?", "?", "?", "?", item["TeamB"], "?", "?", "?", "?", errors])
                     if (teamb != "?" and teama != "?"):
-                        list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], abbra, "?",
-                            "?", "?", item["TeamB"], abbrb, "?", "?"])
+                        list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], abbra, "?", "?", "?", item["TeamB"], abbrb, "?", "?", "?", errors])
             Path(week_path).mkdir(parents=True, exist_ok=True) 
             output_file = "{0}week{1}.csv".format(week_path, GetIndex(schedule_files[idx]))
             SaveStats(output_file, week_path, stat_file)

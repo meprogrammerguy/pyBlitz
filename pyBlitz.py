@@ -25,16 +25,19 @@ def findTeams(first, second, dict_stats, verbose = True):
             count += 1
         if (count == 2):
             break
-    if (verbose and count < 2):
-        if (not teama):
-            print ("Could not find stats for {0}".format(first))
-            return {}, teamb
-        if (not teamb):
-            print ("Could not find stats for {0}".format(second))
-            return teama, {}
-    if (verbose and not teama and not teamb):
-        print ("Could not find stats for either team: {0} or {1}".format(first, second))
+
+    if (not teama and not teamb):
+        log = "findTeams() - Could not find stats for either team [{0}] or [{1}]".format(first, second)
+        settings.exceptions.append(log)
         return {}, {}
+    if (not teama):
+        log = "findTeams() - Could not find stats for the first team [{0}]".format(first)
+        settings.exceptions.append(log)
+        return {}, teamb
+    if (not teamb):
+        log = "findTeams() - Could not find stats for the second team [{0}]".format(second)
+        settings.exceptions.append(log)
+        return teama, {}
     return teama, teamb
 
 def GetFloat(item):
@@ -115,7 +118,7 @@ def Test(verbose):
 
     file = "{0}bettingtalk.json".format(settings.defaults_path)
     if (not os.path.exists(file)):
-        print ("bettingtalk file is missing, run the scrape_bettingtalk tool to create")
+        settings.exceptions.append("Test() - bettingtalk file is missing, run the scrape_bettingtalk tool to create")
         exit()
     with open(file) as percent_file:
         dict_percent = json.load(percent_file, object_pairs_hook=OrderedDict)
@@ -190,42 +193,36 @@ def Calculate(first, second, neutral, verbose):
 
     file = "{0}bettingtalk.json".format(settings.data_path)
     if (not os.path.exists(file)):
-        print ("bettingtalk file is missing, run the scrape_bettingtalk tool to create")
+        settings.exceptions.append("Calculate() - bettingtalk file is missing, run the scrape_bettingtalk tool to create")
         exit()
     with open(file) as percent_file:
         dict_percent = json.load(percent_file, object_pairs_hook=OrderedDict)
 
     teama, teamb = findTeams(first, second, dict_stats, verbose = verbose)
     if (not teama and not teamb):
-        if (verbose):
-            print ("Both [{0}] and [{1}] were missing from stats, no prediction is possible"
-                .format(first, second))
+        settings.exceptions.append("Calculate() - [{0}] and [{1}] missing from stats, can't predict".format(first, second))
         return {}
-    if (not teama):
-        if (verbose):
-            print ("[{0}] is missing from stats, will predict [{1}] will win".format(first, second))
-        dict_score = {'teama':first, 'scorea':"0", 'chancea':"0" ,'teamb':second, 'scoreb':"0",
-            'chanceb':"100", 'spread': 0, 'tempo':"0"}
-        return dict_score
-    if (not teamb):
-        if (verbose):
-            print ("[{0}] is missing from stats, will predict [{1}] will win".format(second, first))
-        dict_score = {'teama':first, 'scorea':"0", 'chancea':"100" ,'teamb':second, 'scoreb':"0",
-            'chanceb':"0", 'spread': 0, 'tempo':"0"}
-        return dict_score
-    classa = teama["Class"].lower().strip()
-    classb = teamb["Class"].lower().strip()
+    classa = "?"
+    if (teama):
+        classa = teama["Class"].lower().strip()
+    classb = "?"
+    if (teamb):
+        classb = teamb["Class"].lower().strip()
     if (classa == "1a" and classb != "1a"):
-        if (verbose):
-            print ("[{0}] team playing [{1} team, will predict 1A wins".format(classa, classb))
-        dict_score = {'teama':first, 'scorea':"0", 'chancea':"100" ,'teamb':second, 'scoreb':"0",
-            'chanceb':"0", 'spread': 0, 'tempo':"0"}
+        settings.exceptions.append("Calculate() - [{0}] team playing [{1}] team, predict the first team wins".format(classa, classb))
+        dict_score = {'teama':first, 'scorea':"0", 'chancea':"100" ,'teamb':second, 'scoreb':"0", 'chanceb':"0", 'spread': 0, 'tempo':"0"}
         return dict_score
     if (classa != "1a" and classb == "1a"):
-        if (verbose):
-            print ("[{0}] team playing [{1} team, will predict 1A wins".format(classa, classb))
-        dict_score = {'teama':first, 'scorea':"0", 'chancea':"0" ,'teamb':second, 'scoreb':"0",
-            'chanceb':"100", 'spread': 0, 'tempo':"0"}
+        settings.exceptions.append("Calculate() - [{0}] team playing [{1}] team, predict the second team wins".format(classa, classb))
+        dict_score = {'teama':first, 'scorea':"0", 'chancea':"0" ,'teamb':second, 'scoreb':"0", 'chanceb':"100", 'spread': 0, 'tempo':"0"}
+        return dict_score
+    if (not teama):
+        settings.exceptions.append("Calculate() - [{0}] is missing from stats, predict [{1}] will win".format(first, second))
+        dict_score = {'teama':first, 'scorea':"0", 'chancea':"0" ,'teamb':second, 'scoreb':"0", 'chanceb':"100", 'spread': 0, 'tempo':"0"}
+        return dict_score
+    if (not teamb):
+        settings.exceptions.append("Calculate() - [{0}] is missing from stats, predict [{1}] will win".format(second, first))
+        dict_score = {'teama':first, 'scorea':"0", 'chancea':"100" ,'teamb':second, 'scoreb':"0", 'chanceb':"0", 'spread': 0, 'tempo':"0"}
         return dict_score
     if (not neutral):
         chancea, chanceb =  Chance(teama, teamb, dict_percent, homeTeam = teamb["BPI"], verbose = verbose)

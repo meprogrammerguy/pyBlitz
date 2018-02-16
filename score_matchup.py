@@ -74,16 +74,21 @@ def main(argv):
         if (not CurrentStatsFile(stat_file)):
             RefreshStats()
         ds = {}
+        settings.exceptions = []
         ds = pyBlitz.Calculate(first, second, neutral, verbose)
+        if (settings.exceptions):
+            print (" ")
+            print ("\t*** Warnings ***")
+            for item in settings.exceptions:
+                print (item)
+            print ("\t*** Warnings ***")
+            print (" ")
         if (not ds):
-            print ("Could not make a prediction?")
             exit()
         if (neutral):
-            print ("{0} {1}% vs {2} {3}% {4}-{5}".format(ds["teama"], ds["chancea"], ds["teamb"], ds["chanceb"],
-                ds["scorea"], ds["scoreb"]))
+            print ("{0} {1}% vs {2} {3}% {4}-{5}".format(ds["teama"], ds["chancea"], ds["teamb"], ds["chanceb"], ds["scorea"], ds["scoreb"]))
         else:
-            print ("{0} {1}% at {2} {3}% {4}-{5}".format(ds["teama"], ds["chancea"], ds["teamb"], ds["chanceb"],
-                ds["scorea"], ds["scoreb"]))
+            print ("{0} {1}% at {2} {3}% {4}-{5}".format(ds["teama"], ds["chancea"], ds["teamb"], ds["chanceb"], ds["scorea"], ds["scoreb"]))
 
 def usage():
     usage = """
