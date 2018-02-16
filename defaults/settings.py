@@ -6,3 +6,4 @@ predict_root = "predict/"
 predict_sched = "schedule/"
 predict_saved = "saved/"
 homeAdvantage = 7.897
+exceptions = []
