@@ -5,7 +5,7 @@ to install (quickly):
 
     sudo pip install pipenv
   
-    sudo pipenv install
+    sudo pipenv install --three
   
 
 Buy my Books on [Amazon](https://amazon.com/author/smithja)
