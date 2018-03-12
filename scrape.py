@@ -51,6 +51,7 @@ def RefreshStats():
     import scrape_bettingtalk
     import scrape_bornpowerindex
     import scrape_teamrankings
+    import combine_merge
     import combine_stats
 
 def RefreshSched(year):

@@ -41,7 +41,6 @@ if (os.path.exists(file)):
                 bpi = row["corrected stats team"]
             if (bpi):
                 list_overrides.append([row["scheduled team"], bpi])
-
 file = '{0}sched1.json'.format(path)
 if (not os.path.exists(file)):
     print ("schedule files are missing, run the scrape_schedule tool to create")
@@ -93,8 +92,11 @@ for item in sched_teams:
     dict_merge["corrected stats team"].append(ovr)
     values.append([item, key[1], key[0], ovr])
 
+#pdb.set_trace()
+
 csvwriter.writerow(dict_merge.keys())
 for value in values:
+    #pdb.set_trace()
     csvwriter.writerow(value)
 merge_sheet.close()
 print ("done.")

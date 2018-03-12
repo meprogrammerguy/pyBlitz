@@ -23,15 +23,15 @@ def GetKey(team, dict_merge, team_list):
     key = {}
     loop = -1
     index = -1
-    for item in dict_merge.values():
+    for itm in dict_merge.values():
         loop += 1
-        if (team == item["scheduled"]):
+        if (team == itm["scheduled"]):
             if (index != -1):
                 print ("*** {0} is used for {1}[{2}] and {3}[{4}] in merge file"
                     .format(team, team_list[index], index, team_list[loop], loop))
             else:
                 index = loop
-                key = item
+                key = itm
     return key, index
 
 def GetWeek(item):
@@ -94,10 +94,12 @@ for idx in range(len(schedule_files)):
 team_set = set(AllTeam)
 teams = list(team_set)
 teams.sort()
+#pdb.set_trace()
 
 team_list = GetTeams(dict_merge)
 
 for item in teams:
+    #pdb.set_trace()
     team, index = GetKey(item, dict_merge, team_list)
     if (index == -1):
         print ("*** warning: could not find schedule team [{0}] in merge file".format(item))

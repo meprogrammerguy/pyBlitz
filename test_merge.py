@@ -84,7 +84,7 @@ print ("Makes sure that your Master Merge Spreadsheet is as correct as possible"
 print ("    Tool will compare the scraped schedule abbreviations to the abbreviations")
 print ("    Tool will compare the scraped teamrankings to the teamrankings")
 print ("    Tool will compare the scraped schedule teams to the schedule teams")
-print ("An exceptions spreadsheet will get created,")
+print ("An exceptions printout will be shown,")
 print ("    try to correct as many issues as you can")
 print ("*** Your predictions will be much more valuable ***")
 print ("*** if you spend time doing this ***")
