@@ -25,7 +25,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 24,COASTAL CAROLINA,Coastal Car,Coastal Carolina Chanticleers,Coastal Carolina,CCU,1A
 25,COLORADO,Colorado,Colorado Buffaloes,Colorado,COLO,1A
 26,COLORADO STATE,Colorado St,Colorado State Rams,Colorado State,CSU,1A
-27,CONNECTICUT,Connecticut,?,UConn,CONN,1A
+27,CONNECTICUT,Connecticut,UConn Huskies,UConn,CONN,1A
 28,DUKE,Duke,Duke Blue Devils,Duke,DUKE,1A
 29,EAST CAROLINA,E Carolina,East Carolina Pirates,ECU,ECU,1A
 30,EASTERN MICHIGAN,E Michigan,Eastern Michigan Eagles,Eastern Michigan,EMU,1A
@@ -204,7 +204,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 203,LINCOLN-PA,?,?,?,?,DIVISION 2
 204,LINDENWOOD - MO,?,?,?,?,DIVISION 2
 205,LIVINGSTONE COLLEGE,?,?,?,?,DIVISION 2
-206,LOCK HAVEN,?,Elon Phoenix,?,?,DIVISION 2
+206,LOCK HAVEN,?,?,?,?,DIVISION 2
 207,MALONE,?,?,?,?,DIVISION 2
 208,MARS HILL,?,?,?,?,DIVISION 2
 209,MARY,?,?,?,?,DIVISION 2
@@ -233,7 +233,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 232,NORTH GREENVILLE-S.C.,?,?,?,?,DIVISION 2
 233,NORTHERN MICHIGAN,?,?,?,?,DIVISION 2
 234,NORTHERN STATE - SD,?,?,?,?,DIVISION 2
-235,NORTHWEST MISSOURI ST.,?,Southeast Missouri State Redhawks,?,?,DIVISION 2
+235,NORTHWEST MISSOURI ST.,?,?,?,?,DIVISION 2
 236,NORTHWOOD,?,?,?,?,DIVISION 2
 237,NOTRE DAME - OHIO,?,?,?,?,DIVISION 2
 238,OHIO DOMINICAN,?,?,?,?,DIVISION 2
@@ -407,7 +407,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 406,IOWA-WESLEYAN,?,?,?,?,DIVISION 3
 407,ITHACA,?,?,?,?,DIVISION 3
 408,JOHN CARROLL,?,?,?,?,DIVISION 3
-409,JOHNS HOPKINS,?,UConn Huskies,?,?,DIVISION 3
+409,JOHNS HOPKINS,?,?,?,?,DIVISION 3
 410,JUNIATA,?,?,?,?,DIVISION 3
 411,KALAMAZOO,?,?,?,?,DIVISION 3
 412,KEAN,?,?,?,?,DIVISION 3
@@ -451,7 +451,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 450,MORRIS-MINNESOTA,?,?,?,?,DIVISION 3
 451,MORRISVILLE STATE - NY,?,?,?,?,DIVISION 3
 452,MOUNT IDA,?,?,?,?,DIVISION 3
-453,MOUNT SAINT JOSEPH,?,Lehigh Mountain Hawks,?,?,DIVISION 3
+453,MOUNT SAINT JOSEPH,?,?,?,?,DIVISION 3
 454,MOUNT UNION,?,?,?,?,DIVISION 3
 455,MUHLENBERG COLLEGE,?,?,?,?,DIVISION 3
 456,MUSKINGUM,?,?,?,?,DIVISION 3
@@ -561,7 +561,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 560,BUTLER,?,?,Butler,BUT,Championship Subdivision
 561,CAL-DAVIS,?,UC Davis Aggies,UC Davis,UCD,Championship Subdivision
 562,CAL-POLY (SAN LOUIS OBISPO),?,?,Cal Poly,CP,Championship Subdivision
-563,CAL-SACRAMENTO,?,?,Sacramento State,SAC,Championship Subdivision
+563,CAL-SACRAMENTO,?,Sacramento State Hornets,Sacramento State,SAC,Championship Subdivision
 564,CAMPBELL,?,Campbell Camels,Campbell,CAMP,Championship Subdivision
 565,CENTRAL ARKANSAS,?,Central Arkansas Bears,Central Arkansas,UCA,Championship Subdivision
 566,CENTRAL CONNECTICUT STATE,?,Central Connecticut Blue Devils,Central Connecticut,CCSU,Championship Subdivision
@@ -581,7 +581,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 580,EASTERN ILLINOIS,?,Eastern Illinois Panthers,Eastern Illinois,EIU,Championship Subdivision
 581,EASTERN KENTUCKY,?,Eastern Kentucky Colonels,Eastern Kentucky,EKY,Championship Subdivision
 582,EASTERN WASHINGTON,?,Eastern Washington Eagles,Eastern Washington,EWU,Championship Subdivision
-583,ELON,?,?,Elon,ELON,Championship Subdivision
+583,ELON,?,Elon Phoenix,Elon,ELON,Championship Subdivision
 584,FLORIDA A&M,?,Florida A&M Rattlers,Florida A&M,FAMU,Championship Subdivision
 585,FORDHAM,?,Fordham Rams,Fordham,FOR,Championship Subdivision
 586,FURMAN,?,Furman Paladins,Furman,FUR,Championship Subdivision
@@ -604,7 +604,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 603,KENNESAW STATE,?,Kennesaw State Owls,Kennesaw State,KENN,Championship Subdivision
 604,LAFAYETTE,?,Lafayette Leopards,Lafayette,LAF,Championship Subdivision
 605,LAMAR,?,Lamar Cardinals,Lamar,LAM,Championship Subdivision
-606,LEHIGH,?,?,Lehigh,LEH,Championship Subdivision
+606,LEHIGH,?,Lehigh Mountain Hawks,Lehigh,LEH,Championship Subdivision
 607,LIBERTY,?,Liberty Flames,Liberty,LIB,Championship Subdivision
 608,MAINE,?,Maine Black Bears,Maine,MAINE,Championship Subdivision
 609,MARIST,?,?,Marist,MRST,Championship Subdivision
@@ -648,7 +648,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 647,SOUTH CAROLINA STATE,?,South Carolina State Bulldogs,South Carolina State,SCST,Championship Subdivision
 648,SOUTH DAKOTA,?,South Dakota Coyotes,South Dakota,SDAK,Championship Subdivision
 649,SOUTH DAKOTA STATE,?,South Dakota State Jackrabbits,South Dakota State,SDS,Championship Subdivision
-650,SOUTH EASTERN MISSOURI,?,?,Southeast Missouri,SEMO,Championship Subdivision
+650,SOUTH EASTERN MISSOURI,?,Southeast Missouri State Redhawks,Southeast Missouri,SEMO,Championship Subdivision
 651,SOUTHERN ILLINOIS,?,Southern Illinois Salukis,Southern Illinois,SIU,Championship Subdivision
 652,SOUTHERN UNIVERSITY,?,Southern Jaguars,Southern University,SOU,Championship Subdivision
 653,SOUTHERN UTAH,?,Southern Utah Thunderbirds,Southern Utah,SUU,Championship Subdivision
@@ -721,7 +721,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 720,MISSOURI BAPTIST,?,?,?,?,NAIA
 721,MISSOURI VALLEY,?,?,?,?,NAIA
 722,MONTANA - WESTERN,?,?,?,?,NAIA
-723,MONTANA STATE-NORTH,?,Sacramento State Hornets,?,?,NAIA
+723,MONTANA STATE-NORTH,?,?,?,?,NAIA
 724,MONTANA TECH,?,?,?,?,NAIA
 725,MORNINGSIDE,?,?,?,?,NAIA
 726,NORTHWESTERN-IOWA,?,?,?,?,NAIA

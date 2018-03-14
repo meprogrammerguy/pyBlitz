@@ -35,9 +35,9 @@ def GetSchedFiles(path, templatename):
 def GetIndex(BPI_list, team):
     index = -1
     loop = -1
-    for item in BPI_list:
+    for itm in BPI_list:
         loop += 1
-        if (item.lower().strip() == team.lower().strip()):
+        if (itm.lower().strip() == team.lower().strip()):
             index = loop
     return index
 

@@ -19,9 +19,9 @@ def GetKey(team, dict_merge, team_list):
     key = {}
     loop = -1
     index = -1
-    for item in dict_merge.values():
+    for itm in dict_merge.values():
         loop += 1
-        if (team == item["teamrankings"]):
+        if (team.lower() == itm["teamrankings"].lower()):
             if (index != -1):
                 print ("*** [{0}] is used for {1}[{2}] and {3}[{4}] in merge file"
                     .format(team, team_list[index], index, team_list[loop], loop))
