@@ -36,7 +36,7 @@ def main(argv):
             test = True
         elif o in ("-h", "--help"):
             usage()
-            sys.exit
+            exit()
         elif o in ("-s", "--stat_file"):
             stat_file = a
         elif o in ("-w", "--week"):
