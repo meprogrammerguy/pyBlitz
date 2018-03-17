@@ -46,13 +46,15 @@ def main(argv):
             test = True
         elif o in ("-h", "--help"):
             usage()
-            sys.exit
+            exit()
         elif o in ("-f", "--first"):
             first = a
         elif o in ("-s", "--second"):
             second = a
         else:
             assert False, "unhandled option"
+    if (not first and not second):
+        verbose = True
     print ("Score Matchup Tool")
     print ("**************************")
     if (verbose):
