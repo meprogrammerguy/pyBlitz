@@ -174,17 +174,6 @@ def PredictTournament(week, stat_file, merge_file, verbose):
     week_path = "{0}{1}/".format(settings.predict_root, year)
     sched_path = "{0}{1}/{2}".format(settings.predict_root, year, settings.predict_sched)
     saved_path = "{0}{1}/{2}".format(settings.predict_root, year, settings.predict_saved)
-    if (not "a" in week.lower().strip()):
-        idx = GetIndex(week)
-        if ((idx < 1) or (idx > len(schedule_files))):
-            week = "current"
-    print ("Weekly Prediction Tool")
-    print ("**************************")
-    print ("Statistics file:\t{0}".format(stat_file))
-    print ("Team Merge file:\t{0}".format(merge_file))
-    print ("\trunning for Week: {0}".format(week))
-    print ("\tDirectory Location: {0}".format(week_path))
-    print ("**************************")
     weekly_files = GetSchedFiles(week_path, "week*.csv")
     SaveOffFiles(saved_path, weekly_files)
     for p in Path(week_path).glob("week*.csv"):
@@ -203,8 +192,8 @@ def PredictTournament(week, stat_file, merge_file, verbose):
     if (not os.path.exists(merge_file)):
         print ("master merge file is missing, run the combine_merge tool to create")
         exit()
-    with open(merge_file) as merge_file:
-        dict_merge = json.load(merge_file, object_pairs_hook=OrderedDict)
+    with open(merge_file) as mergefile:
+        dict_merge = json.load(mergefile, object_pairs_hook=OrderedDict)
     if (not os.path.exists(stat_file)):
         print ("statistics file is missing, run the combine_stats tool to create")
         exit()
@@ -216,6 +205,17 @@ def PredictTournament(week, stat_file, merge_file, verbose):
             item = json.load(schedule_file, object_pairs_hook=OrderedDict)
             list_schedule.append(item)
     weeks = GetWeekRange(week, list_schedule)
+    if (not "a" in week.lower().strip()):
+        idx = GetIndex(week)
+        if ((idx < 1) or (idx > len(schedule_files))):
+            week = "current"
+    print ("Weekly Prediction Tool")
+    print ("**************************")
+    print ("Statistics file:\t{0}".format(stat_file))
+    print ("Team Merge file:\t{0}".format(merge_file))
+    print ("\trunning for Week: {0}".format(week))
+    print ("\tDirectory Location: {0}".format(week_path))
+    print ("**************************")
     for idx in range(len(schedule_files)):
         if (idx in weeks):
             list_predict = []
