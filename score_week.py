@@ -239,14 +239,8 @@ def PredictTournament(week, stat_file, merge_file, verbose):
                     list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"],
                         abbra, dict_score["chancea"], dict_score["scorea"], dict_score["spread"], item["TeamB"], abbrb, dict_score["chanceb"], dict_score["scoreb"], errors])
                 else:
-                    if (teama == "?" and teamb != "?"):
-                        list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], "?", "0%", "?", "?", item["TeamB"], abbrb, "100%", "?", "?", errors])
-                    if (teamb == "?" and teama != "?"):
-                        list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], abbra, "100%", "?", "?", item["TeamB"], "?", "0%", "?", "?", errors])
-                    if (teamb == "?" and teama == "?"):
-                        list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], "?", "?", "?", "?", item["TeamB"], "?", "?", "?", "?", errors])
-                    if (teamb != "?" and teama != "?"):
-                        list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], abbra, "?", "?", "?", item["TeamB"], abbrb, "?", "?", "?", errors])
+                    list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], abbra, "?", "?", "?", item["TeamB"], abbrb, "?", "?",
+                        "Warning: cannot predict, both teams missing, fix the merge spreadsheets"])
             Path(week_path).mkdir(parents=True, exist_ok=True) 
             output_file = "{0}week{1}.csv".format(week_path, GetIndex(schedule_files[idx]))
             SaveStats(output_file, week_path, stat_file)

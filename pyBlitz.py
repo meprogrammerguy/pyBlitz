@@ -15,7 +15,6 @@ def findTeams(first, second, dict_stats, verbose = True):
     teama = {}
     teamb = {}
     count = 0
-
     for item in dict_stats.values():
         if (item["BPI"].lower().strip() == first.lower().strip()):
             teama = item
@@ -29,6 +28,8 @@ def findTeams(first, second, dict_stats, verbose = True):
     if (not teama and not teamb):
         log = "findTeams() - Could not find stats for either team [{0}] or [{1}]".format(first, second)
         settings.exceptions.append(log)
+        print (log)
+        print ("Fix the merge spreadsheets, and re-run script")
         return {}, {}
     if (not teama):
         log = "findTeams() - Could not find stats for the first team [{0}]".format(first)
