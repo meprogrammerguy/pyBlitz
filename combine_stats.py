@@ -57,28 +57,30 @@ for item in dict_merge.values():
     teamrankings = CleanString(item['teamrankings'])
     team = CleanString(item['BPI'])
     
-    row_bpi = []
-    for row in dict_bpi.values():
-        if(row['School'].lower().strip()==team.lower().strip()):
-            row_bpi = row  
-            break
-
+    row_team = []
     for row in dict_teamrankings.values():
         if(row['Team'].lower().strip()==teamrankings.lower().strip()):
+            row_team = row  
+            break
+
+    for row in dict_bpi.values():
+        if(row['School'].lower().strip()==team.lower().strip()):
             index+=1
             IDX.append(str(index))
             A.append(team)
             B.append(teamrankings)
-            if (row_bpi):
-                C.append(row_bpi['Ranking'])
-                D.append(row_bpi['Class'])
+            if (row_team):
+                E.append(row_team['PLpG3'])
+                F.append(row_team['PTpP3'])
+                G.append(row_team['OPLpG3'])
+                H.append(row_team['OPTpP3'])
             else:
-                C.append("?")
-                D.append("?")
-            E.append(row['PLpG3'])
-            F.append(row['PTpP3'])
-            G.append(row['OPLpG3'])
-            H.append(row['OPTpP3'])
+                E.append("0")
+                F.append("0")
+                G.append("0")
+                H.append("0")
+            C.append(row['Ranking'])
+            D.append(row['Class'])
             break
 
 df=pd.DataFrame(IDX,columns=['Index'])

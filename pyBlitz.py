@@ -28,8 +28,6 @@ def findTeams(first, second, dict_stats, verbose = True):
     if (not teama and not teamb):
         log = "findTeams() - Could not find stats for either team [{0}] or [{1}]".format(first, second)
         settings.exceptions.append(log)
-        print (log)
-        print ("Fix the merge spreadsheets, and re-run script")
         return {}, {}
     if (not teama):
         log = "findTeams() - Could not find stats for the first team [{0}]".format(first)
@@ -209,22 +207,20 @@ def Calculate(first, second, neutral, verbose):
     classb = "?"
     if (teamb):
         classb = teamb["Class"].lower().strip()
-    if (classa == "1a" and classb != "1a"):
-        settings.exceptions.append("Calculate() - [{0}] team playing [{1}] team, predict the first team wins".format(classa, classb))
-        dict_score = {'teama':first, 'scorea':"0", 'chancea':"100" ,'teamb':second, 'scoreb':"0", 'chanceb':"0", 'spread': 0, 'tempo':"0"}
+    if (classa == "?" or classb == "?"):
+        settings.exceptions.append("Calculate() - [{0}] team playing [{1}] team,  Cannot predict, Fix merge spreadsheet(s)".format(classa, classb))
+        dict_score = {'teama':first, 'scorea':"0", 'chancea':"0" ,'teamb':second, 'scoreb':"0", 'chanceb':"0", 'spread': 0, 'tempo':"0"}
+        print ("Warning: {0} playing {1}, Cannot Predict, Fix merge spreadsheet(s)".format(first, second))
         return dict_score
-    if (classa != "1a" and classb == "1a"):
-        settings.exceptions.append("Calculate() - [{0}] team playing [{1}] team, predict the second team wins".format(classa, classb))
-        dict_score = {'teama':first, 'scorea':"0", 'chancea':"0" ,'teamb':second, 'scoreb':"0", 'chanceb':"100", 'spread': 0, 'tempo':"0"}
-        return dict_score
-    if (not teama):
-        settings.exceptions.append("Calculate() - [{0}] is missing from stats, predict [{1}] will win".format(first, second))
-        dict_score = {'teama':first, 'scorea':"0", 'chancea':"0" ,'teamb':second, 'scoreb':"0", 'chanceb':"100", 'spread': 0, 'tempo':"0"}
-        return dict_score
-    if (not teamb):
-        settings.exceptions.append("Calculate() - [{0}] is missing from stats, predict [{1}] will win".format(second, first))
-        dict_score = {'teama':first, 'scorea':"0", 'chancea':"100" ,'teamb':second, 'scoreb':"0", 'chanceb':"0", 'spread': 0, 'tempo':"0"}
-        return dict_score
+    else:
+        if (classa == "1a" and classb != "1a"):
+            settings.exceptions.append("Calculate() - [{0}] team playing [{1}] team, {2} wins".format(classa, classb, first))
+            dict_score = {'teama':first, 'scorea':"0", 'chancea':"100" ,'teamb':second, 'scoreb':"0", 'chanceb':"0", 'spread': 0, 'tempo':"0"}
+            return dict_score
+        if (classa != "1a" and classb == "1a"):
+            settings.exceptions.append("Calculate() - [{0}] team playing [{1}] team, {2} wins".format(classa, classb, second))
+            dict_score = {'teama':first, 'scorea':"0", 'chancea':"0" ,'teamb':second, 'scoreb':"0", 'chanceb':"100", 'spread': 0, 'tempo':"0"}
+            return dict_score
     if (not neutral):
         chancea, chanceb =  Chance(teama, teamb, dict_percent, homeTeam = teamb["BPI"], verbose = verbose)
         scorea, scoreb = Score(teama, teamb, verbose = verbose, homeTeam = teamb["BPI"])

@@ -241,6 +241,7 @@ def PredictTournament(week, stat_file, merge_file, verbose):
                 else:
                     list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], abbra, "?", "?", "?", item["TeamB"], abbrb, "?", "?",
                         "Warning: cannot predict, both teams missing, fix the merge spreadsheets"])
+                    print ("Warning: Neither {0} or {1} have been found, \n\t Suggest reviewing/fixing the merge spreadsheet(s) and re-run".format( item["TeamA"], item["TeamB"]))
             Path(week_path).mkdir(parents=True, exist_ok=True) 
             output_file = "{0}week{1}.csv".format(week_path, GetIndex(schedule_files[idx]))
             SaveStats(output_file, week_path, stat_file)
