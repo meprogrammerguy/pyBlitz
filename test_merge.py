@@ -69,11 +69,12 @@ def GetSchedFiles(path, templatename):
     for p in Path(path).glob(templatename):
         A.append(str(p))
     file_list = []
-    for item in range(0, 17):
+    for item in range(0, 18):
         file_list.append("?")
     for item in A:
         idx = GetWeek(item)
-        file_list[idx] = item
+        if (idx < len(file_list)):
+            file_list[idx] = item
     file_list = [x for x in file_list if x != "?"]
     return file_list
 
