@@ -39,11 +39,18 @@ def findTeams(first, second, dict_stats, verbose = True):
         return teama, {}
     return teama, teamb
 
+def myFloat(value):
+    try:
+        answer = float(value)
+    except ValueError:
+        return 0
+    return answer
+
 def GetFloat(item):
     idx = re.findall('\d{1,2}[\.]{1}\d{1,2}', str(item))
     if (len(idx) == 0):
         idx.append("-1")
-    return float(idx[0])
+    return myFloat(idx[0])
 
 def GetPercent(thespread, dict_percent):
     aPercent = 0
@@ -71,7 +78,7 @@ def GetPercent(thespread, dict_percent):
                     bPercent = 0
                 break
             else:
-                spread = float(item['Spread'])
+                spread = myFloat(item['Spread'])
             if (spread >= thespread and thespread < (spread + .5)):
                 if (flip):
                     bPercent = GetFloat(item["Favorite"])
@@ -97,10 +104,10 @@ def Chance(teama, teamb, dict_percent, homeTeam = 'Neutral', verbose = True):
     return aPercent, bPercent
 
 def Tempo(teama, teamb, verbose = True):
-    TdiffaScore = float(teama['PLpG3']) * float(teama['PTpP3'])
-    TdiffaOScore = float(teama['OPLpG3']) * float(teama['OPTpP3'])
-    TdiffbScore = float(teamb['PLpG3']) * float(teamb['PTpP3'])
-    TdiffbOScore = float(teamb['OPLpG3']) * float(teamb['OPTpP3'])
+    TdiffaScore = myFloat(teama['PLpG3']) * myFloat(teama['PTpP3'])
+    TdiffaOScore = myFloat(teama['OPLpG3']) * myFloat(teama['OPTpP3'])
+    TdiffbScore = myFloat(teamb['PLpG3']) * myFloat(teamb['PTpP3'])
+    TdiffbOScore = myFloat(teamb['OPLpG3']) * myFloat(teamb['OPTpP3'])
     Tdiff = (TdiffaScore + TdiffbScore + TdiffaOScore + TdiffbOScore)/2.0
     if (verbose):
         print ("Tempo(tempo) {0}".format(Tdiff))
@@ -166,7 +173,7 @@ def Score(teama, teamb, verbose = True, homeTeam = 'Neutral'):
     return aScore, bScore
 
 def Spread(teama, teamb, verbose = True, homeTeam = 'Neutral'):
-    EMdiff = (float(teama['Ranking']) - float(teamb['Ranking']))
+    EMdiff = (myFloat(teama['Ranking']) - myFloat(teamb['Ranking']))
     EffMgn = 0
     if (homeTeam.lower().strip() == teama["BPI"].lower().strip()):
         EffMgn = EMdiff + settings.homeAdvantage
