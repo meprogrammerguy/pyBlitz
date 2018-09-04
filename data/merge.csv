@@ -7,8 +7,8 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 6,ARIZONA,Arizona,Arizona Wildcats,Arizona,ARIZ,DIVISION 1  FBS
 7,ARIZONA STATE,Arizona St,Arizona State Sun Devils,Arizona State,ASU,DIVISION 1  FBS
 8,ARKANSAS,Arkansas,Arkansas Razorbacks,Arkansas,ARK,DIVISION 1  FBS
-9,ARKANSAS STATE,Arkansas St,Arkansas State Red Wolves,Arkansas State,ARST,DIVISION 1  FBS
-10,ARMY,Army,Army Black Knights,Army,ARMY,DIVISION 1  FBS
+9,ARKANSAS STATE,Arkansas St,Arkansas State Red Wolves,Arkansas State,ARKST,DIVISION 1  FBS
+10,ARMY,Army,?,Army,ARMY,DIVISION 1  FBS
 11,AUBURN,Auburn,Auburn Tigers,Auburn,AUB,DIVISION 1  FBS
 12,BALL STATE,Ball State,Ball State Cardinals,Ball State,BALL,DIVISION 1  FBS
 13,BAYLOR,Baylor,Baylor Bears,Baylor,BAY,DIVISION 1  FBS
@@ -25,7 +25,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 24,COASTAL CAROLINA,Coastal Car,Coastal Carolina Chanticleers,Coastal Carolina,CCU,DIVISION 1  FBS
 25,COLORADO,Colorado,Colorado Buffaloes,Colorado,COLO,DIVISION 1  FBS
 26,COLORADO STATE,Colorado St,Colorado State Rams,Colorado State,CSU,DIVISION 1  FBS
-27,CONNECTICUT,Connecticut,UConn Huskies,UConn,CONN,DIVISION 1  FBS
+27,CONNECTICUT,Connecticut,UConn Huskies,UConn,UCONN,DIVISION 1  FBS
 28,DUKE,Duke,Duke Blue Devils,Duke,DUKE,DIVISION 1  FBS
 29,EAST CAROLINA,E Carolina,East Carolina Pirates,ECU,ECU,DIVISION 1  FBS
 30,EASTERN MICHIGAN,E Michigan,Eastern Michigan Eagles,Eastern Michigan,EMU,DIVISION 1  FBS
@@ -38,7 +38,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 37,GEORGIA SOUTHERN,GA Southern,Georgia Southern Eagles,Georgia Southern,GASO,DIVISION 1  FBS
 38,GEORGIA STATE,Georgia State,Georgia State Panthers,Georgia State,GAST,DIVISION 1  FBS
 39,GEORGIA TECH,GA Tech,Georgia Tech Yellow Jackets,Georgia Tech,GT,DIVISION 1  FBS
-40,HAWAI’I,Hawaii,Hawai'i Rainbow Warriors,Hawaii,HAW,DIVISION 1  FBS
+40,HAWAI’I,?,?,?,?,DIVISION 1  FBS
 41,HOUSTON,Houston,Houston Cougars,Houston,HOU,DIVISION 1  FBS
 42,ILLINOIS,Illinois,Illinois Fighting Illini,Illinois,ILL,DIVISION 1  FBS
 43,INDIANA,Indiana,Indiana Hoosiers,Indiana,IND,DIVISION 1  FBS
@@ -50,7 +50,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 49,KENTUCKY,Kentucky,Kentucky Wildcats,Kentucky,UK,DIVISION 1  FBS
 50,LA-LAFAYETTE,LA Lafayette,Louisiana Ragin' Cajuns,Louisiana Lafayette,ULL,DIVISION 1  FBS
 51,LA-MONROE,LA Monroe,UL Monroe Warhawks,Louisiana Monroe,ULM,DIVISION 1  FBS
-52,LIBERTY,?,Liberty Flames,Liberty,LIB,DIVISION 1  FBS
+52,LIBERTY,Liberty,Liberty Flames,Liberty,LIB,DIVISION 1  FBS
 53,LOUISIANA STATE,LSU,LSU Tigers,LSU,LSU,DIVISION 1  FBS
 54,LOUISIANA TECH,LA Tech,Louisiana Tech Bulldogs,Louisiana Tech,LT,DIVISION 1  FBS
 55,LOUISVILLE,Louisville,Louisville Cardinals,Louisville,LOU,DIVISION 1  FBS
@@ -92,7 +92,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 91,RICE,Rice,Rice Owls,Rice,RICE,DIVISION 1  FBS
 92,RUTGERS,Rutgers,Rutgers Scarlet Knights,Rutgers,RUTG,DIVISION 1  FBS
 93,SAN DIEGO STATE,San Diego St,San Diego State Aztecs,San Diego State,SDSU,DIVISION 1  FBS
-94,SAN JOSE STATE,San Jose St,San Jose State Spartans,San José State,SJSU,DIVISION 1  FBS
+94,SAN JOSE STATE,San Jose St,San Jose State Spartans,?,?,DIVISION 1  FBS
 95,SOUTH ALABAMA,S Alabama,South Alabama Jaguars,South Alabama,USA,DIVISION 1  FBS
 96,SOUTH CAROLINA,S Carolina,South Carolina Gamecocks,South Carolina,SC,DIVISION 1  FBS
 97,SOUTH FLORIDA,S Florida,South Florida Bulls,South Florida,USF,DIVISION 1  FBS
@@ -109,7 +109,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 108,TEXAS CHRISTIAN,TX Christian,TCU Horned Frogs,TCU,TCU,DIVISION 1  FBS
 109,TEXAS TECH,Texas Tech,Texas Tech Red Raiders,Texas Tech,TTU,DIVISION 1  FBS
 110,TEXAS-EL PASO,TX El Paso,UTEP Miners,UTEP,UTEP,DIVISION 1  FBS
-111,TEXAS-SAN ANTONIO,TX-San Ant,UT San Antonio Roadrunners,UTSA,UTSA,DIVISION 1  FBS
+111,TEXAS-SAN ANTONIO,TX-San Ant,?,UTSA,UTSA,DIVISION 1  FBS
 112,TOLEDO,Toledo,Toledo Rockets,Toledo,TOL,DIVISION 1  FBS
 113,TROY STATE,Troy,Troy Trojans,Troy,TROY,DIVISION 1  FBS
 114,TULANE,Tulane,Tulane Green Wave,Tulane,TULN,DIVISION 1  FBS
@@ -131,7 +131,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 130,WYOMING,Wyoming,Wyoming Cowboys,Wyoming,WYO,DIVISION 1  FBS
 131,ADAMS STATE,?,?,?,?,DIVISION 2
 132,ALBANY STATE-GEORGIA,?,?,?,?,DIVISION 2
-133,ALDERSON-BROADDUS,?,?,?,?,DIVISION 2
+133,ALDERSON-BROADDUS,?,UTSA Roadrunners,?,?,DIVISION 2
 134,AMERICAN INTERNATIONAL,?,?,?,?,DIVISION 2
 135,ANGELO STATE,?,?,?,?,DIVISION 2
 136,ARKANSAS TECH,?,?,?,?,DIVISION 2
@@ -183,7 +183,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 182,FORT VALLEY STATE,?,?,?,?,DIVISION 2
 183,GANNON,?,?,?,?,DIVISION 2
 184,GLENVILLE STATE,?,?,?,?,DIVISION 2
-185,GRAND VALLEY STATE,?,?,?,?,DIVISION 2
+185,GRAND VALLEY STATE,?,Grand Valley State Lakers,?,?,DIVISION 2
 186,HARDING,?,?,?,?,DIVISION 2
 187,HENDERSON STATE,?,?,?,?,DIVISION 2
 188,HILLSDALE COLLEGE,?,?,?,?,DIVISION 2
@@ -272,7 +272,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 271,UNC-PEMBROKE,?,?,?,?,DIVISION 2
 272,UPPER IOWA,?,?,?,?,DIVISION 2
 273,URBANA,?,?,?,?,DIVISION 2
-274,VALDOSTA STATE,?,?,?,?,DIVISION 2
+274,VALDOSTA STATE,?,Valdosta State Blazers,?,?,DIVISION 2
 275,VIRGINIA STATE,?,?,?,?,DIVISION 2
 276,VIRGINIA UNION,?,?,?,?,DIVISION 2
 277,VIRGINIA-WISE,?,?,?,?,DIVISION 2
@@ -297,7 +297,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 296,WINSTON-SALEM,?,?,?,?,DIVISION 2
 297,ADRIAN,?,?,?,?,DIVISION 3
 298,ALBION,?,?,?,?,DIVISION 3
-299,ALBRIGHT,?,?,?,?,DIVISION 3
+299,ALBRIGHT,?,Army Knights,?,?,DIVISION 3
 300,ALFRED,?,?,?,?,DIVISION 3
 301,ALFRED STATE,?,?,?,?,DIVISION 3
 302,ALLEGHENY,?,?,?,?,DIVISION 3
@@ -561,7 +561,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 560,CAL-DAVIS,?,UC Davis Aggies,UC Davis,UCD,Championship Subdivision
 561,CAL-POLY (SAN LOUIS OBISPO),?,?,Cal Poly,CP,Championship Subdivision
 562,CAL-SACRAMENTO,?,Sacramento State Hornets,Sacramento State,SAC,Championship Subdivision
-563,CAMPBELL,?,Campbell Camels,Campbell,CAMP,Championship Subdivision
+563,CAMPBELL,?,?,Campbell,CAMP,Championship Subdivision
 564,CENTRAL ARKANSAS,?,Central Arkansas Bears,Central Arkansas,UCA,Championship Subdivision
 565,CENTRAL CONNECTICUT STATE,?,Central Connecticut Blue Devils,Central Connecticut,CCSU,Championship Subdivision
 566,CHARLESTON SOUTHERN,?,Charleston Southern Buccaneers,Charleston Southern,CHSO,Championship Subdivision
@@ -592,7 +592,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 591,HOLY CROSS,?,Holy Cross Crusaders,Holy Cross,HC,Championship Subdivision
 592,HOUSTON BAPTIST,?,Houston Baptist Huskies,Houston Baptist,HBU,Championship Subdivision
 593,HOWARD,?,Howard Bison,Howard,HOW,Championship Subdivision
-594,IDAHO,Idaho,Idaho Vandals,Idaho,IDHO,Championship Subdivision
+594,IDAHO,?,Idaho Vandals,Idaho,IDHO,Championship Subdivision
 595,IDAHO STATE,?,Idaho State Bengals,Idaho State,IDST,Championship Subdivision
 596,ILLINOIS STATE,?,Illinois State Redbirds,Illinois State,ILST,Championship Subdivision
 597,INCARNATE WORD,?,Incarnate Word Cardinals,Incarnate Word,IW,Championship Subdivision
@@ -632,7 +632,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 631,PENNSYLVANIA,?,?,UPenn,PENN,Championship Subdivision
 632,PINE BLUFF-ARKANSAS,?,Arkansas-Pine Bluff Golden Lions,Arkansas-Pine Bluff,UAPB,Championship Subdivision
 633,PORTLAND STATE,?,Portland State Vikings,Portland State,PRST,Championship Subdivision
-634,PRAIRIE VIEW A&M,?,Prairie View Panthers,Prairie View A&M,PV,Championship Subdivision
+634,PRAIRIE VIEW A&M,?,Prairie View Panthers,Prairie View A&M,PVAM,Championship Subdivision
 635,PRESBYTERIAN,?,?,Presbyterian,PRES,Championship Subdivision
 636,PRINCETON,?,?,Princeton,PRIN,Championship Subdivision
 637,RHODE ISLAND,?,Rhode Island Rams,Rhode Island,URI,Championship Subdivision
@@ -683,7 +683,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 682,BETHEL-TN.,?,?,?,?,NAIA
 683,BLUFIELD,?,?,?,?,NAIA
 684,BRIAR CLIFF,?,?,?,?,NAIA
-685,CAMPBELLSVILLE,?,?,?,?,NAIA
+685,CAMPBELLSVILLE,?,Campbell Fighting Camels,?,?,NAIA
 686,CARROLL-MONTANA,?,?,?,?,NAIA
 687,CENTRAL METHODIST,?,?,?,?,NAIA
 688,CINCINNATI CHRISTIAN,?,?,?,?,NAIA
@@ -706,64 +706,63 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 705,GRACELAND,?,?,?,?,NAIA
 706,GRAND VIEW,?,?,?,?,NAIA
 707,HASTINGS,?,?,?,?,NAIA
-708,INDIANA - WESLEYAN ,?,?,?,?,NAIA
-709,INDIANA WESLEYAN,?,?,?,?,NAIA
-710,JAMESTOWN,?,?,?,?,NAIA
-711,KANSAS WESLEYAN,?,?,?,?,NAIA
-712,KENTUCKY CHRISTIAN,?,?,?,?,NAIA
-713,KIESER - FLA,?,?,?,?,NAIA
-714,LANGSTON,?,?,?,?,NAIA
-715,LAWRENCE TECH (MI),?,?,?,?,NAIA
-716,LINDENWOOD - BELLEVILLE,?,?,?,?,NAIA
-717,LINSEY WILSON - KY,?,?,?,?,NAIA
-718,LYON COLLEGE,?,?,?,?,NAIA
-719,MARIAN - INDIANA,?,?,?,?,NAIA
-720,MAYVILLE STATE,?,?,?,?,NAIA
-721,McPHERSON,?,?,?,?,NAIA
-722,MID-AMERICA NAZARENE,?,?,?,?,NAIA
-723,MIDLAND - NE,?,?,?,?,NAIA
-724,MISSOURI BAPTIST,?,?,?,?,NAIA
-725,MISSOURI VALLEY,?,?,?,?,NAIA
-726,MONTANA - WESTERN,?,?,?,?,NAIA
-727,MONTANA STATE-NORTH,?,?,?,?,NAIA
-728,MONTANA TECH,?,?,?,?,NAIA
-729,MORNINGSIDE,?,?,?,?,NAIA
-730,NORTHWESTERN-IOWA,?,?,?,?,NAIA
-731,OLIVET NAZARENE,?,?,?,?,NAIA
-732,OTTAWA (AZ),?,?,?,?,NAIA
-733,OTTAWA-KANSAS,?,?,?,?,NAIA
-734,PANHANDLE STATE - OK,?,?,?,?,NAIA
-735,PERU STATE,?,?,?,?,NAIA
-736,PIKEVILLE,?,?,?,?,NAIA
-737,POINT,?,?,?,?,NAIA
-738,PRESENTATION - SD,?,?,?,?,NAIA
-739,REINHARDT,?,?,?,?,NAIA
-740,ROBERT MORRIS-ILL,?,?,?,?,NAIA
-741,ROCKY MOUNTAIN,?,?,?,?,NAIA
-742,S W ASSMEMBLY OF GOD,?,?,?,?,NAIA
-743,SIENA HEIGHTS,?,?,?,?,NAIA
-744,SOUTHEASTERN -FLA,?,?,?,?,NAIA
-745,SOUTHERN OREGON,?,?,?,?,NAIA
-746,SOUTHWESTERN-KANSAS,?,?,?,?,NAIA
-747,ST. ANDREWS- N.C.,?,?,?,?,NAIA
-748,ST.AMBROSE,?,?,?,?,NAIA
-749,ST.FRANCIS-ILL,?,?,?,?,NAIA
-750,ST.FRANCIS-IND.,?,?,?,?,NAIA
-751,ST.MARY-KANSAS,?,?,?,?,NAIA
-752,ST.XAVIER,?,?,?,?,NAIA
-753,STERLING,?,?,?,?,NAIA
-754,TABOR,?,TBD,?,?,NAIA
-755,TAYLOR,?,?,?,?,NAIA
-756,TEXAS COLLEGE,?,?,?,?,NAIA
-757,TEXAS WESLEYAN,?,?,?,?,NAIA
-758,TRINITY INTERNATIONAL-ILL,?,?,?,?,NAIA
-759,UNION-KY.,?,?,?,?,NAIA
-760,UNIV. OF CUMBERLANDS-KY,?,?,?,?,NAIA
-761,VALLEY CITY STATE,?,?,?,?,NAIA
-762,WALDORF,?,?,?,?,NAIA
-763,WARNER,?,?,?,?,NAIA
-764,WAYLAND BAPTIST,?,?,?,?,NAIA
-765,WEBBER INTERNATIONAL,?,?,?,?,NAIA
-766,WILLIAM PENN,?,?,?,?,NAIA
-767,TRINITY BIBLE,?,?,?,?,INDEPENDENT
-768,VIRGINIA - LYNCHBURG,?,?,?,?,INDEPENDENT
+708,INDIANA WESLEYAN,?,?,?,?,NAIA
+709,JAMESTOWN,?,?,?,?,NAIA
+710,KANSAS WESLEYAN,?,?,?,?,NAIA
+711,KENTUCKY CHRISTIAN,?,?,?,?,NAIA
+712,KIESER - FLA,?,?,?,?,NAIA
+713,LANGSTON,?,?,?,?,NAIA
+714,LAWRENCE TECH (MI),?,?,?,?,NAIA
+715,LINDENWOOD - BELLEVILLE,?,?,?,?,NAIA
+716,LINSEY WILSON - KY,?,?,?,?,NAIA
+717,LYON COLLEGE,?,?,?,?,NAIA
+718,MARIAN - INDIANA,?,?,?,?,NAIA
+719,MAYVILLE STATE,?,?,?,?,NAIA
+720,McPHERSON,?,?,?,?,NAIA
+721,MID-AMERICA NAZARENE,?,?,?,?,NAIA
+722,MIDLAND - NE,?,?,?,?,NAIA
+723,MISSOURI BAPTIST,?,?,?,?,NAIA
+724,MISSOURI VALLEY,?,?,?,?,NAIA
+725,MONTANA - WESTERN,?,?,?,?,NAIA
+726,MONTANA STATE-NORTH,?,?,?,?,NAIA
+727,MONTANA TECH,?,?,?,?,NAIA
+728,MORNINGSIDE,?,?,?,?,NAIA
+729,NORTHWESTERN-IOWA,?,?,?,?,NAIA
+730,OLIVET NAZARENE,?,?,?,?,NAIA
+731,OTTAWA (AZ),?,?,?,?,NAIA
+732,OTTAWA-KANSAS,?,?,?,?,NAIA
+733,PANHANDLE STATE - OK,?,?,?,?,NAIA
+734,PERU STATE,?,?,?,?,NAIA
+735,PIKEVILLE,?,?,?,?,NAIA
+736,POINT,?,?,?,?,NAIA
+737,PRESENTATION - SD,?,?,?,?,NAIA
+738,REINHARDT,?,?,?,?,NAIA
+739,ROBERT MORRIS-ILL,?,?,?,?,NAIA
+740,ROCKY MOUNTAIN,?,?,?,?,NAIA
+741,S W ASSMEMBLY OF GOD,?,?,?,?,NAIA
+742,SIENA HEIGHTS,?,?,?,?,NAIA
+743,SOUTHEASTERN -FLA,?,?,?,?,NAIA
+744,SOUTHERN OREGON,?,?,?,?,NAIA
+745,SOUTHWESTERN-KANSAS,?,?,?,?,NAIA
+746,ST. ANDREWS- N.C.,?,?,?,?,NAIA
+747,ST.AMBROSE,?,?,?,?,NAIA
+748,ST.FRANCIS-ILL,?,?,?,?,NAIA
+749,ST.FRANCIS-IND.,?,?,?,?,NAIA
+750,ST.MARY-KANSAS,?,?,?,?,NAIA
+751,ST.XAVIER,?,?,?,?,NAIA
+752,STERLING,?,?,?,?,NAIA
+753,TABOR,?,TBD,?,?,NAIA
+754,TAYLOR,?,?,?,?,NAIA
+755,TEXAS COLLEGE,?,?,?,?,NAIA
+756,TEXAS WESLEYAN,?,?,?,?,NAIA
+757,TRINITY INTERNATIONAL-ILL,?,?,?,?,NAIA
+758,UNION-KY.,?,?,?,?,NAIA
+759,UNIV. OF CUMBERLANDS-KY,?,?,?,?,NAIA
+760,VALLEY CITY STATE,?,?,?,?,NAIA
+761,WALDORF,?,?,?,?,NAIA
+762,WARNER,?,?,?,?,NAIA
+763,WAYLAND BAPTIST,?,?,?,?,NAIA
+764,WEBBER INTERNATIONAL,?,?,?,?,NAIA
+765,WILLIAM PENN,?,?,?,?,NAIA
+766,TRINITY BIBLE,?,?,?,?,INDEPENDENT
+767,VIRGINIA - LYNCHBURG,?,?,?,?,INDEPENDENT
