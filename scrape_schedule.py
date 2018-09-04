@@ -54,13 +54,13 @@ def main(argv):
 
     url = []
     if (year == int(now.year)):
-        url.append(starturl)
-        for week in range(2, 16):
+        #url.append(starturl)
+        for week in range(1, 16):
             url.append("{0}/_/week/{1}".format(starturl, week))
         url.append("{0}/_/seasontype/3".format(starturl))
     else:
         url.append("{0}/_/year/{1}".format(starturl, year))
-        for week in range(2, 16):
+        for week in range(1, 16):
             url.append("{0}/_/week/{1}/year/{2}".format(starturl, week, year))        
         url.append("{0}/_/year/{1}/seasontype/3".format(starturl, year))        
     pages = []
