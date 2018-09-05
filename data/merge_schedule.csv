@@ -3,7 +3,7 @@ Abilene Christian Wildcats,79,ABILENE CHRISTIAN,
 Air Force Falcons,69,AIR FORCE,
 Akron Zips,67,AKRON,
 Alabama A&M Bulldogs,71,ALABAMA A&M,
-Alabama Crimson Tide,67,ALABAMA STATE,ALABAMA
+Alabama Crimson Tide,67,ALABAMA STATE,Alabama 
 Alabama State Hornets,76,ALABAMA STATE,
 Albany Great Danes,59,ALBANY-NY,
 Alcorn State Braves,77,ALCORN STATE,
@@ -13,7 +13,7 @@ Arizona Wildcats,69,ARIZONA STATE,ARIZONA
 Arkansas Razorbacks,62,ARKANSAS TECH,ARKANSAS
 Arkansas State Red Wolves,72,ARKANSAS STATE,
 Arkansas-Pine Bluff Golden Lions,55,ARKANSAS-MONTICELLO,PINE BLUFF-ARKANSAS
-Army Knights,60,ALBRIGHT,
+Army Knights,60,ALBRIGHT,ARMY
 Auburn Tigers,63,AUBURN,
 Austin Peay Governors,69,AUSTIN PEAY,
 BYU Cougars,48,BRYANT COLLEGE,BRIGHAM YOUNG
@@ -47,7 +47,7 @@ Eastern Illinois Panthers,78,EASTERN ILLINOIS,
 Eastern Kentucky Colonels,78,EASTERN KENTUCKY,
 Eastern Michigan Eagles,82,EASTERN MICHIGAN,
 Eastern Washington Eagles,84,EASTERN WASHINGTON,
-Elon Phoenix,55,LOCK HAVEN,ELON
+Elon Phoenix,55,LOCK HAVEN,NORTH CAROLINA
 Florida A&M Rattlers,71,FLORIDA A&M,
 Florida Atlantic Owls,86,FLORIDA ATLANTIC,
 Florida Gators,74,FLORIDA STATE,FLORIDA
@@ -63,14 +63,14 @@ Georgia State Panthers,74,GEORGIA STATE,
 Georgia Tech Yellow Jackets,62,GEORGIA TECH,
 Grambling Tigers,72,GRAMBLING,
 Grand Valley State Lakers,84,GRAND VALLEY STATE,
-Hawaii Rainbow Warriors,47,Hawaii,Hawaii
+Hawai'i Rainbow Warriors,47,HARDIN-SIMMONS,HAWAII
 Holy Cross Crusaders,67,HOLY CROSS,
 Houston Baptist Huskies,79,HOUSTON BAPTIST,
 Houston Cougars,67,HOUSTON BAPTIST,HOUSTON
 Howard Bison,67,HOWARD,
 Idaho State Bengals,73,IDAHO STATE,
 Idaho Vandals,58,IDAHO STATE,IDAHO
-Illinois Fighting Illini,55,ILLINOIS COLLEGE,ILLINOIS
+Illinois Fighting Illini,55,ILLINOIS COLLEGE,
 Illinois State Redbirds,76,ILLINOIS STATE,
 Incarnate Word Cardinals,74,INCARNATE WORD,
 Indiana Hoosiers,71,INDIANAPOLIS,INDIANA
@@ -83,7 +83,7 @@ Kansas Jayhawks,60,KANSAS WESLEYAN,KANSAS
 Kansas State Wildcats,73,KANSAS STATE,
 Kennesaw State Owls,85,KENNESAW STATE,
 Kent State Golden Flashes,57,KENT STATE,
-Kentucky Wildcats,71,KENTUCKY STATE,KENTUCKY
+Kentucky Wildcats,71,KENTUCKY STATE,
 LSU Tigers,71,RUTGERS,LOUISIANA STATE
 Lafayette Leopards,67,LAFAYETTE,
 Lamar Cardinals,67,MARY HARDIN BAYLOR,LAMAR
@@ -94,7 +94,7 @@ Louisiana Tech Bulldogs,76,LOUISIANA TECH,
 Louisville Cardinals,67,LOUISVILLE,
 Maine Black Bears,56,PINE BLUFF-ARKANSAS,MAINE
 Marshall Thundering Herd,50,MARSHALL,
-Maryland Terrapins,67,WAYLAND BAPTIST,Maryland
+Maryland Terrapins,67,WAYLAND BAPTIST,MARYLAND
 McNeese Cowboys,64,MCNEESE STATE,
 Memphis Tigers,67,MEMPHIS,
 Mercer Bears,67,MERCER,
@@ -129,7 +129,7 @@ Northern Illinois Huskies,81,NORTHERN ILLINOIS,
 Northern Iowa Panthers,74,NORTHERN IOWA,
 Northwestern State Demons,83,NORTHWESTERN STATE-LA,
 Northwestern Wildcats,79,NORTHWESTERN-IOWA,NORTHWESTERN
-Notre Dame Fighting Irish,62,NOTRE DAME - OHIO,NOTRE DAME
+Notre Dame Fighting Irish,62,NOTRE DAME - OHIO,
 Ohio Bobcats,64,OHIO STATE,OHIO UNIV.
 Ohio State Buckeyes,69,OHIO STATE,
 Oklahoma Sooners,73,OKLAHOMA STATE,OKLAHOMA
@@ -154,7 +154,7 @@ San Diego State Aztecs,81,SAN DIEGO STATE,
 San Jose State Spartans,76,SAN JOSE STATE,
 Savannah State Tigers,80,SAVANNAH STATE,
 South Alabama Jaguars,76,SOUTH ALABAMA,
-South Carolina Gamecocks,77,SOUTH CAROLINA STATE,SOUTH CAROLINA
+South Carolina Gamecocks,77,SOUTH CAROLINA STATE,SOUTH CAROLINA 
 South Carolina State Bulldogs,82,SOUTH CAROLINA STATE,
 South Dakota Coyotes,81,SOUTH DAKOTA TECH,SOUTH DAKOTA
 South Dakota State Jackrabbits,75,SOUTH DAKOTA STATE,
@@ -166,7 +166,7 @@ Southern Jaguars,76,SOUTHERN UTAH,SOUTHERN UNIVERSITY
 Southern Mississippi Golden Eagles,74,SOUTHERN MISSISSIPPI,
 Southern Utah Thunderbirds,67,SOUTHERN UTAH,
 Stanford Cardinal,65,NORTH CAROLINA,STANFORD
-Stephen F. Austin Lumberjacks,52,ST. AUGUSTINE,S.F.AUSTIN
+Stephen F. Austin Lumberjacks,52,ST. AUGUSTINE,AUSTIN COLLEGE
 Stony Brook Seawolves,69,STONY BROOK,
 Syracuse Orange,70,SYRACUSE,
 TBD,50,TABOR,
@@ -196,8 +196,8 @@ UMass Minutemen,71,MASS-MARITIME,MASSACHUSETTS
 UNLV Rebels,52,UNC-PEMBROKE,NEVADA-LAS VEGAS
 USC Trojans,60,ST.THOMAS,SOUTHERN CALIFORNIA
 UT Martin Skyhawks,56,ST.MARY-KANSAS,TENNESSEE-MARTIN
-UTEP Miners,59,BETHEL-MINNESOTA,TEXAS-EL PASO
-UTSA Roadrunners,48,ALDERSON-BROADDUS,
+UTEP Miners,59,BETHEL-MINNESOTA,EAST TENNESSEE STATE
+UTSA Roadrunners,48,ALDERSON-BROADDUS,TEXAS-SAN ANTONIO
 Utah State Aggies,74,UTAH STATE,
 Utah Utes,74,UTAH STATE,UTAH
 VMI Keydets,50,M.I.T.,VIRGINIA MILITARY INSTITUTE
@@ -211,7 +211,7 @@ Wake Forest Demon Deacons,61,WAKE FOREST,
 Washington Huskies,76,WASHINGTON STATE,WASHINGTON
 Washington State Cougars,80,WASHINGTON STATE,
 Weber State Wildcats,71,WEBER STATE,
-West Virginia Mountaineers,76,WEST VIRGINIA STATE,WEST VIRGINIA
+West Virginia Mountaineers,76,WEST VIRGINIA STATE,
 Western Carolina Catamounts,74,WESTERN CAROLINA,
 Western Illinois Leathernecks,71,WESTERN ILLINOIS,
 Western Kentucky Hilltoppers,73,WESTERN KENTUCKY,
