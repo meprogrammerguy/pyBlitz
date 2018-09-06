@@ -110,10 +110,10 @@
     "109": {
         "BPI": "TEXAS-EL PASO",
         "Index": "110",
-        "abbr": "?",
-        "abbr team": "?",
+        "abbr": "UTEP",
+        "abbr team": "UTEP",
         "class": "DIVISION 1  FBS",
-        "scheduled": "?",
+        "scheduled": "UTEP Miners",
         "teamrankings": "TX El Paso"
     },
     "11": {
@@ -833,7 +833,7 @@
         "abbr": "?",
         "abbr team": "?",
         "class": "DIVISION 2",
-        "scheduled": "?",
+        "scheduled": "Fort Valley State Wildcats",
         "teamrankings": "?"
     },
     "182": {
@@ -1364,7 +1364,7 @@
         "abbr": "?",
         "abbr team": "?",
         "class": "DIVISION 2",
-        "scheduled": "Notre Dame Fighting Irish",
+        "scheduled": "?",
         "teamrankings": "?"
     },
     "235": {
@@ -4592,8 +4592,8 @@
     "558": {
         "BPI": "BUTLER",
         "Index": "559",
-        "abbr": "UTEP",
-        "abbr team": "UTEP",
+        "abbr": "?",
+        "abbr team": "?",
         "class": "Championship Subdivision",
         "scheduled": "?",
         "teamrankings": "?"
@@ -4784,7 +4784,7 @@
         "abbr": "?",
         "abbr team": "?",
         "class": "Championship Subdivision",
-        "scheduled": "UTEP Miners",
+        "scheduled": "?",
         "teamrankings": "?"
     },
     "578": {
@@ -6701,7 +6701,7 @@
         "abbr": "ND",
         "abbr team": "Notre Dame",
         "class": "DIVISION 1  FBS",
-        "scheduled": "?",
+        "scheduled": "Notre Dame Fighting Irish",
         "teamrankings": "Notre Dame"
     },
     "8": {
