@@ -14,16 +14,11 @@ import settings
 def findTeams(first, second, dict_stats, verbose = True):
     teama = {}
     teamb = {}
-    count = 0
     for item in dict_stats.values():
         if (item["BPI"].lower().strip() == first.lower().strip()):
             teama = item
-            count += 1
         if (item["BPI"].lower().strip() == second.lower().strip()):
             teamb = item
-            count += 1
-        if (count == 2):
-            break
 
     if (not teama and not teamb):
         log = "findTeams() - Could not find stats for either team [{0}] or [{1}]".format(first, second)
