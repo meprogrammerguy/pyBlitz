@@ -146,12 +146,12 @@
         "BPI": "TEXAS TECH",
         "Class": "DIVISION 1  FBS",
         "Index": "12",
-        "OPLpG3": "3.0",
-        "OPTpP3": "0.044",
-        "PLpG3": "66.0",
-        "PTpP3": "0.364",
+        "OPLpG3": "47.0",
+        "OPTpP3": "0.758",
+        "PLpG3": "95.0",
+        "PTpP3": "0.284",
         "Ranking": "87.0",
-        "teamrankings": "VA Tech"
+        "teamrankings": "Texas Tech"
     },
     "110": {
         "BPI": "LENOIR-RHYNE",
@@ -179,12 +179,12 @@
         "BPI": "ALABAMA",
         "Class": "DIVISION 1  FBS",
         "Index": "113",
-        "OPLpG3": "30.0",
-        "OPTpP3": "0.375",
-        "PLpG3": "68.0",
-        "PTpP3": "0.382",
+        "OPLpG3": "14.0",
+        "OPTpP3": "0.209",
+        "PLpG3": "69.0",
+        "PTpP3": "0.739",
         "Ranking": "123.4",
-        "teamrankings": "S Alabama"
+        "teamrankings": "Alabama"
     },
     "113": {
         "BPI": "CENTRAL MICHIGAN",
@@ -1092,12 +1092,12 @@
         "BPI": "TUSCULUM",
         "Class": "DIVISION 2",
         "Index": "189",
-        "OPLpG3": "21.0",
-        "OPTpP3": "0.280",
-        "PLpG3": "75.0",
-        "PTpP3": "0.573",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
         "Ranking": "32.8",
-        "teamrankings": "USC"
+        "teamrankings": "?"
     },
     "189": {
         "BPI": "TUSKEGEE UNIVERSITY",
@@ -1268,12 +1268,12 @@
         "BPI": "EAST CAROLINA",
         "Class": "DIVISION 1  FBS",
         "Index": "202",
-        "OPLpG3": "15.0",
-        "OPTpP3": "0.268",
-        "PLpG3": "72.0",
-        "PTpP3": "0.681",
+        "OPLpG3": "--",
+        "OPTpP3": "--",
+        "PLpG3": "--",
+        "PTpP3": "--",
         "Ranking": "66.5",
-        "teamrankings": "S Carolina"
+        "teamrankings": "E Carolina"
     },
     "202": {
         "BPI": "WAYNE STATE-NEBRASKA",
@@ -1400,12 +1400,12 @@
         "BPI": "EASTERN MICHIGAN",
         "Class": "DIVISION 1  FBS",
         "Index": "213",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
+        "OPLpG3": "--",
+        "OPTpP3": "--",
+        "PLpG3": "--",
+        "PTpP3": "--",
         "Ranking": "81.0",
-        "teamrankings": "?"
+        "teamrankings": "E Michigan"
     },
     "213": {
         "BPI": "WESTERN OREGON",
@@ -1532,12 +1532,12 @@
         "BPI": "ALABAMA-BIRMINGHAM",
         "Class": "DIVISION 1  FBS",
         "Index": "224",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
+        "OPLpG3": "--",
+        "OPTpP3": "--",
+        "PLpG3": "--",
+        "PTpP3": "--",
         "Ranking": "75.8",
-        "teamrankings": "?"
+        "teamrankings": "UAB"
     },
     "224": {
         "BPI": "FLORIDA",
@@ -1548,7 +1548,7 @@
         "PLpG3": "--",
         "PTpP3": "--",
         "Ranking": "91.0",
-        "teamrankings": "S Florida"
+        "teamrankings": "Florida"
     },
     "225": {
         "BPI": "ALFRED STATE",
@@ -1796,23 +1796,23 @@
         "BPI": "BERRY",
         "Class": "DIVISION 3",
         "Index": "246",
-        "OPLpG3": "23.0",
-        "OPTpP3": "0.329",
-        "PLpG3": "71.0",
-        "PTpP3": "0.394",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
         "Ranking": "37.3",
-        "teamrankings": "BYU"
+        "teamrankings": "?"
     },
     "246": {
         "BPI": "FLORIDA INTERNATIONAL",
         "Class": "DIVISION 1  FBS",
         "Index": "247",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
+        "OPLpG3": "38.0",
+        "OPTpP3": "0.458",
+        "PLpG3": "68.0",
+        "PTpP3": "0.412",
         "Ranking": "76.7",
-        "teamrankings": "?"
+        "teamrankings": "Florida Intl"
     },
     "247": {
         "BPI": "BETHANY-WEST VIRGINIA",
@@ -1851,12 +1851,12 @@
         "BPI": "VIRGINIA",
         "Class": "DIVISION 1  FBS",
         "Index": "26",
-        "OPLpG3": "14.0",
-        "OPTpP3": "0.219",
-        "PLpG3": "63.0",
-        "PTpP3": "0.635",
+        "OPLpG3": "--",
+        "OPTpP3": "--",
+        "PLpG3": "--",
+        "PTpP3": "--",
         "Ranking": "84.5",
-        "teamrankings": "W Virginia"
+        "teamrankings": "Virginia"
     },
     "250": {
         "BPI": "BLUFFTON",
@@ -1972,12 +1972,12 @@
         "BPI": "VIRGINIA TECH",
         "Class": "DIVISION 1  FBS",
         "Index": "27",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
+        "OPLpG3": "3.0",
+        "OPTpP3": "0.044",
+        "PLpG3": "66.0",
+        "PTpP3": "0.364",
         "Ranking": "104.9",
-        "teamrankings": "?"
+        "teamrankings": "VA Tech"
     },
     "260": {
         "BPI": "CAPITAL",
@@ -2291,12 +2291,12 @@
         "BPI": "DARTMOUTH-MASS.",
         "Class": "DIVISION 3",
         "Index": "287",
-        "OPLpG3": "55.0",
-        "OPTpP3": "0.640",
-        "PLpG3": "74.0",
-        "PTpP3": "0.284",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
         "Ranking": "6.2",
-        "teamrankings": "U Mass"
+        "teamrankings": "?"
     },
     "287": {
         "BPI": "DEAN",
@@ -2335,12 +2335,12 @@
         "BPI": "WASHINGTON STATE",
         "Class": "DIVISION 1  FBS",
         "Index": "30",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
+        "OPLpG3": "19.0",
+        "OPTpP3": "0.306",
+        "PLpG3": "78.0",
+        "PTpP3": "0.526",
         "Ranking": "97.2",
-        "teamrankings": "?"
+        "teamrankings": "Wash State"
     },
     "290": {
         "BPI": "GEORGIA SOUTHERN",
@@ -2467,12 +2467,12 @@
         "BPI": "WEST VIRGINIA",
         "Class": "DIVISION 1  FBS",
         "Index": "31",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
+        "OPLpG3": "14.0",
+        "OPTpP3": "0.219",
+        "PLpG3": "63.0",
+        "PTpP3": "0.635",
         "Ranking": "94.6",
-        "teamrankings": "?"
+        "teamrankings": "W Virginia"
     },
     "300": {
         "BPI": "EUREKA",
@@ -2588,12 +2588,12 @@
         "BPI": "WESTERN KENTUCKY",
         "Class": "DIVISION 1  FBS",
         "Index": "32",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
+        "OPLpG3": "34.0",
+        "OPTpP3": "0.466",
+        "PLpG3": "65.0",
+        "PTpP3": "0.046",
         "Ranking": "70.5",
-        "teamrankings": "?"
+        "teamrankings": "W Kentucky"
     },
     "310": {
         "BPI": "GALLAUDET",
@@ -2640,14 +2640,14 @@
         "teamrankings": "?"
     },
     "314": {
-        "BPI": "GETTYSBURG",
-        "Class": "DIVISION 3",
+        "BPI": "EAST TENNESSEE STATE",
+        "Class": "Championship Subdivision",
         "Index": "315",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "7.6",
+        "Ranking": "47.9",
         "teamrankings": "?"
     },
     "315": {
@@ -2709,12 +2709,12 @@
         "BPI": "WESTERN MICHIGAN",
         "Class": "DIVISION 1  FBS",
         "Index": "33",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
+        "OPLpG3": "55.0",
+        "OPTpP3": "0.598",
+        "PLpG3": "65.0",
+        "PTpP3": "0.646",
         "Ranking": "77.1",
-        "teamrankings": "?"
+        "teamrankings": "W Michigan"
     },
     "320": {
         "BPI": "GUSTAVUS ADOLPHUS",
@@ -2750,20 +2750,9 @@
         "teamrankings": "?"
     },
     "323": {
-        "BPI": "HAWAII",
-        "Class": "DIVISION 1  FBS",
-        "Index": "324",
-        "OPLpG3": "37.5",
-        "OPTpP3": "0.536",
-        "PLpG3": "72.5",
-        "PTpP3": "0.703",
-        "Ranking": "80.0",
-        "teamrankings": "Hawaii"
-    },
-    "324": {
         "BPI": "HAMPDEN-SYDNEY",
         "Class": "DIVISION 3",
-        "Index": "325",
+        "Index": "324",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -2771,10 +2760,10 @@
         "Ranking": "15.8",
         "teamrankings": "?"
     },
-    "325": {
+    "324": {
         "BPI": "HANOVER",
         "Class": "DIVISION 3",
-        "Index": "326",
+        "Index": "325",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -2782,10 +2771,10 @@
         "Ranking": "7.2",
         "teamrankings": "?"
     },
-    "326": {
+    "325": {
         "BPI": "HARDIN-SIMMONS",
         "Class": "DIVISION 3",
-        "Index": "327",
+        "Index": "326",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -2793,10 +2782,10 @@
         "Ranking": "42.7",
         "teamrankings": "?"
     },
-    "327": {
+    "326": {
         "BPI": "HARTWICK",
         "Class": "DIVISION 3",
-        "Index": "328",
+        "Index": "327",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -2804,10 +2793,10 @@
         "Ranking": "8.8",
         "teamrankings": "?"
     },
-    "328": {
+    "327": {
         "BPI": "HEIDELBERG",
         "Class": "DIVISION 3",
-        "Index": "329",
+        "Index": "328",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -2815,15 +2804,26 @@
         "Ranking": "28.5",
         "teamrankings": "?"
     },
-    "329": {
+    "328": {
         "BPI": "HENDRIX",
+        "Class": "DIVISION 3",
+        "Index": "329",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "16.2",
+        "teamrankings": "?"
+    },
+    "329": {
+        "BPI": "HIRAM",
         "Class": "DIVISION 3",
         "Index": "330",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "16.2",
+        "Ranking": "-4.0",
         "teamrankings": "?"
     },
     "33": {
@@ -2838,20 +2838,9 @@
         "teamrankings": "Wisconsin"
     },
     "330": {
-        "BPI": "HIRAM",
-        "Class": "DIVISION 3",
-        "Index": "331",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "-4.0",
-        "teamrankings": "?"
-    },
-    "331": {
         "BPI": "HOBART",
         "Class": "DIVISION 3",
-        "Index": "332",
+        "Index": "331",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -2859,10 +2848,10 @@
         "Ranking": "26.3",
         "teamrankings": "?"
     },
-    "332": {
+    "331": {
         "BPI": "HOPE",
         "Class": "DIVISION 3",
-        "Index": "333",
+        "Index": "332",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -2870,10 +2859,10 @@
         "Ranking": "32.3",
         "teamrankings": "?"
     },
-    "333": {
+    "332": {
         "BPI": "HOWARD PAYNE",
         "Class": "DIVISION 3",
-        "Index": "334",
+        "Index": "333",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -2881,32 +2870,32 @@
         "Ranking": "-1.9",
         "teamrankings": "?"
     },
-    "334": {
+    "333": {
         "BPI": "APPALACHIAN STATE",
         "Class": "DIVISION 1  FBS",
-        "Index": "335",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
+        "Index": "334",
+        "OPLpG3": "45.0",
+        "OPTpP3": "0.562",
+        "PLpG3": "78.0",
+        "PTpP3": "0.487",
         "Ranking": "94.9",
-        "teamrankings": "?"
+        "teamrankings": "App State"
     },
-    "335": {
+    "334": {
         "BPI": "HOUSTON",
         "Class": "DIVISION 1  FBS",
-        "Index": "336",
+        "Index": "335",
         "OPLpG3": "27.0",
-        "OPTpP3": "0.314",
-        "PLpG3": "61.0",
-        "PTpP3": "0.738",
+        "OPTpP3": "0.310",
+        "PLpG3": "62.0",
+        "PTpP3": "0.726",
         "Ranking": "84.7",
         "teamrankings": "Houston"
     },
-    "336": {
+    "335": {
         "BPI": "HUNTINGDON-ALA.",
         "Class": "DIVISION 3",
-        "Index": "337",
+        "Index": "336",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -2914,10 +2903,10 @@
         "Ranking": "23.9",
         "teamrankings": "?"
     },
-    "337": {
+    "336": {
         "BPI": "HUSSON-MAINE",
         "Class": "DIVISION 3",
-        "Index": "338",
+        "Index": "337",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -2925,10 +2914,10 @@
         "Ranking": "21.1",
         "teamrankings": "?"
     },
-    "338": {
+    "337": {
         "BPI": "ILLINOIS COLLEGE",
         "Class": "DIVISION 3",
-        "Index": "339",
+        "Index": "338",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -2936,15 +2925,26 @@
         "Ranking": "-2.6",
         "teamrankings": "?"
     },
-    "339": {
+    "338": {
         "BPI": "ILLINOIS WESLEYAN",
+        "Class": "DIVISION 3",
+        "Index": "339",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "36.1",
+        "teamrankings": "?"
+    },
+    "339": {
+        "BPI": "IOWA-WESLEYAN",
         "Class": "DIVISION 3",
         "Index": "340",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "36.1",
+        "Ranking": "-20.6",
         "teamrankings": "?"
     },
     "34": {
@@ -2959,20 +2959,9 @@
         "teamrankings": "Wyoming"
     },
     "340": {
-        "BPI": "IOWA-WESLEYAN",
-        "Class": "DIVISION 3",
-        "Index": "341",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "-20.6",
-        "teamrankings": "?"
-    },
-    "341": {
         "BPI": "ITHACA",
         "Class": "DIVISION 3",
-        "Index": "342",
+        "Index": "341",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -2980,10 +2969,10 @@
         "Ranking": "35.4",
         "teamrankings": "?"
     },
-    "342": {
+    "341": {
         "BPI": "JOHN CARROLL",
         "Class": "DIVISION 3",
-        "Index": "343",
+        "Index": "342",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -2991,10 +2980,10 @@
         "Ranking": "47.9",
         "teamrankings": "?"
     },
-    "343": {
+    "342": {
         "BPI": "JOHNS HOPKINS",
         "Class": "DIVISION 3",
-        "Index": "344",
+        "Index": "343",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3002,10 +2991,10 @@
         "Ranking": "50.8",
         "teamrankings": "?"
     },
-    "344": {
+    "343": {
         "BPI": "JUNIATA",
         "Class": "DIVISION 3",
-        "Index": "345",
+        "Index": "344",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3013,10 +3002,10 @@
         "Ranking": "9.1",
         "teamrankings": "?"
     },
-    "345": {
+    "344": {
         "BPI": "KALAMAZOO",
         "Class": "DIVISION 3",
-        "Index": "346",
+        "Index": "345",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3024,21 +3013,21 @@
         "Ranking": "2.0",
         "teamrankings": "?"
     },
-    "346": {
+    "345": {
         "BPI": "ILLINOIS",
         "Class": "DIVISION 1  FBS",
-        "Index": "347",
-        "OPLpG3": "33.0",
-        "OPTpP3": "0.446",
-        "PLpG3": "67.0",
-        "PTpP3": "0.104",
+        "Index": "346",
+        "OPLpG3": "24.0",
+        "OPTpP3": "0.286",
+        "PLpG3": "73.0",
+        "PTpP3": "0.425",
         "Ranking": "72.9",
-        "teamrankings": "N Illinois"
+        "teamrankings": "Illinois"
     },
-    "347": {
+    "346": {
         "BPI": "KEAN",
         "Class": "DIVISION 3",
-        "Index": "348",
+        "Index": "347",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3046,10 +3035,10 @@
         "Ranking": "26.7",
         "teamrankings": "?"
     },
-    "348": {
+    "347": {
         "BPI": "KENYON",
         "Class": "DIVISION 3",
-        "Index": "349",
+        "Index": "348",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3057,10 +3046,10 @@
         "Ranking": "-9.1",
         "teamrankings": "?"
     },
-    "349": {
+    "348": {
         "BPI": "KING\u2019S COLLEGE",
         "Class": "DIVISION 3",
-        "Index": "350",
+        "Index": "349",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3068,21 +3057,10 @@
         "Ranking": "7.5",
         "teamrankings": "?"
     },
-    "35": {
-        "BPI": "BOISE",
-        "Class": "DIVISION 1  FBS",
-        "Index": "36",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "103.6",
-        "teamrankings": "?"
-    },
-    "350": {
+    "349": {
         "BPI": "KNOX",
         "Class": "DIVISION 3",
-        "Index": "351",
+        "Index": "350",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3090,10 +3068,21 @@
         "Ranking": "-2.9",
         "teamrankings": "?"
     },
-    "351": {
+    "35": {
+        "BPI": "BOISE",
+        "Class": "DIVISION 1  FBS",
+        "Index": "36",
+        "OPLpG3": "20.0",
+        "OPTpP3": "0.241",
+        "PLpG3": "58.0",
+        "PTpP3": "0.966",
+        "Ranking": "103.6",
+        "teamrankings": "Boise State"
+    },
+    "350": {
         "BPI": "LA VERNE",
         "Class": "DIVISION 3",
-        "Index": "352",
+        "Index": "351",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3101,10 +3090,10 @@
         "Ranking": "9.4",
         "teamrankings": "?"
     },
-    "352": {
+    "351": {
         "BPI": "LAGRANGE",
         "Class": "DIVISION 3",
-        "Index": "353",
+        "Index": "352",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3112,10 +3101,10 @@
         "Ranking": "7.9",
         "teamrankings": "?"
     },
-    "353": {
+    "352": {
         "BPI": "LAKE FOREST",
         "Class": "DIVISION 3",
-        "Index": "354",
+        "Index": "353",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3123,10 +3112,10 @@
         "Ranking": "4.0",
         "teamrankings": "?"
     },
-    "354": {
+    "353": {
         "BPI": "LAKELAND COLLEGE",
         "Class": "DIVISION 3",
-        "Index": "355",
+        "Index": "354",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3134,10 +3123,10 @@
         "Ranking": "8.7",
         "teamrankings": "?"
     },
-    "355": {
+    "354": {
         "BPI": "LAWRENCE",
         "Class": "DIVISION 3",
-        "Index": "356",
+        "Index": "355",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3145,10 +3134,10 @@
         "Ranking": "-17.4",
         "teamrankings": "?"
     },
-    "356": {
+    "355": {
         "BPI": "LEBANON VALLEY",
         "Class": "DIVISION 3",
-        "Index": "357",
+        "Index": "356",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3156,10 +3145,10 @@
         "Ranking": "15.3",
         "teamrankings": "?"
     },
-    "357": {
+    "356": {
         "BPI": "INDIANA",
         "Class": "DIVISION 1  FBS",
-        "Index": "358",
+        "Index": "357",
         "OPLpG3": "28.0",
         "OPTpP3": "0.412",
         "PLpG3": "83.0",
@@ -3167,10 +3156,10 @@
         "Ranking": "90.6",
         "teamrankings": "Indiana"
     },
-    "358": {
+    "357": {
         "BPI": "LEWIS & CLARK",
         "Class": "DIVISION 3",
-        "Index": "359",
+        "Index": "358",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3178,15 +3167,26 @@
         "Ranking": "5.9",
         "teamrankings": "?"
     },
-    "359": {
+    "358": {
         "BPI": "LINFIELD",
+        "Class": "DIVISION 3",
+        "Index": "359",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "44.0",
+        "teamrankings": "?"
+    },
+    "359": {
+        "BPI": "LORAS",
         "Class": "DIVISION 3",
         "Index": "360",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "44.0",
+        "Ranking": "5.8",
         "teamrankings": "?"
     },
     "36": {
@@ -3201,20 +3201,9 @@
         "teamrankings": "?"
     },
     "360": {
-        "BPI": "LORAS",
-        "Class": "DIVISION 3",
-        "Index": "361",
-        "OPLpG3": "17.0",
-        "OPTpP3": "0.233",
-        "PLpG3": "63.0",
-        "PTpP3": "0.524",
-        "Ranking": "5.8",
-        "teamrankings": "LSU"
-    },
-    "361": {
         "BPI": "LOUISIANA COLLEGE",
         "Class": "DIVISION 3",
-        "Index": "362",
+        "Index": "361",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3222,10 +3211,10 @@
         "Ranking": "-1.9",
         "teamrankings": "?"
     },
-    "362": {
+    "361": {
         "BPI": "LUTHER",
         "Class": "DIVISION 3",
-        "Index": "363",
+        "Index": "362",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3233,10 +3222,10 @@
         "Ranking": "22.8",
         "teamrankings": "?"
     },
-    "363": {
+    "362": {
         "BPI": "LYCOMING",
         "Class": "DIVISION 3",
-        "Index": "364",
+        "Index": "363",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3244,10 +3233,10 @@
         "Ranking": "13.0",
         "teamrankings": "?"
     },
-    "364": {
+    "363": {
         "BPI": "M.I.T.",
         "Class": "DIVISION 3",
-        "Index": "365",
+        "Index": "364",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3255,10 +3244,10 @@
         "Ranking": "10.3",
         "teamrankings": "?"
     },
-    "365": {
+    "364": {
         "BPI": "MACALESTER",
         "Class": "DIVISION 3",
-        "Index": "366",
+        "Index": "365",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3266,10 +3255,10 @@
         "Ranking": "3.7",
         "teamrankings": "?"
     },
-    "366": {
+    "365": {
         "BPI": "MACMURRAY",
         "Class": "DIVISION 3",
-        "Index": "367",
+        "Index": "366",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3277,10 +3266,10 @@
         "Ranking": "-11.2",
         "teamrankings": "?"
     },
-    "367": {
+    "366": {
         "BPI": "MAINE MARITIME",
         "Class": "DIVISION 3",
-        "Index": "368",
+        "Index": "367",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3288,10 +3277,10 @@
         "Ranking": "-18.1",
         "teamrankings": "?"
     },
-    "368": {
+    "367": {
         "BPI": "IOWA",
         "Class": "DIVISION 1  FBS",
-        "Index": "369",
+        "Index": "368",
         "OPLpG3": "7.0",
         "OPTpP3": "0.104",
         "PLpG3": "74.0",
@@ -3299,15 +3288,26 @@
         "Ranking": "105.1",
         "teamrankings": "Iowa"
     },
-    "369": {
+    "368": {
         "BPI": "MANCHESTER COLLEGE",
+        "Class": "DIVISION 3",
+        "Index": "369",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "-4.1",
+        "teamrankings": "?"
+    },
+    "369": {
+        "BPI": "MARIETTA",
         "Class": "DIVISION 3",
         "Index": "370",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "-4.1",
+        "Ranking": "20.7",
         "teamrankings": "?"
     },
     "37": {
@@ -3322,20 +3322,9 @@
         "teamrankings": "?"
     },
     "370": {
-        "BPI": "MARIETTA",
-        "Class": "DIVISION 3",
-        "Index": "371",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "20.7",
-        "teamrankings": "?"
-    },
-    "371": {
         "BPI": "MARTIN LUTHER-MN",
         "Class": "DIVISION 3",
-        "Index": "372",
+        "Index": "371",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3343,10 +3332,10 @@
         "Ranking": "-15.7",
         "teamrankings": "?"
     },
-    "372": {
+    "371": {
         "BPI": "MARY HARDIN BAYLOR",
         "Class": "DIVISION 3",
-        "Index": "373",
+        "Index": "372",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3354,10 +3343,10 @@
         "Ranking": "62.9",
         "teamrankings": "?"
     },
-    "373": {
+    "372": {
         "BPI": "MARYVILLE COLLEGE",
         "Class": "DIVISION 3",
-        "Index": "374",
+        "Index": "373",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3365,10 +3354,10 @@
         "Ranking": "10.3",
         "teamrankings": "?"
     },
-    "374": {
+    "373": {
         "BPI": "MASS-MARITIME",
         "Class": "DIVISION 3",
-        "Index": "375",
+        "Index": "374",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3376,10 +3365,10 @@
         "Ranking": "-9.4",
         "teamrankings": "?"
     },
-    "375": {
+    "374": {
         "BPI": "McDANIEL",
         "Class": "DIVISION 3",
-        "Index": "376",
+        "Index": "375",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3387,10 +3376,10 @@
         "Ranking": "12.8",
         "teamrankings": "?"
     },
-    "376": {
+    "375": {
         "BPI": "McMURRY",
         "Class": "DIVISION 3",
-        "Index": "377",
+        "Index": "376",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3398,10 +3387,10 @@
         "Ranking": "-4.7",
         "teamrankings": "?"
     },
-    "377": {
+    "376": {
         "BPI": "MERCHANT MARINE",
         "Class": "DIVISION 3",
-        "Index": "378",
+        "Index": "377",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3409,10 +3398,10 @@
         "Ranking": "18.1",
         "teamrankings": "?"
     },
-    "378": {
+    "377": {
         "BPI": "METHODIST COLLEGE",
         "Class": "DIVISION 3",
-        "Index": "379",
+        "Index": "378",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3420,16 +3409,27 @@
         "Ranking": "-2.1",
         "teamrankings": "?"
     },
-    "379": {
+    "378": {
         "BPI": "IOWA STATE",
         "Class": "DIVISION 1  FBS",
-        "Index": "380",
-        "OPLpG3": "19.0",
-        "OPTpP3": "0.306",
-        "PLpG3": "78.0",
-        "PTpP3": "0.526",
+        "Index": "379",
+        "OPLpG3": "--",
+        "OPTpP3": "--",
+        "PLpG3": "--",
+        "PTpP3": "--",
         "Ranking": "100.5",
-        "teamrankings": "Wash State"
+        "teamrankings": "Iowa State"
+    },
+    "379": {
+        "BPI": "MIDDLEBURY",
+        "Class": "DIVISION 3",
+        "Index": "380",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "30.0",
+        "teamrankings": "?"
     },
     "38": {
         "BPI": "ALDERSON-BROADDUS",
@@ -3443,20 +3443,9 @@
         "teamrankings": "?"
     },
     "380": {
-        "BPI": "MIDDLEBURY",
-        "Class": "DIVISION 3",
-        "Index": "381",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "30.0",
-        "teamrankings": "?"
-    },
-    "381": {
         "BPI": "MILLIKIN",
         "Class": "DIVISION 3",
-        "Index": "382",
+        "Index": "381",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3464,10 +3453,10 @@
         "Ranking": "28.7",
         "teamrankings": "?"
     },
-    "382": {
+    "381": {
         "BPI": "MILLSAPS",
         "Class": "DIVISION 3",
-        "Index": "383",
+        "Index": "382",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3475,10 +3464,10 @@
         "Ranking": "9.4",
         "teamrankings": "?"
     },
-    "383": {
+    "382": {
         "BPI": "MISERICORDIA",
         "Class": "DIVISION 3",
-        "Index": "384",
+        "Index": "383",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3486,10 +3475,10 @@
         "Ranking": "-2.0",
         "teamrankings": "?"
     },
-    "384": {
+    "383": {
         "BPI": "MISSISSIPPI COLLEGE",
         "Class": "DIVISION 3",
-        "Index": "385",
+        "Index": "384",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3497,10 +3486,10 @@
         "Ranking": "23.5",
         "teamrankings": "?"
     },
-    "385": {
+    "384": {
         "BPI": "MONMOUTH-IL",
         "Class": "DIVISION 3",
-        "Index": "386",
+        "Index": "385",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3508,10 +3497,10 @@
         "Ranking": "28.0",
         "teamrankings": "?"
     },
-    "386": {
+    "385": {
         "BPI": "MONTCLAIR",
         "Class": "DIVISION 3",
-        "Index": "387",
+        "Index": "386",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3519,10 +3508,10 @@
         "Ranking": "12.2",
         "teamrankings": "?"
     },
-    "387": {
+    "386": {
         "BPI": "MORAVIAN",
         "Class": "DIVISION 3",
-        "Index": "388",
+        "Index": "387",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3530,10 +3519,10 @@
         "Ranking": "19.8",
         "teamrankings": "?"
     },
-    "388": {
+    "387": {
         "BPI": "MORRIS-MINNESOTA",
         "Class": "DIVISION 3",
-        "Index": "389",
+        "Index": "388",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3541,16 +3530,27 @@
         "Ranking": "-24.8",
         "teamrankings": "?"
     },
-    "389": {
+    "388": {
         "BPI": "MORRISVILLE STATE - NY",
         "Class": "DIVISION 3",
-        "Index": "390",
+        "Index": "389",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
         "Ranking": "14.5",
         "teamrankings": "?"
+    },
+    "389": {
+        "BPI": "KANSAS",
+        "Class": "DIVISION 1  FBS",
+        "Index": "390",
+        "OPLpG3": "--",
+        "OPTpP3": "--",
+        "PLpG3": "--",
+        "PTpP3": "--",
+        "Ranking": "65.9",
+        "teamrankings": "Kansas"
     },
     "39": {
         "BPI": "AMERICAN INTERNATIONAL",
@@ -3564,20 +3564,9 @@
         "teamrankings": "?"
     },
     "390": {
-        "BPI": "KANSAS",
-        "Class": "DIVISION 1  FBS",
-        "Index": "391",
-        "OPLpG3": "--",
-        "OPTpP3": "--",
-        "PLpG3": "--",
-        "PTpP3": "--",
-        "Ranking": "65.9",
-        "teamrankings": "Kansas"
-    },
-    "391": {
         "BPI": "MOUNT SAINT JOSEPH",
         "Class": "DIVISION 3",
-        "Index": "392",
+        "Index": "391",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3585,10 +3574,10 @@
         "Ranking": "23.6",
         "teamrankings": "?"
     },
-    "392": {
+    "391": {
         "BPI": "MOUNT UNION",
         "Class": "DIVISION 3",
-        "Index": "393",
+        "Index": "392",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3596,10 +3585,10 @@
         "Ranking": "71.0",
         "teamrankings": "?"
     },
-    "393": {
+    "392": {
         "BPI": "MUHLENBERG COLLEGE",
         "Class": "DIVISION 3",
-        "Index": "394",
+        "Index": "393",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3607,10 +3596,10 @@
         "Ranking": "37.9",
         "teamrankings": "?"
     },
-    "394": {
+    "393": {
         "BPI": "MUSKINGUM",
         "Class": "DIVISION 3",
-        "Index": "395",
+        "Index": "394",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3618,10 +3607,10 @@
         "Ranking": "19.2",
         "teamrankings": "?"
     },
-    "395": {
+    "394": {
         "BPI": "NEBRASKA WESLEYAN",
         "Class": "DIVISION 3",
-        "Index": "396",
+        "Index": "395",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3629,10 +3618,10 @@
         "Ranking": "17.0",
         "teamrankings": "?"
     },
-    "396": {
+    "395": {
         "BPI": "NEW JERSEY",
         "Class": "DIVISION 3",
-        "Index": "397",
+        "Index": "396",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3640,10 +3629,10 @@
         "Ranking": "8.0",
         "teamrankings": "?"
     },
-    "397": {
+    "396": {
         "BPI": "NICHOLS",
         "Class": "DIVISION 3",
-        "Index": "398",
+        "Index": "397",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3651,10 +3640,10 @@
         "Ranking": "-13.7",
         "teamrankings": "?"
     },
-    "398": {
+    "397": {
         "BPI": "NORTH CENTRAL-ILL",
         "Class": "DIVISION 3",
-        "Index": "399",
+        "Index": "398",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3662,15 +3651,26 @@
         "Ranking": "48.1",
         "teamrankings": "?"
     },
-    "399": {
+    "398": {
         "BPI": "NORTH PARK",
+        "Class": "DIVISION 3",
+        "Index": "399",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "6.1",
+        "teamrankings": "?"
+    },
+    "399": {
+        "BPI": "NORTHWESTERN-MN.",
         "Class": "DIVISION 3",
         "Index": "400",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "6.1",
+        "Ranking": "-13.0",
         "teamrankings": "?"
     },
     "4": {
@@ -3696,20 +3696,9 @@
         "teamrankings": "?"
     },
     "400": {
-        "BPI": "NORTHWESTERN-MN.",
-        "Class": "DIVISION 3",
-        "Index": "401",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "-13.0",
-        "teamrankings": "?"
-    },
-    "401": {
         "BPI": "KANSAS STATE",
         "Class": "DIVISION 1  FBS",
-        "Index": "402",
+        "Index": "401",
         "OPLpG3": "--",
         "OPTpP3": "--",
         "PLpG3": "--",
@@ -3717,10 +3706,10 @@
         "Ranking": "94.2",
         "teamrankings": "Kansas St"
     },
-    "402": {
+    "401": {
         "BPI": "NORWICH",
         "Class": "DIVISION 3",
-        "Index": "403",
+        "Index": "402",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3728,10 +3717,10 @@
         "Ranking": "-6.9",
         "teamrankings": "?"
     },
-    "403": {
+    "402": {
         "BPI": "OBERLIN",
         "Class": "DIVISION 3",
-        "Index": "404",
+        "Index": "403",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3739,10 +3728,10 @@
         "Ranking": "2.3",
         "teamrankings": "?"
     },
-    "404": {
+    "403": {
         "BPI": "OCCIDENTAL",
         "Class": "DIVISION 3",
-        "Index": "405",
+        "Index": "404",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3750,10 +3739,10 @@
         "Ranking": "-17.2",
         "teamrankings": "?"
     },
-    "405": {
+    "404": {
         "BPI": "OHIO NORTHERN",
         "Class": "DIVISION 3",
-        "Index": "406",
+        "Index": "405",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3761,10 +3750,10 @@
         "Ranking": "30.9",
         "teamrankings": "?"
     },
-    "406": {
+    "405": {
         "BPI": "OHIO WESLYAN",
         "Class": "DIVISION 3",
-        "Index": "407",
+        "Index": "406",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3772,10 +3761,10 @@
         "Ranking": "18.4",
         "teamrankings": "?"
     },
-    "407": {
+    "406": {
         "BPI": "OLIVET",
         "Class": "DIVISION 3",
-        "Index": "408",
+        "Index": "407",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3783,10 +3772,10 @@
         "Ranking": "23.5",
         "teamrankings": "?"
     },
-    "408": {
+    "407": {
         "BPI": "OTTERBEIN",
         "Class": "DIVISION 3",
-        "Index": "409",
+        "Index": "408",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3794,15 +3783,26 @@
         "Ranking": "25.8",
         "teamrankings": "?"
     },
-    "409": {
+    "408": {
         "BPI": "PACIFIC - OR",
+        "Class": "DIVISION 3",
+        "Index": "409",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "13.1",
+        "teamrankings": "?"
+    },
+    "409": {
+        "BPI": "PACIFIC LUTHERAN",
         "Class": "DIVISION 3",
         "Index": "410",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "13.1",
+        "Ranking": "28.2",
         "teamrankings": "?"
     },
     "41": {
@@ -3817,20 +3817,9 @@
         "teamrankings": "?"
     },
     "410": {
-        "BPI": "PACIFIC LUTHERAN",
-        "Class": "DIVISION 3",
-        "Index": "411",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "28.2",
-        "teamrankings": "?"
-    },
-    "411": {
         "BPI": "PLYMOUTH STATE",
         "Class": "DIVISION 3",
-        "Index": "412",
+        "Index": "411",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3838,21 +3827,21 @@
         "Ranking": "16.1",
         "teamrankings": "?"
     },
-    "412": {
+    "411": {
         "BPI": "KENT STATE",
         "Class": "DIVISION 1  FBS",
-        "Index": "413",
-        "OPLpG3": "--",
-        "OPTpP3": "--",
-        "PLpG3": "--",
-        "PTpP3": "--",
+        "Index": "412",
+        "OPLpG3": "31.0",
+        "OPTpP3": "0.425",
+        "PLpG3": "84.0",
+        "PTpP3": "0.286",
         "Ranking": "59.9",
-        "teamrankings": "NC State"
+        "teamrankings": "Kent State"
     },
-    "413": {
+    "412": {
         "BPI": "POMONA PITZER",
         "Class": "DIVISION 3",
-        "Index": "414",
+        "Index": "413",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3860,10 +3849,10 @@
         "Ranking": "10.8",
         "teamrankings": "?"
     },
-    "414": {
+    "413": {
         "BPI": "PUGET SOUND",
         "Class": "DIVISION 3",
-        "Index": "415",
+        "Index": "414",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3871,10 +3860,10 @@
         "Ranking": "18.5",
         "teamrankings": "?"
     },
-    "415": {
+    "414": {
         "BPI": "RANDOLPH-MACON",
         "Class": "DIVISION 3",
-        "Index": "416",
+        "Index": "415",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3882,10 +3871,10 @@
         "Ranking": "30.0",
         "teamrankings": "?"
     },
-    "416": {
+    "415": {
         "BPI": "REDLANDS",
         "Class": "DIVISION 3",
-        "Index": "417",
+        "Index": "416",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3893,10 +3882,10 @@
         "Ranking": "35.8",
         "teamrankings": "?"
     },
-    "417": {
+    "416": {
         "BPI": "RENSSELAER POLY-TECH",
         "Class": "DIVISION 3",
-        "Index": "418",
+        "Index": "417",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3904,10 +3893,10 @@
         "Ranking": "27.5",
         "teamrankings": "?"
     },
-    "418": {
+    "417": {
         "BPI": "RHODES COLLEGE",
         "Class": "DIVISION 3",
-        "Index": "419",
+        "Index": "418",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3915,15 +3904,26 @@
         "Ranking": "12.8",
         "teamrankings": "?"
     },
-    "419": {
+    "418": {
         "BPI": "RIPON",
+        "Class": "DIVISION 3",
+        "Index": "419",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "7.8",
+        "teamrankings": "?"
+    },
+    "419": {
+        "BPI": "ROCHESTER",
         "Class": "DIVISION 3",
         "Index": "420",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "7.8",
+        "Ranking": "-1.8",
         "teamrankings": "?"
     },
     "42": {
@@ -3938,20 +3938,9 @@
         "teamrankings": "?"
     },
     "420": {
-        "BPI": "ROCHESTER",
-        "Class": "DIVISION 3",
-        "Index": "421",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "-1.8",
-        "teamrankings": "?"
-    },
-    "421": {
         "BPI": "ROCKFORD",
         "Class": "DIVISION 3",
-        "Index": "422",
+        "Index": "421",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3959,10 +3948,10 @@
         "Ranking": "-2.1",
         "teamrankings": "?"
     },
-    "422": {
+    "421": {
         "BPI": "ROSE-HULMAN",
         "Class": "DIVISION 3",
-        "Index": "423",
+        "Index": "422",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3970,21 +3959,21 @@
         "Ranking": "18.9",
         "teamrankings": "?"
     },
-    "423": {
+    "422": {
         "BPI": "KENTUCKY",
         "Class": "DIVISION 1  FBS",
-        "Index": "424",
-        "OPLpG3": "34.0",
-        "OPTpP3": "0.466",
-        "PLpG3": "65.0",
-        "PTpP3": "0.046",
+        "Index": "423",
+        "OPLpG3": "20.0",
+        "OPTpP3": "0.294",
+        "PLpG3": "71.0",
+        "PTpP3": "0.493",
         "Ranking": "89.5",
-        "teamrankings": "W Kentucky"
+        "teamrankings": "Kentucky"
     },
-    "424": {
+    "423": {
         "BPI": "ROWAN",
         "Class": "DIVISION 3",
-        "Index": "425",
+        "Index": "424",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -3992,10 +3981,10 @@
         "Ranking": "18.5",
         "teamrankings": "?"
     },
-    "425": {
+    "424": {
         "BPI": "SALISBURY",
         "Class": "DIVISION 3",
-        "Index": "426",
+        "Index": "425",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4003,10 +3992,10 @@
         "Ranking": "39.9",
         "teamrankings": "?"
     },
-    "426": {
+    "425": {
         "BPI": "SALVE REGINA",
         "Class": "DIVISION 3",
-        "Index": "427",
+        "Index": "426",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4014,10 +4003,10 @@
         "Ranking": "18.5",
         "teamrankings": "?"
     },
-    "427": {
+    "426": {
         "BPI": "SEWANEE",
         "Class": "DIVISION 3",
-        "Index": "428",
+        "Index": "427",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4025,10 +4014,10 @@
         "Ranking": "8.2",
         "teamrankings": "?"
     },
-    "428": {
+    "427": {
         "BPI": "SHENANDOAH COLLEGE",
         "Class": "DIVISION 3",
-        "Index": "429",
+        "Index": "428",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4036,15 +4025,26 @@
         "Ranking": "17.6",
         "teamrankings": "?"
     },
-    "429": {
+    "428": {
         "BPI": "SIMPSON",
+        "Class": "DIVISION 3",
+        "Index": "429",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "23.9",
+        "teamrankings": "?"
+    },
+    "429": {
+        "BPI": "SOUTHERN VIRGINIA",
         "Class": "DIVISION 3",
         "Index": "430",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "23.9",
+        "Ranking": "-2.1",
         "teamrankings": "?"
     },
     "43": {
@@ -4059,20 +4059,9 @@
         "teamrankings": "?"
     },
     "430": {
-        "BPI": "SOUTHERN VIRGINIA",
-        "Class": "DIVISION 3",
-        "Index": "431",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "-2.1",
-        "teamrankings": "?"
-    },
-    "431": {
         "BPI": "SOUTHWESTERN - TX",
         "Class": "DIVISION 3",
-        "Index": "432",
+        "Index": "431",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4080,10 +4069,10 @@
         "Ranking": "36.9",
         "teamrankings": "?"
     },
-    "432": {
+    "431": {
         "BPI": "SPRINGFIELD",
         "Class": "DIVISION 3",
-        "Index": "433",
+        "Index": "432",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4091,10 +4080,10 @@
         "Ranking": "40.6",
         "teamrankings": "?"
     },
-    "433": {
+    "432": {
         "BPI": "ST. JOHN FISHER",
         "Class": "DIVISION 3",
-        "Index": "434",
+        "Index": "433",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4102,10 +4091,10 @@
         "Ranking": "13.9",
         "teamrankings": "?"
     },
-    "434": {
+    "433": {
         "BPI": "LA-LAFAYETTE",
         "Class": "DIVISION 1  FBS",
-        "Index": "435",
+        "Index": "434",
         "OPLpG3": "--",
         "OPTpP3": "--",
         "PLpG3": "--",
@@ -4113,10 +4102,10 @@
         "Ranking": "66.5",
         "teamrankings": "LA Lafayette"
     },
-    "435": {
+    "434": {
         "BPI": "ST. LAWRENCE",
         "Class": "DIVISION 3",
-        "Index": "436",
+        "Index": "435",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4124,10 +4113,10 @@
         "Ranking": "16.6",
         "teamrankings": "?"
     },
-    "436": {
+    "435": {
         "BPI": "ST. SCHOLASTICA",
         "Class": "DIVISION 3",
-        "Index": "437",
+        "Index": "436",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4135,10 +4124,10 @@
         "Ranking": "-3.4",
         "teamrankings": "?"
     },
-    "437": {
+    "436": {
         "BPI": "ST. VINCENT",
         "Class": "DIVISION 3",
-        "Index": "438",
+        "Index": "437",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4146,10 +4135,10 @@
         "Ranking": "5.7",
         "teamrankings": "?"
     },
-    "438": {
+    "437": {
         "BPI": "ST.JOHNS-MINNESOTA",
         "Class": "DIVISION 3",
-        "Index": "439",
+        "Index": "438",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4157,15 +4146,26 @@
         "Ranking": "52.5",
         "teamrankings": "?"
     },
-    "439": {
+    "438": {
         "BPI": "ST.NORBERT",
+        "Class": "DIVISION 3",
+        "Index": "439",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "24.4",
+        "teamrankings": "?"
+    },
+    "439": {
+        "BPI": "ST.OLAF",
         "Class": "DIVISION 3",
         "Index": "440",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "24.4",
+        "Ranking": "-4.2",
         "teamrankings": "?"
     },
     "44": {
@@ -4180,20 +4180,9 @@
         "teamrankings": "?"
     },
     "440": {
-        "BPI": "ST.OLAF",
-        "Class": "DIVISION 3",
-        "Index": "441",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "-4.2",
-        "teamrankings": "?"
-    },
-    "441": {
         "BPI": "ST.THOMAS",
         "Class": "DIVISION 3",
-        "Index": "442",
+        "Index": "441",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4201,10 +4190,10 @@
         "Ranking": "64.8",
         "teamrankings": "?"
     },
-    "442": {
+    "441": {
         "BPI": "STEVENSON",
         "Class": "DIVISION 3",
-        "Index": "443",
+        "Index": "442",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4212,10 +4201,10 @@
         "Ranking": "25.7",
         "teamrankings": "?"
     },
-    "443": {
+    "442": {
         "BPI": "SUL ROSS STATE",
         "Class": "DIVISION 3",
-        "Index": "444",
+        "Index": "443",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4223,10 +4212,10 @@
         "Ranking": "13.2",
         "teamrankings": "?"
     },
-    "444": {
+    "443": {
         "BPI": "SUNY - MARITIME",
         "Class": "DIVISION 3",
-        "Index": "445",
+        "Index": "444",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4234,10 +4223,10 @@
         "Ranking": "14.0",
         "teamrankings": "?"
     },
-    "445": {
+    "444": {
         "BPI": "ARIZONA",
         "Class": "DIVISION 1  FBS",
-        "Index": "446",
+        "Index": "445",
         "OPLpG3": "28.0",
         "OPTpP3": "0.394",
         "PLpG3": "70.0",
@@ -4245,10 +4234,10 @@
         "Ranking": "86.1",
         "teamrankings": "Arizona"
     },
-    "446": {
+    "445": {
         "BPI": "LA-MONROE",
         "Class": "DIVISION 1  FBS",
-        "Index": "447",
+        "Index": "446",
         "OPLpG3": "--",
         "OPTpP3": "--",
         "PLpG3": "--",
@@ -4256,10 +4245,10 @@
         "Ranking": "68.2",
         "teamrankings": "LA Monroe"
     },
-    "447": {
+    "446": {
         "BPI": "SUSQUEHANNA",
         "Class": "DIVISION 3",
-        "Index": "448",
+        "Index": "447",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4267,10 +4256,10 @@
         "Ranking": "33.5",
         "teamrankings": "?"
     },
-    "448": {
+    "447": {
         "BPI": "TEXAS LUTHERAN",
         "Class": "DIVISION 3",
-        "Index": "449",
+        "Index": "448",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4278,15 +4267,26 @@
         "Ranking": "29.5",
         "teamrankings": "?"
     },
-    "449": {
+    "448": {
         "BPI": "THIEL",
+        "Class": "DIVISION 3",
+        "Index": "449",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "-3.5",
+        "teamrankings": "?"
+    },
+    "449": {
+        "BPI": "THOMAS MORE",
         "Class": "DIVISION 3",
         "Index": "450",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "-3.5",
+        "Ranking": "29.7",
         "teamrankings": "?"
     },
     "45": {
@@ -4301,20 +4301,9 @@
         "teamrankings": "?"
     },
     "450": {
-        "BPI": "THOMAS MORE",
-        "Class": "DIVISION 3",
-        "Index": "451",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "29.7",
-        "teamrankings": "?"
-    },
-    "451": {
         "BPI": "TRINE",
         "Class": "DIVISION 3",
-        "Index": "452",
+        "Index": "451",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4322,10 +4311,10 @@
         "Ranking": "40.9",
         "teamrankings": "?"
     },
-    "452": {
+    "451": {
         "BPI": "TRINITY COLLEGE - CT",
         "Class": "DIVISION 3",
-        "Index": "453",
+        "Index": "452",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4333,10 +4322,10 @@
         "Ranking": "42.1",
         "teamrankings": "?"
     },
-    "453": {
+    "452": {
         "BPI": "TRINITY-TEXAS",
         "Class": "DIVISION 3",
-        "Index": "454",
+        "Index": "453",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4344,10 +4333,10 @@
         "Ranking": "23.4",
         "teamrankings": "?"
     },
-    "454": {
+    "453": {
         "BPI": "TUFTS",
         "Class": "DIVISION 3",
-        "Index": "455",
+        "Index": "454",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4355,10 +4344,10 @@
         "Ranking": "25.4",
         "teamrankings": "?"
     },
-    "455": {
+    "454": {
         "BPI": "U O F NEW ENGLAND",
         "Class": "DIVISION 3",
-        "Index": "456",
+        "Index": "455",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4366,10 +4355,10 @@
         "Ranking": "-26.3",
         "teamrankings": "?"
     },
-    "456": {
+    "455": {
         "BPI": "UNION COLLEGE-NY ",
         "Class": "DIVISION 3",
-        "Index": "457",
+        "Index": "456",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4377,10 +4366,10 @@
         "Ranking": "27.8",
         "teamrankings": "?"
     },
-    "457": {
+    "456": {
         "BPI": "LIBERTY",
         "Class": "DIVISION 1  FBS",
-        "Index": "458",
+        "Index": "457",
         "OPLpG3": "10.0",
         "OPTpP3": "0.135",
         "PLpG3": "75.0",
@@ -4388,10 +4377,10 @@
         "Ranking": "70.3",
         "teamrankings": "Liberty"
     },
-    "458": {
+    "457": {
         "BPI": "URSINUS COLLEGE",
         "Class": "DIVISION 3",
-        "Index": "459",
+        "Index": "458",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4399,15 +4388,26 @@
         "Ranking": "19.7",
         "teamrankings": "?"
     },
-    "459": {
+    "458": {
         "BPI": "UTICA",
+        "Class": "DIVISION 3",
+        "Index": "459",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "21.1",
+        "teamrankings": "?"
+    },
+    "459": {
+        "BPI": "WABASH",
         "Class": "DIVISION 3",
         "Index": "460",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "21.1",
+        "Ranking": "21.8",
         "teamrankings": "?"
     },
     "46": {
@@ -4422,20 +4422,9 @@
         "teamrankings": "Boston Col"
     },
     "460": {
-        "BPI": "WABASH",
-        "Class": "DIVISION 3",
-        "Index": "461",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "21.8",
-        "teamrankings": "?"
-    },
-    "461": {
         "BPI": "WARTBURG",
         "Class": "DIVISION 3",
-        "Index": "462",
+        "Index": "461",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4443,10 +4432,10 @@
         "Ranking": "54.5",
         "teamrankings": "?"
     },
-    "462": {
+    "461": {
         "BPI": "WASHINGTON & JEFFERSON",
         "Class": "DIVISION 3",
-        "Index": "463",
+        "Index": "462",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4454,10 +4443,10 @@
         "Ranking": "38.9",
         "teamrankings": "?"
     },
-    "463": {
+    "462": {
         "BPI": "WASHINGTON & LEE",
         "Class": "DIVISION 3",
-        "Index": "464",
+        "Index": "463",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4465,10 +4454,10 @@
         "Ranking": "32.3",
         "teamrankings": "?"
     },
-    "464": {
+    "463": {
         "BPI": "WASHINGTON-MO.",
         "Class": "DIVISION 3",
-        "Index": "465",
+        "Index": "464",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4476,10 +4465,10 @@
         "Ranking": "29.9",
         "teamrankings": "?"
     },
-    "465": {
+    "464": {
         "BPI": "WAYNESBURG",
         "Class": "DIVISION 3",
-        "Index": "466",
+        "Index": "465",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4487,10 +4476,10 @@
         "Ranking": "7.8",
         "teamrankings": "?"
     },
-    "466": {
+    "465": {
         "BPI": "WESLEY COLLEGE",
         "Class": "DIVISION 3",
-        "Index": "467",
+        "Index": "466",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4498,10 +4487,10 @@
         "Ranking": "49.7",
         "teamrankings": "?"
     },
-    "467": {
+    "466": {
         "BPI": "WESLEYAN-CONN.",
         "Class": "DIVISION 3",
-        "Index": "468",
+        "Index": "467",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4509,26 +4498,37 @@
         "Ranking": "28.8",
         "teamrankings": "?"
     },
-    "468": {
+    "467": {
         "BPI": "LOUISIANA STATE",
         "Class": "DIVISION 1  FBS",
+        "Index": "468",
+        "OPLpG3": "17.0",
+        "OPTpP3": "0.233",
+        "PLpG3": "63.0",
+        "PTpP3": "0.524",
+        "Ranking": "106.0",
+        "teamrankings": "LSU"
+    },
+    "468": {
+        "BPI": "WESLEYAN-NORTH CAROLINA",
+        "Class": "DIVISION 3",
         "Index": "469",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "106.0",
+        "Ranking": "16.5",
         "teamrankings": "?"
     },
     "469": {
-        "BPI": "WESLEYAN-NORTH CAROLINA",
+        "BPI": "WESTERN CONNECTICUT",
         "Class": "DIVISION 3",
         "Index": "470",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "16.5",
+        "Ranking": "10.6",
         "teamrankings": "?"
     },
     "47": {
@@ -4543,20 +4543,9 @@
         "teamrankings": "?"
     },
     "470": {
-        "BPI": "WESTERN CONNECTICUT",
-        "Class": "DIVISION 3",
-        "Index": "471",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "10.6",
-        "teamrankings": "?"
-    },
-    "471": {
         "BPI": "WESTERN NEW ENGLAND",
         "Class": "DIVISION 3",
-        "Index": "472",
+        "Index": "471",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4564,10 +4553,10 @@
         "Ranking": "22.2",
         "teamrankings": "?"
     },
-    "472": {
+    "471": {
         "BPI": "WESTFIELD-MASS.",
         "Class": "DIVISION 3",
-        "Index": "473",
+        "Index": "472",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4575,10 +4564,10 @@
         "Ranking": "3.0",
         "teamrankings": "?"
     },
-    "473": {
+    "472": {
         "BPI": "WESTMINSTER-MO.",
         "Class": "DIVISION 3",
-        "Index": "474",
+        "Index": "473",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4586,10 +4575,10 @@
         "Ranking": "-6.5",
         "teamrankings": "?"
     },
-    "474": {
+    "473": {
         "BPI": "WESTMINSTER-PA",
         "Class": "DIVISION 3",
-        "Index": "475",
+        "Index": "474",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4597,10 +4586,10 @@
         "Ranking": "28.4",
         "teamrankings": "?"
     },
-    "475": {
+    "474": {
         "BPI": "WHEATON COLLEGE",
         "Class": "DIVISION 3",
-        "Index": "476",
+        "Index": "475",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4608,10 +4597,10 @@
         "Ranking": "52.7",
         "teamrankings": "?"
     },
-    "476": {
+    "475": {
         "BPI": "WHITTIER COLLEGE",
         "Class": "DIVISION 3",
-        "Index": "477",
+        "Index": "476",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4619,10 +4608,10 @@
         "Ranking": "-19.4",
         "teamrankings": "?"
     },
-    "477": {
+    "476": {
         "BPI": "WHITWORTH",
         "Class": "DIVISION 3",
-        "Index": "478",
+        "Index": "477",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4630,10 +4619,10 @@
         "Ranking": "38.3",
         "teamrankings": "?"
     },
-    "478": {
+    "477": {
         "BPI": "WIDENER",
         "Class": "DIVISION 3",
-        "Index": "479",
+        "Index": "478",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4641,15 +4630,26 @@
         "Ranking": "20.6",
         "teamrankings": "?"
     },
-    "479": {
+    "478": {
         "BPI": "LOUISIANA TECH",
         "Class": "DIVISION 1  FBS",
+        "Index": "479",
+        "OPLpG3": "26.0",
+        "OPTpP3": "0.382",
+        "PLpG3": "80.0",
+        "PTpP3": "0.375",
+        "Ranking": "79.8",
+        "teamrankings": "LA Tech"
+    },
+    "479": {
+        "BPI": "WILKES",
+        "Class": "DIVISION 3",
         "Index": "480",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "79.8",
+        "Ranking": "0.1",
         "teamrankings": "?"
     },
     "48": {
@@ -4664,20 +4664,9 @@
         "teamrankings": "?"
     },
     "480": {
-        "BPI": "WILKES",
-        "Class": "DIVISION 3",
-        "Index": "481",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "0.1",
-        "teamrankings": "?"
-    },
-    "481": {
         "BPI": "WILLAMETTE",
         "Class": "DIVISION 3",
-        "Index": "482",
+        "Index": "481",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4685,10 +4674,10 @@
         "Ranking": "-7.1",
         "teamrankings": "?"
     },
-    "482": {
+    "481": {
         "BPI": "WILLIAM PATERSON",
         "Class": "DIVISION 3",
-        "Index": "483",
+        "Index": "482",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4696,10 +4685,10 @@
         "Ranking": "-6.5",
         "teamrankings": "?"
     },
-    "483": {
+    "482": {
         "BPI": "WILLIAMS COLLEGE",
         "Class": "DIVISION 3",
-        "Index": "484",
+        "Index": "483",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4707,10 +4696,10 @@
         "Ranking": "23.5",
         "teamrankings": "?"
     },
-    "484": {
+    "483": {
         "BPI": "WILMINGTON OHIO",
         "Class": "DIVISION 3",
-        "Index": "485",
+        "Index": "484",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4718,10 +4707,10 @@
         "Ranking": "3.0",
         "teamrankings": "?"
     },
-    "485": {
+    "484": {
         "BPI": "WISCONSIN-EAU CLAIRE",
         "Class": "DIVISION 3",
-        "Index": "486",
+        "Index": "485",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4729,10 +4718,10 @@
         "Ranking": "19.2",
         "teamrankings": "?"
     },
-    "486": {
+    "485": {
         "BPI": "WISCONSIN-La CROSSE",
         "Class": "DIVISION 3",
-        "Index": "487",
+        "Index": "486",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4740,10 +4729,10 @@
         "Ranking": "51.5",
         "teamrankings": "?"
     },
-    "487": {
+    "486": {
         "BPI": "WISCONSIN-LUTHERAN",
         "Class": "DIVISION 3",
-        "Index": "488",
+        "Index": "487",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4751,10 +4740,10 @@
         "Ranking": "-8.0",
         "teamrankings": "?"
     },
-    "488": {
+    "487": {
         "BPI": "WISCONSIN-OSHKOSH",
         "Class": "DIVISION 3",
-        "Index": "489",
+        "Index": "488",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4762,16 +4751,27 @@
         "Ranking": "59.0",
         "teamrankings": "?"
     },
-    "489": {
+    "488": {
         "BPI": "WISCONSIN-PLATTEVILLE",
         "Class": "DIVISION 3",
-        "Index": "490",
+        "Index": "489",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
         "Ranking": "44.2",
         "teamrankings": "?"
+    },
+    "489": {
+        "BPI": "LOUISVILLE",
+        "Class": "DIVISION 1  FBS",
+        "Index": "490",
+        "OPLpG3": "51.0",
+        "OPTpP3": "0.739",
+        "PLpG3": "67.0",
+        "PTpP3": "0.209",
+        "Ranking": "96.2",
+        "teamrankings": "Louisville"
     },
     "49": {
         "BPI": "BENEDICT-S.C",
@@ -4785,20 +4785,9 @@
         "teamrankings": "?"
     },
     "490": {
-        "BPI": "LOUISVILLE",
-        "Class": "DIVISION 1  FBS",
-        "Index": "491",
-        "OPLpG3": "51.0",
-        "OPTpP3": "0.739",
-        "PLpG3": "67.0",
-        "PTpP3": "0.209",
-        "Ranking": "96.2",
-        "teamrankings": "Louisville"
-    },
-    "491": {
         "BPI": "WISCONSIN-RIVER FALLS",
         "Class": "DIVISION 3",
-        "Index": "492",
+        "Index": "491",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4806,10 +4795,10 @@
         "Ranking": "24.1",
         "teamrankings": "?"
     },
-    "492": {
+    "491": {
         "BPI": "WISCONSIN-STEVENS POINT",
         "Class": "DIVISION 3",
-        "Index": "493",
+        "Index": "492",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4817,10 +4806,10 @@
         "Ranking": "25.5",
         "teamrankings": "?"
     },
-    "493": {
+    "492": {
         "BPI": "WISCONSIN-STOUT",
         "Class": "DIVISION 3",
-        "Index": "494",
+        "Index": "493",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4828,10 +4817,10 @@
         "Ranking": "31.6",
         "teamrankings": "?"
     },
-    "494": {
+    "493": {
         "BPI": "WISCONSIN-WHITEWATER",
         "Class": "DIVISION 3",
-        "Index": "495",
+        "Index": "494",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4839,10 +4828,10 @@
         "Ranking": "47.6",
         "teamrankings": "?"
     },
-    "495": {
+    "494": {
         "BPI": "WITTENBERG",
         "Class": "DIVISION 3",
-        "Index": "496",
+        "Index": "495",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4850,10 +4839,10 @@
         "Ranking": "37.6",
         "teamrankings": "?"
     },
-    "496": {
+    "495": {
         "BPI": "WOOSTER",
         "Class": "DIVISION 3",
-        "Index": "497",
+        "Index": "496",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4861,10 +4850,10 @@
         "Ranking": "14.2",
         "teamrankings": "?"
     },
-    "497": {
+    "496": {
         "BPI": "WORCESTER STATE",
         "Class": "DIVISION 3",
-        "Index": "498",
+        "Index": "497",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4872,10 +4861,10 @@
         "Ranking": "10.6",
         "teamrankings": "?"
     },
-    "498": {
+    "497": {
         "BPI": "WORCESTER TECH (W.P.I.)",
         "Class": "DIVISION 3",
-        "Index": "499",
+        "Index": "498",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4883,15 +4872,26 @@
         "Ranking": "25.1",
         "teamrankings": "?"
     },
-    "499": {
+    "498": {
         "BPI": "ABILENE CHRISTIAN",
+        "Class": "Championship Subdivision",
+        "Index": "499",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "51.1",
+        "teamrankings": "?"
+    },
+    "499": {
+        "BPI": "ALABAMA A&M",
         "Class": "Championship Subdivision",
         "Index": "500",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "51.1",
+        "Ranking": "39.8",
         "teamrankings": "?"
     },
     "5": {
@@ -4917,20 +4917,9 @@
         "teamrankings": "?"
     },
     "500": {
-        "BPI": "ALABAMA A&M",
-        "Class": "Championship Subdivision",
-        "Index": "501",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "39.8",
-        "teamrankings": "?"
-    },
-    "501": {
         "BPI": "MARSHALL",
         "Class": "DIVISION 1  FBS",
-        "Index": "502",
+        "Index": "501",
         "OPLpG3": "28.0",
         "OPTpP3": "0.378",
         "PLpG3": "77.0",
@@ -4938,10 +4927,10 @@
         "Ranking": "80.0",
         "teamrankings": "Marshall"
     },
-    "502": {
+    "501": {
         "BPI": "ALABAMA STATE",
         "Class": "Championship Subdivision",
-        "Index": "503",
+        "Index": "502",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4949,10 +4938,10 @@
         "Ranking": "34.6",
         "teamrankings": "?"
     },
-    "503": {
+    "502": {
         "BPI": "ALBANY-NY",
         "Class": "Championship Subdivision",
-        "Index": "504",
+        "Index": "503",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4960,10 +4949,10 @@
         "Ranking": "63.9",
         "teamrankings": "?"
     },
-    "504": {
+    "503": {
         "BPI": "ALCORN STATE",
         "Class": "Championship Subdivision",
-        "Index": "505",
+        "Index": "504",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4971,10 +4960,10 @@
         "Ranking": "50.3",
         "teamrankings": "?"
     },
-    "505": {
+    "504": {
         "BPI": "AUSTIN PEAY",
         "Class": "Championship Subdivision",
-        "Index": "506",
+        "Index": "505",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4982,10 +4971,10 @@
         "Ranking": "66.4",
         "teamrankings": "?"
     },
-    "506": {
+    "505": {
         "BPI": "BETHUNE-COOKMAN",
         "Class": "Championship Subdivision",
-        "Index": "507",
+        "Index": "506",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -4993,10 +4982,10 @@
         "Ranking": "42.6",
         "teamrankings": "?"
     },
-    "507": {
+    "506": {
         "BPI": "BROWN",
         "Class": "Championship Subdivision",
-        "Index": "508",
+        "Index": "507",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5004,10 +4993,10 @@
         "Ranking": "33.3",
         "teamrankings": "?"
     },
-    "508": {
+    "507": {
         "BPI": "BRYANT COLLEGE",
         "Class": "Championship Subdivision",
-        "Index": "509",
+        "Index": "508",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5015,16 +5004,27 @@
         "Ranking": "46.9",
         "teamrankings": "?"
     },
-    "509": {
+    "508": {
         "BPI": "BUCKNELL",
         "Class": "Championship Subdivision",
-        "Index": "510",
-        "OPLpG3": "43.0",
-        "OPTpP3": "0.573",
-        "PLpG3": "75.0",
-        "PTpP3": "0.280",
+        "Index": "509",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
         "Ranking": "40.2",
-        "teamrankings": "UNLV"
+        "teamrankings": "?"
+    },
+    "509": {
+        "BPI": "BUTLER",
+        "Class": "Championship Subdivision",
+        "Index": "510",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "50.4",
+        "teamrankings": "?"
     },
     "51": {
         "BPI": "BLACK HILLS STATE",
@@ -5038,20 +5038,9 @@
         "teamrankings": "?"
     },
     "510": {
-        "BPI": "BUTLER",
-        "Class": "Championship Subdivision",
-        "Index": "511",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "50.4",
-        "teamrankings": "?"
-    },
-    "511": {
         "BPI": "CAL-DAVIS",
         "Class": "Championship Subdivision",
-        "Index": "512",
+        "Index": "511",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5059,10 +5048,10 @@
         "Ranking": "66.5",
         "teamrankings": "?"
     },
-    "512": {
+    "511": {
         "BPI": "MARYLAND",
         "Class": "DIVISION 1  FBS",
-        "Index": "513",
+        "Index": "512",
         "OPLpG3": "29.0",
         "OPTpP3": "0.382",
         "PLpG3": "81.0",
@@ -5070,10 +5059,10 @@
         "Ranking": "83.7",
         "teamrankings": "Maryland"
     },
-    "513": {
+    "512": {
         "BPI": "CAL-POLY (SAN LOUIS OBISPO)",
         "Class": "Championship Subdivision",
-        "Index": "514",
+        "Index": "513",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5081,10 +5070,10 @@
         "Ranking": "48.0",
         "teamrankings": "?"
     },
-    "514": {
+    "513": {
         "BPI": "CAL-SACRAMENTO",
         "Class": "Championship Subdivision",
-        "Index": "515",
+        "Index": "514",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5092,10 +5081,10 @@
         "Ranking": "72.2",
         "teamrankings": "?"
     },
-    "515": {
+    "514": {
         "BPI": "CAMPBELL",
         "Class": "Championship Subdivision",
-        "Index": "516",
+        "Index": "515",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5103,10 +5092,10 @@
         "Ranking": "37.4",
         "teamrankings": "?"
     },
-    "516": {
+    "515": {
         "BPI": "CENTRAL ARKANSAS",
         "Class": "Championship Subdivision",
-        "Index": "517",
+        "Index": "516",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5114,10 +5103,10 @@
         "Ranking": "72.1",
         "teamrankings": "?"
     },
-    "517": {
+    "516": {
         "BPI": "CENTRAL CONNECTICUT STATE",
         "Class": "Championship Subdivision",
-        "Index": "518",
+        "Index": "517",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5125,10 +5114,10 @@
         "Ranking": "38.5",
         "teamrankings": "?"
     },
-    "518": {
+    "517": {
         "BPI": "CHARLESTON SOUTHERN",
         "Class": "Championship Subdivision",
-        "Index": "519",
+        "Index": "518",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5136,15 +5125,26 @@
         "Ranking": "51.2",
         "teamrankings": "?"
     },
-    "519": {
+    "518": {
         "BPI": "CHATTANOOGA-TENNESSEE",
+        "Class": "Championship Subdivision",
+        "Index": "519",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "61.7",
+        "teamrankings": "?"
+    },
+    "519": {
+        "BPI": "COLGATE",
         "Class": "Championship Subdivision",
         "Index": "520",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "61.7",
+        "Ranking": "59.6",
         "teamrankings": "?"
     },
     "52": {
@@ -5159,20 +5159,9 @@
         "teamrankings": "?"
     },
     "520": {
-        "BPI": "COLGATE",
-        "Class": "Championship Subdivision",
-        "Index": "521",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "59.6",
-        "teamrankings": "?"
-    },
-    "521": {
         "BPI": "COLUMBIA",
         "Class": "Championship Subdivision",
-        "Index": "522",
+        "Index": "521",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5180,10 +5169,10 @@
         "Ranking": "54.0",
         "teamrankings": "?"
     },
-    "522": {
+    "521": {
         "BPI": "CORNELL",
         "Class": "Championship Subdivision",
-        "Index": "523",
+        "Index": "522",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5191,21 +5180,21 @@
         "Ranking": "47.9",
         "teamrankings": "?"
     },
-    "523": {
+    "522": {
         "BPI": "MASSACHUSETTS",
         "Class": "DIVISION 1  FBS",
-        "Index": "524",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
+        "Index": "523",
+        "OPLpG3": "55.0",
+        "OPTpP3": "0.640",
+        "PLpG3": "74.0",
+        "PTpP3": "0.284",
         "Ranking": "78.6",
-        "teamrankings": "?"
+        "teamrankings": "U Mass"
     },
-    "524": {
+    "523": {
         "BPI": "DARTMOUTH",
         "Class": "Championship Subdivision",
-        "Index": "525",
+        "Index": "524",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5213,10 +5202,10 @@
         "Ranking": "56.9",
         "teamrankings": "?"
     },
-    "525": {
+    "524": {
         "BPI": "DAVIDSON",
         "Class": "Championship Subdivision",
-        "Index": "526",
+        "Index": "525",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5224,10 +5213,10 @@
         "Ranking": "21.8",
         "teamrankings": "?"
     },
-    "526": {
+    "525": {
         "BPI": "DAYTON",
         "Class": "Championship Subdivision",
-        "Index": "527",
+        "Index": "526",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5235,10 +5224,10 @@
         "Ranking": "45.7",
         "teamrankings": "?"
     },
-    "527": {
+    "526": {
         "BPI": "DELAWARE",
         "Class": "Championship Subdivision",
-        "Index": "528",
+        "Index": "527",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5246,10 +5235,10 @@
         "Ranking": "62.6",
         "teamrankings": "?"
     },
-    "528": {
+    "527": {
         "BPI": "DELAWARE STATE",
         "Class": "Championship Subdivision",
-        "Index": "529",
+        "Index": "528",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5257,10 +5246,10 @@
         "Ranking": "31.5",
         "teamrankings": "?"
     },
-    "529": {
+    "528": {
         "BPI": "DRAKE",
         "Class": "Championship Subdivision",
-        "Index": "530",
+        "Index": "529",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5268,21 +5257,10 @@
         "Ranking": "48.4",
         "teamrankings": "?"
     },
-    "53": {
-        "BPI": "BOWIE STATE",
-        "Class": "DIVISION 2",
-        "Index": "54",
-        "OPLpG3": "20.0",
-        "OPTpP3": "0.241",
-        "PLpG3": "58.0",
-        "PTpP3": "0.966",
-        "Ranking": "46.2",
-        "teamrankings": "Boise State"
-    },
-    "530": {
+    "529": {
         "BPI": "DUQUESNE",
         "Class": "Championship Subdivision",
-        "Index": "531",
+        "Index": "530",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5290,10 +5268,21 @@
         "Ranking": "54.6",
         "teamrankings": "?"
     },
-    "531": {
+    "53": {
+        "BPI": "BOWIE STATE",
+        "Class": "DIVISION 2",
+        "Index": "54",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "46.2",
+        "teamrankings": "?"
+    },
+    "530": {
         "BPI": "EAST TENNESSEE STATE",
         "Class": "Championship Subdivision",
-        "Index": "532",
+        "Index": "531",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5301,10 +5290,10 @@
         "Ranking": "47.9",
         "teamrankings": "?"
     },
-    "532": {
+    "531": {
         "BPI": "EASTERN ILLINOIS",
         "Class": "Championship Subdivision",
-        "Index": "533",
+        "Index": "532",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5312,10 +5301,10 @@
         "Ranking": "53.0",
         "teamrankings": "?"
     },
-    "533": {
+    "532": {
         "BPI": "EASTERN KENTUCKY",
         "Class": "Championship Subdivision",
-        "Index": "534",
+        "Index": "533",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5323,10 +5312,10 @@
         "Ranking": "54.2",
         "teamrankings": "?"
     },
-    "534": {
+    "533": {
         "BPI": "MEMPHIS",
         "Class": "DIVISION 1  FBS",
-        "Index": "535",
+        "Index": "534",
         "OPLpG3": "--",
         "OPTpP3": "--",
         "PLpG3": "--",
@@ -5334,10 +5323,10 @@
         "Ranking": "104.5",
         "teamrankings": "Memphis"
     },
-    "535": {
+    "534": {
         "BPI": "EASTERN WASHINGTON",
         "Class": "Championship Subdivision",
-        "Index": "536",
+        "Index": "535",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5345,10 +5334,10 @@
         "Ranking": "80.2",
         "teamrankings": "?"
     },
-    "536": {
+    "535": {
         "BPI": "ELON",
         "Class": "Championship Subdivision",
-        "Index": "537",
+        "Index": "536",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5356,10 +5345,10 @@
         "Ranking": "66.0",
         "teamrankings": "?"
     },
-    "537": {
+    "536": {
         "BPI": "FLORIDA A&M",
         "Class": "Championship Subdivision",
-        "Index": "538",
+        "Index": "537",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5367,10 +5356,10 @@
         "Ranking": "45.5",
         "teamrankings": "?"
     },
-    "538": {
+    "537": {
         "BPI": "FORDHAM",
         "Class": "Championship Subdivision",
-        "Index": "539",
+        "Index": "538",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5378,15 +5367,26 @@
         "Ranking": "38.6",
         "teamrankings": "?"
     },
-    "539": {
+    "538": {
         "BPI": "FURMAN",
+        "Class": "Championship Subdivision",
+        "Index": "539",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "69.5",
+        "teamrankings": "FURMAN"
+    },
+    "539": {
+        "BPI": "GARDNER-WEBB",
         "Class": "Championship Subdivision",
         "Index": "540",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "69.5",
+        "Ranking": "48.9",
         "teamrankings": "?"
     },
     "54": {
@@ -5401,20 +5401,9 @@
         "teamrankings": "?"
     },
     "540": {
-        "BPI": "GARDNER-WEBB",
-        "Class": "Championship Subdivision",
-        "Index": "541",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "48.9",
-        "teamrankings": "?"
-    },
-    "541": {
         "BPI": "GEORGETOWN-DC",
         "Class": "Championship Subdivision",
-        "Index": "542",
+        "Index": "541",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5422,10 +5411,10 @@
         "Ranking": "37.9",
         "teamrankings": "?"
     },
-    "542": {
+    "541": {
         "BPI": "GRAMBLING",
         "Class": "Championship Subdivision",
-        "Index": "543",
+        "Index": "542",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5433,10 +5422,10 @@
         "Ranking": "47.9",
         "teamrankings": "?"
     },
-    "543": {
+    "542": {
         "BPI": "HAMPTON",
         "Class": "Championship Subdivision",
-        "Index": "544",
+        "Index": "543",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5444,10 +5433,10 @@
         "Ranking": "42.1",
         "teamrankings": "?"
     },
-    "544": {
+    "543": {
         "BPI": "HARVARD",
         "Class": "Championship Subdivision",
-        "Index": "545",
+        "Index": "544",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5455,10 +5444,10 @@
         "Ranking": "50.2",
         "teamrankings": "?"
     },
-    "545": {
+    "544": {
         "BPI": "MIAMI OF OHIO",
         "Class": "DIVISION 1  FBS",
-        "Index": "546",
+        "Index": "545",
         "OPLpG3": "35.0",
         "OPTpP3": "0.455",
         "PLpG3": "74.0",
@@ -5466,10 +5455,10 @@
         "Ranking": "73.2",
         "teamrankings": "Miami (OH)"
     },
-    "546": {
+    "545": {
         "BPI": "HOLY CROSS",
         "Class": "Championship Subdivision",
-        "Index": "547",
+        "Index": "546",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5477,10 +5466,10 @@
         "Ranking": "47.6",
         "teamrankings": "?"
     },
-    "547": {
+    "546": {
         "BPI": "HOUSTON BAPTIST",
         "Class": "Championship Subdivision",
-        "Index": "548",
+        "Index": "547",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5488,10 +5477,10 @@
         "Ranking": "51.4",
         "teamrankings": "?"
     },
-    "548": {
+    "547": {
         "BPI": "HOWARD",
         "Class": "Championship Subdivision",
-        "Index": "549",
+        "Index": "548",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5499,15 +5488,26 @@
         "Ranking": "50.3",
         "teamrankings": "?"
     },
-    "549": {
+    "548": {
         "BPI": "IDAHO",
+        "Class": "Championship Subdivision",
+        "Index": "549",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "55.9",
+        "teamrankings": "?"
+    },
+    "549": {
+        "BPI": "IDAHO STATE",
         "Class": "Championship Subdivision",
         "Index": "550",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "55.9",
+        "Ranking": "53.1",
         "teamrankings": "?"
     },
     "55": {
@@ -5522,20 +5522,9 @@
         "teamrankings": "?"
     },
     "550": {
-        "BPI": "IDAHO STATE",
-        "Class": "Championship Subdivision",
-        "Index": "551",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "53.1",
-        "teamrankings": "?"
-    },
-    "551": {
         "BPI": "ILLINOIS STATE",
         "Class": "Championship Subdivision",
-        "Index": "552",
+        "Index": "551",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5543,10 +5532,10 @@
         "Ranking": "75.5",
         "teamrankings": "?"
     },
-    "552": {
+    "551": {
         "BPI": "INCARNATE WORD",
         "Class": "Championship Subdivision",
-        "Index": "553",
+        "Index": "552",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5554,10 +5543,10 @@
         "Ranking": "34.5",
         "teamrankings": "?"
     },
-    "553": {
+    "552": {
         "BPI": "INDIANA STATE",
         "Class": "Championship Subdivision",
-        "Index": "554",
+        "Index": "553",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5565,10 +5554,10 @@
         "Ranking": "46.8",
         "teamrankings": "?"
     },
-    "554": {
+    "553": {
         "BPI": "JACKSON STATE",
         "Class": "Championship Subdivision",
-        "Index": "555",
+        "Index": "554",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5576,10 +5565,10 @@
         "Ranking": "32.8",
         "teamrankings": "?"
     },
-    "555": {
+    "554": {
         "BPI": "JACKSONVILLE STATE",
         "Class": "Championship Subdivision",
-        "Index": "556",
+        "Index": "555",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5587,10 +5576,10 @@
         "Ranking": "73.2",
         "teamrankings": "?"
     },
-    "556": {
+    "555": {
         "BPI": "ARIZONA STATE",
         "Class": "DIVISION 1  FBS",
-        "Index": "557",
+        "Index": "556",
         "OPLpG3": "7.0",
         "OPTpP3": "0.082",
         "PLpG3": "59.0",
@@ -5598,10 +5587,10 @@
         "Ranking": "97.4",
         "teamrankings": "Arizona St"
     },
-    "557": {
+    "556": {
         "BPI": "MIAMI-FL",
         "Class": "DIVISION 1  FBS",
-        "Index": "558",
+        "Index": "557",
         "OPLpG3": "33.0",
         "OPTpP3": "0.524",
         "PLpG3": "73.0",
@@ -5609,10 +5598,10 @@
         "Ranking": "97.2",
         "teamrankings": "Miami (FL)"
     },
-    "558": {
+    "557": {
         "BPI": "JACKSONVILLE-FLA",
         "Class": "Championship Subdivision",
-        "Index": "559",
+        "Index": "558",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5620,15 +5609,26 @@
         "Ranking": "38.3",
         "teamrankings": "?"
     },
-    "559": {
+    "558": {
         "BPI": "JAMES MADISON",
+        "Class": "Championship Subdivision",
+        "Index": "559",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "93.8",
+        "teamrankings": "?"
+    },
+    "559": {
+        "BPI": "KENNESAW STATE",
         "Class": "Championship Subdivision",
         "Index": "560",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "93.8",
+        "Ranking": "73.3",
         "teamrankings": "?"
     },
     "56": {
@@ -5643,20 +5643,9 @@
         "teamrankings": "?"
     },
     "560": {
-        "BPI": "KENNESAW STATE",
-        "Class": "Championship Subdivision",
-        "Index": "561",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "73.3",
-        "teamrankings": "?"
-    },
-    "561": {
         "BPI": "LAFAYETTE",
         "Class": "Championship Subdivision",
-        "Index": "562",
+        "Index": "561",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5664,10 +5653,10 @@
         "Ranking": "33.8",
         "teamrankings": "?"
     },
-    "562": {
+    "561": {
         "BPI": "LAMAR",
         "Class": "Championship Subdivision",
-        "Index": "563",
+        "Index": "562",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5675,10 +5664,10 @@
         "Ranking": "42.7",
         "teamrankings": "?"
     },
-    "563": {
+    "562": {
         "BPI": "LEHIGH",
         "Class": "Championship Subdivision",
-        "Index": "564",
+        "Index": "563",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5686,10 +5675,10 @@
         "Ranking": "48.5",
         "teamrankings": "?"
     },
-    "564": {
+    "563": {
         "BPI": "MAINE",
         "Class": "Championship Subdivision",
-        "Index": "565",
+        "Index": "564",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5697,10 +5686,10 @@
         "Ranking": "72.1",
         "teamrankings": "?"
     },
-    "565": {
+    "564": {
         "BPI": "MARIST",
         "Class": "Championship Subdivision",
-        "Index": "566",
+        "Index": "565",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5708,10 +5697,10 @@
         "Ranking": "24.1",
         "teamrankings": "?"
     },
-    "566": {
+    "565": {
         "BPI": "MCNEESE STATE",
         "Class": "Championship Subdivision",
-        "Index": "567",
+        "Index": "566",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5719,10 +5708,10 @@
         "Ranking": "63.0",
         "teamrankings": "?"
     },
-    "567": {
+    "566": {
         "BPI": "MERCER",
         "Class": "Championship Subdivision",
-        "Index": "568",
+        "Index": "567",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5730,26 +5719,37 @@
         "Ranking": "59.7",
         "teamrankings": "?"
     },
-    "568": {
+    "567": {
         "BPI": "MICHIGAN",
         "Class": "DIVISION 1  FBS",
-        "Index": "569",
-        "OPLpG3": "55.0",
-        "OPTpP3": "0.598",
-        "PLpG3": "65.0",
-        "PTpP3": "0.646",
+        "Index": "568",
+        "OPLpG3": "24.0",
+        "OPTpP3": "0.338",
+        "PLpG3": "72.0",
+        "PTpP3": "0.236",
         "Ranking": "98.7",
-        "teamrankings": "W Michigan"
+        "teamrankings": "Michigan"
+    },
+    "568": {
+        "BPI": "MISSISSIPPI VALLEY STATE",
+        "Class": "Championship Subdivision",
+        "Index": "569",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "20.3",
+        "teamrankings": "?"
     },
     "569": {
-        "BPI": "MISSISSIPPI VALLEY STATE",
+        "BPI": "MISSOURI STATE",
         "Class": "Championship Subdivision",
         "Index": "570",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "20.3",
+        "Ranking": "62.9",
         "teamrankings": "?"
     },
     "57": {
@@ -5764,20 +5764,9 @@
         "teamrankings": "Bowling Grn"
     },
     "570": {
-        "BPI": "MISSOURI STATE",
-        "Class": "Championship Subdivision",
-        "Index": "571",
-        "OPLpG3": "--",
-        "OPTpP3": "--",
-        "PLpG3": "--",
-        "PTpP3": "--",
-        "Ranking": "62.9",
-        "teamrankings": "Miss State"
-    },
-    "571": {
         "BPI": "MONMOUTH-NJ",
         "Class": "Championship Subdivision",
-        "Index": "572",
+        "Index": "571",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5785,10 +5774,10 @@
         "Ranking": "54.5",
         "teamrankings": "?"
     },
-    "572": {
+    "571": {
         "BPI": "MONTANA",
         "Class": "Championship Subdivision",
-        "Index": "573",
+        "Index": "572",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5796,10 +5785,10 @@
         "Ranking": "74.9",
         "teamrankings": "?"
     },
-    "573": {
+    "572": {
         "BPI": "MONTANA STATE",
         "Class": "Championship Subdivision",
-        "Index": "574",
+        "Index": "573",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5807,10 +5796,10 @@
         "Ranking": "74.8",
         "teamrankings": "?"
     },
-    "574": {
+    "573": {
         "BPI": "MOREHEAD STATE",
         "Class": "Championship Subdivision",
-        "Index": "575",
+        "Index": "574",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5818,10 +5807,10 @@
         "Ranking": "23.1",
         "teamrankings": "?"
     },
-    "575": {
+    "574": {
         "BPI": "MORGAN STATE",
         "Class": "Championship Subdivision",
-        "Index": "576",
+        "Index": "575",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5829,10 +5818,10 @@
         "Ranking": "32.4",
         "teamrankings": "?"
     },
-    "576": {
+    "575": {
         "BPI": "MURRAY STATE",
         "Class": "Championship Subdivision",
-        "Index": "577",
+        "Index": "576",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5840,10 +5829,10 @@
         "Ranking": "45.2",
         "teamrankings": "?"
     },
-    "577": {
+    "576": {
         "BPI": "NEW HAMPSHIRE",
         "Class": "Championship Subdivision",
-        "Index": "578",
+        "Index": "577",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5851,10 +5840,10 @@
         "Ranking": "57.9",
         "teamrankings": "?"
     },
-    "578": {
+    "577": {
         "BPI": "NICHOLLS STATE",
         "Class": "Championship Subdivision",
-        "Index": "579",
+        "Index": "578",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5862,16 +5851,27 @@
         "Ranking": "63.7",
         "teamrankings": "?"
     },
-    "579": {
+    "578": {
         "BPI": "MICHIGAN STATE",
         "Class": "DIVISION 1  FBS",
-        "Index": "580",
+        "Index": "579",
         "OPLpG3": "31.0",
         "OPTpP3": "0.437",
         "PLpG3": "78.0",
         "PTpP3": "0.487",
         "Ranking": "97.9",
         "teamrankings": "Michigan St"
+    },
+    "579": {
+        "BPI": "NORFOLK STATE",
+        "Class": "Championship Subdivision",
+        "Index": "580",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "45.2",
+        "teamrankings": "?"
     },
     "58": {
         "BPI": "CENTRAL MISSOURI STATE",
@@ -5885,20 +5885,9 @@
         "teamrankings": "?"
     },
     "580": {
-        "BPI": "NORFOLK STATE",
-        "Class": "Championship Subdivision",
-        "Index": "581",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "45.2",
-        "teamrankings": "?"
-    },
-    "581": {
         "BPI": "NORTH ALABAMA",
         "Class": "Championship Subdivision",
-        "Index": "582",
+        "Index": "581",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5906,10 +5895,10 @@
         "Ranking": "56.4",
         "teamrankings": "?"
     },
-    "582": {
+    "581": {
         "BPI": "NORTH CAROLINA A&T",
         "Class": "Championship Subdivision",
-        "Index": "583",
+        "Index": "582",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5917,10 +5906,10 @@
         "Ranking": "68.5",
         "teamrankings": "?"
     },
-    "583": {
+    "582": {
         "BPI": "NORTH CAROLINA CENTRAL",
         "Class": "Championship Subdivision",
-        "Index": "584",
+        "Index": "583",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5928,10 +5917,10 @@
         "Ranking": "45.0",
         "teamrankings": "?"
     },
-    "584": {
+    "583": {
         "BPI": "NORTH DAKOTA",
         "Class": "Championship Subdivision",
-        "Index": "585",
+        "Index": "584",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5939,10 +5928,10 @@
         "Ranking": "55.0",
         "teamrankings": "?"
     },
-    "585": {
+    "584": {
         "BPI": "NORTH DAKOTA STATE",
         "Class": "Championship Subdivision",
-        "Index": "586",
+        "Index": "585",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5950,10 +5939,10 @@
         "Ranking": "98.2",
         "teamrankings": "?"
     },
-    "586": {
+    "585": {
         "BPI": "NORTHERN ARIZONA",
         "Class": "Championship Subdivision",
-        "Index": "587",
+        "Index": "586",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5961,10 +5950,10 @@
         "Ranking": "66.4",
         "teamrankings": "?"
     },
-    "587": {
+    "586": {
         "BPI": "NORTHERN COLORADO",
         "Class": "Championship Subdivision",
-        "Index": "588",
+        "Index": "587",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5972,10 +5961,10 @@
         "Ranking": "58.8",
         "teamrankings": "?"
     },
-    "588": {
+    "587": {
         "BPI": "NORTHERN IOWA",
         "Class": "Championship Subdivision",
-        "Index": "589",
+        "Index": "588",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -5983,16 +5972,27 @@
         "Ranking": "78.8",
         "teamrankings": "?"
     },
-    "589": {
+    "588": {
         "BPI": "NORTHWESTERN STATE-LA",
         "Class": "Championship Subdivision",
-        "Index": "590",
+        "Index": "589",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
         "Ranking": "51.6",
         "teamrankings": "?"
+    },
+    "589": {
+        "BPI": "MIDDLE TENNESSEE STATE",
+        "Class": "DIVISION 1  FBS",
+        "Index": "590",
+        "OPLpG3": "35.0",
+        "OPTpP3": "0.636",
+        "PLpG3": "78.0",
+        "PTpP3": "0.090",
+        "Ranking": "71.0",
+        "teamrankings": "Middle Tenn"
     },
     "59": {
         "BPI": "CENTRAL OKLAHOMA",
@@ -6006,20 +6006,9 @@
         "teamrankings": "?"
     },
     "590": {
-        "BPI": "MIDDLE TENNESSEE STATE",
-        "Class": "DIVISION 1  FBS",
-        "Index": "591",
-        "OPLpG3": "35.0",
-        "OPTpP3": "0.636",
-        "PLpG3": "78.0",
-        "PTpP3": "0.090",
-        "Ranking": "71.0",
-        "teamrankings": "Middle Tenn"
-    },
-    "591": {
         "BPI": "PENNSYLVANIA",
         "Class": "Championship Subdivision",
-        "Index": "592",
+        "Index": "591",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6027,10 +6016,10 @@
         "Ranking": "56.3",
         "teamrankings": "?"
     },
-    "592": {
+    "591": {
         "BPI": "PINE BLUFF-ARKANSAS",
         "Class": "Championship Subdivision",
-        "Index": "593",
+        "Index": "592",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6038,10 +6027,10 @@
         "Ranking": "23.0",
         "teamrankings": "?"
     },
-    "593": {
+    "592": {
         "BPI": "PORTLAND STATE",
         "Class": "Championship Subdivision",
-        "Index": "594",
+        "Index": "593",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6049,10 +6038,10 @@
         "Ranking": "40.7",
         "teamrankings": "?"
     },
-    "594": {
+    "593": {
         "BPI": "PRAIRIE VIEW A&M",
         "Class": "Championship Subdivision",
-        "Index": "595",
+        "Index": "594",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6060,10 +6049,10 @@
         "Ranking": "52.8",
         "teamrankings": "?"
     },
-    "595": {
+    "594": {
         "BPI": "PRESBYTERIAN",
         "Class": "Championship Subdivision",
-        "Index": "596",
+        "Index": "595",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6071,10 +6060,10 @@
         "Ranking": "46.2",
         "teamrankings": "?"
     },
-    "596": {
+    "595": {
         "BPI": "PRINCETON",
         "Class": "Championship Subdivision",
-        "Index": "597",
+        "Index": "596",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6082,10 +6071,10 @@
         "Ranking": "59.4",
         "teamrankings": "?"
     },
-    "597": {
+    "596": {
         "BPI": "RHODE ISLAND",
         "Class": "Championship Subdivision",
-        "Index": "598",
+        "Index": "597",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6093,10 +6082,10 @@
         "Ranking": "58.7",
         "teamrankings": "?"
     },
-    "598": {
+    "597": {
         "BPI": "RICHMOND",
         "Class": "Championship Subdivision",
-        "Index": "599",
+        "Index": "598",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6104,15 +6093,26 @@
         "Ranking": "66.0",
         "teamrankings": "?"
     },
-    "599": {
+    "598": {
         "BPI": "ROBERT MORRIS - PA",
+        "Class": "Championship Subdivision",
+        "Index": "599",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "29.8",
+        "teamrankings": "?"
+    },
+    "599": {
+        "BPI": "S.F.AUSTIN",
         "Class": "Championship Subdivision",
         "Index": "600",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "29.8",
+        "Ranking": "45.8",
         "teamrankings": "?"
     },
     "6": {
@@ -6138,20 +6138,9 @@
         "teamrankings": "?"
     },
     "600": {
-        "BPI": "S.F.AUSTIN",
-        "Class": "Championship Subdivision",
-        "Index": "601",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "45.8",
-        "teamrankings": "?"
-    },
-    "601": {
         "BPI": "MINNESOTA",
         "Class": "DIVISION 1  FBS",
-        "Index": "602",
+        "Index": "601",
         "OPLpG3": "10.0",
         "OPTpP3": "0.122",
         "PLpG3": "80.0",
@@ -6159,10 +6148,10 @@
         "Ranking": "91.8",
         "teamrankings": "Minnesota"
     },
-    "602": {
+    "601": {
         "BPI": "SACRED HEART",
         "Class": "Championship Subdivision",
-        "Index": "603",
+        "Index": "602",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6170,10 +6159,10 @@
         "Ranking": "50.9",
         "teamrankings": "?"
     },
-    "603": {
+    "602": {
         "BPI": "SAM HOUSTON",
         "Class": "Championship Subdivision",
-        "Index": "604",
+        "Index": "603",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6181,10 +6170,10 @@
         "Ranking": "71.3",
         "teamrankings": "?"
     },
-    "604": {
+    "603": {
         "BPI": "SAMFORD",
         "Class": "Championship Subdivision",
-        "Index": "605",
+        "Index": "604",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6192,10 +6181,10 @@
         "Ranking": "70.4",
         "teamrankings": "?"
     },
-    "605": {
+    "604": {
         "BPI": "SAN DIEGO",
         "Class": "Championship Subdivision",
-        "Index": "606",
+        "Index": "605",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6203,10 +6192,10 @@
         "Ranking": "66.0",
         "teamrankings": "?"
     },
-    "606": {
+    "605": {
         "BPI": "SAVANNAH STATE",
         "Class": "Championship Subdivision",
-        "Index": "607",
+        "Index": "606",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6214,10 +6203,10 @@
         "Ranking": "37.2",
         "teamrankings": "?"
     },
-    "607": {
+    "606": {
         "BPI": "SO. EAST LOUISIANA",
         "Class": "Championship Subdivision",
-        "Index": "608",
+        "Index": "607",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6225,10 +6214,10 @@
         "Ranking": "64.8",
         "teamrankings": "?"
     },
-    "608": {
+    "607": {
         "BPI": "SOUTH CAROLINA STATE",
         "Class": "Championship Subdivision",
-        "Index": "609",
+        "Index": "608",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6236,15 +6225,26 @@
         "Ranking": "40.7",
         "teamrankings": "?"
     },
-    "609": {
+    "608": {
         "BPI": "SOUTH DAKOTA",
+        "Class": "Championship Subdivision",
+        "Index": "609",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "80.3",
+        "teamrankings": "?"
+    },
+    "609": {
+        "BPI": "SOUTH DAKOTA STATE",
         "Class": "Championship Subdivision",
         "Index": "610",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "80.3",
+        "Ranking": "84.8",
         "teamrankings": "?"
     },
     "61": {
@@ -6259,20 +6259,9 @@
         "teamrankings": "?"
     },
     "610": {
-        "BPI": "SOUTH DAKOTA STATE",
-        "Class": "Championship Subdivision",
-        "Index": "611",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "84.8",
-        "teamrankings": "?"
-    },
-    "611": {
         "BPI": "SOUTH EASTERN MISSOURI",
         "Class": "Championship Subdivision",
-        "Index": "612",
+        "Index": "611",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6280,21 +6269,21 @@
         "Ranking": "58.9",
         "teamrankings": "?"
     },
-    "612": {
+    "611": {
         "BPI": "MISSISSIPPI",
         "Class": "DIVISION 1  FBS",
-        "Index": "613",
-        "OPLpG3": "--",
-        "OPTpP3": "--",
-        "PLpG3": "--",
-        "PTpP3": "--",
+        "Index": "612",
+        "OPLpG3": "27.0",
+        "OPTpP3": "0.284",
+        "PLpG3": "62.0",
+        "PTpP3": "0.758",
         "Ranking": "95.9",
-        "teamrankings": "S Mississippi"
+        "teamrankings": "Mississippi"
     },
-    "613": {
+    "612": {
         "BPI": "SOUTHERN ILLINOIS",
         "Class": "Championship Subdivision",
-        "Index": "614",
+        "Index": "613",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6302,10 +6291,10 @@
         "Ranking": "72.1",
         "teamrankings": "?"
     },
-    "614": {
+    "613": {
         "BPI": "SOUTHERN UNIVERSITY",
         "Class": "Championship Subdivision",
-        "Index": "615",
+        "Index": "614",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6313,10 +6302,10 @@
         "Ranking": "49.6",
         "teamrankings": "?"
     },
-    "615": {
+    "614": {
         "BPI": "SOUTHERN UTAH",
         "Class": "Championship Subdivision",
-        "Index": "616",
+        "Index": "615",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6324,10 +6313,10 @@
         "Ranking": "69.4",
         "teamrankings": "?"
     },
-    "616": {
+    "615": {
         "BPI": "ST.FRANCIS-PA",
         "Class": "Championship Subdivision",
-        "Index": "617",
+        "Index": "616",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6335,10 +6324,10 @@
         "Ranking": "50.0",
         "teamrankings": "?"
     },
-    "617": {
+    "616": {
         "BPI": "STETSON",
         "Class": "Championship Subdivision",
-        "Index": "618",
+        "Index": "617",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6346,10 +6335,10 @@
         "Ranking": "27.7",
         "teamrankings": "?"
     },
-    "618": {
+    "617": {
         "BPI": "STONY BROOK",
         "Class": "Championship Subdivision",
-        "Index": "619",
+        "Index": "618",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6357,15 +6346,26 @@
         "Ranking": "63.0",
         "teamrankings": "?"
     },
-    "619": {
+    "618": {
         "BPI": "TENNESSEE STATE",
+        "Class": "Championship Subdivision",
+        "Index": "619",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "61.8",
+        "teamrankings": "?"
+    },
+    "619": {
+        "BPI": "TENNESSEE TECH",
         "Class": "Championship Subdivision",
         "Index": "620",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "61.8",
+        "Ranking": "45.8",
         "teamrankings": "?"
     },
     "62": {
@@ -6380,20 +6380,9 @@
         "teamrankings": "?"
     },
     "620": {
-        "BPI": "TENNESSEE TECH",
-        "Class": "Championship Subdivision",
-        "Index": "621",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "45.8",
-        "teamrankings": "?"
-    },
-    "621": {
         "BPI": "TENNESSEE-MARTIN",
         "Class": "Championship Subdivision",
-        "Index": "622",
+        "Index": "621",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6401,10 +6390,10 @@
         "Ranking": "63.7",
         "teamrankings": "?"
     },
-    "622": {
+    "621": {
         "BPI": "TEXAS SOUTHERN",
         "Class": "Championship Subdivision",
-        "Index": "623",
+        "Index": "622",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6412,21 +6401,21 @@
         "Ranking": "30.5",
         "teamrankings": "?"
     },
-    "623": {
+    "622": {
         "BPI": "MISSISSIPPI STATE",
         "Class": "DIVISION 1  FBS",
-        "Index": "624",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
+        "Index": "623",
+        "OPLpG3": "--",
+        "OPTpP3": "--",
+        "PLpG3": "--",
+        "PTpP3": "--",
         "Ranking": "100.5",
-        "teamrankings": "?"
+        "teamrankings": "Miss State"
     },
-    "624": {
+    "623": {
         "BPI": "THE CITADEL",
         "Class": "Championship Subdivision",
-        "Index": "625",
+        "Index": "624",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6434,10 +6423,10 @@
         "Ranking": "56.1",
         "teamrankings": "?"
     },
-    "625": {
+    "624": {
         "BPI": "TOWSON",
         "Class": "Championship Subdivision",
-        "Index": "626",
+        "Index": "625",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6445,10 +6434,10 @@
         "Ranking": "60.4",
         "teamrankings": "?"
     },
-    "626": {
+    "625": {
         "BPI": "VALPARAISO",
         "Class": "Championship Subdivision",
-        "Index": "627",
+        "Index": "626",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6456,10 +6445,10 @@
         "Ranking": "39.5",
         "teamrankings": "?"
     },
-    "627": {
+    "626": {
         "BPI": "VILLANOVA",
         "Class": "Championship Subdivision",
-        "Index": "628",
+        "Index": "627",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6467,10 +6456,10 @@
         "Ranking": "72.9",
         "teamrankings": "?"
     },
-    "628": {
+    "627": {
         "BPI": "VIRGINIA MILITARY INSTITUTE",
         "Class": "Championship Subdivision",
-        "Index": "629",
+        "Index": "628",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6478,15 +6467,26 @@
         "Ranking": "32.2",
         "teamrankings": "?"
     },
-    "629": {
+    "628": {
         "BPI": "WAGNER",
+        "Class": "Championship Subdivision",
+        "Index": "629",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "52.6",
+        "teamrankings": "?"
+    },
+    "629": {
+        "BPI": "WEBER STATE",
         "Class": "Championship Subdivision",
         "Index": "630",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "52.6",
+        "Ranking": "80.4",
         "teamrankings": "?"
     },
     "63": {
@@ -6501,20 +6501,9 @@
         "teamrankings": "?"
     },
     "630": {
-        "BPI": "WEBER STATE",
-        "Class": "Championship Subdivision",
-        "Index": "631",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "80.4",
-        "teamrankings": "?"
-    },
-    "631": {
         "BPI": "WESTERN CAROLINA",
         "Class": "Championship Subdivision",
-        "Index": "632",
+        "Index": "631",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6522,10 +6511,10 @@
         "Ranking": "57.5",
         "teamrankings": "?"
     },
-    "632": {
+    "631": {
         "BPI": "WESTERN ILLINOIS",
         "Class": "Championship Subdivision",
-        "Index": "633",
+        "Index": "632",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6533,10 +6522,10 @@
         "Ranking": "77.6",
         "teamrankings": "?"
     },
-    "633": {
+    "632": {
         "BPI": "WILLIAM & MARY",
         "Class": "Championship Subdivision",
-        "Index": "634",
+        "Index": "633",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6544,10 +6533,10 @@
         "Ranking": "52.8",
         "teamrankings": "?"
     },
-    "634": {
+    "633": {
         "BPI": "MISSOURI",
         "Class": "DIVISION 1  FBS",
-        "Index": "635",
+        "Index": "634",
         "OPLpG3": "--",
         "OPTpP3": "--",
         "PLpG3": "--",
@@ -6555,10 +6544,10 @@
         "Ranking": "95.9",
         "teamrankings": "Missouri"
     },
-    "635": {
+    "634": {
         "BPI": "WOFFORD",
         "Class": "Championship Subdivision",
-        "Index": "636",
+        "Index": "635",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6566,10 +6555,10 @@
         "Ranking": "66.8",
         "teamrankings": "?"
     },
-    "636": {
+    "635": {
         "BPI": "YALE",
         "Class": "Championship Subdivision",
-        "Index": "637",
+        "Index": "636",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6577,10 +6566,10 @@
         "Ranking": "65.5",
         "teamrankings": "?"
     },
-    "637": {
+    "636": {
         "BPI": "YOUNGSTOWN STATE",
         "Class": "Championship Subdivision",
-        "Index": "638",
+        "Index": "637",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6588,10 +6577,10 @@
         "Ranking": "69.4",
         "teamrankings": "?"
     },
-    "638": {
+    "637": {
         "BPI": "ALLEN (SC)",
         "Class": "NAIA",
-        "Index": "639",
+        "Index": "638",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6599,15 +6588,26 @@
         "Ranking": "0.0",
         "teamrankings": "?"
     },
-    "639": {
+    "638": {
         "BPI": "ARIZONA CHRISTIAN",
+        "Class": "NAIA",
+        "Index": "639",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "21.8",
+        "teamrankings": "?"
+    },
+    "639": {
+        "BPI": "AVE MARIA-FLA",
         "Class": "NAIA",
         "Index": "640",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "21.8",
+        "Ranking": "-9.7",
         "teamrankings": "?"
     },
     "64": {
@@ -6622,20 +6622,9 @@
         "teamrankings": "?"
     },
     "640": {
-        "BPI": "AVE MARIA-FLA",
-        "Class": "NAIA",
-        "Index": "641",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "-9.7",
-        "teamrankings": "?"
-    },
-    "641": {
         "BPI": "AVILA",
         "Class": "NAIA",
-        "Index": "642",
+        "Index": "641",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6643,10 +6632,10 @@
         "Ranking": "3.7",
         "teamrankings": "?"
     },
-    "642": {
+    "641": {
         "BPI": "BAKER",
         "Class": "NAIA",
-        "Index": "643",
+        "Index": "642",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6654,10 +6643,10 @@
         "Ranking": "36.9",
         "teamrankings": "?"
     },
-    "643": {
+    "642": {
         "BPI": "BENEDICTINE-KANSAS",
         "Class": "NAIA",
-        "Index": "644",
+        "Index": "643",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6665,10 +6654,10 @@
         "Ranking": "46.0",
         "teamrankings": "?"
     },
-    "644": {
+    "643": {
         "BPI": "BETHANY KANSAS",
         "Class": "NAIA",
-        "Index": "645",
+        "Index": "644",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6676,10 +6665,10 @@
         "Ranking": "-15.6",
         "teamrankings": "?"
     },
-    "645": {
+    "644": {
         "BPI": "NAVY",
         "Class": "DIVISION 1  FBS",
-        "Index": "646",
+        "Index": "645",
         "OPLpG3": "59.0",
         "OPTpP3": "0.831",
         "PLpG3": "65.0",
@@ -6687,10 +6676,10 @@
         "Ranking": "82.5",
         "teamrankings": "Navy"
     },
-    "646": {
+    "645": {
         "BPI": "BETHEL KANSAS",
         "Class": "NAIA",
-        "Index": "647",
+        "Index": "646",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6698,10 +6687,10 @@
         "Ranking": "-20.5",
         "teamrankings": "?"
     },
-    "647": {
+    "646": {
         "BPI": "BETHEL-TN.",
         "Class": "NAIA",
-        "Index": "648",
+        "Index": "647",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6709,10 +6698,10 @@
         "Ranking": "25.2",
         "teamrankings": "?"
     },
-    "648": {
+    "647": {
         "BPI": "BLUFIELD",
         "Class": "NAIA",
-        "Index": "649",
+        "Index": "648",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6720,15 +6709,26 @@
         "Ranking": "9.5",
         "teamrankings": "?"
     },
-    "649": {
+    "648": {
         "BPI": "BRIAR CLIFF",
+        "Class": "NAIA",
+        "Index": "649",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "0.8",
+        "teamrankings": "?"
+    },
+    "649": {
+        "BPI": "CAMPBELLSVILLE",
         "Class": "NAIA",
         "Index": "650",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "0.8",
+        "Ranking": "23.9",
         "teamrankings": "?"
     },
     "65": {
@@ -6743,20 +6743,9 @@
         "teamrankings": "?"
     },
     "650": {
-        "BPI": "CAMPBELLSVILLE",
-        "Class": "NAIA",
-        "Index": "651",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "23.9",
-        "teamrankings": "?"
-    },
-    "651": {
         "BPI": "CARROLL-MONTANA",
         "Class": "NAIA",
-        "Index": "652",
+        "Index": "651",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6764,10 +6753,10 @@
         "Ranking": "30.5",
         "teamrankings": "?"
     },
-    "652": {
+    "651": {
         "BPI": "CENTRAL METHODIST",
         "Class": "NAIA",
-        "Index": "653",
+        "Index": "652",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6775,10 +6764,10 @@
         "Ranking": "-3.8",
         "teamrankings": "?"
     },
-    "653": {
+    "652": {
         "BPI": "CINCINNATI CHRISTIAN",
         "Class": "NAIA",
-        "Index": "654",
+        "Index": "653",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6786,10 +6775,10 @@
         "Ranking": "-31.7",
         "teamrankings": "?"
     },
-    "654": {
+    "653": {
         "BPI": "COLLEGE OF IDAHO",
         "Class": "NAIA",
-        "Index": "655",
+        "Index": "654",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6797,10 +6786,10 @@
         "Ranking": "34.5",
         "teamrankings": "?"
     },
-    "655": {
+    "654": {
         "BPI": "CONCORDIA \u2013 MICHIGAN",
         "Class": "NAIA",
-        "Index": "656",
+        "Index": "655",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6808,10 +6797,10 @@
         "Ranking": "37.1",
         "teamrankings": "?"
     },
-    "656": {
+    "655": {
         "BPI": "NEBRASKA",
         "Class": "DIVISION 1  FBS",
-        "Index": "657",
+        "Index": "656",
         "OPLpG3": "--",
         "OPTpP3": "--",
         "PLpG3": "--",
@@ -6819,10 +6808,10 @@
         "Ranking": "81.7",
         "teamrankings": "Nebraska"
     },
-    "657": {
+    "656": {
         "BPI": "CONCORDIA-NEBRASKA",
         "Class": "NAIA",
-        "Index": "658",
+        "Index": "657",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6830,10 +6819,10 @@
         "Ranking": "24.7",
         "teamrankings": "?"
     },
-    "658": {
+    "657": {
         "BPI": "CULVER-STOCKTON",
         "Class": "NAIA",
-        "Index": "659",
+        "Index": "658",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6841,15 +6830,26 @@
         "Ranking": "8.3",
         "teamrankings": "?"
     },
-    "659": {
+    "658": {
         "BPI": "CUMBERLAND-TN.",
+        "Class": "NAIA",
+        "Index": "659",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "29.3",
+        "teamrankings": "?"
+    },
+    "659": {
+        "BPI": "DAKOTA STATE-SD.",
         "Class": "NAIA",
         "Index": "660",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "29.3",
+        "Ranking": "15.9",
         "teamrankings": "?"
     },
     "66": {
@@ -6864,20 +6864,9 @@
         "teamrankings": "?"
     },
     "660": {
-        "BPI": "DAKOTA STATE-SD.",
-        "Class": "NAIA",
-        "Index": "661",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "15.9",
-        "teamrankings": "?"
-    },
-    "661": {
         "BPI": "DAKOTA-WESLEYAN SD.",
         "Class": "NAIA",
-        "Index": "662",
+        "Index": "661",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6885,10 +6874,10 @@
         "Ranking": "22.5",
         "teamrankings": "?"
     },
-    "662": {
+    "661": {
         "BPI": "DICKINSON STATE",
         "Class": "NAIA",
-        "Index": "663",
+        "Index": "662",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6896,10 +6885,10 @@
         "Ranking": "36.2",
         "teamrankings": "?"
     },
-    "663": {
+    "662": {
         "BPI": "DOANE",
         "Class": "NAIA",
-        "Index": "664",
+        "Index": "663",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6907,10 +6896,10 @@
         "Ranking": "27.8",
         "teamrankings": "?"
     },
-    "664": {
+    "663": {
         "BPI": "DORDT",
         "Class": "NAIA",
-        "Index": "665",
+        "Index": "664",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6918,10 +6907,10 @@
         "Ranking": "14.7",
         "teamrankings": "?"
     },
-    "665": {
+    "664": {
         "BPI": "EASTERN OREGON",
         "Class": "NAIA",
-        "Index": "666",
+        "Index": "665",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6929,10 +6918,10 @@
         "Ranking": "35.4",
         "teamrankings": "?"
     },
-    "666": {
+    "665": {
         "BPI": "EDWARD WATERS",
         "Class": "NAIA",
-        "Index": "667",
+        "Index": "666",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -6940,10 +6929,10 @@
         "Ranking": "-5.1",
         "teamrankings": "?"
     },
-    "667": {
+    "666": {
         "BPI": "ARKANSAS",
         "Class": "DIVISION 1  FBS",
-        "Index": "668",
+        "Index": "667",
         "OPLpG3": "--",
         "OPTpP3": "--",
         "PLpG3": "--",
@@ -6951,10 +6940,10 @@
         "Ranking": "85.0",
         "teamrankings": "Arkansas"
     },
-    "668": {
+    "667": {
         "BPI": "NEVADA",
         "Class": "DIVISION 1  FBS",
-        "Index": "669",
+        "Index": "668",
         "OPLpG3": "--",
         "OPTpP3": "--",
         "PLpG3": "--",
@@ -6962,15 +6951,26 @@
         "Ranking": "81.5",
         "teamrankings": "Nevada"
     },
-    "669": {
+    "668": {
         "BPI": "EVANGEL",
+        "Class": "NAIA",
+        "Index": "669",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "28.6",
+        "teamrankings": "?"
+    },
+    "669": {
+        "BPI": "FAULKNER - ALABAMA",
         "Class": "NAIA",
         "Index": "670",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "28.6",
+        "Ranking": "26.5",
         "teamrankings": "?"
     },
     "67": {
@@ -6985,20 +6985,9 @@
         "teamrankings": "?"
     },
     "670": {
-        "BPI": "FAULKNER - ALABAMA",
-        "Class": "NAIA",
-        "Index": "671",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "26.5",
-        "teamrankings": "?"
-    },
-    "671": {
         "BPI": "FRIENDS",
         "Class": "NAIA",
-        "Index": "672",
+        "Index": "671",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7006,10 +6995,10 @@
         "Ranking": "-3.7",
         "teamrankings": "?"
     },
-    "672": {
+    "671": {
         "BPI": "GEORGETOWN-KY.",
         "Class": "NAIA",
-        "Index": "673",
+        "Index": "672",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7017,10 +7006,10 @@
         "Ranking": "38.5",
         "teamrankings": "?"
     },
-    "673": {
+    "672": {
         "BPI": "GRACELAND",
         "Class": "NAIA",
-        "Index": "674",
+        "Index": "673",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7028,10 +7017,10 @@
         "Ranking": "-22.0",
         "teamrankings": "?"
     },
-    "674": {
+    "673": {
         "BPI": "GRAND VIEW",
         "Class": "NAIA",
-        "Index": "675",
+        "Index": "674",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7039,10 +7028,10 @@
         "Ranking": "29.0",
         "teamrankings": "?"
     },
-    "675": {
+    "674": {
         "BPI": "HASTINGS",
         "Class": "NAIA",
-        "Index": "676",
+        "Index": "675",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7050,10 +7039,10 @@
         "Ranking": "18.9",
         "teamrankings": "?"
     },
-    "676": {
+    "675": {
         "BPI": "INDIANA WESLEYAN",
         "Class": "NAIA",
-        "Index": "677",
+        "Index": "676",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7061,10 +7050,10 @@
         "Ranking": "14.6",
         "teamrankings": "?"
     },
-    "677": {
+    "676": {
         "BPI": "JAMESTOWN",
         "Class": "NAIA",
-        "Index": "678",
+        "Index": "677",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7072,10 +7061,10 @@
         "Ranking": "-2.3",
         "teamrankings": "?"
     },
-    "678": {
+    "677": {
         "BPI": "KANSAS WESLEYAN",
         "Class": "NAIA",
-        "Index": "679",
+        "Index": "678",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7083,32 +7072,21 @@
         "Ranking": "10.6",
         "teamrankings": "?"
     },
-    "679": {
+    "678": {
         "BPI": "NEVADA-LAS VEGAS",
         "Class": "DIVISION 1  FBS",
-        "Index": "680",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
+        "Index": "679",
+        "OPLpG3": "43.0",
+        "OPTpP3": "0.573",
+        "PLpG3": "75.0",
+        "PTpP3": "0.280",
         "Ranking": "74.5",
-        "teamrankings": "?"
+        "teamrankings": "UNLV"
     },
-    "68": {
-        "BPI": "BRIGHAM YOUNG",
-        "Class": "DIVISION 1  FBS",
-        "Index": "69",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "79.9",
-        "teamrankings": "?"
-    },
-    "680": {
+    "679": {
         "BPI": "KENTUCKY CHRISTIAN",
         "Class": "NAIA",
-        "Index": "681",
+        "Index": "680",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7116,10 +7094,21 @@
         "Ranking": "-18.8",
         "teamrankings": "?"
     },
-    "681": {
+    "68": {
+        "BPI": "BRIGHAM YOUNG",
+        "Class": "DIVISION 1  FBS",
+        "Index": "69",
+        "OPLpG3": "23.0",
+        "OPTpP3": "0.329",
+        "PLpG3": "71.0",
+        "PTpP3": "0.394",
+        "Ranking": "79.9",
+        "teamrankings": "BYU"
+    },
+    "680": {
         "BPI": "KIESER - FLA",
         "Class": "NAIA",
-        "Index": "682",
+        "Index": "681",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7127,10 +7116,10 @@
         "Ranking": "23.8",
         "teamrankings": "?"
     },
-    "682": {
+    "681": {
         "BPI": "LANGSTON",
         "Class": "NAIA",
-        "Index": "683",
+        "Index": "682",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7138,10 +7127,10 @@
         "Ranking": "10.9",
         "teamrankings": "?"
     },
-    "683": {
+    "682": {
         "BPI": "LAWRENCE TECH (MI)",
         "Class": "NAIA",
-        "Index": "684",
+        "Index": "683",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7149,10 +7138,10 @@
         "Ranking": "0.0",
         "teamrankings": "?"
     },
-    "684": {
+    "683": {
         "BPI": "LINDENWOOD - BELLEVILLE",
         "Class": "NAIA",
-        "Index": "685",
+        "Index": "684",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7160,10 +7149,10 @@
         "Ranking": "-26.1",
         "teamrankings": "?"
     },
-    "685": {
+    "684": {
         "BPI": "LINSEY WILSON - KY",
         "Class": "NAIA",
-        "Index": "686",
+        "Index": "685",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7171,10 +7160,10 @@
         "Ranking": "39.8",
         "teamrankings": "?"
     },
-    "686": {
+    "685": {
         "BPI": "LYON COLLEGE",
         "Class": "NAIA",
-        "Index": "687",
+        "Index": "686",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7182,10 +7171,10 @@
         "Ranking": "3.4",
         "teamrankings": "?"
     },
-    "687": {
+    "686": {
         "BPI": "MARIAN - INDIANA",
         "Class": "NAIA",
-        "Index": "688",
+        "Index": "687",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7193,10 +7182,10 @@
         "Ranking": "53.5",
         "teamrankings": "?"
     },
-    "688": {
+    "687": {
         "BPI": "MAYVILLE STATE",
         "Class": "NAIA",
-        "Index": "689",
+        "Index": "688",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7204,16 +7193,27 @@
         "Ranking": "-19.2",
         "teamrankings": "?"
     },
-    "689": {
+    "688": {
         "BPI": "McPHERSON",
         "Class": "NAIA",
-        "Index": "690",
+        "Index": "689",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
         "Ranking": "-3.0",
         "teamrankings": "?"
+    },
+    "689": {
+        "BPI": "NEW MEXICO",
+        "Class": "DIVISION 1  FBS",
+        "Index": "690",
+        "OPLpG3": "--",
+        "OPTpP3": "--",
+        "PLpG3": "--",
+        "PTpP3": "--",
+        "Ranking": "68.0",
+        "teamrankings": "New Mexico"
     },
     "69": {
         "BPI": "COLORADO ST- PUEBLO",
@@ -7227,20 +7227,9 @@
         "teamrankings": "?"
     },
     "690": {
-        "BPI": "NEW MEXICO",
-        "Class": "DIVISION 1  FBS",
-        "Index": "691",
-        "OPLpG3": "--",
-        "OPTpP3": "--",
-        "PLpG3": "--",
-        "PTpP3": "--",
-        "Ranking": "68.0",
-        "teamrankings": "New Mexico"
-    },
-    "691": {
         "BPI": "MID-AMERICA NAZARENE",
         "Class": "NAIA",
-        "Index": "692",
+        "Index": "691",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7248,10 +7237,10 @@
         "Ranking": "14.2",
         "teamrankings": "?"
     },
-    "692": {
+    "691": {
         "BPI": "MIDLAND - NE",
         "Class": "NAIA",
-        "Index": "693",
+        "Index": "692",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7259,10 +7248,10 @@
         "Ranking": "21.7",
         "teamrankings": "?"
     },
-    "693": {
+    "692": {
         "BPI": "MISSOURI BAPTIST",
         "Class": "NAIA",
-        "Index": "694",
+        "Index": "693",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7270,10 +7259,10 @@
         "Ranking": "1.3",
         "teamrankings": "?"
     },
-    "694": {
+    "693": {
         "BPI": "MISSOURI VALLEY",
         "Class": "NAIA",
-        "Index": "695",
+        "Index": "694",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7281,10 +7270,10 @@
         "Ranking": "23.4",
         "teamrankings": "?"
     },
-    "695": {
+    "694": {
         "BPI": "MONTANA - WESTERN",
         "Class": "NAIA",
-        "Index": "696",
+        "Index": "695",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7292,10 +7281,10 @@
         "Ranking": "34.1",
         "teamrankings": "?"
     },
-    "696": {
+    "695": {
         "BPI": "MONTANA STATE-NORTH",
         "Class": "NAIA",
-        "Index": "697",
+        "Index": "696",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7303,10 +7292,10 @@
         "Ranking": "5.9",
         "teamrankings": "?"
     },
-    "697": {
+    "696": {
         "BPI": "MONTANA TECH",
         "Class": "NAIA",
-        "Index": "698",
+        "Index": "697",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7314,10 +7303,10 @@
         "Ranking": "46.5",
         "teamrankings": "?"
     },
-    "698": {
+    "697": {
         "BPI": "MORNINGSIDE",
         "Class": "NAIA",
-        "Index": "699",
+        "Index": "698",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7325,15 +7314,26 @@
         "Ranking": "58.0",
         "teamrankings": "?"
     },
-    "699": {
+    "698": {
         "BPI": "NORTHWESTERN-IOWA",
+        "Class": "NAIA",
+        "Index": "699",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "34.0",
+        "teamrankings": "?"
+    },
+    "699": {
+        "BPI": "OLIVET NAZARENE",
         "Class": "NAIA",
         "Index": "700",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "34.0",
+        "Ranking": "19.6",
         "teamrankings": "?"
     },
     "7": {
@@ -7359,20 +7359,9 @@
         "teamrankings": "?"
     },
     "700": {
-        "BPI": "OLIVET NAZARENE",
-        "Class": "NAIA",
-        "Index": "701",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "19.6",
-        "teamrankings": "?"
-    },
-    "701": {
         "BPI": "NEW MEXICO STATE",
         "Class": "DIVISION 1  FBS",
-        "Index": "702",
+        "Index": "701",
         "OPLpG3": "38.5",
         "OPTpP3": "0.487",
         "PLpG3": "67.0",
@@ -7380,10 +7369,10 @@
         "Ranking": "64.2",
         "teamrankings": "N Mex State"
     },
-    "702": {
+    "701": {
         "BPI": "OTTAWA (AZ)",
         "Class": "NAIA",
-        "Index": "703",
+        "Index": "702",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7391,10 +7380,10 @@
         "Ranking": "0.0",
         "teamrankings": "?"
     },
-    "703": {
+    "702": {
         "BPI": "OTTAWA-KANSAS",
         "Class": "NAIA",
-        "Index": "704",
+        "Index": "703",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7402,10 +7391,10 @@
         "Ranking": "-3.7",
         "teamrankings": "?"
     },
-    "704": {
+    "703": {
         "BPI": "PANHANDLE STATE - OK",
         "Class": "NAIA",
-        "Index": "705",
+        "Index": "704",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7413,10 +7402,10 @@
         "Ranking": "11.0",
         "teamrankings": "?"
     },
-    "705": {
+    "704": {
         "BPI": "PERU STATE",
         "Class": "NAIA",
-        "Index": "706",
+        "Index": "705",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7424,10 +7413,10 @@
         "Ranking": "14.7",
         "teamrankings": "?"
     },
-    "706": {
+    "705": {
         "BPI": "PIKEVILLE",
         "Class": "NAIA",
-        "Index": "707",
+        "Index": "706",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7435,10 +7424,10 @@
         "Ranking": "16.1",
         "teamrankings": "?"
     },
-    "707": {
+    "706": {
         "BPI": "POINT",
         "Class": "NAIA",
-        "Index": "708",
+        "Index": "707",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7446,10 +7435,10 @@
         "Ranking": "-10.8",
         "teamrankings": "?"
     },
-    "708": {
+    "707": {
         "BPI": "PRESENTATION - SD",
         "Class": "NAIA",
-        "Index": "709",
+        "Index": "708",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7457,15 +7446,26 @@
         "Ranking": "-0.1",
         "teamrankings": "?"
     },
-    "709": {
+    "708": {
         "BPI": "REINHARDT",
+        "Class": "NAIA",
+        "Index": "709",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "38.2",
+        "teamrankings": "?"
+    },
+    "709": {
+        "BPI": "ROBERT MORRIS-ILL",
         "Class": "NAIA",
         "Index": "710",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "38.2",
+        "Ranking": "9.5",
         "teamrankings": "?"
     },
     "71": {
@@ -7480,20 +7480,9 @@
         "teamrankings": "?"
     },
     "710": {
-        "BPI": "ROBERT MORRIS-ILL",
-        "Class": "NAIA",
-        "Index": "711",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "9.5",
-        "teamrankings": "?"
-    },
-    "711": {
         "BPI": "ROCKY MOUNTAIN",
         "Class": "NAIA",
-        "Index": "712",
+        "Index": "711",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7501,21 +7490,21 @@
         "Ranking": "42.7",
         "teamrankings": "?"
     },
-    "712": {
+    "711": {
         "BPI": "NO. CAROLINA STATE",
         "Class": "DIVISION 1  FBS",
-        "Index": "713",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
+        "Index": "712",
+        "OPLpG3": "--",
+        "OPTpP3": "--",
+        "PLpG3": "--",
+        "PTpP3": "--",
         "Ranking": "103.0",
-        "teamrankings": "?"
+        "teamrankings": "NC State"
     },
-    "713": {
+    "712": {
         "BPI": "S W ASSMEMBLY OF GOD",
         "Class": "NAIA",
-        "Index": "714",
+        "Index": "713",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7523,10 +7512,10 @@
         "Ranking": "10.4",
         "teamrankings": "?"
     },
-    "714": {
+    "713": {
         "BPI": "SIENA HEIGHTS",
         "Class": "NAIA",
-        "Index": "715",
+        "Index": "714",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7534,10 +7523,10 @@
         "Ranking": "21.5",
         "teamrankings": "?"
     },
-    "715": {
+    "714": {
         "BPI": "SOUTHEASTERN -FLA",
         "Class": "NAIA",
-        "Index": "716",
+        "Index": "715",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7545,10 +7534,10 @@
         "Ranking": "30.5",
         "teamrankings": "?"
     },
-    "716": {
+    "715": {
         "BPI": "SOUTHERN OREGON",
         "Class": "NAIA",
-        "Index": "717",
+        "Index": "716",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7556,10 +7545,10 @@
         "Ranking": "50.1",
         "teamrankings": "?"
     },
-    "717": {
+    "716": {
         "BPI": "SOUTHWESTERN-KANSAS",
         "Class": "NAIA",
-        "Index": "718",
+        "Index": "717",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7567,10 +7556,10 @@
         "Ranking": "13.6",
         "teamrankings": "?"
     },
-    "718": {
+    "717": {
         "BPI": "ST. ANDREWS- N.C.",
         "Class": "NAIA",
-        "Index": "719",
+        "Index": "718",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7578,15 +7567,26 @@
         "Ranking": "5.3",
         "teamrankings": "?"
     },
-    "719": {
+    "718": {
         "BPI": "ST.AMBROSE",
+        "Class": "NAIA",
+        "Index": "719",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "21.0",
+        "teamrankings": "?"
+    },
+    "719": {
+        "BPI": "ST.FRANCIS-ILL",
         "Class": "NAIA",
         "Index": "720",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "21.0",
+        "Ranking": "23.9",
         "teamrankings": "?"
     },
     "72": {
@@ -7601,20 +7601,9 @@
         "teamrankings": "?"
     },
     "720": {
-        "BPI": "ST.FRANCIS-ILL",
-        "Class": "NAIA",
-        "Index": "721",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "23.9",
-        "teamrankings": "?"
-    },
-    "721": {
         "BPI": "ST.FRANCIS-IND.",
         "Class": "NAIA",
-        "Index": "722",
+        "Index": "721",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7622,10 +7611,10 @@
         "Ranking": "53.0",
         "teamrankings": "?"
     },
-    "722": {
+    "721": {
         "BPI": "ST.MARY-KANSAS",
         "Class": "NAIA",
-        "Index": "723",
+        "Index": "722",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7633,10 +7622,10 @@
         "Ranking": "1.3",
         "teamrankings": "?"
     },
-    "723": {
+    "722": {
         "BPI": "NORTH CAROLINA",
         "Class": "DIVISION 1  FBS",
-        "Index": "724",
+        "Index": "723",
         "OPLpG3": "24.0",
         "OPTpP3": "0.282",
         "PLpG3": "73.0",
@@ -7644,10 +7633,10 @@
         "Ranking": "89.7",
         "teamrankings": "N Carolina"
     },
-    "724": {
+    "723": {
         "BPI": "ST.XAVIER",
         "Class": "NAIA",
-        "Index": "725",
+        "Index": "724",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7655,10 +7644,10 @@
         "Ranking": "24.3",
         "teamrankings": "?"
     },
-    "725": {
+    "724": {
         "BPI": "STERLING",
         "Class": "NAIA",
-        "Index": "726",
+        "Index": "725",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7666,10 +7655,10 @@
         "Ranking": "5.8",
         "teamrankings": "?"
     },
-    "726": {
+    "725": {
         "BPI": "TABOR",
         "Class": "NAIA",
-        "Index": "727",
+        "Index": "726",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7677,10 +7666,10 @@
         "Ranking": "15.8",
         "teamrankings": "?"
     },
-    "727": {
+    "726": {
         "BPI": "TAYLOR",
         "Class": "NAIA",
-        "Index": "728",
+        "Index": "727",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7688,10 +7677,10 @@
         "Ranking": "19.7",
         "teamrankings": "?"
     },
-    "728": {
+    "727": {
         "BPI": "TEXAS COLLEGE",
         "Class": "NAIA",
-        "Index": "729",
+        "Index": "728",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7699,15 +7688,26 @@
         "Ranking": "-30.2",
         "teamrankings": "?"
     },
-    "729": {
+    "728": {
         "BPI": "TEXAS WESLEYAN",
+        "Class": "NAIA",
+        "Index": "729",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "-31.3",
+        "teamrankings": "?"
+    },
+    "729": {
+        "BPI": "TRINITY INTERNATIONAL-ILL",
         "Class": "NAIA",
         "Index": "730",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
-        "Ranking": "-31.3",
+        "Ranking": "4.0",
         "teamrankings": "?"
     },
     "73": {
@@ -7722,20 +7722,9 @@
         "teamrankings": "?"
     },
     "730": {
-        "BPI": "TRINITY INTERNATIONAL-ILL",
-        "Class": "NAIA",
-        "Index": "731",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "4.0",
-        "teamrankings": "?"
-    },
-    "731": {
         "BPI": "UNION-KY.",
         "Class": "NAIA",
-        "Index": "732",
+        "Index": "731",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7743,10 +7732,10 @@
         "Ranking": "6.2",
         "teamrankings": "?"
     },
-    "732": {
+    "731": {
         "BPI": "UNIV. OF CUMBERLANDS-KY",
         "Class": "NAIA",
-        "Index": "733",
+        "Index": "732",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7754,10 +7743,10 @@
         "Ranking": "25.7",
         "teamrankings": "?"
     },
-    "733": {
+    "732": {
         "BPI": "VALLEY CITY STATE",
         "Class": "NAIA",
-        "Index": "734",
+        "Index": "733",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7765,10 +7754,10 @@
         "Ranking": "15.2",
         "teamrankings": "?"
     },
-    "734": {
+    "733": {
         "BPI": "NORTH TEXAS",
         "Class": "DIVISION 1  FBS",
-        "Index": "735",
+        "Index": "734",
         "OPLpG3": "23.0",
         "OPTpP3": "0.489",
         "PLpG3": "96.0",
@@ -7776,10 +7765,10 @@
         "Ranking": "78.9",
         "teamrankings": "North Texas"
     },
-    "735": {
+    "734": {
         "BPI": "WALDORF",
         "Class": "NAIA",
-        "Index": "736",
+        "Index": "735",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7787,10 +7776,10 @@
         "Ranking": "-8.6",
         "teamrankings": "?"
     },
-    "736": {
+    "735": {
         "BPI": "WARNER",
         "Class": "NAIA",
-        "Index": "737",
+        "Index": "736",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7798,10 +7787,10 @@
         "Ranking": "1.8",
         "teamrankings": "?"
     },
-    "737": {
+    "736": {
         "BPI": "WAYLAND BAPTIST",
         "Class": "NAIA",
-        "Index": "738",
+        "Index": "737",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7809,10 +7798,10 @@
         "Ranking": "-4.9",
         "teamrankings": "?"
     },
-    "738": {
+    "737": {
         "BPI": "WEBBER INTERNATIONAL",
         "Class": "NAIA",
-        "Index": "739",
+        "Index": "738",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7820,15 +7809,26 @@
         "Ranking": "3.7",
         "teamrankings": "?"
     },
-    "739": {
+    "738": {
         "BPI": "WILLIAM PENN",
         "Class": "NAIA",
-        "Index": "740",
+        "Index": "739",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
         "PTpP3": "0",
         "Ranking": "31.8",
+        "teamrankings": "?"
+    },
+    "739": {
+        "BPI": "TRINITY BIBLE",
+        "Class": "INDEPENDENT",
+        "Index": "740",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
+        "Ranking": "-41.5",
         "teamrankings": "?"
     },
     "74": {
@@ -7843,20 +7843,9 @@
         "teamrankings": "?"
     },
     "740": {
-        "BPI": "TRINITY BIBLE",
-        "Class": "INDEPENDENT",
-        "Index": "741",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "-41.5",
-        "teamrankings": "?"
-    },
-    "741": {
         "BPI": "VIRGINIA - LYNCHBURG",
         "Class": "INDEPENDENT",
-        "Index": "742",
+        "Index": "741",
         "OPLpG3": "0",
         "OPTpP3": "0",
         "PLpG3": "0",
@@ -7864,21 +7853,21 @@
         "Ranking": "-9.7",
         "teamrankings": "?"
     },
-    "742": {
+    "741": {
         "BPI": "NORTHERN ILLINOIS",
         "Class": "DIVISION 1  FBS",
-        "Index": "743",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
+        "Index": "742",
+        "OPLpG3": "33.0",
+        "OPTpP3": "0.446",
+        "PLpG3": "67.0",
+        "PTpP3": "0.104",
         "Ranking": "81.3",
-        "teamrankings": "?"
+        "teamrankings": "N Illinois"
     },
-    "743": {
+    "742": {
         "BPI": "NORTHWESTERN",
         "Class": "DIVISION 1  FBS",
-        "Index": "744",
+        "Index": "743",
         "OPLpG3": "27.0",
         "OPTpP3": "0.370",
         "PLpG3": "79.0",
@@ -7886,10 +7875,10 @@
         "Ranking": "101.5",
         "teamrankings": "Northwestern"
     },
-    "744": {
+    "743": {
         "BPI": "NOTRE DAME",
         "Class": "DIVISION 1  FBS",
-        "Index": "745",
+        "Index": "744",
         "OPLpG3": "17.0",
         "OPTpP3": "0.236",
         "PLpG3": "71.0",
@@ -7897,10 +7886,10 @@
         "Ranking": "103.6",
         "teamrankings": "Notre Dame"
     },
-    "745": {
+    "744": {
         "BPI": "ARKANSAS STATE",
         "Class": "DIVISION 1  FBS",
-        "Index": "746",
+        "Index": "745",
         "OPLpG3": "--",
         "OPTpP3": "--",
         "PLpG3": "--",
@@ -7908,10 +7897,10 @@
         "Ranking": "81.9",
         "teamrankings": "Arkansas St"
     },
-    "746": {
+    "745": {
         "BPI": "OHIO STATE",
         "Class": "DIVISION 1  FBS",
-        "Index": "747",
+        "Index": "746",
         "OPLpG3": "31.0",
         "OPTpP3": "0.456",
         "PLpG3": "86.0",
@@ -7919,10 +7908,10 @@
         "Ranking": "117.5",
         "teamrankings": "Ohio State"
     },
-    "747": {
+    "746": {
         "BPI": "OHIO UNIV.",
         "Class": "DIVISION 1  FBS",
-        "Index": "748",
+        "Index": "747",
         "OPLpG3": "--",
         "OPTpP3": "--",
         "PLpG3": "--",
@@ -7930,10 +7919,10 @@
         "Ranking": "76.8",
         "teamrankings": "Ohio"
     },
-    "748": {
+    "747": {
         "BPI": "OKLAHOMA",
         "Class": "DIVISION 1  FBS",
-        "Index": "749",
+        "Index": "748",
         "OPLpG3": "14.0",
         "OPTpP3": "0.184",
         "PLpG3": "65.0",
@@ -7941,16 +7930,27 @@
         "Ranking": "122.6",
         "teamrankings": "Oklahoma"
     },
-    "749": {
+    "748": {
         "BPI": "OKLAHOMA STATE",
         "Class": "DIVISION 1  FBS",
-        "Index": "750",
+        "Index": "749",
         "OPLpG3": "--",
         "OPTpP3": "--",
         "PLpG3": "--",
         "PTpP3": "--",
         "Ranking": "105.6",
         "teamrankings": "Oklahoma St"
+    },
+    "749": {
+        "BPI": "OLD DOMINION",
+        "Class": "DIVISION 1  FBS",
+        "Index": "750",
+        "OPLpG3": "52.0",
+        "OPTpP3": "0.693",
+        "PLpG3": "74.0",
+        "PTpP3": "0.135",
+        "Ranking": "50.9",
+        "teamrankings": "Old Dominion"
     },
     "75": {
         "BPI": "DIXIE STATE-UTAH",
@@ -7964,20 +7964,9 @@
         "teamrankings": "?"
     },
     "750": {
-        "BPI": "OLD DOMINION",
-        "Class": "DIVISION 1  FBS",
-        "Index": "751",
-        "OPLpG3": "52.0",
-        "OPTpP3": "0.693",
-        "PLpG3": "74.0",
-        "PTpP3": "0.135",
-        "Ranking": "50.9",
-        "teamrankings": "Old Dominion"
-    },
-    "751": {
         "BPI": "OREGON",
         "Class": "DIVISION 1  FBS",
-        "Index": "752",
+        "Index": "751",
         "OPLpG3": "24.0",
         "OPTpP3": "0.267",
         "PLpG3": "69.0",
@@ -7985,10 +7974,10 @@
         "Ranking": "98.9",
         "teamrankings": "Oregon"
     },
-    "752": {
+    "751": {
         "BPI": "OREGON STATE",
         "Class": "DIVISION 1  FBS",
-        "Index": "753",
+        "Index": "752",
         "OPLpG3": "77.0",
         "OPTpP3": "0.895",
         "PLpG3": "68.0",
@@ -7996,10 +7985,10 @@
         "Ranking": "71.8",
         "teamrankings": "Oregon St"
     },
-    "753": {
+    "752": {
         "BPI": "PENN STATE",
         "Class": "DIVISION 1  FBS",
-        "Index": "754",
+        "Index": "753",
         "OPLpG3": "38.0",
         "OPTpP3": "0.487",
         "PLpG3": "80.0",
@@ -8007,10 +7996,10 @@
         "Ranking": "111.5",
         "teamrankings": "Penn State"
     },
-    "754": {
+    "753": {
         "BPI": "PITTSBURGH",
         "Class": "DIVISION 1  FBS",
-        "Index": "755",
+        "Index": "754",
         "OPLpG3": "--",
         "OPTpP3": "--",
         "PLpG3": "--",
@@ -8018,10 +8007,10 @@
         "Ranking": "93.2",
         "teamrankings": "Pittsburgh"
     },
-    "755": {
+    "754": {
         "BPI": "PURDUE",
         "Class": "DIVISION 1  FBS",
-        "Index": "756",
+        "Index": "755",
         "OPLpG3": "31.0",
         "OPTpP3": "0.392",
         "PLpG3": "73.0",
@@ -8029,10 +8018,10 @@
         "Ranking": "95.4",
         "teamrankings": "Purdue"
     },
-    "756": {
+    "755": {
         "BPI": "ARMY",
         "Class": "DIVISION 1  FBS",
-        "Index": "757",
+        "Index": "756",
         "OPLpG3": "34.0",
         "OPTpP3": "0.642",
         "PLpG3": "69.0",
@@ -8040,21 +8029,21 @@
         "Ranking": "84.4",
         "teamrankings": "Army"
     },
-    "757": {
+    "756": {
         "BPI": "RICE",
         "Class": "DIVISION 1  FBS",
-        "Index": "758",
+        "Index": "757",
         "OPLpG3": "45.0",
-        "OPTpP3": "0.738",
-        "PLpG3": "86.0",
-        "PTpP3": "0.314",
+        "OPTpP3": "0.726",
+        "PLpG3": "87.0",
+        "PTpP3": "0.310",
         "Ranking": "60.0",
         "teamrankings": "Rice"
     },
-    "758": {
+    "757": {
         "BPI": "RUTGERS",
         "Class": "DIVISION 1  FBS",
-        "Index": "759",
+        "Index": "758",
         "OPLpG3": "7.0",
         "OPTpP3": "0.123",
         "PLpG3": "76.0",
@@ -8062,16 +8051,27 @@
         "Ranking": "76.1",
         "teamrankings": "Rutgers"
     },
-    "759": {
+    "758": {
         "BPI": "SAN DIEGO STATE",
         "Class": "DIVISION 1  FBS",
-        "Index": "760",
+        "Index": "759",
         "OPLpG3": "31.0",
         "OPTpP3": "0.517",
         "PLpG3": "57.0",
         "PTpP3": "0.175",
         "Ranking": "86.9",
         "teamrankings": "San Diego St"
+    },
+    "759": {
+        "BPI": "SAN JOSE STATE",
+        "Class": "DIVISION 1  FBS",
+        "Index": "760",
+        "OPLpG3": "--",
+        "OPTpP3": "--",
+        "PLpG3": "--",
+        "PTpP3": "--",
+        "Ranking": "56.6",
+        "teamrankings": "San Jose St"
     },
     "76": {
         "BPI": "DULUTH-MINNESOTA",
@@ -8085,81 +8085,81 @@
         "teamrankings": "?"
     },
     "760": {
-        "BPI": "SAN JOSE STATE",
+        "BPI": "SOUTH ALABAMA",
         "Class": "DIVISION 1  FBS",
         "Index": "761",
+        "OPLpG3": "30.0",
+        "OPTpP3": "0.375",
+        "PLpG3": "68.0",
+        "PTpP3": "0.382",
+        "Ranking": "66.5",
+        "teamrankings": "S Alabama"
+    },
+    "761": {
+        "BPI": "SOUTH CAROLINA",
+        "Class": "DIVISION 1  FBS",
+        "Index": "762",
+        "OPLpG3": "15.0",
+        "OPTpP3": "0.268",
+        "PLpG3": "72.0",
+        "PTpP3": "0.681",
+        "Ranking": "94.7",
+        "teamrankings": "S Carolina"
+    },
+    "762": {
+        "BPI": "SOUTH FLORIDA",
+        "Class": "DIVISION 1  FBS",
+        "Index": "763",
         "OPLpG3": "--",
         "OPTpP3": "--",
         "PLpG3": "--",
         "PTpP3": "--",
-        "Ranking": "56.6",
-        "teamrankings": "San Jose St"
-    },
-    "761": {
-        "BPI": "SOUTH ALABAMA",
-        "Class": "DIVISION 1  FBS",
-        "Index": "762",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "66.5",
-        "teamrankings": "?"
-    },
-    "762": {
-        "BPI": "SOUTH CAROLINA",
-        "Class": "DIVISION 1  FBS",
-        "Index": "763",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "94.7",
-        "teamrankings": "?"
+        "Ranking": "90.2",
+        "teamrankings": "S Florida"
     },
     "763": {
-        "BPI": "SOUTH FLORIDA",
-        "Class": "DIVISION 1  FBS",
-        "Index": "764",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
-        "Ranking": "90.2",
-        "teamrankings": "?"
-    },
-    "764": {
         "BPI": "SOUTHERN MISSISSIPPI",
         "Class": "DIVISION 1  FBS",
-        "Index": "765",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
+        "Index": "764",
+        "OPLpG3": "--",
+        "OPTpP3": "--",
+        "PLpG3": "--",
+        "PTpP3": "--",
         "Ranking": "77.6",
-        "teamrankings": "?"
+        "teamrankings": "S Mississippi"
     },
-    "765": {
+    "764": {
         "BPI": "SOUTHERN CALIFORNIA",
         "Class": "DIVISION 1  FBS",
-        "Index": "766",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
+        "Index": "765",
+        "OPLpG3": "21.0",
+        "OPTpP3": "0.280",
+        "PLpG3": "75.0",
+        "PTpP3": "0.573",
         "Ranking": "101.1",
-        "teamrankings": "?"
+        "teamrankings": "USC"
     },
-    "766": {
+    "765": {
         "BPI": "SOUTHERN METHODIST",
         "Class": "DIVISION 1  FBS",
-        "Index": "767",
+        "Index": "766",
         "OPLpG3": "46.0",
         "OPTpP3": "0.479",
         "PLpG3": "47.0",
         "PTpP3": "0.489",
         "Ranking": "68.1",
         "teamrankings": "S Methodist"
+    },
+    "766": {
+        "BPI": "HAWAII",
+        "Class": "DIVISION 1  FBS",
+        "Index": "767",
+        "OPLpG3": "37.5",
+        "OPTpP3": "0.536",
+        "PLpG3": "72.5",
+        "PTpP3": "0.703",
+        "Ranking": "104.5",
+        "teamrankings": "Hawaii"
     },
     "77": {
         "BPI": "EAST CENTRAL-OKLAHOMA",
@@ -8198,12 +8198,12 @@
         "BPI": "TEXAS STATE-SAN MARCOS",
         "Class": "DIVISION 1  FBS",
         "Index": "9",
-        "OPLpG3": "0",
-        "OPTpP3": "0",
-        "PLpG3": "0",
-        "PTpP3": "0",
+        "OPLpG3": "35.0",
+        "OPTpP3": "0.461",
+        "PLpG3": "57.0",
+        "PTpP3": "0.123",
         "Ranking": "53.2",
-        "teamrankings": "?"
+        "teamrankings": "Texas State"
     },
     "80": {
         "BPI": "EASTERN NEW MEXICO",
@@ -8297,12 +8297,12 @@
         "BPI": "FLORIDA TECH",
         "Class": "DIVISION 2",
         "Index": "89",
-        "OPLpG3": "26.0",
-        "OPTpP3": "0.382",
-        "PLpG3": "80.0",
-        "PTpP3": "0.375",
+        "OPLpG3": "0",
+        "OPTpP3": "0",
+        "PLpG3": "0",
+        "PTpP3": "0",
         "Ranking": "42.3",
-        "teamrankings": "LA Tech"
+        "teamrankings": "?"
     },
     "89": {
         "BPI": "FORT HAYS STATE",
