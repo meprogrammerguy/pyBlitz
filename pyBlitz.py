@@ -191,7 +191,6 @@ def Calculate(first, second, neutral, verbose):
     file = "{0}stats.json".format(settings.data_path)
     with open(file) as stats_file:
         dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
-
     file = "{0}bettingtalk.json".format(settings.data_path)
     if (not os.path.exists(file)):
         settings.exceptions.append("Calculate() - bettingtalk file is missing, run the scrape_bettingtalk tool to create")
