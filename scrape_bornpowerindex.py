@@ -14,7 +14,8 @@ from pathlib import Path
 import settings
 
 def CleanString(data):
-    return re.sub(' +',' ', data)
+    data = re.sub(' +',' ', data)
+    return re.sub("'",'', data)
 
 url = 'http://www.bornpowerindex.com/cgi-bin/DBRetrieve.pl'
 

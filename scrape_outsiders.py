@@ -16,7 +16,8 @@ from pathlib import Path
 import settings
 
 def CleanString(data):
-    return re.sub(' +',' ', data)
+    data = re.sub(' +',' ', data)
+    return re.sub("'",'', data)
 
 # Please note, I have written this scraper in case you want to learn/use it
 # Be aware that the statistics in this scraper are not currently used in any of my calculations

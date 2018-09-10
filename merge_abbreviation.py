@@ -23,7 +23,8 @@ def GetOverride(item, list_overrides):
     return bpi, abbr
 
 def CleanString(data):
-    return re.sub(' +',' ', data)
+    data = re.sub(' +',' ', data)
+    return re.sub("'",'', data)
 
 def GetAbbr(team, dict_abbr):
     abbr = ""

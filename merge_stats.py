@@ -21,7 +21,8 @@ def GetOverride(item, list_overrides):
     return field
 
 def CleanString(data):
-    return re.sub(' +',' ', data)
+    data = re.sub(' +',' ', data)
+    return re.sub("'",'', data)
 
 print ("Merge Stats Tool")
 print ("**************************")

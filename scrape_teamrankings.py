@@ -16,7 +16,8 @@ from pathlib import Path
 import settings
 
 def CleanString(data):
-    return re.sub(' +',' ', data)
+    data = re.sub(' +',' ', data)
+    return re.sub("'",'', data)
 
 urls = []
 urls.append("https://www.teamrankings.com/college-football/stat/plays-per-game")

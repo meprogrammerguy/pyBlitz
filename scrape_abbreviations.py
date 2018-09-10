@@ -25,7 +25,8 @@ def AddSchool(team, abbr):
     B.append(abbr)
 
 def CleanString(data):
-    return re.sub(' +',' ', data)
+    data = re.sub(' +',' ', data)
+    return re.sub("'",'', data)
 
 url = "https://www.reddit.com/r/CFB/wiki/abbreviations"
 

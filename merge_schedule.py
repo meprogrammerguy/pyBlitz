@@ -22,7 +22,8 @@ def GetOverride(item, list_overrides):
     return field
 
 def CleanString(data):
-    return re.sub(' +',' ', data)
+    data = re.sub(' +',' ', data)
+    return re.sub("'",'', data)
 
 now = datetime.now()
 path = "{0}{1}/{2}".format(settings.predict_root, int(now.year), settings.predict_sched)
