@@ -23,7 +23,8 @@ def GetNumber(item):
     return int(idx[0])
 
 def CleanString(data):
-    return re.sub(' +',' ', data)
+    data = re.sub(' +',' ', data)
+    return re.sub("'",'', data)
 
 def num_there(s):
     return any(i.isdigit() for i in s)

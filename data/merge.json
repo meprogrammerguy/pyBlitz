@@ -92,8 +92,8 @@
     "107": {
         "BPI": "TEXAS CHRISTIAN",
         "Index": "108",
-        "abbr": "TCU",
-        "abbr team": "TCU",
+        "abbr": "?",
+        "abbr team": "?",
         "class": "DIVISION 1  FBS",
         "scheduled": "TCU Horned Frogs",
         "teamrankings": "TX Christian"
@@ -110,10 +110,10 @@
     "109": {
         "BPI": "TEXAS-EL PASO",
         "Index": "110",
-        "abbr": "UTEP",
-        "abbr team": "UTEP",
+        "abbr": "?",
+        "abbr team": "?",
         "class": "DIVISION 1  FBS",
-        "scheduled": "UTEP Miners",
+        "scheduled": "?",
         "teamrankings": "TX El Paso"
     },
     "11": {
@@ -833,7 +833,7 @@
         "abbr": "?",
         "abbr team": "?",
         "class": "DIVISION 2",
-        "scheduled": "Fort Valley State Wildcats",
+        "scheduled": "?",
         "teamrankings": "?"
     },
     "182": {
@@ -1364,7 +1364,7 @@
         "abbr": "?",
         "abbr team": "?",
         "class": "DIVISION 2",
-        "scheduled": "?",
+        "scheduled": "Notre Dame Fighting Irish",
         "teamrankings": "?"
     },
     "235": {
@@ -1751,7 +1751,7 @@
         "abbr": "?",
         "abbr team": "?",
         "class": "DIVISION 2",
-        "scheduled": "Valdosta State Blazers",
+        "scheduled": "?",
         "teamrankings": "?"
     },
     "274": {
@@ -2826,12 +2826,12 @@
         "teamrankings": "?"
     },
     "381": {
-        "BPI": "EAST TENNESSEE STATE",
+        "BPI": "GETTYSBURG",
         "Index": "382",
         "abbr": "ETSU",
         "abbr team": "ETSU",
         "class": "DIVISION 3",
-        "scheduled": "East Tennessee State Buccaneers",
+        "scheduled": "?",
         "teamrankings": "?"
     },
     "382": {
@@ -2907,12 +2907,12 @@
         "teamrankings": "?"
     },
     "39": {
-        "BPI": "HAWAII",
+        "BPI": "HAWAI\u2019I",
         "Index": "40",
         "abbr": "HAW",
         "abbr team": "Hawaii",
         "class": "DIVISION 1  FBS",
-        "scheduled": "Hawai'i Rainbow Warriors",
+        "scheduled": "?",
         "teamrankings": "Hawaii"
     },
     "390": {
@@ -3710,8 +3710,8 @@
     "47": {
         "BPI": "KENT STATE",
         "Index": "48",
-        "abbr": "KENT",
-        "abbr team": "KENT STATE",
+        "abbr": "NCST",
+        "abbr team": "NC State",
         "class": "DIVISION 1  FBS",
         "scheduled": "Kent State Golden Flashes",
         "teamrankings": "Kent State"
@@ -4218,7 +4218,7 @@
         "abbr team": "LSU",
         "class": "DIVISION 1  FBS",
         "scheduled": "LSU Tigers",
-        "teamrankings": "LSU"
+        "teamrankings": "UNLV"
     },
     "520": {
         "BPI": "WESLEYAN-NORTH CAROLINA",
@@ -4583,8 +4583,8 @@
     "557": {
         "BPI": "BUCKNELL",
         "Index": "558",
-        "abbr": "BC",
-        "abbr team": "Bucknell",
+        "abbr": "UNLV",
+        "abbr team": "UNLV",
         "class": "Championship Subdivision",
         "scheduled": "?",
         "teamrankings": "?"
@@ -4592,8 +4592,8 @@
     "558": {
         "BPI": "BUTLER",
         "Index": "559",
-        "abbr": "?",
-        "abbr team": "?",
+        "abbr": "UTEP",
+        "abbr team": "UTEP",
         "class": "Championship Subdivision",
         "scheduled": "?",
         "teamrankings": "?"
@@ -4610,7 +4610,7 @@
     "56": {
         "BPI": "MARYLAND",
         "Index": "57",
-        "abbr": "MD",
+        "abbr": "UMD",
         "abbr team": "Maryland",
         "class": "DIVISION 1  FBS",
         "scheduled": "Maryland Terrapins",
@@ -4709,8 +4709,8 @@
     "57": {
         "BPI": "MASSACHUSETTS",
         "Index": "58",
-        "abbr": "UMASS",
-        "abbr team": "UMASS",
+        "abbr": "?",
+        "abbr team": "?",
         "class": "DIVISION 1  FBS",
         "scheduled": "UMass Minutemen",
         "teamrankings": "U Mass"
@@ -4784,7 +4784,7 @@
         "abbr": "?",
         "abbr team": "?",
         "class": "Championship Subdivision",
-        "scheduled": "?",
+        "scheduled": "UTEP Miners",
         "teamrankings": "?"
     },
     "578": {
@@ -4829,7 +4829,7 @@
         "abbr": "ELON",
         "abbr team": "Elon",
         "class": "Championship Subdivision",
-        "scheduled": "Elon Phoenix",
+        "scheduled": "?",
         "teamrankings": "?"
     },
     "582": {
@@ -4853,11 +4853,11 @@
     "584": {
         "BPI": "FURMAN",
         "Index": "585",
-        "abbr": "FUR",
-        "abbr team": "FURMAN",
+        "abbr": "UMASS",
+        "abbr team": "UMass",
         "class": "Championship Subdivision",
         "scheduled": "Furman Paladins",
-        "teamrankings": "FURMAN"
+        "teamrankings": "?"
     },
     "585": {
         "BPI": "GARDNER-WEBB",
@@ -5330,8 +5330,8 @@
     "631": {
         "BPI": "PINE BLUFF-ARKANSAS",
         "Index": "632",
-        "abbr": "UAPB",
-        "abbr team": "Arkansas-Pine Bluff",
+        "abbr": "?",
+        "abbr team": "?",
         "class": "Championship Subdivision",
         "scheduled": "Arkansas-Pine Bluff Golden Lions",
         "teamrankings": "?"
@@ -5348,7 +5348,7 @@
     "633": {
         "BPI": "PRAIRIE VIEW A&M",
         "Index": "634",
-        "abbr": "PV",
+        "abbr": "PVAM",
         "abbr team": "Prairie View A&M",
         "class": "Championship Subdivision",
         "scheduled": "Prairie View Panthers",
@@ -5357,7 +5357,7 @@
     "634": {
         "BPI": "PRESBYTERIAN",
         "Index": "635",
-        "abbr": "PRES",
+        "abbr": "PRE",
         "abbr team": "Presbyterian",
         "class": "Championship Subdivision",
         "scheduled": "?",
@@ -6113,11 +6113,11 @@
     "71": {
         "BPI": "NEVADA-LAS VEGAS",
         "Index": "72",
-        "abbr": "UNLV",
-        "abbr team": "UNLV",
+        "abbr": "?",
+        "abbr team": "?",
         "class": "DIVISION 1  FBS",
         "scheduled": "UNLV Rebels",
-        "teamrankings": "UNLV"
+        "teamrankings": "?"
     },
     "710": {
         "BPI": "KENTUCKY CHRISTIAN",
@@ -6410,11 +6410,11 @@
     "74": {
         "BPI": "NO. CAROLINA STATE",
         "Index": "75",
-        "abbr": "NCST",
-        "abbr team": "NC State",
+        "abbr": "?",
+        "abbr team": "?",
         "class": "DIVISION 1  FBS",
         "scheduled": "NC State Wolfpack",
-        "teamrankings": "NC State"
+        "teamrankings": "?"
     },
     "740": {
         "BPI": "S W ASSMEMBLY OF GOD",
@@ -6513,7 +6513,7 @@
         "abbr team": "North Carolina",
         "class": "DIVISION 1  FBS",
         "scheduled": "North Carolina Tar Heels",
-        "teamrankings": "N Carolina"
+        "teamrankings": "NC State"
     },
     "750": {
         "BPI": "ST.XAVIER",
@@ -6701,7 +6701,7 @@
         "abbr": "ND",
         "abbr team": "Notre Dame",
         "class": "DIVISION 1  FBS",
-        "scheduled": "Notre Dame Fighting Irish",
+        "scheduled": "?",
         "teamrankings": "Notre Dame"
     },
     "8": {

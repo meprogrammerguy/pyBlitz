@@ -12,7 +12,8 @@ import re
 import settings
 
 def CleanString(data):
-    return re.sub(' +',' ', data)
+    data = re.sub(' +',' ', data)
+    return re.sub("'",'', data)
 
 print ("Combine Stats Tool")
 print ("**************************")

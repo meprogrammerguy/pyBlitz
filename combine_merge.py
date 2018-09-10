@@ -42,7 +42,8 @@ def GetIndex(BPI_list, team):
     return index
 
 def CleanString(data):
-    return re.sub(' +',' ', data)
+    data = re.sub(' +',' ', data)
+    return re.sub("'",'', data)
 
 print ("Combine Merge Tool")
 print ("**************************")
