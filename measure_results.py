@@ -40,11 +40,12 @@ def GetFiles(path, templatename):
     for p in files:
         A.append(p)
     file_list = []
-    for item in range(0, 17):
+    for item in range(0, 16):
         file_list.append("?")
     for item in A:
         idx = GetIndex(item)
-        file_list[idx] = item
+        if (len(file_list) > idx):
+            file_list[idx] = item
     file_list = [x for x in file_list if x != "?"]
     return file_list
 
