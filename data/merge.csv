@@ -124,7 +124,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 123,WAKE FOREST,Wake Forest,Wake Forest Demon Deacons,Wake Forest,WAKE,DIVISION 1  FBS
 124,WASHINGTON,Washington,Washington Huskies,Washington,WASH,DIVISION 1  FBS
 125,WASHINGTON STATE,Wash State,Washington State Cougars,Washington State,WSU,DIVISION 1  FBS
-126,WEST VIRGINIA,W Virginia,?,West Virginia,WVU,DIVISION 1  FBS
+126,WEST VIRGINIA,W Virginia,West Virginia Mountaineers,West Virginia,WVU,DIVISION 1  FBS
 127,WESTERN KENTUCKY,W Kentucky,Western Kentucky Hilltoppers,?,?,DIVISION 1  FBS
 128,WESTERN MICHIGAN,W Michigan,Western Michigan Broncos,Western Michigan,WMU,DIVISION 1  FBS
 129,WISCONSIN,Wisconsin,Wisconsin Badgers,Wisconsin,WIS,DIVISION 1  FBS
@@ -286,7 +286,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 285,WEST GEORGIA,?,?,?,?,DIVISION 2
 286,WEST LIBERTY STATE,?,?,?,?,DIVISION 2
 287,WEST TEXAS A&M,?,?,?,?,DIVISION 2
-288,WEST VIRGINIA STATE,?,West Virginia Mountaineers,?,?,DIVISION 2
+288,WEST VIRGINIA STATE,?,?,?,?,DIVISION 2
 289,WEST VIRGINIA WESLEYAN,?,?,?,?,DIVISION 2
 290,WESTERN NEW MEXICO,?,?,?,?,DIVISION 2
 291,WESTERN OREGON,?,?,?,?,DIVISION 2
