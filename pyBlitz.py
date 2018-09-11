@@ -47,6 +47,12 @@ def GetFloat(item):
         idx.append("-1")
     return myFloat(idx[0])
 
+def CleanString(data):
+    if (chr(8217) in data):
+        data = "HAWAII"
+    data =  re.sub(' +',' ', data)
+    return re.sub("'",'', data)
+
 def GetPercent(thespread, dict_percent):
     aPercent = 0
     bPercent = 0

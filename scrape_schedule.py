@@ -15,16 +15,13 @@ from pathlib import Path
 import re
 
 import settings
+import pyBlitz
 
 def GetNumber(item):
     idx = re.findall(r'\d+', str(item))
     if (len(idx) == 0):
         idx.append("-1")
     return int(idx[0])
-
-def CleanString(data):
-    data = re.sub(' +',' ', data)
-    return re.sub("'",'', data)
 
 def num_there(s):
     return any(i.isdigit() for i in s)
@@ -115,12 +112,12 @@ def main(argv):
                         Y.append(year)
                     else:
                         Y.append(year + 1)
-                    B.append(CleanString(team['title']))
+                    B.append(pyBlitz.CleanString(team['title']))
                     if loop != len(pages):
                         if (neutral[count]['data-is-neutral-site'] == 'true'):
                             C.append("Neutral")
                         else:
-                            C.append(CleanString(team['title']))
+                            C.append(pyBlitz.CleanString(team['title']))
                     else:
                         C.append("Neutral")
                     if (index < len(F)):
@@ -131,7 +128,7 @@ def main(argv):
                     index+=1
                     IDX.append(index)
                 else:
-                    D.append(CleanString(team['title']))
+                    D.append(pyBlitz.CleanString(team['title']))
                 line+=1
             dateidx+=1
 

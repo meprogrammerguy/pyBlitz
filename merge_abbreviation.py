@@ -11,6 +11,7 @@ from pathlib import Path
 import re
 
 import settings
+import pyBlitz
 
 def GetOverride(item, list_overrides):
     bpi = ""
@@ -21,10 +22,6 @@ def GetOverride(item, list_overrides):
             abbr = ovr[2]
             break
     return bpi, abbr
-
-def CleanString(data):
-    data = re.sub(' +',' ', data)
-    return re.sub("'",'', data)
 
 def GetAbbr(team, dict_abbr):
     abbr = ""
@@ -94,9 +91,9 @@ dict_merge["corrected abbr"] = []
 values = []
 for item in teams_abbr:
     key = process.extractOne(item, stats_teams, scorer=fuzz.QRatio)
-    dict_merge["abbr team"].append(CleanString(item))
+    dict_merge["abbr team"].append(pyBlitz.CleanString(item))
     dict_merge["match ratio"].append(key[1])
-    dict_merge["stats team"].append(CleanString(key[0]))
+    dict_merge["stats team"].append(pyBlitz.CleanString(key[0]))
     ovr_bpi, ovr_addr = GetOverride(item, list_overrides)
     dict_merge["corrected stats team"].append(ovr_bpi)
     abbr = GetAbbr(item, dict_abbr)

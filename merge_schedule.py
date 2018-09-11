@@ -12,6 +12,7 @@ import re
 from datetime import datetime
 
 import settings
+import pyBlitz
 
 def GetOverride(item, list_overrides):
     field = ""
@@ -20,10 +21,6 @@ def GetOverride(item, list_overrides):
             field = ovr[1]
             break
     return field
-
-def CleanString(data):
-    data = re.sub(' +',' ', data)
-    return re.sub("'",'', data)
 
 now = datetime.now()
 path = "{0}{1}/{2}".format(settings.predict_root, int(now.year), settings.predict_sched)
@@ -86,9 +83,9 @@ dict_merge["corrected stats team"] = []
 values = []
 for item in sched_teams:
     key = process.extractOne(item, stats_teams, scorer=fuzz.QRatio)
-    dict_merge["scheduled team"].append(CleanString(item))
+    dict_merge["scheduled team"].append(pyBlitz.CleanString(item))
     dict_merge["match ratio"].append(key[1])
-    dict_merge["stats team"].append(CleanString(key[0]))
+    dict_merge["stats team"].append(pyBlitz.CleanString(key[0]))
     ovr = GetOverride(item, list_overrides)
     dict_merge["corrected stats team"].append(ovr)
     values.append([item, key[1], key[0], ovr])

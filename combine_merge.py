@@ -11,6 +11,7 @@ import re
 from datetime import datetime
 
 import settings
+import pyBlitz
 
 def GetCount(item):
     filename = os.path.basename(str(item))
@@ -41,10 +42,6 @@ def GetIndex(BPI_list, team):
         if (itm.lower().strip() == team.lower().strip()):
             index = loop
     return index
-
-def CleanString(data):
-    data = re.sub(' +',' ', data)
-    return re.sub("'",'', data)
 
 print ("Combine Merge Tool")
 print ("**************************")
@@ -135,10 +132,10 @@ for row in dict_bpi.values():   #Main key put every one in
     IDX.append(str(index))
 
 for item in dict_stats_merge:
-    teamrankings = CleanString(item['teamrankings'])
-    team = CleanString(item['BPI'])
+    teamrankings = pyBlitz.CleanString(item['teamrankings'])
+    team = pyBlitz.CleanString(item['BPI'])
     if (item['corrected BPI'].strip() != ""):
-        team = CleanString(item['corrected BPI'])
+        team = pyBlitz.CleanString(item['corrected BPI'])
     index = GetIndex(A, team)    
     for row in dict_teamrankings.values():
         if(row['Team'].lower().strip()==teamrankings.lower().strip()):
@@ -147,10 +144,10 @@ for item in dict_stats_merge:
                 break
 
 for item in dict_abbr_merge:
-    abbr_team = CleanString(item['abbr team'])
-    stats = CleanString(item["stats team"].lower().strip())
+    abbr_team = pyBlitz.CleanString(item['abbr team'])
+    stats = pyBlitz.CleanString(item["stats team"].lower().strip())
     if (item["corrected stats team"].lower().strip()):
-        stats =  CleanString(item["corrected stats team"].lower().strip())
+        stats =  pyBlitz.CleanString(item["corrected stats team"].lower().strip())
     abbr = item["abbreviation"].strip()
     if (item["corrected abbr"].strip()):
         abbr =  item["corrected abbr"].strip()
@@ -163,10 +160,10 @@ for item in dict_abbr_merge:
                 break
 
 for item in dict_sched_merge:
-    scheduled = CleanString(item['scheduled team'])
-    stats = CleanString(item["stats team"].lower().strip())
+    scheduled = pyBlitz.CleanString(item['scheduled team'])
+    stats = pyBlitz.CleanString(item["stats team"].lower().strip())
     if (item["corrected stats team"].lower().strip()):
-        stats =  CleanString(item["corrected stats team"].lower().strip())
+        stats =  pyBlitz.CleanString(item["corrected stats team"].lower().strip())
     index = GetIndex(A, stats)    
     for idx in range(len(schedule_files)):
         for row in list_schedule[idx].values():

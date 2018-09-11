@@ -14,10 +14,7 @@ import re
 from pathlib import Path
 
 import settings
-
-def CleanString(data):
-    data = re.sub(' +',' ', data)
-    return re.sub("'",'', data)
+import pyBlitz
 
 urls = []
 urls.append("https://www.teamrankings.com/college-football/stat/plays-per-game")
@@ -48,7 +45,7 @@ for row in ratings_table[0].findAll("tr"):
     if len(col)>0 and col[1].find(text=True)!="Team":
         index+=1
         IDX.append(index)
-        A.append(CleanString(col[1].find(text=True)))
+        A.append(pyBlitz.CleanString(col[1].find(text=True)))
         B.append(col[3].find(text=True))
 for team in A:
     for row in ratings_table[1].findAll("tr"):

@@ -14,6 +14,7 @@ import re
 from pathlib import Path
 
 import settings
+import pyBlitz
 
 index = 0
 
@@ -23,10 +24,6 @@ def AddSchool(team, abbr):
     IDX.append(index)
     A.append(team)
     B.append(abbr)
-
-def CleanString(data):
-    data = re.sub(' +',' ', data)
-    return re.sub("'",'', data)
 
 url = "https://www.reddit.com/r/CFB/wiki/abbreviations"
 
@@ -58,7 +55,7 @@ for row in tables[1].findAll("tr"):
             if ("#f" in tag2):
                 index+=1
                 IDX.append(index)
-                A.append(CleanString(tag))
+                A.append(pyBlitz.CleanString(tag))
                 B.append(col[1].find(text=True))
 
 df=pd.DataFrame(IDX,columns=['Index'])

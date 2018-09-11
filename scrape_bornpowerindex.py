@@ -12,10 +12,7 @@ import re
 from pathlib import Path
 
 import settings
-
-def CleanString(data):
-    data = re.sub(' +',' ', data)
-    return re.sub("'",'', data)
+import pyBlitz
 
 url = 'http://www.bornpowerindex.com/cgi-bin/DBRetrieve.pl'
 
@@ -111,7 +108,7 @@ for row in table1[0].findAll("tr"):
     if len(col)>0 and col[0].find(text=True)!="School":
         index+=1
         IDX.append(index)
-        A.append(CleanString(col[0].find(text=True)))
+        A.append(pyBlitz.CleanString(col[0].find(text=True)))
         B.append(col[1].find(text=True))
         C.append(col[2].find(text=True))
 for row in table2[0].findAll("tr"):
@@ -119,7 +116,7 @@ for row in table2[0].findAll("tr"):
     if len(col)>0 and col[0].find(text=True)!="School":
         index+=1
         IDX.append(index)
-        A.append(CleanString(col[0].find(text=True)))
+        A.append(pyBlitz.CleanString(col[0].find(text=True)))
         B.append(col[1].find(text=True))
         C.append(col[2].find(text=True))
 for row in table3[0].findAll("tr"):
@@ -127,7 +124,7 @@ for row in table3[0].findAll("tr"):
     if len(col)>0 and col[0].find(text=True)!="School":
         index+=1
         IDX.append(index)
-        A.append(CleanString(col[0].find(text=True)))
+        A.append(pyBlitz.CleanString(col[0].find(text=True)))
         B.append(col[1].find(text=True))
         C.append(col[2].find(text=True))
 for row in table4[0].findAll("tr"):
@@ -135,7 +132,7 @@ for row in table4[0].findAll("tr"):
     if len(col)>0 and col[0].find(text=True)!="School":
         index+=1
         IDX.append(index)
-        A.append(CleanString(col[0].find(text=True)))
+        A.append(pyBlitz.CleanString(col[0].find(text=True)))
         B.append(col[1].find(text=True))
         C.append(col[2].find(text=True))
 for row in table5[0].findAll("tr"):
@@ -143,7 +140,7 @@ for row in table5[0].findAll("tr"):
     if len(col)>0 and col[0].find(text=True)!="School":
         index+=1
         IDX.append(index)
-        A.append(CleanString(col[0].find(text=True)))
+        A.append(pyBlitz.CleanString(col[0].find(text=True)))
         B.append(col[1].find(text=True))
         C.append(col[2].find(text=True))
 for row in table6[0].findAll("tr"):
@@ -151,7 +148,7 @@ for row in table6[0].findAll("tr"):
     if len(col)>0 and col[0].find(text=True)!="School":
         index+=1
         IDX.append(index)
-        A.append(CleanString(col[0].find(text=True)))
+        A.append(pyBlitz.CleanString(col[0].find(text=True)))
         B.append(col[1].find(text=True))
         C.append(col[2].find(text=True))
 

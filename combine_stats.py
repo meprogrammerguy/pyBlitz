@@ -10,10 +10,7 @@ from pathlib import Path
 import re
 
 import settings
-
-def CleanString(data):
-    data = re.sub(' +',' ', data)
-    return re.sub("'",'', data)
+import pyBlitz
 
 print ("Combine Stats Tool")
 print ("**************************")
@@ -55,8 +52,8 @@ G=[]
 H=[]
 index = 0
 for item in dict_merge.values():
-    teamrankings = CleanString(item['teamrankings'])
-    team = CleanString(item['BPI'])
+    teamrankings = pyBlitz.CleanString(item['teamrankings'])
+    team = pyBlitz.CleanString(item['BPI'])
     
     row_team = []
     for row in dict_teamrankings.values():
