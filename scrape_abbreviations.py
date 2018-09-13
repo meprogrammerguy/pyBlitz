@@ -44,6 +44,8 @@ B=[]
 # Add any Missing Teams Here
 AddSchool("ALABAMA-BIRMINGHAM", "UAB")
 AddSchool("LOUISIANA COLLEGE", "LC")
+AddSchool("WESTERN KENTUCKY","WKU")
+AddSchool("FLORIDA ATLANTIC","FAU")
 # Add any Missing Teams Here
 
 for row in tables[1].findAll("tr"):
