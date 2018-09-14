@@ -62,7 +62,7 @@ def RefreshScheduleFiles():
     scrape_schedule.year = year
     scrape_schedule.main(sys.argv[1:])
 
-def GetActualScores(abbra, abbrb, scores):
+def GetActualScores(abbra, teama, abbrb, teamb, scores):
     items = re.split(r'(,|\s)\s*', str(scores).lower())
     if (not items):
         return -1, -1
@@ -70,6 +70,8 @@ def GetActualScores(abbra, abbrb, scores):
         return -1, -1
     if (len(items) != 7):
         return -1, -1
+    if (verbose):
+            print ("{0} vs. {1} final score {2}".format(teama, teamb, scores))
     if (abbra.lower().strip() not in items):
         if (verbose):
             print ("Missing Abbreviation [{0}] [{1}] in Score {2}".format(abbra, abbrb, scores))
@@ -149,12 +151,16 @@ for idx in range(len(list_sched)):
         chancea = -1
         abbra = ""
         abbrb = ""
+        teama = ""
+        teamb = ""
         if (index < len(list_week) and list_week[index]["Week"] == week):
             chancea = GetPercent(list_week[index]["ChanceA"])
             abbra = list_week[index]["AbbrA"]
             abbrb = list_week[index]["AbbrB"]
+            teama = list_week[index]["TeamA"]
+            teamb = list_week[index]["TeamB"]
         index += 1
-        scorea, scoreb = GetActualScores(abbra, abbrb, item["Score"])
+        scorea, scoreb = GetActualScores(abbra, teama, abbrb, teamb, item["Score"])
         if (chancea < 0 or scorea < 0 or scoreb < 0 or abbra.strip() == "" or abbrb.strip() == ""):
             skip += 1
         else:
