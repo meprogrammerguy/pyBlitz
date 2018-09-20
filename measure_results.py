@@ -70,14 +70,14 @@ def GetActualScores(abbra, teama, abbrb, teamb, scores):
         return -1, -1
     if (len(items) != 7):
         return -1, -1
-    if (verbose):
-            print ("{0} vs. {1} final score {2}".format(teama, teamb, scores))
     if (abbra.lower().strip() not in items):
         if (verbose):
+            print ("{0} vs. {1} final score {2}".format(teama, teamb, scores))
             print ("Missing Abbreviation [{0}] [{1}] in Score {2}".format(abbra, abbrb, scores))
         return -1, -1
     if (abbrb.lower().strip() not in items):
         if (verbose):
+            print ("{0} vs. {1} final score {2}".format(teama, teamb, scores))
             print ("Missing Abbreviation [{0}] [{1}] in Score {2}".format(abbra, abbrb, scores))
         return -1, -1
     if (abbra.lower().strip() == items[0].lower().strip()):
@@ -98,6 +98,7 @@ if (len(sys.argv)==2):
     print ("Measure Actual Results Tool")
     print ("**************************")
 
+Path(sched_path).mkdir(parents=True, exist_ok=True)
 if (not CurrentScheduleFiles(sched_path  + 'sched1.json')):
     RefreshScheduleFiles()
 
@@ -107,6 +108,7 @@ if (not os.path.exists(file)):
         print ("schedule files are missing, run the scrape_schedule tool to create")
     exit()
 
+Path(saved_path).mkdir(parents=True, exist_ok=True)
 file = '{0}week1.csv'.format(saved_path)
 if (not os.path.exists(file)):
     if (verbose):
