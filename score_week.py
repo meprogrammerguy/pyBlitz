@@ -121,7 +121,7 @@ def RefreshStats():
     import scrape_bornpowerindex
     import scrape_teamrankings
     import combine_stats
-    import measure_results
+    #import measure_results
 
 def FindTeams(teama, teamb, dict_merge):
     FoundA = ""
@@ -253,8 +253,8 @@ def PredictTournament(week, stat_file, merge_file, verbose):
                 csvwriter.writerow(row)
             predict_sheet.close()
             print ("{0} has been created.".format(output_file))
-            import measure_results
-
+    
+    import measure_results
     # How are we doing? Let's find Out!
     file = "{0}results.json".format(saved_path)
     if (os.path.exists(file)):
