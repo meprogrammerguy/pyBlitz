@@ -62,7 +62,7 @@ for item in dict_merge.values():
             break
 
     for row in dict_bpi.values():
-        if(row['School'].lower().strip()==team.lower().strip()):
+        if(row['School'].lower().strip()==team.lower().strip() and row['Class'].upper().strip()=="DIVISION 1  FBS"):
             index+=1
             IDX.append(str(index))
             A.append(team)

@@ -99,8 +99,7 @@ if (len(sys.argv)==2):
     print ("**************************")
 
 Path(sched_path).mkdir(parents=True, exist_ok=True)
-if (not CurrentScheduleFiles(sched_path  + 'sched1.json')):
-    RefreshScheduleFiles()
+RefreshScheduleFiles()
 
 file = '{0}sched1.json'.format(sched_path)
 if (not os.path.exists(file)):

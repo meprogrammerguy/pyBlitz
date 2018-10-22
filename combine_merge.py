@@ -34,12 +34,12 @@ def GetSchedFiles(path, templatename):
     file_list = [x for x in file_list if x != "?"]
     return file_list
 
-def GetIndex(BPI_list, team):
+def GetIndex(BPI_list, team, tclass):
     index = -1
     loop = -1
     for itm in BPI_list:
         loop += 1
-        if (itm.lower().strip() == team.lower().strip()):
+        if (itm.lower().strip() == team.lower().strip() and tclass[loop].upper().strip() == "DIVISION 1  FBS"):
             index = loop
     return index
 
@@ -136,7 +136,7 @@ for item in dict_stats_merge:
     team = pyBlitz.CleanString(item['BPI'])
     if (item['corrected BPI'].strip() != ""):
         team = pyBlitz.CleanString(item['corrected BPI'])
-    index = GetIndex(A, team)    
+    index = GetIndex(A, team, F)    
     for row in dict_teamrankings.values():
         if(row['Team'].lower().strip()==teamrankings.lower().strip()):
             if (index > -1):
@@ -151,7 +151,7 @@ for item in dict_abbr_merge:
     abbr = item["abbreviation"].strip()
     if (item["corrected abbr"].strip()):
         abbr =  item["corrected abbr"].strip()
-    index = GetIndex(A, stats)    
+    index = GetIndex(A, stats, F)    
     for row in dict_abbr.values():
         if(row['Team'].lower().strip()==abbr_team.lower().strip()):
             if (index > -1):
@@ -164,7 +164,7 @@ for item in dict_sched_merge:
     stats = pyBlitz.CleanString(item["stats team"].lower().strip())
     if (item["corrected stats team"].lower().strip()):
         stats =  pyBlitz.CleanString(item["corrected stats team"].lower().strip())
-    index = GetIndex(A, stats)    
+    index = GetIndex(A, stats, F)    
     for idx in range(len(schedule_files)):
         for row in list_schedule[idx].values():
             if(row['TeamA'].lower().strip()==scheduled.lower().strip()):

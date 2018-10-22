@@ -17,7 +17,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 16,BOWLING GREEN,Bowling Grn,Bowling Green Falcons,Bowling Green,BGSU,DIVISION 1  FBS
 17,BRIGHAM YOUNG,BYU,BYU Cougars,BYU,BYU,DIVISION 1  FBS
 18,BUFFALO,Buffalo,Buffalo Bulls,Buffalo,BUFF,DIVISION 1  FBS
-19,CALIFORNIA,California,California Golden Bears,?,?,DIVISION 1  FBS
+19,CALIFORNIA,California,California Golden Bears,Cal,CAL,DIVISION 1  FBS
 20,CENTRAL FLORIDA,Central FL,UCF Knights,UCF,UCF,DIVISION 1  FBS
 21,CENTRAL MICHIGAN,Central Mich,Central Michigan Chippewas,Central Michigan,CMU,DIVISION 1  FBS
 22,CINCINNATI,Cincinnati,Cincinnati Bearcats,Cincinnati,CIN,DIVISION 1  FBS
@@ -30,7 +30,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 29,EAST CAROLINA,E Carolina,East Carolina Pirates,ECU,ECU,DIVISION 1  FBS
 30,EASTERN MICHIGAN,E Michigan,Eastern Michigan Eagles,Eastern Michigan,EMU,DIVISION 1  FBS
 31,FLORIDA,Florida,Florida Gators,Florida,FLA,DIVISION 1  FBS
-32,FLORIDA ATLANTIC,Fla Atlantic,Florida Atlantic Owls,?,?,DIVISION 1  FBS
+32,FLORIDA ATLANTIC,Fla Atlantic,Florida Atlantic Owls,FLORIDA ATLANTIC,FAU,DIVISION 1  FBS
 33,FLORIDA INTERNATIONAL,Florida Intl,Florida Intl Golden Panthers,?,?,DIVISION 1  FBS
 34,FLORIDA STATE,Florida St,Florida State Seminoles,Florida State,FSU,DIVISION 1  FBS
 35,FRESNO STATE,Fresno St,Fresno State Bulldogs,Fresno State,FRES,DIVISION 1  FBS
@@ -38,7 +38,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 37,GEORGIA SOUTHERN,GA Southern,Georgia Southern Eagles,Georgia Southern,GASO,DIVISION 1  FBS
 38,GEORGIA STATE,Georgia State,Georgia State Panthers,Georgia State,GAST,DIVISION 1  FBS
 39,GEORGIA TECH,GA Tech,Georgia Tech Yellow Jackets,Georgia Tech,GT,DIVISION 1  FBS
-40,HAWAII,?,?,?,?,DIVISION 1  FBS
+40,HAWAII,Hawaii,Hawaii Rainbow Warriors,Hawaii,HAW,DIVISION 1  FBS
 41,HOUSTON,Houston,Houston Cougars,Houston,HOU,DIVISION 1  FBS
 42,ILLINOIS,Illinois,Illinois Fighting Illini,Illinois,ILL,DIVISION 1  FBS
 43,INDIANA,Indiana,Indiana Hoosiers,Indiana,IND,DIVISION 1  FBS
@@ -48,7 +48,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 47,KANSAS STATE,Kansas St,Kansas State Wildcats,Kansas State,KSU,DIVISION 1  FBS
 48,KENT STATE,Kent State,Kent State Golden Flashes,Kent State,KENT,DIVISION 1  FBS
 49,KENTUCKY,Kentucky,Kentucky Wildcats,Kentucky,UK,DIVISION 1  FBS
-50,LA-LAFAYETTE,LA Lafayette,?,Louisiana Lafayette,ULL,DIVISION 1  FBS
+50,LA-LAFAYETTE,LA Lafayette,Louisiana Ragin Cajuns,Louisiana Lafayette,ULL,DIVISION 1  FBS
 51,LA-MONROE,LA Monroe,UL Monroe Warhawks,Louisiana Monroe,ULM,DIVISION 1  FBS
 52,LIBERTY,Liberty,Liberty Flames,Liberty,LIB,DIVISION 1  FBS
 53,LOUISIANA STATE,LSU,LSU Tigers,LSU,LSU,DIVISION 1  FBS
@@ -59,7 +59,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 58,MASSACHUSETTS,U Mass,UMass Minutemen,UMass,UMASS,DIVISION 1  FBS
 59,MEMPHIS,Memphis,Memphis Tigers,Memphis,MEM,DIVISION 1  FBS
 60,MIAMI OF OHIO,Miami (OH),Miami (OH) RedHawks,Miami (OH),M-OH,DIVISION 1  FBS
-61,MIAMI-FL,Miami (FL),Miami Hurricanes,Miami (FL),MIA,DIVISION 1  FBS
+61,MIAMI-FL,Miami (FL),Miami Hurricanes,Miami (FL),MIAMI,DIVISION 1  FBS
 62,MICHIGAN,Michigan,Michigan Wolverines,Michigan,MICH,DIVISION 1  FBS
 63,MICHIGAN STATE,Michigan St,Michigan State Spartans,Michigan State,MSU,DIVISION 1  FBS
 64,MIDDLE TENNESSEE STATE,Middle Tenn,Middle Tennessee Blue Raiders,Middle Tennessee,MTSU,DIVISION 1  FBS
@@ -92,7 +92,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 91,RICE,Rice,Rice Owls,Rice,RICE,DIVISION 1  FBS
 92,RUTGERS,Rutgers,Rutgers Scarlet Knights,Rutgers,RUTG,DIVISION 1  FBS
 93,SAN DIEGO STATE,San Diego St,San Diego State Aztecs,San Diego State,SDSU,DIVISION 1  FBS
-94,SAN JOSE STATE,San Jose St,San Jose State Spartans,San José State,SJSU,DIVISION 1  FBS
+94,SAN JOSE STATE,San Jose St,San Jose State Spartans,?,?,DIVISION 1  FBS
 95,SOUTH ALABAMA,S Alabama,South Alabama Jaguars,South Alabama,USA,DIVISION 1  FBS
 96,SOUTH CAROLINA,S Carolina,South Carolina Gamecocks,South Carolina,SC,DIVISION 1  FBS
 97,SOUTH FLORIDA,S Florida,South Florida Bulls,South Florida,USF,DIVISION 1  FBS
@@ -125,7 +125,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 124,WASHINGTON,Washington,Washington Huskies,Washington,WASH,DIVISION 1  FBS
 125,WASHINGTON STATE,Wash State,Washington State Cougars,Washington State,WSU,DIVISION 1  FBS
 126,WEST VIRGINIA,W Virginia,West Virginia Mountaineers,West Virginia,WVU,DIVISION 1  FBS
-127,WESTERN KENTUCKY,W Kentucky,Western Kentucky Hilltoppers,?,?,DIVISION 1  FBS
+127,WESTERN KENTUCKY,W Kentucky,Western Kentucky Hilltoppers,WESTERN KENTUCKY,WKU,DIVISION 1  FBS
 128,WESTERN MICHIGAN,W Michigan,Western Michigan Broncos,Western Michigan,WMU,DIVISION 1  FBS
 129,WISCONSIN,Wisconsin,Wisconsin Badgers,Wisconsin,WIS,DIVISION 1  FBS
 130,WYOMING,Wyoming,Wyoming Cowboys,Wyoming,WYO,DIVISION 1  FBS
@@ -135,7 +135,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 134,AMERICAN INTERNATIONAL,?,?,?,?,DIVISION 2
 135,ANGELO STATE,?,?,?,?,DIVISION 2
 136,ARKANSAS TECH,?,?,?,?,DIVISION 2
-137,ARKANSAS-MONTICELLO,?,?,Arkansas-Pine Bluff,ARPB,DIVISION 2
+137,ARKANSAS-MONTICELLO,?,?,?,?,DIVISION 2
 138,ASHLAND UNIVERSITY,?,?,?,?,DIVISION 2
 139,ASSUMPTION COLLEGE,?,?,?,?,DIVISION 2
 140,AUGUSTANA-S.D.,?,?,?,?,DIVISION 2
@@ -173,7 +173,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 172,EDINBORO UNIVERSITY,?,?,?,?,DIVISION 2
 173,ELIZABETH CITY STATE,?,?,?,?,DIVISION 2
 174,EMPORIA STATE,?,?,?,?,DIVISION 2
-175,FAIRMONT STATE,?,?,Sacramento State,SAC,DIVISION 2
+175,FAIRMONT STATE,?,?,?,?,DIVISION 2
 176,FAYETTEVILLE STATE,?,?,?,?,DIVISION 2
 177,FERRIS STATE,?,?,?,?,DIVISION 2
 178,FINDLAY,?,?,?,?,DIVISION 2
@@ -183,7 +183,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 182,FORT VALLEY STATE,?,?,?,?,DIVISION 2
 183,GANNON,?,?,?,?,DIVISION 2
 184,GLENVILLE STATE,?,?,?,?,DIVISION 2
-185,GRAND VALLEY STATE,?,Grand Valley State Lakers,?,?,DIVISION 2
+185,GRAND VALLEY STATE,?,?,?,?,DIVISION 2
 186,HARDING,?,?,?,?,DIVISION 2
 187,HENDERSON STATE,?,?,?,?,DIVISION 2
 188,HILLSDALE COLLEGE,?,?,?,?,DIVISION 2
@@ -310,7 +310,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 309,AUGSBURG,?,?,?,?,DIVISION 3
 310,AUGUSTANA-ILL.,?,?,?,?,DIVISION 3
 311,AURORA,?,?,?,?,DIVISION 3
-312,AUSTIN COLLEGE,?,Stephen F. Austin Lumberjacks,?,?,DIVISION 3
+312,AUSTIN COLLEGE,?,?,?,?,DIVISION 3
 313,AVERETT COLLEGE,?,?,?,?,DIVISION 3
 314,BALDWIN-WALLACE,?,?,?,?,DIVISION 3
 315,BATES,?,?,?,?,DIVISION 3
@@ -331,7 +331,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 330,BUENA VISTA,?,?,?,?,DIVISION 3
 331,BUFFALO STATE,?,?,?,?,DIVISION 3
 332,CALIFORNIA LUTHERAN,?,?,?,?,DIVISION 3
-333,CAPITAL,?,?,Cal,CAL,DIVISION 3
+333,CAPITAL,?,?,?,?,DIVISION 3
 334,CARLETON,?,?,?,?,DIVISION 3
 335,CARNEGIE MELLON,?,?,?,?,DIVISION 3
 336,CARROLL-WISCONSIN,?,?,?,?,DIVISION 3
@@ -347,7 +347,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 346,CLAREMONT-MUDD- SCRIPPS,?,?,?,?,DIVISION 3
 347,COAST GUARD,?,?,?,?,DIVISION 3
 348,COE,?,?,?,?,DIVISION 3
-349,COLBY,?,?,Cal Poly,CP,DIVISION 3
+349,COLBY,?,?,?,?,DIVISION 3
 350,CONCORDIA- CHICAGO,?,?,?,?,DIVISION 3
 351,CONCORDIA WISC.,?,?,?,?,DIVISION 3
 352,CONCORDIA-MOORHEAD,?,?,?,?,DIVISION 3
@@ -372,7 +372,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 371,F.D.U.- FLORHAM PARK,?,?,?,?,DIVISION 3
 372,FERRUM COLLEGE,?,?,?,?,DIVISION 3
 373,FINLANDIA,?,?,?,?,DIVISION 3
-374,FITCHBURG,?,?,FIU,FIU,DIVISION 3
+374,FITCHBURG,?,?,?,?,DIVISION 3
 375,FRAMINGHAM STATE,?,?,?,?,DIVISION 3
 376,FRANKLIN & MARSHALL,?,?,?,?,DIVISION 3
 377,FRANKLIN COLLEGE,?,?,?,?,DIVISION 3
@@ -380,7 +380,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 379,GALLAUDET,?,?,?,?,DIVISION 3
 380,GENEVA,?,?,?,?,DIVISION 3
 381,GEORGE FOX,?,?,?,?,DIVISION 3
-382,GETTYSBURG,?,?,ETSU,ETSU,DIVISION 3
+382,GETTYSBURG,?,?,?,?,DIVISION 3
 383,GREENSBORO COLLEGE,?,?,?,?,DIVISION 3
 384,GREENVILLE,?,?,?,?,DIVISION 3
 385,GRINNELL,?,?,?,?,DIVISION 3
@@ -410,8 +410,8 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 409,JUNIATA,?,?,?,?,DIVISION 3
 410,KALAMAZOO,?,?,?,?,DIVISION 3
 411,KEAN,?,?,?,?,DIVISION 3
-412,KENYON,?,?,UPenn,PENN,DIVISION 3
-413,HAWAII,Hawaii,Hawaii Rainbow Warriors,Hawaii,HAW,DIVISION 3
+412,KENYON,?,?,?,?,DIVISION 3
+413,HAWAII,?,?,?,?,DIVISION 3
 414,KNOX,?,?,?,?,DIVISION 3
 415,LA VERNE,?,?,?,?,DIVISION 3
 416,LAGRANGE,?,?,?,?,DIVISION 3
@@ -422,7 +422,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 421,LEWIS & CLARK,?,?,?,?,DIVISION 3
 422,LINFIELD,?,?,?,?,DIVISION 3
 423,LORAS,?,?,?,?,DIVISION 3
-424,LOUISIANA COLLEGE,?,Louisiana Ragin Cajuns,LOUISIANA COLLEGE,LC,DIVISION 3
+424,LOUISIANA COLLEGE,?,?,?,?,DIVISION 3
 425,LUTHER,?,?,?,?,DIVISION 3
 426,LYCOMING,?,?,?,?,DIVISION 3
 427,M.I.T.,?,?,?,?,DIVISION 3
@@ -444,7 +444,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 443,MILLSAPS,?,?,?,?,DIVISION 3
 444,MISERICORDIA,?,?,?,?,DIVISION 3
 445,MISSISSIPPI COLLEGE,?,?,?,?,DIVISION 3
-446,MONMOUTH-IL,?,Monmouth Hawks,Monmouth,MONM,DIVISION 3
+446,MONMOUTH-IL,?,?,?,?,DIVISION 3
 447,MONTCLAIR,?,?,?,?,DIVISION 3
 448,MORAVIAN,?,?,?,?,DIVISION 3
 449,MORRIS-MINNESOTA,?,?,?,?,DIVISION 3
@@ -461,7 +461,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 460,NORTHWESTERN-MN.,?,?,?,?,DIVISION 3
 461,NORWICH,?,?,?,?,DIVISION 3
 462,OBERLIN,?,?,?,?,DIVISION 3
-463,OCCIDENTAL,?,?,NC Central,NCCU,DIVISION 3
+463,OCCIDENTAL,?,?,?,?,DIVISION 3
 464,OHIO NORTHERN,?,?,?,?,DIVISION 3
 465,OHIO WESLYAN,?,?,?,?,DIVISION 3
 466,OLIVET,?,?,?,?,DIVISION 3
@@ -529,7 +529,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 528,WHITTIER COLLEGE,?,?,?,?,DIVISION 3
 529,WHITWORTH,?,?,?,?,DIVISION 3
 530,WIDENER,?,?,?,?,DIVISION 3
-531,WILKES,?,?,WKU,WKU,DIVISION 3
+531,WILKES,?,?,?,?,DIVISION 3
 532,WILLAMETTE,?,?,?,?,DIVISION 3
 533,WILLIAM PATERSON,?,?,?,?,DIVISION 3
 534,WILLIAMS COLLEGE,?,?,?,?,DIVISION 3
@@ -547,131 +547,131 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 546,WOOSTER,?,?,?,?,DIVISION 3
 547,WORCESTER STATE,?,?,?,?,DIVISION 3
 548,WORCESTER TECH (W.P.I.),?,?,?,?,DIVISION 3
-549,ABILENE CHRISTIAN,?,Abilene Christian Wildcats,Abilene Christian,ACU,Championship Subdivision
-550,ALABAMA A&M,?,Alabama A&M Bulldogs,Alabama A&M,AAMU,Championship Subdivision
-551,ALABAMA STATE,?,Alabama State Hornets,Alabama State,ALST,Championship Subdivision
-552,ALBANY-NY,?,Albany Great Danes,Albany,ALBY,Championship Subdivision
-553,ALCORN STATE,?,Alcorn State Braves,Alcorn State,ALCN,Championship Subdivision
-554,AUSTIN PEAY,?,Austin Peay Governors,Austin Peay,PEAY,Championship Subdivision
-555,BETHUNE-COOKMAN,?,Bethune-Cookman Wildcats,Bethune-Cookman,COOK,Championship Subdivision
-556,BROWN,?,?,Brown,BRWN,Championship Subdivision
-557,BRYANT COLLEGE,?,?,Bryant,BRY,Championship Subdivision
-558,BUCKNELL,?,?,Bucknell,BUCK,Championship Subdivision
-559,BUTLER,?,?,Butler,BUT,Championship Subdivision
-560,CAL-DAVIS,?,UC Davis Aggies,UC Davis,UCD,Championship Subdivision
+549,ABILENE CHRISTIAN,?,?,?,?,Championship Subdivision
+550,ALABAMA A&M,?,?,?,?,Championship Subdivision
+551,ALABAMA STATE,?,?,?,?,Championship Subdivision
+552,ALBANY-NY,?,?,?,?,Championship Subdivision
+553,ALCORN STATE,?,?,?,?,Championship Subdivision
+554,AUSTIN PEAY,?,?,?,?,Championship Subdivision
+555,BETHUNE-COOKMAN,?,?,?,?,Championship Subdivision
+556,BROWN,?,?,?,?,Championship Subdivision
+557,BRYANT COLLEGE,?,?,?,?,Championship Subdivision
+558,BUCKNELL,?,?,?,?,Championship Subdivision
+559,BUTLER,?,?,?,?,Championship Subdivision
+560,CAL-DAVIS,?,?,?,?,Championship Subdivision
 561,CAL-POLY (SAN LOUIS OBISPO),?,?,?,?,Championship Subdivision
-562,CAL-SACRAMENTO,?,Sacramento State Hornets,?,?,Championship Subdivision
-563,CAMPBELL,?,?,Campbell,CAMP,Championship Subdivision
-564,CENTRAL ARKANSAS,?,Central Arkansas Bears,Central Arkansas,UCA,Championship Subdivision
-565,CENTRAL CONNECTICUT STATE,?,Central Connecticut Blue Devils,Central Connecticut,CCSU,Championship Subdivision
-566,CHARLESTON SOUTHERN,?,Charleston Southern Buccaneers,Charleston Southern,CHSO,Championship Subdivision
-567,CHATTANOOGA-TENNESSEE,?,Chattanooga Mocs,Chattanooga,CHAT,Championship Subdivision
-568,COLGATE,?,Colgate Raiders,Colgate,COLG,Championship Subdivision
-569,COLUMBIA,?,?,Columbia,CLMB,Championship Subdivision
-570,CORNELL,?,?,Cornell,COR,Championship Subdivision
-571,DARTMOUTH,?,?,Dartmouth,DART,Championship Subdivision
-572,DAVIDSON,?,?,Davidson,DAV,Championship Subdivision
-573,DAYTON,?,?,Dayton,DAY,Championship Subdivision
-574,DELAWARE,?,?,Delaware,DEL,Championship Subdivision
-575,DELAWARE STATE,?,Delaware State Hornets,Delaware State,DSU,Championship Subdivision
-576,DRAKE,?,?,Drake,DRKE,Championship Subdivision
-577,DUQUESNE,?,Duquesne Dukes,Duquesne,DUQ,Championship Subdivision
-578,EAST TENNESSEE STATE,?,East Tennessee State Buccaneers,?,?,Championship Subdivision
-579,EASTERN ILLINOIS,?,Eastern Illinois Panthers,Eastern Illinois,EIU,Championship Subdivision
-580,EASTERN KENTUCKY,?,Eastern Kentucky Colonels,Eastern Kentucky,EKY,Championship Subdivision
-581,EASTERN WASHINGTON,?,Eastern Washington Eagles,Eastern Washington,EWU,Championship Subdivision
-582,ELON,?,Elon Phoenix,Elon,ELON,Championship Subdivision
-583,FLORIDA A&M,?,Florida A&M Rattlers,Florida A&M,FAMU,Championship Subdivision
-584,FORDHAM,?,Fordham Rams,Fordham,FOR,Championship Subdivision
-585,FURMAN,?,Furman Paladins,Furman,FUR,Championship Subdivision
-586,GARDNER-WEBB,?,Gardner-Webb Bulldogs,Gardner-Webb,WEBB,Championship Subdivision
-587,GEORGETOWN-DC,?,?,Georgetown,GTWN,Championship Subdivision
-588,GRAMBLING,?,Grambling Tigers,Grambling State,GRAM,Championship Subdivision
-589,HAMPTON,?,?,Hampton,HAMP,Championship Subdivision
-590,HARVARD,?,?,Harvard,HARV,Championship Subdivision
-591,HOLY CROSS,?,Holy Cross Crusaders,Holy Cross,HC,Championship Subdivision
-592,HOUSTON BAPTIST,?,Houston Baptist Huskies,Houston Baptist,HBU,Championship Subdivision
-593,HOWARD,?,Howard Bison,Howard,HOW,Championship Subdivision
-594,IDAHO,?,Idaho Vandals,Idaho,IDAHO,Championship Subdivision
-595,IDAHO STATE,?,Idaho State Bengals,Idaho State,IDST,Championship Subdivision
-596,ILLINOIS STATE,?,Illinois State Redbirds,Illinois State,ILST,Championship Subdivision
-597,INCARNATE WORD,?,Incarnate Word Cardinals,Incarnate Word,IW,Championship Subdivision
-598,INDIANA STATE,?,Indiana State Sycamores,Indiana State,INST,Championship Subdivision
-599,JACKSON STATE,?,Jackson State Tigers,Jackson State,JKST,Championship Subdivision
-600,JACKSONVILLE STATE,?,?,Jacksonville State,JVST,Championship Subdivision
-601,JACKSONVILLE-FLA,?,?,Jacksonville,JAC,Championship Subdivision
-602,JAMES MADISON,?,James Madison Dukes,James Madison,JMU,Championship Subdivision
-603,KENNESAW STATE,?,Kennesaw State Owls,Kennesaw State,KENN,Championship Subdivision
-604,LAFAYETTE,?,Lafayette Leopards,Lafayette,LAF,Championship Subdivision
-605,LAMAR,?,Lamar Cardinals,Lamar,LAM,Championship Subdivision
-606,LEHIGH,?,Lehigh Mountain Hawks,Lehigh,LEH,Championship Subdivision
-607,MAINE,?,Maine Black Bears,Maine,MAINE,Championship Subdivision
-608,MARIST,?,?,Marist,MRST,Championship Subdivision
-609,MCNEESE STATE,?,McNeese Cowboys,McNeese State,MCNS,Championship Subdivision
-610,MERCER,?,Mercer Bears,Mercer,MER,Championship Subdivision
-611,MISSISSIPPI VALLEY STATE,?,?,Mississippi Valley State,MVSU,Championship Subdivision
-612,MISSOURI STATE,?,Missouri State Bears,Missouri State,MOST,Championship Subdivision
+562,CAL-SACRAMENTO,?,?,?,?,Championship Subdivision
+563,CAMPBELL,?,?,?,?,Championship Subdivision
+564,CENTRAL ARKANSAS,?,?,?,?,Championship Subdivision
+565,CENTRAL CONNECTICUT STATE,?,?,?,?,Championship Subdivision
+566,CHARLESTON SOUTHERN,?,?,?,?,Championship Subdivision
+567,CHATTANOOGA-TENNESSEE,?,?,?,?,Championship Subdivision
+568,COLGATE,?,?,?,?,Championship Subdivision
+569,COLUMBIA,?,?,?,?,Championship Subdivision
+570,CORNELL,?,?,?,?,Championship Subdivision
+571,DARTMOUTH,?,?,?,?,Championship Subdivision
+572,DAVIDSON,?,?,?,?,Championship Subdivision
+573,DAYTON,?,?,?,?,Championship Subdivision
+574,DELAWARE,?,?,?,?,Championship Subdivision
+575,DELAWARE STATE,?,?,?,?,Championship Subdivision
+576,DRAKE,?,?,?,?,Championship Subdivision
+577,DUQUESNE,?,?,?,?,Championship Subdivision
+578,EAST TENNESSEE STATE,?,?,?,?,Championship Subdivision
+579,EASTERN ILLINOIS,?,?,?,?,Championship Subdivision
+580,EASTERN KENTUCKY,?,?,?,?,Championship Subdivision
+581,EASTERN WASHINGTON,?,?,?,?,Championship Subdivision
+582,ELON,?,?,?,?,Championship Subdivision
+583,FLORIDA A&M,?,?,?,?,Championship Subdivision
+584,FORDHAM,?,?,?,?,Championship Subdivision
+585,FURMAN,?,?,?,?,Championship Subdivision
+586,GARDNER-WEBB,?,?,?,?,Championship Subdivision
+587,GEORGETOWN-DC,?,?,?,?,Championship Subdivision
+588,GRAMBLING,?,?,?,?,Championship Subdivision
+589,HAMPTON,?,?,?,?,Championship Subdivision
+590,HARVARD,?,?,?,?,Championship Subdivision
+591,HOLY CROSS,?,?,?,?,Championship Subdivision
+592,HOUSTON BAPTIST,?,?,?,?,Championship Subdivision
+593,HOWARD,?,?,?,?,Championship Subdivision
+594,IDAHO,?,?,?,?,Championship Subdivision
+595,IDAHO STATE,?,?,?,?,Championship Subdivision
+596,ILLINOIS STATE,?,?,?,?,Championship Subdivision
+597,INCARNATE WORD,?,?,?,?,Championship Subdivision
+598,INDIANA STATE,?,?,?,?,Championship Subdivision
+599,JACKSON STATE,?,?,?,?,Championship Subdivision
+600,JACKSONVILLE STATE,?,?,?,?,Championship Subdivision
+601,JACKSONVILLE-FLA,?,?,?,?,Championship Subdivision
+602,JAMES MADISON,?,?,?,?,Championship Subdivision
+603,KENNESAW STATE,?,?,?,?,Championship Subdivision
+604,LAFAYETTE,?,?,?,?,Championship Subdivision
+605,LAMAR,?,?,?,?,Championship Subdivision
+606,LEHIGH,?,?,?,?,Championship Subdivision
+607,MAINE,?,?,?,?,Championship Subdivision
+608,MARIST,?,?,?,?,Championship Subdivision
+609,MCNEESE STATE,?,?,?,?,Championship Subdivision
+610,MERCER,?,?,?,?,Championship Subdivision
+611,MISSISSIPPI VALLEY STATE,?,?,?,?,Championship Subdivision
+612,MISSOURI STATE,?,?,?,?,Championship Subdivision
 613,MONMOUTH-NJ,?,?,?,?,Championship Subdivision
-614,MONTANA,?,?,Montana,MONT,Championship Subdivision
-615,MONTANA STATE,?,?,Montana State,MTST,Championship Subdivision
-616,MOREHEAD STATE,?,?,Morehead State,MORE,Championship Subdivision
-617,MORGAN STATE,?,Morgan State Bears,Morgan State,MORG,Championship Subdivision
-618,MURRAY STATE,?,Murray State Racers,Murray State,MURR,Championship Subdivision
-619,NEW HAMPSHIRE,?,New Hampshire Wildcats,New Hampshire,UNH,Championship Subdivision
-620,NICHOLLS STATE,?,Nicholls Colonels,Nicholls State,NICH,Championship Subdivision
-621,NORFOLK STATE,?,Norfolk State Spartans,Norfolk State,NORF,Championship Subdivision
+614,MONTANA,?,?,?,?,Championship Subdivision
+615,MONTANA STATE,?,?,?,?,Championship Subdivision
+616,MOREHEAD STATE,?,?,?,?,Championship Subdivision
+617,MORGAN STATE,?,?,?,?,Championship Subdivision
+618,MURRAY STATE,?,?,?,?,Championship Subdivision
+619,NEW HAMPSHIRE,?,?,?,?,Championship Subdivision
+620,NICHOLLS STATE,?,?,?,?,Championship Subdivision
+621,NORFOLK STATE,?,?,?,?,Championship Subdivision
 622,NORTH ALABAMA,?,?,?,?,Championship Subdivision
-623,NORTH CAROLINA A&T,?,North Carolina A&T Aggies,North Carolina A&T,NCAT,Championship Subdivision
-624,NORTH CAROLINA CENTRAL,?,North Carolina Central Eagles,?,?,Championship Subdivision
-625,NORTH DAKOTA,?,North Dakota Fighting Hawks,North Dakota,UND,Championship Subdivision
-626,NORTH DAKOTA STATE,?,?,North Dakota State,NDSU,Championship Subdivision
-627,NORTHERN ARIZONA,?,Northern Arizona Lumberjacks,Northern Arizona,NAU,Championship Subdivision
-628,NORTHERN COLORADO,?,?,Northern Colorado,UNCO,Championship Subdivision
-629,NORTHERN IOWA,?,Northern Iowa Panthers,Northern Iowa,UNI,Championship Subdivision
-630,NORTHWESTERN STATE-LA,?,Northwestern State Demons,Northwestern State,NWST,Championship Subdivision
+623,NORTH CAROLINA A&T,?,?,?,?,Championship Subdivision
+624,NORTH CAROLINA CENTRAL,?,?,?,?,Championship Subdivision
+625,NORTH DAKOTA,?,?,?,?,Championship Subdivision
+626,NORTH DAKOTA STATE,?,?,?,?,Championship Subdivision
+627,NORTHERN ARIZONA,?,?,?,?,Championship Subdivision
+628,NORTHERN COLORADO,?,?,?,?,Championship Subdivision
+629,NORTHERN IOWA,?,?,?,?,Championship Subdivision
+630,NORTHWESTERN STATE-LA,?,?,?,?,Championship Subdivision
 631,PENNSYLVANIA,?,?,?,?,Championship Subdivision
-632,PINE BLUFF-ARKANSAS,?,Arkansas-Pine Bluff Golden Lions,?,?,Championship Subdivision
-633,PORTLAND STATE,?,Portland State Vikings,Portland State,PRST,Championship Subdivision
-634,PRAIRIE VIEW A&M,?,Prairie View Panthers,Prairie View A&M,PVAM,Championship Subdivision
-635,PRESBYTERIAN,?,?,Presbyterian,PRE,Championship Subdivision
-636,PRINCETON,?,?,Princeton,PRIN,Championship Subdivision
-637,RHODE ISLAND,?,Rhode Island Rams,Rhode Island,URI,Championship Subdivision
-638,RICHMOND,?,Richmond Spiders,Richmond,RICH,Championship Subdivision
-639,ROBERT MORRIS - PA,?,?,Robert Morris (PA),RMU,Championship Subdivision
-640,S.F.AUSTIN,?,?,Stephen F. Austin,SFA,Championship Subdivision
-641,SACRED HEART,?,?,Sacred Heart,SHU,Championship Subdivision
-642,SAM HOUSTON,?,?,Sam Houston State,SHSU,Championship Subdivision
-643,SAMFORD,?,Samford Bulldogs,Samford,SAM,Championship Subdivision
-644,SAN DIEGO,?,?,San Diego,USD,Championship Subdivision
-645,SAVANNAH STATE,?,Savannah State Tigers,Savannah State,SAV,Championship Subdivision
-646,SO. EAST LOUISIANA,?,Southeastern Louisiana Lions,Southeastern Louisiana,SELA,Championship Subdivision
-647,SOUTH CAROLINA STATE,?,South Carolina State Bulldogs,South Carolina State,SCST,Championship Subdivision
-648,SOUTH DAKOTA,?,South Dakota Coyotes,South Dakota,SDAK,Championship Subdivision
-649,SOUTH DAKOTA STATE,?,South Dakota State Jackrabbits,South Dakota State,SDSU,Championship Subdivision
-650,SOUTH EASTERN MISSOURI,?,Southeast Missouri State Redhawks,Southeast Missouri,SEMO,Championship Subdivision
-651,SOUTHERN ILLINOIS,?,Southern Illinois Salukis,Southern Illinois,SIU,Championship Subdivision
-652,SOUTHERN UNIVERSITY,?,Southern Jaguars,Southern University,SOU,Championship Subdivision
-653,SOUTHERN UTAH,?,Southern Utah Thunderbirds,Southern Utah,SUU,Championship Subdivision
-654,ST.FRANCIS-PA,?,?,St. Francis (PA),SFU,Championship Subdivision
-655,STETSON,?,?,Stetson,STET,Championship Subdivision
-656,STONY BROOK,?,Stony Brook Seawolves,Stony Brook,STON,Championship Subdivision
-657,TENNESSEE STATE,?,Tennessee State Tigers,Tennessee State,TNST,Championship Subdivision
-658,TENNESSEE TECH,?,Tennessee Tech Golden Eagles,Tennessee Tech,TNTC,Championship Subdivision
-659,TENNESSEE-MARTIN,?,UT Martin Skyhawks,Tennessee-Martin,UTM,Championship Subdivision
-660,TEXAS SOUTHERN,?,Texas Southern Tigers,Texas Southern,TXSO,Championship Subdivision
-661,THE CITADEL,?,The Citadel Bulldogs,The Citadel,CIT,Championship Subdivision
-662,TOWSON,?,Towson Tigers,Towson,TOWS,Championship Subdivision
-663,VALPARAISO,?,?,Valparaiso,VALP,Championship Subdivision
-664,VILLANOVA,?,Villanova Wildcats,Villanova,NOVA,Championship Subdivision
-665,VIRGINIA MILITARY INSTITUTE,?,VMI Keydets,VMI,VMI,Championship Subdivision
-666,WAGNER,?,Wagner Seahawks,Wagner,WAG,Championship Subdivision
-667,WEBER STATE,?,Weber State Wildcats,Weber State,WEB,Championship Subdivision
-668,WESTERN CAROLINA,?,Western Carolina Catamounts,Western Carolina,WCU,Championship Subdivision
-669,WESTERN ILLINOIS,?,Western Illinois Leathernecks,Western Illinois,WIU,Championship Subdivision
-670,WILLIAM & MARY,?,William & Mary Tribe,William & Mary,W&M,Championship Subdivision
-671,WOFFORD,?,Wofford Terriers,Wofford,WOF,Championship Subdivision
-672,YALE,?,?,Yale,YALE,Championship Subdivision
-673,YOUNGSTOWN STATE,?,Youngstown State Penguins,Youngstown State,YSU,Championship Subdivision
+632,PINE BLUFF-ARKANSAS,?,?,?,?,Championship Subdivision
+633,PORTLAND STATE,?,?,?,?,Championship Subdivision
+634,PRAIRIE VIEW A&M,?,?,?,?,Championship Subdivision
+635,PRESBYTERIAN,?,?,?,?,Championship Subdivision
+636,PRINCETON,?,?,?,?,Championship Subdivision
+637,RHODE ISLAND,?,?,?,?,Championship Subdivision
+638,RICHMOND,?,?,?,?,Championship Subdivision
+639,ROBERT MORRIS - PA,?,?,?,?,Championship Subdivision
+640,S.F.AUSTIN,?,?,?,?,Championship Subdivision
+641,SACRED HEART,?,?,?,?,Championship Subdivision
+642,SAM HOUSTON,?,?,?,?,Championship Subdivision
+643,SAMFORD,?,?,?,?,Championship Subdivision
+644,SAN DIEGO,?,?,?,?,Championship Subdivision
+645,SAVANNAH STATE,?,?,?,?,Championship Subdivision
+646,SO. EAST LOUISIANA,?,?,?,?,Championship Subdivision
+647,SOUTH CAROLINA STATE,?,?,?,?,Championship Subdivision
+648,SOUTH DAKOTA,?,?,?,?,Championship Subdivision
+649,SOUTH DAKOTA STATE,?,?,?,?,Championship Subdivision
+650,SOUTH EASTERN MISSOURI,?,?,?,?,Championship Subdivision
+651,SOUTHERN ILLINOIS,?,?,?,?,Championship Subdivision
+652,SOUTHERN UNIVERSITY,?,?,?,?,Championship Subdivision
+653,SOUTHERN UTAH,?,?,?,?,Championship Subdivision
+654,ST.FRANCIS-PA,?,?,?,?,Championship Subdivision
+655,STETSON,?,?,?,?,Championship Subdivision
+656,STONY BROOK,?,?,?,?,Championship Subdivision
+657,TENNESSEE STATE,?,?,?,?,Championship Subdivision
+658,TENNESSEE TECH,?,?,?,?,Championship Subdivision
+659,TENNESSEE-MARTIN,?,?,?,?,Championship Subdivision
+660,TEXAS SOUTHERN,?,?,?,?,Championship Subdivision
+661,THE CITADEL,?,?,?,?,Championship Subdivision
+662,TOWSON,?,?,?,?,Championship Subdivision
+663,VALPARAISO,?,?,?,?,Championship Subdivision
+664,VILLANOVA,?,?,?,?,Championship Subdivision
+665,VIRGINIA MILITARY INSTITUTE,?,?,?,?,Championship Subdivision
+666,WAGNER,?,?,?,?,Championship Subdivision
+667,WEBER STATE,?,?,?,?,Championship Subdivision
+668,WESTERN CAROLINA,?,?,?,?,Championship Subdivision
+669,WESTERN ILLINOIS,?,?,?,?,Championship Subdivision
+670,WILLIAM & MARY,?,?,?,?,Championship Subdivision
+671,WOFFORD,?,?,?,?,Championship Subdivision
+672,YALE,?,?,?,?,Championship Subdivision
+673,YOUNGSTOWN STATE,?,?,?,?,Championship Subdivision
 674,ALLEN (SC),?,?,?,?,NAIA
 675,ARIZONA CHRISTIAN,?,?,?,?,NAIA
 676,AVE MARIA-FLA,?,?,?,?,NAIA
@@ -683,7 +683,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 682,BETHEL-TN.,?,?,?,?,NAIA
 683,BLUFIELD,?,?,?,?,NAIA
 684,BRIAR CLIFF,?,?,?,?,NAIA
-685,CAMPBELLSVILLE,?,Campbell Fighting Camels,?,?,NAIA
+685,CAMPBELLSVILLE,?,?,?,?,NAIA
 686,CARROLL-MONTANA,?,?,?,?,NAIA
 687,CENTRAL METHODIST,?,?,?,?,NAIA
 688,CINCINNATI CHRISTIAN,?,?,?,?,NAIA
@@ -751,7 +751,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 750,ST.MARY-KANSAS,?,?,?,?,NAIA
 751,ST.XAVIER,?,?,?,?,NAIA
 752,STERLING,?,?,?,?,NAIA
-753,TABOR,?,TBD,?,?,NAIA
+753,TABOR,?,?,?,?,NAIA
 754,TAYLOR,?,?,?,?,NAIA
 755,TEXAS COLLEGE,?,?,?,?,NAIA
 756,TEXAS WESLEYAN,?,?,?,?,NAIA
