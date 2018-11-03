@@ -214,17 +214,17 @@ def Calculate(first, second, neutral, verbose):
     classb = "?"
     if (teamb):
         classb = teamb["Class"].lower().strip()
-    if (classa == "?" or classb == "?"):
+    if (classa == "?" and classb == "?"):
         settings.exceptions.append("Calculate() - [{0}] team playing [{1}] team,  Cannot predict, Fix merge spreadsheet(s)".format(classa, classb))
         dict_score = {'teama':first, 'scorea':"0", 'chancea':"0" ,'teamb':second, 'scoreb':"0", 'chanceb':"0", 'spread': 0, 'tempo':"0"}
         print ("Warning: {0} playing {1}, Cannot Predict, Fix merge spreadsheet(s)".format(first, second))
         return dict_score
     else:
-        if (classa == "1a" and classb != "1a"):
+        if (classa == "division 1  fbs" and classb != "division 1  fbs"):
             settings.exceptions.append("Calculate() - [{0}] team playing [{1}] team, {2} wins".format(classa, classb, first))
             dict_score = {'teama':first, 'scorea':"0", 'chancea':"100" ,'teamb':second, 'scoreb':"0", 'chanceb':"0", 'spread': 0, 'tempo':"0"}
             return dict_score
-        if (classa != "1a" and classb == "1a"):
+        if (classa != "division 1  fbs" and classb == "division 1  fbs"):
             settings.exceptions.append("Calculate() - [{0}] team playing [{1}] team, {2} wins".format(classa, classb, second))
             dict_score = {'teama':first, 'scorea':"0", 'chancea':"0" ,'teamb':second, 'scoreb':"0", 'chanceb':"100", 'spread': 0, 'tempo':"0"}
             return dict_score
