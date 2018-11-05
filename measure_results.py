@@ -68,18 +68,24 @@ def GetActualScores(abbra, teama, abbrb, teamb, scores):
         return -1, -1
     if (items[0].strip() == "?"):   # Cancelled, Postponed or not yet Played Game
         return -1, -1
-    if (len(items) != 7):
+    if (len(items) == 9 and "ot)" in items[8]):
+        if (verbose):
+            print ("An overtime game - info")
+    elif (len(items) != 7):
+        return -1, -1
+    if (abbra.lower().strip() not in items and abbrb.lower().strip() not in items):
+        if (verbose):
+            print ("{0} vs. {1} final score {2}".format(teama, teamb, scores))
+            print ("No Abbreviations were found fix the merge abbreviation file")
         return -1, -1
     if (abbra.lower().strip() not in items):
         if (verbose):
             print ("{0} vs. {1} final score {2}".format(teama, teamb, scores))
             print ("Missing Abbreviation [{0}] [{1}] in Score {2}".format(abbra, abbrb, scores))
-        return -1, -1
     if (abbrb.lower().strip() not in items):
         if (verbose):
             print ("{0} vs. {1} final score {2}".format(teama, teamb, scores))
             print ("Missing Abbreviation [{0}] [{1}] in Score {2}".format(abbra, abbrb, scores))
-        return -1, -1
     if (abbra.lower().strip() == items[0].lower().strip()):
         scorea = int(items[2])
         scoreb = int(items[6])
@@ -156,13 +162,16 @@ for idx in range(len(list_sched)):
         teamb = ""
         if (index < len(list_week) and list_week[index]["Week"] == week):
             chancea = GetPercent(list_week[index]["ChanceA"])
+            chanceb = GetPercent(list_week[index]["ChanceB"])
             abbra = list_week[index]["AbbrA"]
             abbrb = list_week[index]["AbbrB"]
             teama = list_week[index]["TeamA"]
             teamb = list_week[index]["TeamB"]
         index += 1
         scorea, scoreb = GetActualScores(abbra, teama, abbrb, teamb, item["Score"])
-        if (chancea < 0 or scorea < 0 or scoreb < 0 or abbra.strip() == "" or abbrb.strip() == ""):
+        if ((chancea == 0 and chanceb == 0) or scorea < 0 or scoreb < 0):
+            if (teama != "" and teamb != "" and item["Score"] != "?" and "tickets" not in item["Score"]):
+                print ("*** Game skipped [{0} vs {1}, {2}] [{3}] in Score {4}, review your merge files ***".format(teama, teamb, abbra, abbrb, item["Score"]))
             skip += 1
         else:
             if (chancea >= 50 and (scorea >= scoreb)):

@@ -157,11 +157,13 @@ def SaveOffFiles(path, file_list):
         idx =  GetIndex(filename)
         statname = "{0}/stats{1}.json".format(week_path, idx)
         dest_file = "{0}{1}".format(path, filename)
-        if (not os.path.exists(dest_file)):
-            copyfile(item, dest_file)
+        if (os.path.exists(dest_file)):
+            os.remove(dest_file)
+        copyfile(item, dest_file)
         dest_file = "{0}stats{1}.json".format(path, idx)
-        if (not os.path.exists(dest_file)):
-            copyfile(statname, dest_file)
+        if (os.path.exists(dest_file)):
+            os.remove(dest_file)
+        copyfile(statname, dest_file)
 
 def SaveStats(output_file, week_path, stat_file):
     filename = os.path.basename(output_file)
@@ -179,8 +181,13 @@ def PredictTournament(week, stat_file, merge_file, verbose):
     SaveOffFiles(saved_path, weekly_files)
     for p in Path(week_path).glob("week*.csv"):
         p.unlink()
+    for p in Path(week_path).glob("stats*.json"):
+        p.unlink()
     if (not CurrentStatsFile(stat_file)):
         RefreshStats()
+        scrape_schedule.year = now.year
+        scrape_schedule.main(sys.argv[1:])
+        schedule_files = GetSchedFiles(sched_path, "sched*.json")
     schedule_files = GetSchedFiles(sched_path, "sched*.json")
     if (not schedule_files):
         scrape_schedule.year = now.year
