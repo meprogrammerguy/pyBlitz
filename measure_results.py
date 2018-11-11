@@ -68,24 +68,14 @@ def GetActualScores(abbra, teama, abbrb, teamb, scores):
         return -1, -1
     if (items[0].strip() == "?"):   # Cancelled, Postponed or not yet Played Game
         return -1, -1
+    ot = -1
     if (len(items) == 9 and "ot)" in items[8]):
-        if (verbose):
-            print ("An overtime game - info")
+        # overtime casei
+        ot += 1
     elif (len(items) != 7):
         return -1, -1
     if (abbra.lower().strip() not in items and abbrb.lower().strip() not in items):
-        if (verbose):
-            print ("{0} vs. {1} final score {2}".format(teama, teamb, scores))
-            print ("No Abbreviations were found fix the merge abbreviation file")
         return -1, -1
-    if (abbra.lower().strip() not in items):
-        if (verbose):
-            print ("{0} vs. {1} final score {2}".format(teama, teamb, scores))
-            print ("Missing Abbreviation [{0}] [{1}] in Score {2}".format(abbra, abbrb, scores))
-    if (abbrb.lower().strip() not in items):
-        if (verbose):
-            print ("{0} vs. {1} final score {2}".format(teama, teamb, scores))
-            print ("Missing Abbreviation [{0}] [{1}] in Score {2}".format(abbra, abbrb, scores))
     if (abbra.lower().strip() == items[0].lower().strip()):
         scorea = int(items[2])
         scoreb = int(items[6])
