@@ -70,7 +70,7 @@ def GetActualScores(abbra, teama, abbrb, teamb, scores):
         return -1, -1
     ot = -1
     if (len(items) == 9 and "ot)" in items[8]):
-        # overtime casei
+        # overtime case
         ot += 1
     elif (len(items) != 7):
         return -1, -1
@@ -159,9 +159,13 @@ for idx in range(len(list_sched)):
             teamb = list_week[index]["TeamB"]
         index += 1
         scorea, scoreb = GetActualScores(abbra, teama, abbrb, teamb, item["Score"])
-        if ((chancea == 0 and chanceb == 0) or scorea < 0 or scoreb < 0):
-            if (teama != "" and teamb != "" and item["Score"] != "?" and "tickets" not in item["Score"]):
-                print ("*** Game skipped [{0} vs {1}, {2}] [{3}] in Score {4}, review your merge files ***".format(teama, teamb, abbra, abbrb, item["Score"]))
+        if ((int(chancea) == 0 and int(chanceb) == 0) or scorea < 0 or scoreb < 0):
+            if (teama != "" and teamb != "" and "tickets" not in item["Score"]):
+                if (item["Score"] == "?"):
+                    print ("***\nGame skipped\n\n\t[{0} vs {1}] \n\tabbreviation(s) [{2}] [{3}] Score {4}\n\tpostponed, cancelled or not yet played\n***\n"
+                        .format(teama, teamb, abbra, abbrb, item["Score"]))
+                else:
+                    print ("***\nGame skipped\n\n\t[{0} vs {1}] \n\tabbreviation(s) [{2}] [{3}] Score {4}\n\treview your merge files\n***\n".format(teama, teamb, abbra, abbrb, item["Score"]))
             skip += 1
         else:
             if (chancea >= 50 and (scorea >= scoreb)):
@@ -175,9 +179,7 @@ for idx in range(len(list_sched)):
     C.append(skip)
     D.append(correct)
     E.append(CalcPercent(total, skip, correct))
-    if (verbose):
-        print ("week{0} total={1}, skip={2}, correct={3} Percent={4}%".format(week, total, skip,
-            correct, CalcPercent(total, skip, correct)))
+    print ("week{0} total={1}, skip={2}, correct={3} Percent={4}%".format(week, total, skip, correct, CalcPercent(total, skip, correct)))
     alltotal = alltotal + total
     allskip = allskip + skip
     allcorrect = allcorrect + correct
@@ -189,11 +191,9 @@ C.append(allskip)
 D.append(allcorrect)
 E.append(CalcPercent(alltotal, allskip, allcorrect))
 
-if (verbose):
-    print ("====================================================================")
-    print ("Totals total={0}, skip={1}, correct={2} Percent={3}%".format(alltotal, allskip,
-        allcorrect, CalcPercent(alltotal, allskip, allcorrect)))
-    print ("====================================================================")
+print ("====================================================================")
+print ("Totals total={0}, skip={1}, correct={2} Percent={3}%".format(alltotal, allskip, allcorrect, CalcPercent(alltotal, allskip, allcorrect)))
+print ("====================================================================")
 
 df=pd.DataFrame(IDX,columns=['Index'])
 df['Week']=A

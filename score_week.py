@@ -140,13 +140,12 @@ def FindAbbr(teama, teamb, dict_merge):
     FoundAbbrB = ""
     for item in dict_merge.values():
         stats = item["BPI"].lower().strip()
+        div = item["class"].lower().strip()
         abbr = item["abbr"].strip()
-        if (teama.lower().strip() == stats):
+        if (teama.lower().strip() == stats and div == "division 1  fbs"):
             FoundAbbrA = abbr
-        if (teamb.lower().strip() == stats):
+        if (teamb.lower().strip() == stats and div == "division 1  fbs"):
             FoundAbbrB = abbr
-        if (FoundAbbrA and FoundAbbrB):
-            break
     return FoundAbbrA, FoundAbbrB
 
 def SaveOffFiles(path, file_list):

@@ -48,6 +48,8 @@ def GetFloat(item):
     return myFloat(idx[0])
 
 def CleanString(data):
+    if (chr(233) in data):
+        data = "SAN JOSE STATE"
     if (chr(8217) in data):
         data = "HAWAII"
     data =  re.sub(' +',' ', data)
