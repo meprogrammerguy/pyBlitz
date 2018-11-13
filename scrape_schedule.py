@@ -88,7 +88,9 @@ def main(argv):
             E=[]
             for score in scores:
                 data = score.find(text=True)
-                if data is not None and ',' in data and num_there(data):
+                if (data is not None and ("Canceled" in data or "Postponed" in data)):
+                    E.append(data)
+                elif data is not None and ',' in data and num_there(data):
                     E.append(data)
                 else:
                     E.append("?")

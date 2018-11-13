@@ -66,7 +66,11 @@ def GetActualScores(abbra, teama, abbrb, teamb, scores):
     items = re.split(r'(,|\s)\s*', str(scores).lower())
     if (not items):
         return -1, -1
-    if (items[0].strip() == "?"):   # Cancelled, Postponed or not yet Played Game
+    if (items[0].strip() == "canceled"):
+        return -3, -3
+    if (items[0].strip() == "postponed"):
+        return -2, -2
+    if (items[0].strip() == "?"):   # not yet Played Game
         return -1, -1
     ot = -1
     if (len(items) == 9 and "ot)" in items[8]):
@@ -161,11 +165,15 @@ for idx in range(len(list_sched)):
         scorea, scoreb = GetActualScores(abbra, teama, abbrb, teamb, item["Score"])
         if ((int(chancea) == 0 and int(chanceb) == 0) or scorea < 0 or scoreb < 0):
             if (teama != "" and teamb != "" and "tickets" not in item["Score"]):
-                if (item["Score"] == "?"):
-                    print ("***\nGame skipped\n\n\t[{0} vs {1}] \n\tabbreviation(s) [{2}] [{3}] Score {4}\n\tpostponed, cancelled or not yet played\n***\n"
+                if (item["Score"].lower() == "canceled"):
+                    print ("***\nGame skipped\n\n\t[{0} vs {1}] \n\tabbreviation(s) [{2}] [{3}] Score {4}\n\tcanceled\n***\n"
+                        .format(teama, teamb, abbra, abbrb, item["Score"]))
+                elif (item["Score"].lower() == "postponed"):
+                    print ("***\nGame skipped\n\n\t[{0} vs {1}] \n\tabbreviation(s) [{2}] [{3}] Score {4}\n\tpostponed\n***\n"
                         .format(teama, teamb, abbra, abbrb, item["Score"]))
                 else:
-                    print ("***\nGame skipped\n\n\t[{0} vs {1}] \n\tabbreviation(s) [{2}] [{3}] Score {4}\n\treview your merge files\n***\n".format(teama, teamb, abbra, abbrb, item["Score"]))
+                    if (item["Score"] != "?"):
+                        print ("***\nGame skipped\n\n\t[{0} vs {1}] \n\tabbreviation(s) [{2}] [{3}] Score {4}\n\treview your merge files\n***\n".format(teama, teamb, abbra, abbrb, item["Score"]))
             skip += 1
         else:
             if (chancea >= 50 and (scorea >= scoreb)):
