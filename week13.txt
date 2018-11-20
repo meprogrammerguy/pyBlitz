@@ -1,0 +1,158 @@
+Weekly Prediction Tool
+**************************
+Statistics file:	data/stats.json
+Team Merge file:	data/merge.json
+	running for Week: 13
+	Directory Location: predict/2018/
+**************************
+Northern Illinois Huskies 100% vs TBD 0% 0-0
+Warning: Neither TBD or TBD have been found, 
+	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
+Northwestern Wildcats 100% vs TBD 0% 0-0
+Warning: Neither TBD or TBD have been found, 
+	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
+East Carolina Pirates 0% at NC State Wolfpack 100% 11-40
+Akron Zips 0% at South Carolina Gamecocks 100% 0-36
+Warning: Neither TBD or Maine Black Bears have been found, 
+	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
+Warning: Neither TBD or TBD have been found, 
+	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
+Marshall Thundering Herd 26.2% at Virginia Tech Hokies 73.8% 14-22
+Warning: Neither TBD or Colgate Raiders have been found, 
+	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
+Warning: Neither TBD or TBD have been found, 
+	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
+Incarnate Word Cardinals 0% at Iowa State Cyclones 100% 0-0
+Norfolk State Spartans 0% at Liberty Flames 100% 0-0
+Warning: Neither TBD or Kennesaw State Owls have been found, 
+	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
+Warning: Neither TBD or South Dakota State Jackrabbits have been found, 
+	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
+Stanford Cardinal 50.0% at California Golden Bears 50.0% 16-16
+Warning: Neither TBD or North Dakota State Bison have been found, 
+	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
+TBD 0% at UCF Knights 100% 0-0
+Alabama Crimson Tide 79.9% vs Georgia Bulldogs 20.1% 27-16
+Warning: Neither TBD or Weber State Wildcats have been found, 
+	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
+Warning: Neither TBD or Eastern Washington Eagles have been found, 
+	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
+Warning: Neither TBD or UC Davis Aggies have been found, 
+	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
+Warning: Neither TBD or TBD have been found, 
+	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
+Clemson Tigers 100% vs Pittsburgh Panthers 0% 34-10
+predict/2018/week13.csv has been created.
+Scrape Schedule Tool
+**************************
+data is from http://www.espn.com/college-football/schedule
+Year is: 2018
+Directory location: predict/2018/schedule/
+**************************
+done.
+***
+Game skipped
+
+	[North Carolina A&T Aggies vs East Carolina Pirates] 
+	abbreviation(s) [] [ECU] Score Postponed
+	postponed
+***
+
+***
+Game skipped
+
+	[Akron Zips vs Nebraska Cornhuskers] 
+	abbreviation(s) [AKRON] [NEB] Score Canceled
+	canceled
+***
+
+***
+Game skipped
+
+	[South Dakota State Jackrabbits vs Iowa State Cyclones] 
+	abbreviation(s) [] [ISU] Score Canceled
+	canceled
+***
+
+week1 total=91, skip=3, correct=78 Percent=88.64%
+week2 total=78, skip=0, correct=65 Percent=83.33%
+***
+Game skipped
+
+	[East Carolina Pirates vs Virginia Tech Hokies] 
+	abbreviation(s) [ECU] [VT] Score Canceled
+	canceled
+***
+
+***
+Game skipped
+
+	[West Virginia Mountaineers vs NC State Wolfpack] 
+	abbreviation(s) [WVU] [NCST] Score Canceled
+	canceled
+***
+
+***
+Game skipped
+
+	[UCF Knights vs North Carolina Tar Heels] 
+	abbreviation(s) [UCF] [UNC] Score Canceled
+	canceled
+***
+
+***
+Game skipped
+
+	[Southern Mississippi Golden Eagles vs Appalachian State Mountaineers] 
+	abbreviation(s) [USM] [APP] Score Postponed
+	postponed
+***
+
+***
+Game skipped
+
+	[Norfolk State Spartans vs Liberty Flames] 
+	abbreviation(s) [] [LIB] Score Postponed
+	postponed
+***
+
+***
+Game skipped
+
+	[Marshall Thundering Herd vs South Carolina Gamecocks] 
+	abbreviation(s) [MRSH] [SC] Score Canceled
+	canceled
+***
+
+week3 total=72, skip=6, correct=57 Percent=86.36%
+week4 total=62, skip=0, correct=49 Percent=79.03%
+week5 total=58, skip=0, correct=42 Percent=72.41%
+week6 total=56, skip=0, correct=40 Percent=71.43%
+week7 total=55, skip=0, correct=42 Percent=76.36%
+week8 total=55, skip=0, correct=46 Percent=83.64%
+week9 total=56, skip=0, correct=43 Percent=76.79%
+week10 total=62, skip=0, correct=50 Percent=80.65%
+week11 total=62, skip=0, correct=52 Percent=83.87%
+***
+Game skipped
+
+	[Stanford Cardinal vs California Golden Bears] 
+	abbreviation(s) [STAN] [CAL] Score Postponed
+	postponed
+***
+
+week12 total=67, skip=1, correct=61 Percent=92.42%
+week13 total=64, skip=64, correct=0 Percent=None%
+week14 total=24, skip=24, correct=0 Percent=None%
+week15 total=1, skip=1, correct=0 Percent=None%
+====================================================================
+Totals total=863, skip=99, correct=625 Percent=81.81%
+====================================================================
+done.
+=================================================
+For week12, winning percent was: 92.42%
+=================================================
+=================================================
+For this year so far, winning percent is: 81.81%
+=================================================
+done.

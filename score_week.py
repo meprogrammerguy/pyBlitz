@@ -81,10 +81,10 @@ def GetWeekRange(week, list_schedule):
     if (week[0].lower() == "a"):
         return range(0, max_range)
     if (week[0].lower() == "c"):
-        return range(EarliestUnpickedWeek(list_schedule), EarliestUnpickedWeek(list_schedule) + 1)
+        return range(EarliestUnpickedWeek(list_schedule) - 1, EarliestUnpickedWeek(list_schedule))
     idx = GetIndex(week)
     if ((idx < 1) or (idx > max_range)):
-        return range(EarliestUnpickedWeek(list_schedule), EarliestUnpickedWeek(list_schedule) + 1)
+        return range(EarliestUnpickedWeek(list_schedule) - 1, EarliestUnpickedWeek(list_schedule))
     return range(int(week) - 1, int(week))
 
 def GetIndex(item):
@@ -215,7 +215,7 @@ def PredictTournament(week, stat_file, merge_file, verbose):
     if (not "a" in week.lower().strip()):
         idx = GetIndex(week)
         if ((idx < 1) or (idx > len(schedule_files))):
-            week = weeks[0]
+            week = weeks[0] + 1
     print ("Weekly Prediction Tool")
     print ("**************************")
     print ("Statistics file:\t{0}".format(stat_file))
