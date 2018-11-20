@@ -215,7 +215,7 @@ def PredictTournament(week, stat_file, merge_file, verbose):
     if (not "a" in week.lower().strip()):
         idx = GetIndex(week)
         if ((idx < 1) or (idx > len(schedule_files))):
-            week = "current"
+            week = weeks[0]
     print ("Weekly Prediction Tool")
     print ("**************************")
     print ("Statistics file:\t{0}".format(stat_file))
@@ -254,7 +254,7 @@ def PredictTournament(week, stat_file, merge_file, verbose):
                         "Warning: cannot predict, both teams missing, fix the merge spreadsheets"])
                     print ("Warning: Neither {0} or {1} have been found, \n\t Suggest reviewing/fixing the merge spreadsheet(s) and re-run".format( item["TeamA"], item["TeamB"]))
             Path(week_path).mkdir(parents=True, exist_ok=True)
-            week = GetIndex(schedule_files[idx])
+            #week = GetIndex(schedule_files[idx])
             output_file = "{0}week{1}.csv".format(week_path, week)
             SaveStats(output_file, week_path, stat_file)
             predict_sheet = open(output_file, 'w', newline='')
