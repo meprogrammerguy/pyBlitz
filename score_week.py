@@ -73,7 +73,7 @@ def EarliestUnpickedWeek(list_schedule):
             str_date = "{0}, {1}".format(item["Date"], item["Year"])
             dt_obj = datetime.strptime(str_date, '%A, %B %d, %Y')
             if (current_date >= dt_obj.date()):
-                return i + 1
+                return i + 2
     return 0
 
 def GetWeekRange(week, list_schedule):
@@ -99,7 +99,7 @@ def GetSchedFiles(path, templatename):
     for p in Path(path).glob(templatename):
         A.append(str(p))
     file_list = []
-    for item in range(0, 16):
+    for item in range(0, 17):
         file_list.append("?")
     for item in A:
         idx = GetIndex(item)
@@ -211,10 +211,9 @@ def PredictTournament(week, stat_file, merge_file, verbose):
             item = json.load(schedule_file, object_pairs_hook=OrderedDict)
             list_schedule.append(item)
     weeks = GetWeekRange(week, list_schedule)
-    if (not "a" in week.lower().strip()):
-        idx = GetIndex(week)
-        if ((idx < 1) or (idx > len(schedule_files))):
-            week = weeks[0] + 1
+    idx = GetIndex(week)
+    if ((idx < 1) or (idx > len(schedule_files))):
+        week = max(weeks) + 1
     print ("Weekly Prediction Tool")
     print ("**************************")
     print ("Statistics file:\t{0}".format(stat_file))

@@ -60,7 +60,9 @@ def main(argv):
         url.append("{0}/_/year/{1}".format(starturl, year))
         for week in range(1, 16):
             url.append("{0}/_/week/{1}/year/{2}".format(starturl, week, year))        
-        url.append("{0}/_/year/{1}/seasontype/3".format(starturl, year))        
+        url.append("{0}/_/year/{1}/seasontype/3".format(starturl, year))
+    url.pop()
+    url.append("{0}/_/week/1/year/{1}/seasontype/3".format(starturl, year)) # special case, the bowls at year end
     pages = []
     for item in url:
        with contextlib.closing(urlopen(item)) as page:

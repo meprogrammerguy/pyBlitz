@@ -2,47 +2,28 @@ Weekly Prediction Tool
 **************************
 Statistics file:	data/stats.json
 Team Merge file:	data/merge.json
-	running for Week: 13
+	running for Week: 14
 	Directory Location: predict/2018/
 **************************
-Northern Illinois Huskies 100% vs TBD 0% 0-0
-Warning: Neither TBD or TBD have been found, 
-	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
-Northwestern Wildcats 100% vs TBD 0% 0-0
-Warning: Neither TBD or TBD have been found, 
-	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
-East Carolina Pirates 0% at NC State Wolfpack 100% 11-40
-Akron Zips 0% at South Carolina Gamecocks 100% 0-36
-Warning: Neither TBD or Maine Black Bears have been found, 
-	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
-Warning: Neither TBD or TBD have been found, 
-	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
-Marshall Thundering Herd 26.2% at Virginia Tech Hokies 73.8% 14-22
-Warning: Neither TBD or Colgate Raiders have been found, 
-	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
-Warning: Neither TBD or TBD have been found, 
-	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
-Incarnate Word Cardinals 0% at Iowa State Cyclones 100% 0-0
+Northern Illinois Huskies 42.6% vs Buffalo Bulls 57.4% 17-20
+Utah Utes 48.8% vs Washington Huskies 51.2% 19-19
+Texas Longhorns 32.3% vs Oklahoma Sooners 67.7% 26-32
+Drake Bulldogs 0% at Iowa State Cyclones 100% 0-0
+Louisiana Ragin Cajuns 0% at Appalachian State Mountaineers 100% 10-33
+East Carolina Pirates 0% at NC State Wolfpack 100% 5-38
+Akron Zips 0% at South Carolina Gamecocks 100% 4-40
+Marshall Thundering Herd 20.8% at Virginia Tech Hokies 79.3% 15-25
+UAB Blazers 17.0% at Middle Tennessee Blue Raiders 83.0% 11-24
 Norfolk State Spartans 0% at Liberty Flames 100% 0-0
-Warning: Neither TBD or Kennesaw State Owls have been found, 
-	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
-Warning: Neither TBD or South Dakota State Jackrabbits have been found, 
-	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
-Stanford Cardinal 50.0% at California Golden Bears 50.0% 16-16
-Warning: Neither TBD or North Dakota State Bison have been found, 
-	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
-TBD 0% at UCF Knights 100% 0-0
-Alabama Crimson Tide 79.9% vs Georgia Bulldogs 20.1% 27-16
-Warning: Neither TBD or Weber State Wildcats have been found, 
-	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
-Warning: Neither TBD or Eastern Washington Eagles have been found, 
-	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
-Warning: Neither TBD or UC Davis Aggies have been found, 
-	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
-Warning: Neither TBD or TBD have been found, 
-	 Suggest reviewing/fixing the merge spreadsheet(s) and re-run
-Clemson Tigers 100% vs Pittsburgh Panthers 0% 34-10
-predict/2018/week13.csv has been created.
+Stanford Cardinal 46.6% at California Golden Bears 53.4% 18-20
+Memphis Tigers 13.2% at UCF Knights 86.8% 15-29
+Alabama Crimson Tide 79.9% vs Georgia Bulldogs 20.1% 28-17
+Fresno State Bulldogs 19.4% at Boise State Broncos 80.6% 11-22
+Clemson Tigers 100% vs Pittsburgh Panthers 0% 33-6
+Northwestern Wildcats 11.5% vs Ohio State Buckeyes 88.6% 13-29
+predict/2018/week14.csv has been created.
+Measure Actual Results Tool
+**************************
 Scrape Schedule Tool
 **************************
 data is from http://www.espn.com/college-football/schedule
@@ -142,17 +123,17 @@ Game skipped
 ***
 
 week12 total=67, skip=1, correct=61 Percent=92.42%
-week13 total=64, skip=64, correct=0 Percent=None%
-week14 total=24, skip=24, correct=0 Percent=None%
+week13 total=64, skip=0, correct=50 Percent=78.12%
+week14 total=16, skip=16, correct=0 Percent=None%
 week15 total=1, skip=1, correct=0 Percent=None%
 ====================================================================
-Totals total=863, skip=99, correct=625 Percent=81.81%
+Totals total=855, skip=27, correct=675 Percent=81.52%
 ====================================================================
 done.
 =================================================
-For week12, winning percent was: 92.42%
+For week13, winning percent was: 78.12%
 =================================================
 =================================================
-For this year so far, winning percent is: 81.81%
+For this year so far, winning percent is: 81.52%
 =================================================
 done.
