@@ -185,7 +185,6 @@ def PredictTournament(week, stat_file, merge_file, verbose):
         RefreshStats()
         scrape_schedule.year = now.year
         scrape_schedule.main(sys.argv[1:])
-        schedule_files = GetSchedFiles(sched_path, "sched*.json")
     schedule_files = GetSchedFiles(sched_path, "sched*.json")
     if (not schedule_files):
         scrape_schedule.year = now.year

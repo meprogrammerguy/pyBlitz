@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 
 from urllib.request import urlopen
+from urllib.request import HTTPError
+from urllib.request import Request
+
 from bs4 import BeautifulSoup
 import pandas as pd
 import html5lib
@@ -52,21 +55,21 @@ def main(argv):
 
     url = []
     if (year == int(now.year)):
-        #url.append(starturl)
         for week in range(1, 16):
-            url.append("{0}/_/week/{1}".format(starturl, week))
-        url.append("{0}/_/seasontype/3".format(starturl))
+            url.append("{0}/_/week/{1}/seasontype/2".format(starturl, week))
+        url.append("{0}/_/16/seasontype/2".format(starturl))                
     else:
-        url.append("{0}/_/year/{1}".format(starturl, year))
         for week in range(1, 16):
-            url.append("{0}/_/week/{1}/year/{2}".format(starturl, week, year))        
-        url.append("{0}/_/year/{1}/seasontype/3".format(starturl, year))
-    url.pop()
-    url.append("{0}/_/week/1/year/{1}/seasontype/3".format(starturl, year)) # special case, the bowls at year end
+            url.append("{0}/_/week/{1}/year/{2}/seasontype/2".format(starturl, week, year))
+        url.append("{0}/_/year/{1}".format(starturl, year))                
     pages = []
     for item in url:
-       with contextlib.closing(urlopen(item)) as page:
-           pages.append(BeautifulSoup(page, "html5lib"))
+        req = Request(url=item,headers={'User-Agent':' Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0'})
+        try:
+            page = urlopen(req)
+        except HTTPError as e:
+            page = e.read()
+        pages.append(BeautifulSoup(page, "html5lib"))
 
     loop = 0
     for page in pages:
@@ -118,7 +121,7 @@ def main(argv):
                         Y.append(year + 1)
                     B.append(pyBlitz.CleanString(team['title']))
                     if loop != len(pages):
-                        if (neutral[count]['data-is-neutral-site'] == 'true'):
+                        if ("data-is-neutral-site" not in neutral or neutral[count]['data-is-neutral-site'] == 'true'):
                             C.append("Neutral")
                         else:
                             C.append(pyBlitz.CleanString(team['title']))
