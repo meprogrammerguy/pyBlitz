@@ -48,7 +48,6 @@ if (os.path.exists(file)):
                 abbr = row["corrected abbr"]
             if (bpi or abbr):
                 list_overrides.append([row["abbr team"], bpi, abbr])
-
 file = '{0}abbreviation.json'.format(settings.data_path)
 if (not os.path.exists(file)):
     print ("abbreviation files are missing, run the scrape_abbreviation tool to create")

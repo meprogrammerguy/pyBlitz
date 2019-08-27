@@ -43,18 +43,17 @@ B=[]
 
 # Add any Missing Teams Here
 AddSchool("ALABAMA-BIRMINGHAM", "UAB")
-AddSchool("LOUISIANA COLLEGE", "LC")
-AddSchool("WESTERN KENTUCKY","WKU")
-AddSchool("FLORIDA ATLANTIC","FAU")
-AddSchool("WESTERN KENTUCKY","WKU")
+AddSchool("ALABAMA A&M", "AAMU")
+#AddSchool("WESTERN KENTUCKY","WKU")
+#AddSchool("FLORIDA ATLANTIC","FAU")
+#AddSchool("WESTERN KENTUCKY","WKU")
 # Add any Missing Teams Here
-
-for row in tables[1].findAll("tr"):
+for row in tables[0].findAll("tr"):
     col=row.findAll('td')
     if len(col)>0:
         tag = str(col[0].find(text=True)).strip()
         tag2 = str(col[0].find(href=True)).lower().strip()
-        if (tag != "none" and tag != "team"):
+        if (tag != "None"):
             if ("#f" in tag2):
                 index+=1
                 IDX.append(index)

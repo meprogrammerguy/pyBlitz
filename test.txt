@@ -1,0 +1,106 @@
+Test Abbreviation spreadsheet validation Tool
+****************************************************************
+ 
+Makes sure that your abbreviations are set up correctly
+    Tool will compare the scraped schedule abbreviations to the abbreviations
+    from the combine_merge Tool and show anything that is strange
+ 
+Scrape Schedule Tool
+**************************
+data is from http://www.espn.com/college-football/schedule
+Year is: 2018
+Directory location: predict/2018/schedule/
+**************************
+done.
+*** warning: could not find schedule abbreviation AAMU in merge file
+*** warning: could not find schedule abbreviation ACU in merge file
+*** warning: could not find schedule abbreviation ALBY in merge file
+*** warning: could not find schedule abbreviation ALCN in merge file
+*** warning: could not find schedule abbreviation ALST in merge file
+*** warning: could not find schedule abbreviation BCU in merge file
+*** warning: could not find schedule abbreviation CAMP in merge file
+*** warning: could not find schedule abbreviation CCSU in merge file
+*** warning: could not find schedule abbreviation CHAT in merge file
+*** warning: could not find schedule abbreviation CHSO in merge file
+*** warning: could not find schedule abbreviation CIT in merge file
+*** warning: could not find schedule abbreviation COLG in merge file
+*** warning: could not find schedule abbreviation DRKE in merge file
+*** warning: could not find schedule abbreviation DSU in merge file
+*** warning: could not find schedule abbreviation DUQ in merge file
+*** warning: could not find schedule abbreviation EIU in merge file
+*** warning: could not find schedule abbreviation EKY in merge file
+*** warning: could not find schedule abbreviation ELON in merge file
+*** warning: could not find schedule abbreviation ETSU in merge file
+*** warning: could not find schedule abbreviation EWU in merge file
+*** warning: could not find schedule abbreviation FAMU in merge file
+*** warning: could not find schedule abbreviation FOR in merge file
+*** warning: could not find schedule abbreviation FUR in merge file
+*** warning: could not find schedule abbreviation GRAM in merge file
+*** warning: could not find schedule abbreviation HBU in merge file
+*** warning: could not find schedule abbreviation HC in merge file
+*** warning: could not find schedule abbreviation HOW in merge file
+*** warning: could not find schedule abbreviation IDAHO in merge file
+*** warning: could not find schedule abbreviation IDST in merge file
+*** warning: could not find schedule abbreviation ILST in merge file
+*** warning: could not find schedule abbreviation INST in merge file
+*** warning: could not find schedule abbreviation IW in merge file
+*** warning: could not find schedule abbreviation JKST in merge file
+*** warning: could not find schedule abbreviation JMU in merge file
+*** warning: could not find schedule abbreviation KENN in merge file
+*** warning: could not find schedule abbreviation LAF in merge file
+*** warning: could not find schedule abbreviation LAM in merge file
+*** warning: could not find schedule abbreviation LEH in merge file
+*** warning: could not find schedule abbreviation MAINE in merge file
+*** warning: could not find schedule abbreviation MCNS in merge file
+*** warning: could not find schedule abbreviation MER in merge file
+*** warning: could not find schedule abbreviation MONM in merge file
+*** warning: could not find schedule abbreviation MORG in merge file
+*** warning: could not find schedule abbreviation MOST in merge file
+*** warning: could not find schedule abbreviation MURR in merge file
+*** warning: could not find schedule abbreviation NAU in merge file
+*** warning: could not find schedule abbreviation NCAT in merge file
+*** warning: could not find schedule abbreviation NCCU in merge file
+*** warning: could not find schedule abbreviation NICH in merge file
+*** warning: could not find schedule abbreviation NOVA in merge file
+*** warning: could not find schedule abbreviation NSU in merge file
+*** warning: could not find schedule abbreviation NWST in merge file
+*** warning: could not find schedule abbreviation PEAY in merge file
+*** warning: could not find schedule abbreviation PRST in merge file
+*** warning: could not find schedule abbreviation PVAM in merge file
+*** warning: could not find schedule abbreviation RICH in merge file
+*** warning: could not find schedule abbreviation SAC in merge file
+*** warning: could not find schedule abbreviation SAM in merge file
+*** warning: could not find schedule abbreviation SAV in merge file
+*** warning: could not find schedule abbreviation SCST in merge file
+*** warning: could not find schedule abbreviation SDAK in merge file
+*** warning: could not find schedule abbreviation SELA in merge file
+*** warning: could not find schedule abbreviation SEMO in merge file
+*** warning: could not find schedule abbreviation SFA in merge file
+*** warning: could not find schedule abbreviation SIU in merge file
+*** warning: could not find schedule abbreviation SOU in merge file
+*** warning: could not find schedule abbreviation STON in merge file
+*** warning: could not find schedule abbreviation SUU in merge file
+*** warning: could not find schedule abbreviation TNST in merge file
+*** warning: could not find schedule abbreviation TNTC in merge file
+*** warning: could not find schedule abbreviation TOWS in merge file
+*** warning: could not find schedule abbreviation TXSO in merge file
+*** warning: could not find schedule abbreviation UAPB in merge file
+*** warning: could not find schedule abbreviation UCA in merge file
+*** warning: could not find schedule abbreviation UCD in merge file
+*** warning: could not find schedule abbreviation UND in merge file
+*** warning: could not find schedule abbreviation UNH in merge file
+*** warning: could not find schedule abbreviation UNI in merge file
+*** warning: could not find schedule abbreviation URI in merge file
+*** warning: could not find schedule abbreviation UTM in merge file
+*** warning: could not find schedule abbreviation VMI in merge file
+*** warning: could not find schedule abbreviation W&M in merge file
+*** warning: could not find schedule abbreviation WAG in merge file
+*** warning: could not find schedule abbreviation WCU in merge file
+*** warning: could not find schedule abbreviation WEB in merge file
+*** warning: could not find schedule abbreviation WEBB in merge file
+*** warning: could not find schedule abbreviation WIU in merge file
+*** warning: could not find schedule abbreviation WKU in merge file
+*** warning: could not find schedule abbreviation WOF in merge file
+*** warning: could not find schedule abbreviation YSU in merge file
+****************************************************************
+done.

@@ -61,7 +61,6 @@ with open(file) as stats_file:
     reader = csv.DictReader(stats_file)
     for row in reader:
         dict_stats_merge.append(row)
-
 file = '{0}merge_abbreviation.csv'.format(settings.data_path)
 if (not os.path.exists(file)):
     print ("Warning *** The merge_abbreviation.csv file does not exist ***")
