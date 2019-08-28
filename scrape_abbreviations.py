@@ -44,9 +44,8 @@ B=[]
 # Add any Missing Teams Here
 AddSchool("ALABAMA-BIRMINGHAM", "UAB")
 AddSchool("ALABAMA A&M", "AAMU")
-#AddSchool("WESTERN KENTUCKY","WKU")
-#AddSchool("FLORIDA ATLANTIC","FAU")
-#AddSchool("WESTERN KENTUCKY","WKU")
+AddSchool("ALBANY-NY","ALBY")
+AddSchool("WESTERN KENTUCKY","WKU")
 # Add any Missing Teams Here
 for row in tables[0].findAll("tr"):
     col=row.findAll('td')
