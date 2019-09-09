@@ -57,11 +57,11 @@ def main(argv):
     if (year == int(now.year)):
         for week in range(1, 16):
             url.append("{0}/_/week/{1}/seasontype/2".format(starturl, week))
-        url.append("{0}/_/16/seasontype/2".format(starturl))                
+        #url.append("{0}/_/16/seasontype/2".format(starturl))                
     else:
         for week in range(1, 16):
             url.append("{0}/_/week/{1}/year/{2}/seasontype/2".format(starturl, week, year))
-        url.append("{0}/_/year/{1}".format(starturl, year))                
+        url.append("{0}/_/year/{1}".format(starturl, year))   
     pages = []
     for item in url:
         req = Request(url=item,headers={'User-Agent':' Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0'})
@@ -121,7 +121,6 @@ def main(argv):
                         Y.append(year + 1)
                     B.append(pyBlitz.CleanString(team['title']))
                     if loop != len(pages):
-                        #if ("data-is-neutral-site" not in neutral or neutral[count]['data-is-neutral-site'] == 'true'):
                         if (neutral[count]['data-is-neutral-site'] == 'true'):
                             C.append("Neutral")
                         else:

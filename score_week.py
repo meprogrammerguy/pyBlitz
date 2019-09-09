@@ -213,6 +213,8 @@ def PredictTournament(week, stat_file, merge_file, verbose):
     idx = GetIndex(week)
     if ((idx < 1) or (idx > len(schedule_files))):
         week = max(weeks) + 1
+    if (min(weeks) >= 1):
+        weeks = range(min(weeks) - 1, max(weeks) + 1)
     print ("Weekly Prediction Tool")
     print ("**************************")
     print ("Statistics file:\t{0}".format(stat_file))
