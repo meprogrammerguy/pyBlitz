@@ -121,10 +121,11 @@ def main(argv):
                         Y.append(year + 1)
                     B.append(pyBlitz.CleanString(team['title']))
                     if loop != len(pages):
-                        if ("data-is-neutral-site" not in neutral or neutral[count]['data-is-neutral-site'] == 'true'):
+                        #if ("data-is-neutral-site" not in neutral or neutral[count]['data-is-neutral-site'] == 'true'):
+                        if (neutral[count]['data-is-neutral-site'] == 'true'):
                             C.append("Neutral")
                         else:
-                            C.append(pyBlitz.CleanString(team['title']))
+                            C.append("?")
                     else:
                         C.append("Neutral")
                     if (index < len(F)):
@@ -136,9 +137,10 @@ def main(argv):
                     IDX.append(index)
                 else:
                     D.append(pyBlitz.CleanString(team['title']))
+                    if (C[-1] == '?'):
+                        C[-1] = D[-1] 
                 line+=1
             dateidx+=1
-
         df=pd.DataFrame(IDX, columns=['Index'])
         df['Year']=Y
         df['Date']=A
