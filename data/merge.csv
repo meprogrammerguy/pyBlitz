@@ -7,7 +7,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 6,ARIZONA,Arizona,Arizona Wildcats,Arizona,ARIZ,DIVISION 1  FBS
 7,ARIZONA STATE,Arizona St,Arizona State Sun Devils,Arizona State,ASU,DIVISION 1  FBS
 8,ARKANSAS,Arkansas,Arkansas Razorbacks,Arkansas,ARK,DIVISION 1  FBS
-9,ARKANSAS STATE,Arkansas St,Arkansas State Red Wolves,Arkansas State,ARKST,DIVISION 1  FBS
+9,ARKANSAS STATE,Arkansas St,Arkansas State Red Wolves,Arkansas State,ARST,DIVISION 1  FBS
 10,ARMY,Army,Army Black Knights,Army,ARMY,DIVISION 1  FBS
 11,AUBURN,Auburn,Auburn Tigers,Auburn,AUB,DIVISION 1  FBS
 12,BALL STATE,Ball State,Ball State Cardinals,Ball State,BALL,DIVISION 1  FBS
@@ -25,7 +25,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 24,COASTAL CAROLINA,Coastal Car,Coastal Carolina Chanticleers,Coastal Carolina,CCU,DIVISION 1  FBS
 25,COLORADO,Colorado,Colorado Buffaloes,Colorado,COLO,DIVISION 1  FBS
 26,COLORADO STATE,Colorado St,Colorado State Rams,Colorado State,CSU,DIVISION 1  FBS
-27,CONNECTICUT,Connecticut,UConn Huskies,UConn,UCONN,DIVISION 1  FBS
+27,CONNECTICUT,Connecticut,UConn Huskies,UConn,CONN,DIVISION 1  FBS
 28,DUKE,Duke,Duke Blue Devils,Duke,DUKE,DIVISION 1  FBS
 29,EAST CAROLINA,E Carolina,East Carolina Pirates,ECU,ECU,DIVISION 1  FBS
 30,EASTERN MICHIGAN,E Michigan,Eastern Michigan Eagles,Eastern Michigan,EMU,DIVISION 1  FBS
@@ -52,14 +52,14 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 51,LA-MONROE,LA Monroe,UL Monroe Warhawks,Louisiana Monroe,ULM,DIVISION 1  FBS
 52,LIBERTY,Liberty,Liberty Flames,Liberty,LIB,DIVISION 1  FBS
 53,LOUISIANA STATE,LSU,LSU Tigers,LSU,LSU,DIVISION 1  FBS
-54,LOUISIANA TECH,LA Tech,Louisiana Tech Bulldogs,Louisiana Tech,LT,DIVISION 1  FBS
+54,LOUISIANA TECH,LA Tech,Louisiana Tech Bulldogs,Louisiana Tech,LAT,DIVISION 1  FBS
 55,LOUISVILLE,Louisville,Louisville Cardinals,Louisville,LOU,DIVISION 1  FBS
 56,MARSHALL,Marshall,Marshall Thundering Herd,Marshall,MRSH,DIVISION 1  FBS
 57,MARYLAND,Maryland,Maryland Terrapins,Maryland,MD,DIVISION 1  FBS
-58,MASSACHUSETTS,U Mass,UMass Minutemen,UMass,UMASS,DIVISION 1  FBS
+58,MASSACHUSETTS,U Mass,UMass Minutemen,UMass,MASS,DIVISION 1  FBS
 59,MEMPHIS,Memphis,Memphis Tigers,Memphis,MEM,DIVISION 1  FBS
 60,MIAMI OF OHIO,Miami (OH),Miami (OH) RedHawks,Miami (OH),M-OH,DIVISION 1  FBS
-61,MIAMI-FL,Miami (FL),Miami Hurricanes,Miami (FL),MIAMI,DIVISION 1  FBS
+61,MIAMI-FL,Miami (FL),Miami Hurricanes,Miami (FL),MIA,DIVISION 1  FBS
 62,MICHIGAN,Michigan,Michigan Wolverines,Michigan,MICH,DIVISION 1  FBS
 63,MICHIGAN STATE,Michigan St,Michigan State Spartans,Michigan State,MSU,DIVISION 1  FBS
 64,MIDDLE TENNESSEE STATE,Middle Tenn,Middle Tennessee Blue Raiders,Middle Tennessee,MTSU,DIVISION 1  FBS
@@ -115,7 +115,7 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 114,TULANE,Tulane,Tulane Green Wave,Tulane,TULN,DIVISION 1  FBS
 115,TULSA,Tulsa,Tulsa Golden Hurricane,Tulsa,TLSA,DIVISION 1  FBS
 116,U.C.L.A.,UCLA,UCLA Bruins,UCLA,UCLA,DIVISION 1  FBS
-117,UNC - CHARLOTTE,Charlotte,Charlotte 49ers,Charlotte,CHAR,DIVISION 1  FBS
+117,UNC - CHARLOTTE,Charlotte,Charlotte 49ers,Charlotte,CLT,DIVISION 1  FBS
 118,UTAH,Utah,Utah Utes,Utah,UTAH,DIVISION 1  FBS
 119,UTAH STATE,Utah State,Utah State Aggies,Utah State,USU,DIVISION 1  FBS
 120,VANDERBILT,Vanderbilt,Vanderbilt Commodores,Vanderbilt,VAN,DIVISION 1  FBS
