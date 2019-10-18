@@ -14,6 +14,7 @@ Arkansas State Red Wolves,72,ARKANSAS STATE,
 Arkansas-Pine Bluff Golden Lions,55,ARKANSAS-MONTICELLO,PINE BLUFF-ARKANSAS
 Army Black Knights,46,ALBRIGHT,ARMY
 Auburn Tigers,63,AUBURN,
+BYU Cougars,48,BRYANT COLLEGE,BRIGHAM YOUNG
 Ball State Cardinals,67,BALL STATE,
 Baylor Bears,67,BAYLOR,
 Bethune-Cookman Wildcats,77,BETHUNE-COOKMAN,
@@ -22,7 +23,6 @@ Boston College Eagles,80,BOSTON COLLEGE,
 Bowling Green Falcons,76,BOWLING GREEN,
 Bucknell Bison,73,BUCKNELL,
 Buffalo Bulls,70,BUFFALO,
-BYU Cougars,48,BRYANT COLLEGE,BRIGHAM YOUNG
 Cal Poly Mustangs,60,CAL-POLY (SAN LOUIS OBISPO),
 California Golden Bears,67,CALIFORNIA LUTHERAN,CALIFORNIA
 Campbell Fighting Camels,53,CAMPBELLSVILLE,
@@ -83,12 +83,12 @@ Kansas State Wildcats,73,KANSAS STATE,
 Kennesaw State Owls,85,KENNESAW STATE,
 Kent State Golden Flashes,57,KENT STATE,
 Kentucky Wildcats,71,KENTUCKY STATE,KENTUCKY
+LSU Tigers,71,RUTGERS,LOUISIANA STATE
 Lamar Cardinals,67,MARY HARDIN BAYLOR,LAMAR
 Liberty Flames,67,LIBERTY,
 Louisiana Ragin Cajuns,61,LOUISIANA TECH,LA-LAFAYETTE
 Louisiana Tech Bulldogs,76,LOUISIANA TECH,
 Louisville Cardinals,67,LOUISVILLE,
-LSU Tigers,71,RUTGERS,LOUISIANA STATE
 Maine Black Bears,56,PINE BLUFF-ARKANSAS,MAINE
 Marshall Thundering Herd,50,MARSHALL,
 Maryland Terrapins,67,WAYLAND BAPTIST,MARYLAND
@@ -109,8 +109,8 @@ Montana Grizzlies,62,MONTANA TECH,
 Montana State Bobcats,80,MONTANA STATE-NORTH,
 Morgan State Bears,80,MORGAN STATE,
 Murray State Racers,77,MURRAY STATE,
-Navy Midshipmen,53,SUNY - MARITIME,NAVY
 NC State Wolfpack,57,WESTERN STATE-COLO.,NO. CAROLINA STATE
+Navy Midshipmen,53,SUNY - MARITIME,NAVY
 Nebraska Cornhuskers,67,NEBRASKA KEARNEY,NEBRASKA
 Nevada Wolf Pack,62,NEVADA-LAS VEGAS,NEVADA
 New Hampshire Wildcats,74,NEW HAMPSHIRE,
@@ -139,19 +139,20 @@ Oregon State Beavers,75,OREGON STATE,
 Penn State Nittany Lions,59,PENN STATE,
 Pittsburgh Panthers,76,PITTSBURG STATE,PITTSBURGH
 Portland State Vikings,78,PORTLAND STATE,
-Prairie View Panthers,76,PRAIRIE VIEW A&M,
+Prairie View A&M Panthers,78,PRAIRIE VIEW A&M,
 Purdue Boilermakers,48,PURDUE,
 Rhode Island Rams,83,RHODE ISLAND,
 Rice Owls,62,NICHOLS,RICE
 Richmond Spiders,67,RICHMOND,
 Robert Morris Colonials,80,ROBERT MORRIS-ILL,
 Rutgers Scarlet Knights,50,SOUTHERN ARKANSAS,RUTGERS
+SE Louisiana Lions,67,LOUISIANA STATE,
+SMU Mustangs,61,SAM HOUSTON,SOUTHERN METHODIST
 Sacramento State Hornets,60,MONTANA STATE-NORTH,CAL-SACRAMENTO
 Sam Houston State Bearkats,59,HOUSTON BAPTIST,
 Samford Bulldogs,61,SAMFORD,
 San Diego State Aztecs,81,SAN DIEGO STATE,
 San Jose State Spartans,76,SAN JOSE STATE,
-SMU Mustangs,61,SAM HOUSTON,SOUTHERN METHODIST
 South Alabama Jaguars,76,SOUTH ALABAMA,
 South Carolina Gamecocks,77,SOUTH CAROLINA STATE,SOUTH CAROLINA 
 South Carolina State Bulldogs,82,SOUTH CAROLINA STATE,
@@ -159,7 +160,6 @@ South Dakota Coyotes,81,SOUTH DAKOTA TECH,SOUTH DAKOTA
 South Dakota State Jackrabbits,75,SOUTH DAKOTA STATE,
 South Florida Bulls,81,SOUTH FLORIDA,
 Southeast Missouri State Redhawks,67,NORTHWEST MISSOURI ST.,SOUTH EASTERN MISSOURI
-Southeastern Louisiana Lions,70,SO. EAST LOUISIANA,
 Southern Illinois Salukis,81,SOUTHERN ILLINOIS,
 Southern Jaguars,76,SOUTHERN UTAH,SOUTHERN UNIVERSITY
 Southern Mississippi Golden Eagles,74,SOUTHERN MISSISSIPPI,
@@ -195,14 +195,14 @@ UMass Minutemen,71,MASS-MARITIME,MASSACHUSETTS
 UNLV Rebels,52,UNC-PEMBROKE,NEVADA-LAS VEGAS
 USC Trojans,60,ST.THOMAS,SOUTHERN CALIFORNIA
 UT Martin Skyhawks,56,ST.MARY-KANSAS,TENNESSEE-MARTIN
-Utah State Aggies,74,UTAH STATE,
-Utah Utes,74,UTAH STATE,UTAH
 UTEP Miners,59,BETHEL-MINNESOTA,TEXAS-EL PASO
 UTSA Roadrunners,48,ALDERSON-BROADDUS,TEXAS-SAN ANTONIO
+Utah State Aggies,74,UTAH STATE,
+Utah Utes,74,UTAH STATE,UTAH
+VMI Keydets,50,M.I.T.,VIRGINIA MILITARY INSTITUTE
 Vanderbilt Commodores,65,VANDERBILT,
 Virginia Cavaliers,71,VIRGINIA-WISE,VIRGINIA
 Virginia Tech Hokies,79,VIRGINIA TECH,
-VMI Keydets,50,M.I.T.,VIRGINIA MILITARY INSTITUTE
 Wagner Seahawks,57,WAGNER,
 Wake Forest Demon Deacons,61,WAKE FOREST,
 Washington Huskies,76,WASHINGTON STATE,WASHINGTON
