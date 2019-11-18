@@ -12,7 +12,7 @@ import json
 import csv
 from collections import OrderedDict
 import contextlib
-import sys
+import os, sys, stat
 import datetime
 from pathlib import Path
 import re
@@ -50,6 +50,7 @@ def main(argv):
     print ("**************************")
 
     Path(path).mkdir(parents=True, exist_ok=True) 
+    os.chmod(path, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)
     for p in Path(path).glob("sched*.*"):
         p.unlink()
 
@@ -166,6 +167,7 @@ def main(argv):
                     count += 1
                 csvwriter.writerow(row.values())
             sched_sheet.close()
+    os.chmod(path, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)
     print ("done.")
 
 if __name__ == "__main__":
