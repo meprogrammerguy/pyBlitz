@@ -50,6 +50,7 @@ def main(argv):
     print ("**************************")
 
     Path(path).mkdir(parents=True, exist_ok=True) 
+    os.chmod(settings.predict_root, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)
     os.chmod(path, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)
     for p in Path(path).glob("sched*.*"):
         p.unlink()
@@ -167,6 +168,7 @@ def main(argv):
                     count += 1
                 csvwriter.writerow(row.values())
             sched_sheet.close()
+    os.chmod(settings.predict_root, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)
     os.chmod(path, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)
     print ("done.")
 
