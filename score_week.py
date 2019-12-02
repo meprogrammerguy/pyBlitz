@@ -181,10 +181,10 @@ def PredictTournament(week, stat_file, merge_file, verbose):
         p.unlink()
     for p in Path(week_path).glob("stats*.json"):
         p.unlink()
-    if (not CurrentStatsFile(stat_file)):
-        RefreshStats()
-        scrape_schedule.year = now.year
-        scrape_schedule.main(sys.argv[1:])
+    #if (not CurrentStatsFile(stat_file)):
+    RefreshStats()
+    scrape_schedule.year = now.year
+    scrape_schedule.main(sys.argv[1:])
     schedule_files = GetSchedFiles(sched_path, "sched*.json")
     if (not schedule_files):
         scrape_schedule.year = now.year
