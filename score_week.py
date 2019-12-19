@@ -181,8 +181,8 @@ def PredictTournament(week, stat_file, merge_file, verbose):
         p.unlink()
     for p in Path(week_path).glob("stats*.json"):
         p.unlink()
-    #if (not CurrentStatsFile(stat_file)):
-    RefreshStats()
+    if (not CurrentStatsFile(stat_file)):
+        RefreshStats()
     scrape_schedule.year = now.year
     scrape_schedule.main(sys.argv[1:])
     schedule_files = GetSchedFiles(sched_path, "sched*.json")
@@ -244,10 +244,7 @@ def PredictTournament(week, stat_file, merge_file, verbose):
                 if (len(dict_score) > 0):
                     list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"],
                         abbra, dict_score["chancea"], dict_score["scorea"], dict_score["spread"], item["TeamB"], abbrb, dict_score["chanceb"], dict_score["scoreb"], errors])
-                    if (neutral):
-                        print ("{0} {1}% vs {2} {3}% {4}-{5}".format(item["TeamA"], dict_score["chancea"], item["TeamB"], dict_score["chanceb"], dict_score["scorea"], dict_score["scoreb"]))
-                    else:
-                        print ("{0} {1}% at {2} {3}% {4}-{5}".format(item["TeamA"], dict_score["chancea"], item["TeamB"], dict_score["chanceb"], dict_score["scorea"], dict_score["scoreb"]))
+                    print ("{0} {1}% vs {2} {3}% {4}-{5}".format(item["TeamA"], dict_score["chancea"], item["TeamB"], dict_score["chanceb"], dict_score["scorea"], dict_score["scoreb"]))
                 else:
                     list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], abbra, "?", "?", "?", item["TeamB"], abbrb, "?", "?",
                         "Warning: cannot predict, both teams missing, fix the merge spreadsheets"])
