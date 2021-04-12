@@ -90,7 +90,6 @@ with open(file) as merge_file:
 scrape_schedule.year = lastyear
 scrape_schedule.main(sys.argv[1:])
 schedule_files = GetSchedFiles(path, "sched*.json")
-
 if (not os.path.exists(schedule_files[0])):
     print ("schedule files are missing, run the scrape_schedule tool to create")
     exit()
