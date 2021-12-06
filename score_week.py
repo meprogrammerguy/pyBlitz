@@ -99,7 +99,7 @@ def GetSchedFiles(path, templatename):
     for p in Path(path).glob(templatename):
         A.append(str(p))
     file_list = []
-    for item in range(0, 17):
+    for item in range(0, 19):
         file_list.append("?")
     for item in A:
         idx = GetIndex(item)

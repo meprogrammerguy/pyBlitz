@@ -201,14 +201,18 @@ def Calculate(first, second, neutral, verbose):
         dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
     file = "{0}bettingtalk.json".format(settings.data_path)
     if (not os.path.exists(file)):
-        settings.exceptions.append("Calculate() - bettingtalk file is missing, run the scrape_bettingtalk tool to create")
+        info = "Calculate() - bettingtalk file is missing, run the scrape_bettingtalk tool to create"
+        settings.exceptions.append(info)
+        print (info)
         exit()
     with open(file) as percent_file:
         dict_percent = json.load(percent_file, object_pairs_hook=OrderedDict)
 
     teama, teamb = findTeams(first, second, dict_stats, verbose = verbose)
     if (not teama and not teamb):
-        settings.exceptions.append("Calculate() - [{0}] and [{1}] missing from stats, can't predict".format(first, second))
+        info = "Calculate() - [{0}] and [{1}] missing from stats, can't predict".format(first, second)
+        settings.exceptions.append(info)
+        print (info)
         return {}
     classa = "?"
     if (teama):
