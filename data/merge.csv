@@ -1,9 +1,9 @@
 Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 1,AIR FORCE,Air Force,Air Force,Air Force,AFA,DIVISION 1  FBS
 2,AKRON,Akron,Akron,Akron,AKRON,DIVISION 1  FBS
-3,ALABAMA,S Alabama,Alabama,Alabama,ALA,DIVISION 1  FBS
-4,ALABAMA-BIRMINGHAM,?,?,ALABAMA-BIRMINGHAM,UAB,DIVISION 1  FBS
-5,APPALACHIAN STATE,?,Appalachian State,Appalachian State,APP,DIVISION 1  FBS
+3,ALABAMA,Alabama,Alabama,Alabama,ALA,DIVISION 1  FBS
+4,ALABAMA-BIRMINGHAM,UAB,?,ALABAMA-BIRMINGHAM,UAB,DIVISION 1  FBS
+5,APPALACHIAN STATE,App State,Appalachian State,Appalachian State,APP,DIVISION 1  FBS
 6,ARIZONA,Arizona,Arizona,Arizona,ARIZ,DIVISION 1  FBS
 7,ARIZONA STATE,Arizona St,Arizona State,Arizona State,ASU,DIVISION 1  FBS
 8,ARKANSAS,Arkansas,Arkansas,Arkansas,ARK,DIVISION 1  FBS
@@ -12,10 +12,10 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 11,AUBURN,Auburn,Auburn,Auburn,AUB,DIVISION 1  FBS
 12,BALL STATE,Ball State,Ball State,Ball State,BALL,DIVISION 1  FBS
 13,BAYLOR,Baylor,Baylor,Baylor,BAY,DIVISION 1  FBS
-14,BOISE,?,?,Boise State,BSU,DIVISION 1  FBS
+14,BOISE,Boise State,?,Boise State,BSU,DIVISION 1  FBS
 15,BOSTON COLLEGE,Boston Col,Boston College,Boston College,BC,DIVISION 1  FBS
 16,BOWLING GREEN,Bowling Grn,Bowling Green,Bowling Green,BGSU,DIVISION 1  FBS
-17,BRIGHAM YOUNG,?,?,BYU,BYU,DIVISION 1  FBS
+17,BRIGHAM YOUNG,BYU,?,BYU,BYU,DIVISION 1  FBS
 18,BUFFALO,Buffalo,Buffalo,Buffalo,BUFF,DIVISION 1  FBS
 19,CALIFORNIA,California,California,Cal,CAL,DIVISION 1  FBS
 20,CENTRAL FLORIDA,Central FL,?,UCF,UCF,DIVISION 1  FBS
@@ -27,11 +27,11 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 26,COLORADO STATE,Colorado St,Colorado State,Colorado State,CSU,DIVISION 1  FBS
 27,CONNECTICUT,Connecticut,?,UConn,CONN,DIVISION 1  FBS
 28,DUKE,Duke,Duke,Duke,DUKE,DIVISION 1  FBS
-29,EAST CAROLINA,S Carolina,East Carolina,ECU,ECU,DIVISION 1  FBS
-30,EASTERN MICHIGAN,?,Eastern Michigan,Eastern Michigan,EMU,DIVISION 1  FBS
-31,FLORIDA,S Florida,Florida,Florida,FLA,DIVISION 1  FBS
+29,EAST CAROLINA,E Carolina,East Carolina,ECU,ECU,DIVISION 1  FBS
+30,EASTERN MICHIGAN,E Michigan,Eastern Michigan,Eastern Michigan,EMU,DIVISION 1  FBS
+31,FLORIDA,Florida,Florida,Florida,FLA,DIVISION 1  FBS
 32,FLORIDA ATLANTIC,Fla Atlantic,Florida Atlantic,FAU,FAU,DIVISION 1  FBS
-33,FLORIDA INTERNATIONAL,?,Florida International,FIU,FIU,DIVISION 1  FBS
+33,FLORIDA INTERNATIONAL,Florida Intl,Florida International,FIU,FIU,DIVISION 1  FBS
 34,FLORIDA STATE,Florida St,Florida State,Florida State,FSU,DIVISION 1  FBS
 35,FRESNO STATE,Fresno St,Fresno State,Fresno State,FRES,DIVISION 1  FBS
 36,GEORGIA,Georgia,Georgia,Georgia,UGA,DIVISION 1  FBS
@@ -40,42 +40,42 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 39,GEORGIA TECH,GA Tech,Georgia Tech,Georgia Tech,GT,DIVISION 1  FBS
 40,HAWAII,Hawaii,Hawaii,Hawaii,HAW,DIVISION 1  FBS
 41,HOUSTON,Houston,Houston,Houston,HOU,DIVISION 1  FBS
-42,ILLINOIS,N Illinois,Illinois,Illinois,ILL,DIVISION 1  FBS
+42,ILLINOIS,Illinois,Illinois,Illinois,ILL,DIVISION 1  FBS
 43,INDIANA,Indiana,Indiana,Indiana,IND,DIVISION 1  FBS
 44,IOWA,Iowa,Iowa,Iowa,IOWA,DIVISION 1  FBS
-45,IOWA STATE,Wash State,Iowa State,Iowa State,ISU,DIVISION 1  FBS
+45,IOWA STATE,Iowa State,Iowa State,Iowa State,ISU,DIVISION 1  FBS
 46,KANSAS,Kansas,Kansas,Kansas,KU,DIVISION 1  FBS
 47,KANSAS STATE,Kansas St,Kansas State,Kansas State,KSU,DIVISION 1  FBS
-48,KENT STATE,NC State,NC State,Kent State,KENT,DIVISION 1  FBS
-49,KENTUCKY,W Kentucky,Kentucky,Kentucky,UK,DIVISION 1  FBS
+48,KENT STATE,Kent State,NC State,Kent State,KENT,DIVISION 1  FBS
+49,KENTUCKY,Kentucky,Kentucky,Kentucky,UK,DIVISION 1  FBS
 50,LA-LAFAYETTE,LA Lafayette,?,Louisiana Lafayette,UL,DIVISION 1  FBS
 51,LA-MONROE,LA Monroe,UL Monroe,Louisiana Monroe,ULM,DIVISION 1  FBS
 52,LIBERTY,Liberty,Liberty,Liberty,LIB,DIVISION 1  FBS
-53,LOUISIANA STATE,?,?,LSU,LSU,DIVISION 1  FBS
-54,LOUISIANA TECH,?,Louisiana Tech,Louisiana Tech,LAT,DIVISION 1  FBS
+53,LOUISIANA STATE,LSU,?,LSU,LSU,DIVISION 1  FBS
+54,LOUISIANA TECH,LA Tech,Louisiana Tech,Louisiana Tech,LAT,DIVISION 1  FBS
 55,LOUISVILLE,Louisville,Louisville,Louisville,LOU,DIVISION 1  FBS
 56,MARSHALL,Marshall,Marshall,Marshall,MRSH,DIVISION 1  FBS
 57,MARYLAND,Maryland,Maryland,Maryland,MD,DIVISION 1  FBS
-58,MASSACHUSETTS,?,?,UMass,MASS,DIVISION 1  FBS
+58,MASSACHUSETTS,U Mass,?,UMass,MASS,DIVISION 1  FBS
 59,MEMPHIS,Memphis,Memphis,Memphis,MEM,DIVISION 1  FBS
 60,MIAMI-FL,Miami (FL),Miami,Miami (FL),MIA,DIVISION 1  FBS
 61,MIAMI OF OHIO,Miami (OH),Miami (OH),Miami (OH),M-OH,DIVISION 1  FBS
-62,MICHIGAN,W Michigan,Michigan,Michigan,MICH,DIVISION 1  FBS
+62,MICHIGAN,Michigan,Michigan,Michigan,MICH,DIVISION 1  FBS
 63,MICHIGAN STATE,Michigan St,Michigan State,Michigan State,MSU,DIVISION 1  FBS
 64,MIDDLE TENNESSEE STATE,Middle Tenn,Middle Tennessee,Middle Tennessee,MTSU,DIVISION 1  FBS
 65,MINNESOTA,Minnesota,Minnesota,Minnesota,MINN,DIVISION 1  FBS
-66,MISSISSIPPI,S Mississippi,?,Ole Miss,MISS,DIVISION 1  FBS
-67,MISSISSIPPI STATE,?,Mississippi State,Mississippi State,MSST,DIVISION 1  FBS
+66,MISSISSIPPI,Mississippi,?,Ole Miss,MISS,DIVISION 1  FBS
+67,MISSISSIPPI STATE,Miss State,Mississippi State,Mississippi State,MSST,DIVISION 1  FBS
 68,MISSOURI,Missouri,Missouri,Missouri,MIZ,DIVISION 1  FBS
 69,NAVY,Navy,Navy,Navy,NAVY,DIVISION 1  FBS
 70,NEBRASKA,Nebraska,Nebraska,Nebraska,NEB,DIVISION 1  FBS
 71,NEVADA,Nevada,Nevada,Nevada,NEV,DIVISION 1  FBS
-72,NEVADA-LAS VEGAS,?,?,UNLV,UNLV,DIVISION 1  FBS
+72,NEVADA-LAS VEGAS,UNLV,?,UNLV,UNLV,DIVISION 1  FBS
 73,NEW MEXICO,New Mexico,New Mexico,New Mexico,UNM,DIVISION 1  FBS
 74,NEW MEXICO STATE,N Mex State,New Mexico State,New Mexico State,NMSU,DIVISION 1  FBS
-75,NO. CAROLINA STATE,?,?,NC State,NCST,DIVISION 1  FBS
+75,NO. CAROLINA STATE,NC State,?,NC State,NCST,DIVISION 1  FBS
 76,NORTH CAROLINA,N Carolina,North Carolina,North Carolina,UNC,DIVISION 1  FBS
-77,NORTHERN ILLINOIS,?,Northern Illinois,Northern Illinois,NIU,DIVISION 1  FBS
+77,NORTHERN ILLINOIS,N Illinois,Northern Illinois,Northern Illinois,NIU,DIVISION 1  FBS
 78,NORTH TEXAS,North Texas,North Texas,North Texas,UNT,DIVISION 1  FBS
 79,NORTHWESTERN,Northwestern,Northwestern,Northwestern,NW,DIVISION 1  FBS
 80,NOTRE DAME,Notre Dame,Notre Dame,Notre Dame,ND,DIVISION 1  FBS
@@ -93,12 +93,12 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 92,RUTGERS,Rutgers,Rutgers,Rutgers,RUTG,DIVISION 1  FBS
 93,SAN DIEGO STATE,San Diego St,San Diego State,San Diego State,SDSU,DIVISION 1  FBS
 94,SAN JOSE STATE,San Jose St,SAN JOSE STATE,SAN JOSE STATE,SJSU,DIVISION 1  FBS
-95,SOUTH ALABAMA,?,South Alabama,South Alabama,USA,DIVISION 1  FBS
-96,SOUTH CAROLINA,?,South Carolina,South Carolina,SC,DIVISION 1  FBS
-97,SOUTHERN CALIFORNIA,?,?,USC,USC,DIVISION 1  FBS
+95,SOUTH ALABAMA,S Alabama,South Alabama,South Alabama,USA,DIVISION 1  FBS
+96,SOUTH CAROLINA,S Carolina,South Carolina,South Carolina,SC,DIVISION 1  FBS
+97,SOUTHERN CALIFORNIA,USC,?,USC,USC,DIVISION 1  FBS
 98,SOUTHERN METHODIST,S Methodist,?,SMU,SMU,DIVISION 1  FBS
-99,SOUTHERN MISSISSIPPI,?,Southern Miss,Southern Miss,USM,DIVISION 1  FBS
-100,SOUTH FLORIDA,?,South Florida,South Florida,USF,DIVISION 1  FBS
+99,SOUTHERN MISSISSIPPI,S Mississippi,Southern Miss,Southern Miss,USM,DIVISION 1  FBS
+100,SOUTH FLORIDA,S Florida,South Florida,South Florida,USF,DIVISION 1  FBS
 101,STANFORD,Stanford,Stanford,Stanford,STAN,DIVISION 1  FBS
 102,SYRACUSE,Syracuse,Syracuse,Syracuse,SYR,DIVISION 1  FBS
 103,TEMPLE,Temple,Temple,Temple,TEM,DIVISION 1  FBS
@@ -108,8 +108,8 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 107,TEXAS CHRISTIAN,TX Christian,?,TCU,TCU,DIVISION 1  FBS
 108,TEXAS-EL PASO,TX El Paso,?,UTEP,UTEP,DIVISION 1  FBS
 109,TEXAS-SAN ANTONIO,TX-San Ant,?,UTSA,UTSA,DIVISION 1  FBS
-110,TEXAS STATE-SAN MARCOS,?,?,Texas State,TXST,DIVISION 1  FBS
-111,TEXAS TECH,VA Tech,Texas Tech,Texas Tech,TTU,DIVISION 1  FBS
+110,TEXAS STATE-SAN MARCOS,Texas State,?,Texas State,TXST,DIVISION 1  FBS
+111,TEXAS TECH,Texas Tech,Texas Tech,Texas Tech,TTU,DIVISION 1  FBS
 112,TOLEDO,Toledo,Toledo,Toledo,TOL,DIVISION 1  FBS
 113,TROY STATE,Troy,Troy,Troy,TROY,DIVISION 1  FBS
 114,TULANE,Tulane,Tulane,Tulane,TULN,DIVISION 1  FBS
@@ -119,14 +119,14 @@ Index,BPI,teamrankings,scheduled,abbr team,abbr,class
 118,UTAH,Utah,Utah,Utah,UTAH,DIVISION 1  FBS
 119,UTAH STATE,Utah State,Utah State,Utah State,USU,DIVISION 1  FBS
 120,VANDERBILT,Vanderbilt,Vanderbilt,Vanderbilt,VAN,DIVISION 1  FBS
-121,VIRGINIA,W Virginia,Virginia,Virginia,UVA,DIVISION 1  FBS
-122,VIRGINIA TECH,?,Virginia Tech,Virginia Tech,VT,DIVISION 1  FBS
+121,VIRGINIA,Virginia,Virginia,Virginia,UVA,DIVISION 1  FBS
+122,VIRGINIA TECH,VA Tech,Virginia Tech,Virginia Tech,VT,DIVISION 1  FBS
 123,WAKE FOREST,Wake Forest,Wake Forest,Wake Forest,WAKE,DIVISION 1  FBS
 124,WASHINGTON,Washington,Washington,Washington,WASH,DIVISION 1  FBS
-125,WASHINGTON STATE,?,Washington State,Washington State,WSU,DIVISION 1  FBS
-126,WESTERN KENTUCKY,?,Western Kentucky,WESTERN KENTUCKY,WKU,DIVISION 1  FBS
-127,WESTERN MICHIGAN,?,Western Michigan,Western Michigan,WMU,DIVISION 1  FBS
-128,WEST VIRGINIA,?,West Virginia,West Virginia,WVU,DIVISION 1  FBS
+125,WASHINGTON STATE,Wash State,Washington State,Washington State,WSU,DIVISION 1  FBS
+126,WESTERN KENTUCKY,W Kentucky,Western Kentucky,WESTERN KENTUCKY,WKU,DIVISION 1  FBS
+127,WESTERN MICHIGAN,W Michigan,Western Michigan,Western Michigan,WMU,DIVISION 1  FBS
+128,WEST VIRGINIA,W Virginia,West Virginia,West Virginia,WVU,DIVISION 1  FBS
 129,WISCONSIN,Wisconsin,Wisconsin,Wisconsin,WIS,DIVISION 1  FBS
 130,WYOMING,Wyoming,Wyoming,Wyoming,WYO,DIVISION 1  FBS
 131,ADAMS STATE,?,?,?,?,DIVISION 2
