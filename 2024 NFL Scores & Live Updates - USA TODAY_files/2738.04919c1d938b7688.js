@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunk_N_E=self.webpackChunk_N_E||[]).push([[2738],{32738:function(s,e,n){n.r(e);var t=n(85893),a=n(13970),c=n(25489),l=n.n(c);e.default=s=>{let{event:e}=s,n=(0,a.xQ)(null==e?void 0:e.tvStations);return n?(0,t.jsx)("span",{className:l().se_box_score_station,children:n?"TV: ".concat(n):""}):(0,t.jsx)(t.Fragment,{})}}}]);
