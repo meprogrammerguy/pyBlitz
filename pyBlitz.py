@@ -42,7 +42,7 @@ def myFloat(value):
     return answer
 
 def GetFloat(item):
-    idx = re.findall('\d{1,2}[\.]{1}\d{1,2}', str(item))
+    idx = re.findall(r'\d{1,2}[\.]{1}\d{1,2}', str(item))
     if (len(idx) == 0):
         idx.append("-1")
     return myFloat(idx[0])

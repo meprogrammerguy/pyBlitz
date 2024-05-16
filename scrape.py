@@ -48,7 +48,7 @@ def CurrentSchedFile(filename, year):
 
 def RefreshStats():
     import scrape_abbreviations
-    import scrape_bettingtalk
+    #import scrape_bettingtalk          (this is no longer free/missing?, removing it on 5/16/2024)
     import scrape_bornpowerindex
     import scrape_teamrankings
     import combine_merge
