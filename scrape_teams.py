@@ -264,55 +264,38 @@ def main(argv):
             if "standingSummary" in team:
                 standingSummary.append(team["standingSummary"])
         count = count + 1
-    #pdb.set_trace()
-
-    # use the Team vs team and pull up the json for each Then properly fill out the spreadsheet
-   # the_api = []
-    #for item in A:
-     #   the_api.append("https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/" + item)
-    # J has the https page 
-    # for H pull out id from pattern _/id/2050/
-    # https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/alabama
-    # https://www.espn.com/college-football/team/_/id/103 Boston College get the ID into the spreadsheet
-    # https://www.espn.com/college-football/team/_/id/333
-    # go to team page, J has it, then click on schedule (to get the ID) <==
-    dct = {
-      #'Team': {0: A[0], 1: A[1]},  
-      'id': {},
-      'abbreviation': {},
-      'shortDisplayName': {},
-      'displayName': {},
-      'name': {},
-      'nickname': {},
-      'location': {},
-      'standingSummary': {},
-      'created': {0: c_ti}
-    }
-    rows={
-      'id': {},
-      'abbreviation': {},
-      'shortDisplayName': {},
-      'displayName': {},
-      'name': {},
-      'nickname': {},
-      'location': {},
-      'standingSummary': {},
-      'created': {0: c_ti}
-    }
+    
     ids={}
-    for i in range(len(id))
-        ids.append(i)
-        ids.append(id[i])
-    rows.append(ids)
-    pdb.set_trace()    
+    abbreviations={}
+    shortDisplayNames={}
+    displayNames={}
+    names={}
+    nicknames={}
+    locations={}
+    standingSummarys={}
+
     for i in range(len(id)):
-        Values = [18, 20, 25, 29, 30]
-        Details = dict({"Age": Values})
-        print(Details)
-        row["id"] += [i, id[i]]
-        #row['id']= {i ,id[i]}
-        #row = {"a": 10, "b": 10}
-    pdb.set_trace()
+        ids.update({i:id[i]}) 
+        abbreviations.update({i:abbreviation[i]}) 
+        shortDisplayNames.update({i:shortDisplayName[i]}) 
+        displayNames.update({i:displayName[i]}) 
+        names.update({i:name[i]}) 
+        nicknames.update({i:nickname[i]}) 
+        locations.update({i:location[i]})
+        if i < len(standingSummary):
+            standingSummarys.update({i:standingSummary[i]})
+    
+    rows={'created': {0: c_ti}}
+    rows.update({"id":ids})
+    rows.update({"abbreviation":abbreviations}),
+    rows.update({"shortDisplayName":shortDisplayNames})
+    rows.update({"displayName":displayNames})
+    rows.update({"name":names})
+    rows.update({"nickname":nicknames})
+    rows.update({"location":locations})
+    rows.update({"standingSummary":standingSummarys})
+
+    pdb.set_trace()    
 
     df = pd.DataFrame(rows)    
     df.to_excel(excel_file, index=False) 
