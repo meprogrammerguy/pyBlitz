@@ -17,6 +17,7 @@ import datetime
 from pathlib import Path
 import re
 import glob
+import gzip
 
 import settings
 import pyBlitz
@@ -26,6 +27,20 @@ def GetNumber(item):
     if (len(idx) == 0):
         idx.append("-1")
     return int(idx[0])
+
+def read_file(file):
+    try:
+        f = gzip.open(file, 'r')
+    except gzip.BadGzipFile:
+        f = open(file, 'r')
+    return f
+
+def gzip_str(string_: str) -> bytes:
+    return gzip.compress(string_.encode())
+
+
+def gunzip_bytes_obj(bytes_obj: bytes) -> str:
+    return gzip.decompress(bytes_obj).decode()
 
 year = 0
 now = datetime.datetime.now()
@@ -155,33 +170,151 @@ def main(argv):
     # for i in mylist[::2]:
     #   print (i)
     #       prints 1 3 5 7 9
+    
+    abbrev=[]
+    for items in G[4::8]:
+        the_list=items.text.replace(',', '').split()
+        for each_one in the_list[:4:2]:
+            if each_one == "M-OH":
+                each_one = "OHIO"
+            if not each_one.isdigit():
+                abbrev.append(each_one)
+    abbrev = list(set(abbrev))
+    pages = []
+    for item in abbrev:
+        url = "https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/{0}".format(item)
+        req = Request(url=url, \
+        headers={'User-Agent':' Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0'})
+        #try:
+            #page = urlopen(req)
+        #except HTTPError as e:
+            #page = e.read()
+        #soup = BeautifulSoup(page,"html5lib")
+        #print ("got soup")
+        #pdb.set_trace()
+        #print (url)
+        #if item == "M-OH":
+            
+            #print (page.decode("ISO 8859-1"))
+            #print (soup.text)
+            #pdb.set_trace()
+        #site_json=json.loads(soup.text)
+        #print ("got site_json")
+        #pdb.set_trace()
+        #pages.append(site_json)
+        #the_page=BeautifulSoup(page, "html5lib")
+        #the_file = "{0}/abbrev/{1}.json".format(settings.data_path, item.lower())
+        #the_path = "{0}/abbrev".format(settings.data_path)
+        #Path(the_path).mkdir(parents=True, exist_ok=True)
+        #with open(the_file, 'w') as f:
+            #json.dump(site_json, f)
+        #f.close()
+        #with open(the_file, 'w', encoding='utf-8') as f:
+            #json.dump(page.text, f, ensure_ascii=False, indent=4)
+        #f = open(the_file, "w")
+        #f.write(page.text)
+        #f.close()
 
-    pdb.set_trace()
+        #pages.append(BeautifulSoup(page, "html5lib"))
+    pages=[]
+    for item in abbrev:
+        the_file = "{0}/abbrev/{1}.json".format(settings.data_path, item.lower())
+        with open(the_file, 'r') as file:
+            data = file.read()
+            pages.append(json.loads(data))
+        file.close()
+    #print ("got pages from files")
+    #pdb.set_trace()
+    id=[]
+    abbreviation=[]
+    shortDisplayName=[]
+    displayName=[]
+    name=[]
+    nickname=[]
+    location=[]
+    standingSummary=[]
+    count = 0
+    for page in pages:
+        #print (str(count))
+        #print (page)
+        #if page == None or page == '':
+            #pdb.set_trace()
+            #continue
+        #print (json_obj)
+        #if count >= 163:
+            #pdb.set_trace()
+        
+        if page["team"]:
+            team = page["team"]            
+            if team["id"]:
+                id.append(team["id"])                    
+            if team["abbreviation"]:
+                abbreviation.append(team["abbreviation"])
+                print (str(count) + " " + team["abbreviation"])
+            if team["shortDisplayName"]:
+                shortDisplayName.append(team["shortDisplayName"])
+            if team["displayName"]:
+                displayName.append(team["displayName"])
+            if team["name"]:
+                name.append(team["name"])
+            if team["nickname"]:
+                nickname.append(team["nickname"])
+            if team["location"]:
+                location.append(team["location"]) 
+            if "standingSummary" in team:
+                standingSummary.append(team["standingSummary"])
+        count = count + 1
+    #pdb.set_trace()
+
     # use the Team vs team and pull up the json for each Then properly fill out the spreadsheet
-    the_api = []
-    for item in A:
-        the_api.append("https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/" + item)
+   # the_api = []
+    #for item in A:
+     #   the_api.append("https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/" + item)
     # J has the https page 
     # for H pull out id from pattern _/id/2050/
-    pdb.set_trace()
     # https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/alabama
     # https://www.espn.com/college-football/team/_/id/103 Boston College get the ID into the spreadsheet
     # https://www.espn.com/college-football/team/_/id/333
     # go to team page, J has it, then click on schedule (to get the ID) <==
-    dct = {#'ID': {0: 23, 1: 43, 2: 12,  
-              #3: 13, 4: 67, 5: 89,  
-              #6: 90, 7: 56, 8: 34}, 
-      'Team': {0: A[0], 1: A[1]},  
-      'Created': {0: c_ti}
-    }  
-    # forming dataframe 
-    #   data = pd.DataFrame(dct)  
-  
-    # storing into the excel file 
-    #   data.to_excel("output.xlsx")
-    
-    #df = pd.DataFrame([A[0], the_api[0]], columns=["Team", "espn API"])  
-    df = pd.DataFrame(dct) 
+    dct = {
+      #'Team': {0: A[0], 1: A[1]},  
+      'id': {},
+      'abbreviation': {},
+      'shortDisplayName': {},
+      'displayName': {},
+      'name': {},
+      'nickname': {},
+      'location': {},
+      'standingSummary': {},
+      'created': {0: c_ti}
+    }
+    rows={
+      'id': {},
+      'abbreviation': {},
+      'shortDisplayName': {},
+      'displayName': {},
+      'name': {},
+      'nickname': {},
+      'location': {},
+      'standingSummary': {},
+      'created': {0: c_ti}
+    }
+    ids={}
+    for i in range(len(id))
+        ids.append(i)
+        ids.append(id[i])
+    rows.append(ids)
+    pdb.set_trace()    
+    for i in range(len(id)):
+        Values = [18, 20, 25, 29, 30]
+        Details = dict({"Age": Values})
+        print(Details)
+        row["id"] += [i, id[i]]
+        #row['id']= {i ,id[i]}
+        #row = {"a": 10, "b": 10}
+    pdb.set_trace()
+
+    df = pd.DataFrame(rows)    
     df.to_excel(excel_file, index=False) 
  
     for root, dirs, files in os.walk(settings.data_path):
