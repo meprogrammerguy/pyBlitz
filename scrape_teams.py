@@ -217,9 +217,19 @@ def main(argv):
     rows.update({"location":locations})
     rows.update({"standingSummary":standingSummarys})
     
+    print ("... creating teams spreadsheet")
     df = pd.DataFrame(rows)    
     df.to_excel(excel_file, index=False) 
  
+    print ("... creating teams JSON file")
+    excel_df = pd.read_excel(excel_file, sheet_name='Sheet1')
+    json_str = excel_df.to_json()
+    the_file = "{0}teams.json".format(settings.data_path)
+    Path(settings.data_path).mkdir(parents=True, exist_ok=True)
+    with open(the_file, 'w') as f:
+        f.write(json_str)
+    f.close()
+
     for root, dirs, files in os.walk(settings.data_path):
         for d in dirs:
             os.chmod(os.path.join(root, d), stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)
