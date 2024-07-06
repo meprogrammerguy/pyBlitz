@@ -26,6 +26,27 @@ def GetNumber(item):
         idx.append("-1")
     return int(idx[0])
 
+def GetBadJSONString(f, y):
+    error = False
+    s = f
+    #if "M-OH" in y:
+        #print ("function 1")
+        #pdb.set_trace()
+    if "HTTP Error" in s:
+        print ("function 2")
+        x = '"HTTPError" 400, "message": "Bad Request", "file": "{0}"'.format(y)
+        x = "{" + x + "}"
+        #pdb.set_trace()
+        return x    
+    try:
+        x = f.read()
+    except:
+        error = True
+    if error:
+        x = '"code": 400, "message": "Failed to get league teams summary", "file": "{0}"'.format(y)
+        x = "{" + x + "}"
+    return x
+
 year = 0
 now = datetime.datetime.now()
 year = int(now.year)
@@ -117,6 +138,11 @@ def main(argv):
                 abbrev.append(each_one)
     abbrev = list(set(abbrev))
     
+    
+    #abbrev.append("M-OH")
+        
+    
+    
     pages = []
     print("... getting team json data from espn API")
     for item in abbrev:
@@ -127,28 +153,48 @@ def main(argv):
             page = urlopen(req)
         except HTTPError as e:
             page = e.read()
+        #soup = BeautifulSoup(page,"html5lib")
+        print (url)
+        #pdb.set_trace()
         soup = BeautifulSoup(page,"html5lib")
-        site_json=json.loads(soup.text)
-        pages.append(site_json)
-#{
-  #"code": 400,
-  #"message": "Failed to get league teams summary"
-#}
-        the_file = "{0}/abbrev/{1}.json".format(settings.data_path, item.lower())
-        the_path = "{0}/abbrev".format(settings.data_path)
+        #pdb.set_trace()
+ 
+        #if "text" in soup:
+            #site_json=soup
+        #else:
+            #x = '"HTTPError": 400, "message": "Bad Request", "file": "{0}"'.format(url)
+            #x = "{" + x + "}"
+            #print ("got to error")
+            #pdb.set_trace()
+            #site_json = x
+            
+        #pdb.set_trace()
+        #pages.append(page)
+        the_file = "{0}abbrev/{1}.json".format(settings.data_path, item.lower())
+        the_path = "{0}abbrev".format(settings.data_path)
         Path(the_path).mkdir(parents=True, exist_ok=True)
         with open(the_file, 'w') as f:
-            json.dump(site_json, f)
+            #pdb.set_trace()
+            
+            #json.dump(soup, f)
+            f.write(soup.text)
         f.close()
         pages.append(BeautifulSoup(page, "html5lib"))
+        
+    pdb.set_trace()
+         
     pages=[]
     print("... saving team json files locally")
+    pdb.set_trace()
     for item in abbrev:
-        the_file = "{0}/abbrev/{1}.json".format(settings.data_path, item.lower())
+        the_file = "{0}abbrev/{1}.json".format(settings.data_path, item.lower())
         with open(the_file, 'r') as file:
-            data = file.read()
+            data = GetBadJSONString(file, the_file)
             pages.append(json.loads(data))
         file.close()
+    
+    pdb.set_trace()
+    
     id=[]
     abbreviation=[]
     shortDisplayName=[]
@@ -158,25 +204,35 @@ def main(argv):
     location=[]
     standingSummary=[]
     for page in pages:
-        if page["team"]:
-            team = page["team"]            
-            if team["id"]:
-                id.append(team["id"])                    
-            if team["abbreviation"]:
-                abbreviation.append(team["abbreviation"])
-            if team["shortDisplayName"]:
-                shortDisplayName.append(pyBlitz.CleanString(team["shortDisplayName"]))
-            if team["displayName"]:
-                displayName.append(pyBlitz.CleanString(team["displayName"]))
-            if team["name"]:
-                name.append(pyBlitz.CleanString(team["name"]))
-            if team["nickname"]:
-                nickname.append(pyBlitz.CleanString(team["nickname"]))
-            if team["location"]:
-                location.append(pyBlitz.CleanString(team["location"]))
-            if "standingSummary" in team:
-                standingSummary.append(pyBlitz.CleanString(team["standingSummary"]))
-    
+        if "team" in page:
+            team = page["team"]
+        else:
+            team = page
+        if "code" in team:
+            print ("error code: {0}".format(team["code"]))
+            if "message" in team:
+                print ("    message: {0}".format(team["message"]))
+            if "file" in team:
+                print ("    in file: {0}".format(team["file"]))
+            print ("... skipping")
+            continue
+        if "id" in team:
+            id.append(team["id"])                    
+        if "abbreviation" in team:
+            abbreviation.append(team["abbreviation"])
+        if "shortDisplayName" in team:
+            shortDisplayName.append(pyBlitz.CleanString(team["shortDisplayName"]))
+        if "displayName" in team:
+            displayName.append(pyBlitz.CleanString(team["displayName"]))
+        if "name" in team:
+            name.append(pyBlitz.CleanString(team["name"]))
+        if "nickname" in team:
+            nickname.append(pyBlitz.CleanString(team["nickname"]))
+        if "location" in team:
+            location.append(pyBlitz.CleanString(team["location"]))
+        if "standingSummary" in team:
+            standingSummary.append(pyBlitz.CleanString(team["standingSummary"]))
+
     ids={}
     abbreviations={}
     shortDisplayNames={}
