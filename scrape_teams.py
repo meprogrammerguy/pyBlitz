@@ -62,17 +62,29 @@ def main(argv):
     print ("Year is: {0}".format(year))
     print ("Directory location: {0}".format(settings.data_path))
     print ("**************************")
+    
+    now_time = str(now).split(".")[0]
+    print (now_time)
 
     excel_file = "{0}teams.xlsx".format(settings.data_path)
-    ti_c = os.path.getctime(excel_file)
-    ti_m = os.path.getmtime(excel_file)
-    c_ti = time.ctime(ti_c)
-    m_ti = time.ctime(ti_m)
-    
-    print(" ")
-    print(f"        {excel_file} was created at {c_ti} and was last modified at {m_ti}")
-    print("===      To recreate: edit {0} and blank out the creation date, and rerun scraper ===".format(excel_file))
-    print(" ")
+    spreadsheet=False
+    if Path(excel_file).is_file():
+        print("... retrieving teams spreadsheet")
+        excel_df = pd.read_excel(excel_file, sheet_name='Sheet1')
+        teams_json = json.loads(excel_df.to_json())
+        spreadsheet=True
+        if teams_json["created"]["0"] is None:
+            spreadsheet=False
+        else:
+            print(" ")
+            print ("        spreadsheet created date shows: " + teams_json["created"]["0"])
+                
+    if spreadsheet:
+        print(" ")
+        print("===      To recreate: edit {0} and blank out the creation date, and rerun scraper ===".format(excel_file))
+        print(" ")
+        print ("done.")
+        sys.exit()
     Path(settings.data_path).mkdir(parents=True, exist_ok=True) 
     
     if not url:
@@ -207,7 +219,7 @@ def main(argv):
         if i < len(standingSummary):
             standingSummarys.update({i:standingSummary[i]})
     
-    rows={'created': {0: c_ti}}
+    rows={'created': {0: now_time}}
     rows.update({"id":ids})
     rows.update({"abbreviation":abbreviations}),
     rows.update({"shortDisplayName":shortDisplayNames})
