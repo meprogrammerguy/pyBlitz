@@ -130,6 +130,10 @@ def main(argv):
         soup = BeautifulSoup(page,"html5lib")
         site_json=json.loads(soup.text)
         pages.append(site_json)
+#{
+  #"code": 400,
+  #"message": "Failed to get league teams summary"
+#}
         the_file = "{0}/abbrev/{1}.json".format(settings.data_path, item.lower())
         the_path = "{0}/abbrev".format(settings.data_path)
         Path(the_path).mkdir(parents=True, exist_ok=True)
@@ -202,7 +206,7 @@ def main(argv):
     rows.update({"nickname":nicknames})
     rows.update({"location":locations})
     rows.update({"standingSummary":standingSummarys})
-
+    
     df = pd.DataFrame(rows)    
     df.to_excel(excel_file, index=False) 
  
