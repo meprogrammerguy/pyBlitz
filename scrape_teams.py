@@ -26,25 +26,10 @@ def GetNumber(item):
         idx.append("-1")
     return int(idx[0])
 
-def GetBadJSONString(f, y):
-    error = False
-    s = f
-    #if "M-OH" in y:
-        #print ("function 1")
-        #pdb.set_trace()
-    if "HTTP Error" in s:
-        print ("function 2")
-        x = '"HTTPError" 400, "message": "Bad Request", "file": "{0}"'.format(y)
-        x = "{" + x + "}"
-        #pdb.set_trace()
-        return x    
-    try:
-        x = f.read()
-    except:
-        error = True
-    if error:
-        x = '"code": 400, "message": "Failed to get league teams summary", "file": "{0}"'.format(y)
-        x = "{" + x + "}"
+def ErrorToJSON(e, y):
+    s = str(e)
+    x = '"message": "{0}", "file": "{0}"'.format(s, y)
+    x = "<http>{" + x + "}</http>"
     return x
 
 year = 0
@@ -108,11 +93,11 @@ def main(argv):
             try:
                 page = urlopen(req)
             except HTTPError as e:
-                page = e.read()
+                page = ErrorToJSON(e, url)
             pages.append(BeautifulSoup(page, "html5lib"))
     else:
         pages = []
-        print("... loading test schedule pages")
+        print("... fetching test schedule pages")
         for item in url:
             with open(item, 'r') as file:
                 page = file.read().rstrip()
@@ -132,19 +117,12 @@ def main(argv):
     for items in ABBR[4::8]:
         the_list=items.text.replace(',', '').split()
         for each_one in the_list[:4:2]:
-            if each_one == "M-OH":
-                each_one = "OHIO"
             if not each_one.isdigit():
                 abbrev.append(each_one)
     abbrev = list(set(abbrev))
     
-    
-    #abbrev.append("M-OH")
-        
-    
-    
     pages = []
-    print("... getting team json data from espn API")
+    print("... fetching from espn API, saving locally")
     for item in abbrev:
         url = "https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/{0}".format(item)
         req = Request(url=url, \
@@ -152,49 +130,26 @@ def main(argv):
         try:
             page = urlopen(req)
         except HTTPError as e:
-            page = e.read()
-        #soup = BeautifulSoup(page,"html5lib")
-        print (url)
-        #pdb.set_trace()
+            page = ErrorToJSON(e, url)
         soup = BeautifulSoup(page,"html5lib")
-        #pdb.set_trace()
- 
-        #if "text" in soup:
-            #site_json=soup
-        #else:
-            #x = '"HTTPError": 400, "message": "Bad Request", "file": "{0}"'.format(url)
-            #x = "{" + x + "}"
-            #print ("got to error")
-            #pdb.set_trace()
-            #site_json = x
-            
-        #pdb.set_trace()
-        #pages.append(page)
+
         the_file = "{0}abbrev/{1}.json".format(settings.data_path, item.lower())
         the_path = "{0}abbrev".format(settings.data_path)
         Path(the_path).mkdir(parents=True, exist_ok=True)
         with open(the_file, 'w') as f:
-            #pdb.set_trace()
-            
-            #json.dump(soup, f)
             f.write(soup.text)
         f.close()
-        pages.append(BeautifulSoup(page, "html5lib"))
-        
-    pdb.set_trace()
-         
+        pages.append(soup)
+
     pages=[]
-    print("... saving team json files locally")
-    pdb.set_trace()
+    print("... retrieving espn API files locally")
     for item in abbrev:
         the_file = "{0}abbrev/{1}.json".format(settings.data_path, item.lower())
         with open(the_file, 'r') as file:
-            data = GetBadJSONString(file, the_file)
+            data = file.read()
             pages.append(json.loads(data))
         file.close()
-    
-    pdb.set_trace()
-    
+
     id=[]
     abbreviation=[]
     shortDisplayName=[]
@@ -241,7 +196,6 @@ def main(argv):
     nicknames={}
     locations={}
     standingSummarys={}
-
     for i in range(len(id)):
         ids.update({i:id[i]}) 
         abbreviations.update({i:abbreviation[i]}) 

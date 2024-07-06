@@ -53,13 +53,5 @@ then
     curl -H "Accept: application/json+v3" \
         "https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/alabama" \
         -o "alabama.json"
-#
-# this is a file not there, make sure that scrape_teams.py
-#       does a good job with this file
-#
-
-    curl -H "Accept: application/json+v3" \
-        "https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/M-OH" \
-        -o "m-oh.json"
 
 fi
