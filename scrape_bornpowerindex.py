@@ -105,52 +105,52 @@ C=[]
 index=0
 for row in table1[0].findAll("tr"):
     col=row.findAll('td')
-    if len(col)>0 and col[0].find(text=True)!="School":
+    if len(col)>0 and col[0].find(string=True)!="School":
         index+=1
         IDX.append(index)
-        A.append(pyBlitz.CleanString(col[0].find(text=True)))
-        B.append(col[1].find(text=True))
-        C.append(col[2].find(text=True))
+        A.append(pyBlitz.CleanString(col[0].find(string=True)))
+        B.append(col[1].find(string=True))
+        C.append(col[2].find(string=True))
 for row in table2[0].findAll("tr"):
     col=row.findAll('td')
-    if len(col)>0 and col[0].find(text=True)!="School":
+    if len(col)>0 and col[0].find(string=True)!="School":
         index+=1
         IDX.append(index)
-        A.append(pyBlitz.CleanString(col[0].find(text=True)))
-        B.append(col[1].find(text=True))
-        C.append(col[2].find(text=True))
+        A.append(pyBlitz.CleanString(col[0].find(string=True)))
+        B.append(col[1].find(string=True))
+        C.append(col[2].find(string=True))
 for row in table3[0].findAll("tr"):
     col=row.findAll('td')
-    if len(col)>0 and col[0].find(text=True)!="School":
+    if len(col)>0 and col[0].find(string=True)!="School":
         index+=1
         IDX.append(index)
-        A.append(pyBlitz.CleanString(col[0].find(text=True)))
-        B.append(col[1].find(text=True))
-        C.append(col[2].find(text=True))
+        A.append(pyBlitz.CleanString(col[0].find(string=True)))
+        B.append(col[1].find(string=True))
+        C.append(col[2].find(string=True))
 for row in table4[0].findAll("tr"):
     col=row.findAll('td')
-    if len(col)>0 and col[0].find(text=True)!="School":
+    if len(col)>0 and col[0].find(string=True)!="School":
         index+=1
         IDX.append(index)
-        A.append(pyBlitz.CleanString(col[0].find(text=True)))
-        B.append(col[1].find(text=True))
-        C.append(col[2].find(text=True))
+        A.append(pyBlitz.CleanString(col[0].find(string=True)))
+        B.append(col[1].find(string=True))
+        C.append(col[2].find(string=True))
 for row in table5[0].findAll("tr"):
     col=row.findAll('td')
-    if len(col)>0 and col[0].find(text=True)!="School":
+    if len(col)>0 and col[0].find(string=True)!="School":
         index+=1
         IDX.append(index)
-        A.append(pyBlitz.CleanString(col[0].find(text=True)))
-        B.append(col[1].find(text=True))
-        C.append(col[2].find(text=True))
+        A.append(pyBlitz.CleanString(col[0].find(string=True)))
+        B.append(col[1].find(string=True))
+        C.append(col[2].find(string=True))
 for row in table6[0].findAll("tr"):
     col=row.findAll('td')
-    if len(col)>0 and col[0].find(text=True)!="School":
+    if len(col)>0 and col[0].find(string=True)!="School":
         index+=1
         IDX.append(index)
-        A.append(pyBlitz.CleanString(col[0].find(text=True)))
-        B.append(col[1].find(text=True))
-        C.append(col[2].find(text=True))
+        A.append(pyBlitz.CleanString(col[0].find(string=True)))
+        B.append(col[1].find(string=True))
+        C.append(col[2].find(string=True))
 
 df=pd.DataFrame(IDX,columns=['Index'])
 df['School']=A
@@ -173,4 +173,39 @@ for row in dict_stats.values():
         count += 1
     csvwriter.writerow(row.values())
 stats_sheet.close()
+
+    #excel_df = pd.read_excel(excel_file, sheet_name='Sheet1')
+    #json_str = excel_df.to_json()
+    #the_file = "{0}teams.json".format(settings.data_path)
+    #Path(settings.data_path).mkdir(parents=True, exist_ok=True)
+    #with open(the_file, 'w') as f:
+        #f.write(json_str)
+    #f.close()
+
+#with open(settings.data_path + "bornpowerindex.json") as stats_json:
+    #dict_stats = json.load(stats_json, object_pairs_hook=OrderedDict)
+#pdb.set_trace()
+#df = pd.DataFrame([["ABC", "XYZ"]], columns=["Foo", "Bar"])  
+with pd.ExcelWriter(settings.data_path + 'bornpowerindex.xlsx') as writer:
+    df.to_excel(writer)  
+    
+#stats_sheet = open(settings.data_path + 'bornpowerindex.xlsx', 'w', newline='')
+#with pd.ExcelWriter(settings.data_path + 'bornpowerindex.xlsx') as writer:
+    #dict_stats.to_excel(writer)  
+
+#csvwriter = csv.writer(stats_sheet)
+#count = 0
+#for row in dict_stats.values():
+    #if (count == 0):
+        #header = row.keys()
+        #csvwriter.writerow(header)
+        #count += 1
+    #csvwriter.writerow(row.values())
+#stats_sheet.close()
+
+
+#df = pd.DataFrame([["ABC", "XYZ"]], columns=["Foo", "Bar"])  
+#with pd.ExcelWriter("path_to_file.xlsx") as writer:
+    #df.to_excel(writer)  
+
 print ("done.")
