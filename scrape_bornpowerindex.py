@@ -10,6 +10,7 @@ import json
 import csv
 import re
 from pathlib import Path
+from xlsxwriter import Workbook
 
 import settings
 import pyBlitz
@@ -174,38 +175,8 @@ for row in dict_stats.values():
     csvwriter.writerow(row.values())
 stats_sheet.close()
 
-    #excel_df = pd.read_excel(excel_file, sheet_name='Sheet1')
-    #json_str = excel_df.to_json()
-    #the_file = "{0}teams.json".format(settings.data_path)
-    #Path(settings.data_path).mkdir(parents=True, exist_ok=True)
-    #with open(the_file, 'w') as f:
-        #f.write(json_str)
-    #f.close()
-
-#with open(settings.data_path + "bornpowerindex.json") as stats_json:
-    #dict_stats = json.load(stats_json, object_pairs_hook=OrderedDict)
-#pdb.set_trace()
-#df = pd.DataFrame([["ABC", "XYZ"]], columns=["Foo", "Bar"])  
-with pd.ExcelWriter(settings.data_path + 'bornpowerindex.xlsx') as writer:
-    df.to_excel(writer)  
-    
-#stats_sheet = open(settings.data_path + 'bornpowerindex.xlsx', 'w', newline='')
-#with pd.ExcelWriter(settings.data_path + 'bornpowerindex.xlsx') as writer:
-    #dict_stats.to_excel(writer)  
-
-#csvwriter = csv.writer(stats_sheet)
-#count = 0
-#for row in dict_stats.values():
-    #if (count == 0):
-        #header = row.keys()
-        #csvwriter.writerow(header)
-        #count += 1
-    #csvwriter.writerow(row.values())
-#stats_sheet.close()
-
-
-#df = pd.DataFrame([["ABC", "XYZ"]], columns=["Foo", "Bar"])  
-#with pd.ExcelWriter("path_to_file.xlsx") as writer:
-    #df.to_excel(writer)  
+writer = pd.ExcelWriter(settings.data_path + "bornpowerindex.xlsx", engine="xlsxwriter")
+df.to_excel(writer, sheet_name="Sheet1")
+writer.close()
 
 print ("done.")
