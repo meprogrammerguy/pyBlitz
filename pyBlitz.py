@@ -11,6 +11,12 @@ import re
 
 import settings
 
+def ErrorToJSON(e, y):
+    s = str(e)
+    x = '"message": "{0}", "file": "{0}"'.format(s, y)
+    x = "<http>{" + x + "}</http>"
+    return x
+
 def findTeams(first, second, dict_stats, verbose = True):
     teama = {}
     teamb = {}
