@@ -64,7 +64,7 @@ def main(argv):
     print ("**************************")
     
     now_time = str(now).split(".")[0]
-    print (now_time)
+    #print (now_time)
 
     excel_file = "{0}teams.xlsx".format(settings.data_path)
     spreadsheet=False
@@ -74,12 +74,14 @@ def main(argv):
             excel_df = pd.read_excel(excel_file, sheet_name='Sheet1')
             teams_json = json.loads(excel_df.to_json())
             spreadsheet=True
-            pdb.set_trace()
-            if teams_json["created"]["0"] is None:
-                spreadsheet=False
+            if "0" in teams_json["created"]:
+                if teams_json["created"]["0"] is None:
+                    spreadsheet=False
+                else:
+                    print(" ")
+                    print ("        spreadsheet created date shows: " + teams_json["created"]["0"])
             else:
-                print(" ")
-                print ("        spreadsheet created date shows: " + teams_json["created"]["0"])
+                spreadsheet=False
                 
     if spreadsheet:
         if not test_mode:
@@ -118,7 +120,7 @@ def main(argv):
                 page = file.read().rstrip()
             pages.append(BeautifulSoup(page, "html5lib"))
     Path(settings.data_path).mkdir(parents=True, exist_ok=True)
-
+    #pdb.set_trace()
     ABBR=[]
 
     for page in pages:
@@ -135,9 +137,9 @@ def main(argv):
             if not each_one.isdigit():
                 abbrev.append(each_one)
     abbrev = list(set(abbrev))
-    
+    #pdb.set_trace()
     if not test_mode:
-        pages = []
+        #pages = []
         print("... fetching from espn API, saving locally")
         for item in abbrev:
             url = "https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/{0}".format(item)
@@ -154,18 +156,23 @@ def main(argv):
             Path(the_path).mkdir(parents=True, exist_ok=True)
             with open(the_file, 'w') as f:
                 f.write(soup.text)
-            f.close()
-            pages.append(soup)
-    else:
-        pages=[]
-        print("... retrieving espn API files locally")
-        for item in abbrev:
-            the_file = "{0}abbrev/{1}.json".format(settings.data_path, item.lower())
-            with open(the_file, 'r') as file:
-                data = file.read()
-                pages.append(json.loads(data))
-            file.close()
-      
+            #pages.append(soup)
+        f.close()
+
+    #pdb.set_trace()
+        
+    pages=[]
+    print("... retrieving espn API files locally")
+    for item in abbrev:
+        the_file = "{0}abbrev/{1}.json".format(settings.data_path, item.lower())
+        the_path = "{0}abbrev".format(settings.data_path)
+        Path(the_path).mkdir(parents=True, exist_ok=True)
+        with open(the_file, 'r') as f:
+            page = json.loads(f.read())
+        pages.append(page)
+    f.close()
+            
+    #pdb.set_trace()
     IDX=[]
     id=[]
     abbreviation=[]
@@ -258,7 +265,7 @@ def main(argv):
     #pdb.set_trace()
     #df=pd.DataFrame(IDX,columns=['Index'])
     #df['id']=id
-  
+    #pdb.set_trace()
     print ("... creating teams JSON file")
     the_file = "{0}teams.json".format(settings.data_path)
     Path(settings.data_path).mkdir(parents=True, exist_ok=True)
