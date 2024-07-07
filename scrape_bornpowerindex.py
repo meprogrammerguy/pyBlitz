@@ -157,23 +157,11 @@ df=pd.DataFrame(IDX,columns=['Index'])
 df['School']=A
 df['Ranking']=B
 df['Class']=C
-pdb.set_trace()
+
 Path(settings.data_path).mkdir(parents=True, exist_ok=True) 
 with open(settings.data_path + 'bornpowerindex.json', 'w') as f:
     f.write(df.to_json(orient='index'))
-
-#with open(settings.data_path + "bornpowerindex.json") as stats_json:
- #   dict_stats = json.load(stats_json, object_pairs_hook=OrderedDict)
-#stats_sheet = open(settings.data_path + 'bornpowerindex.csv', 'w', newline='')
-#csvwriter = csv.writer(stats_sheet)
-#count = 0
-#for row in dict_stats.values():
- #   if (count == 0):
-  #      header = row.keys()
-   #     csvwriter.writerow(header)
-    #    count += 1
-    #csvwriter.writerow(row.values())
-#stats_sheet.close()
+f.close()
 
 writer = pd.ExcelWriter(settings.data_path + "bornpowerindex.xlsx", engine="xlsxwriter")
 df.to_excel(writer, sheet_name="Sheet1", index=False)

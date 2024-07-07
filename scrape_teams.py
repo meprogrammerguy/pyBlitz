@@ -64,8 +64,6 @@ def main(argv):
     print ("**************************")
     
     now_time = str(now).split(".")[0]
-    #print (now_time)
-
     excel_file = "{0}teams.xlsx".format(settings.data_path)
     spreadsheet=False
     if Path(excel_file).is_file():
@@ -120,9 +118,8 @@ def main(argv):
                 page = file.read().rstrip()
             pages.append(BeautifulSoup(page, "html5lib"))
     Path(settings.data_path).mkdir(parents=True, exist_ok=True)
-    #pdb.set_trace()
-    ABBR=[]
 
+    ABBR=[]
     for page in pages:
         tbodys = page.findAll('tbody', attrs = {'class':'Table__TBODY'})
         for tbody in tbodys:
@@ -137,9 +134,8 @@ def main(argv):
             if not each_one.isdigit():
                 abbrev.append(each_one)
     abbrev = list(set(abbrev))
-    #pdb.set_trace()
+
     if not test_mode:
-        #pages = []
         print("... fetching from espn API, saving locally")
         for item in abbrev:
             url = "https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/{0}".format(item)
@@ -156,10 +152,7 @@ def main(argv):
             Path(the_path).mkdir(parents=True, exist_ok=True)
             with open(the_file, 'w') as f:
                 f.write(soup.text)
-            #pages.append(soup)
         f.close()
-
-    #pdb.set_trace()
         
     pages=[]
     print("... retrieving espn API files locally")
@@ -172,7 +165,6 @@ def main(argv):
         pages.append(page)
     f.close()
             
-    #pdb.set_trace()
     IDX=[]
     id=[]
     abbreviation=[]
@@ -222,50 +214,7 @@ def main(argv):
             nickname.append(pyBlitz.CleanString(team["nickname"]))
         if "location" in team:
             location.append(pyBlitz.CleanString(team["location"]))
-        #else:
-            #standingSummary.append(" ")
-            
-    #for i in range(len(pages)):
-     #   IDX.append(i)
 
-    #pdb.set_trace()
-
-    #ids={}
-    #abbreviations={}
-    #shortDisplayNames={}
-    #displayNames={}
-    #names={}
-    #nicknames={}
-    #locations={}
-    #standingSummarys={}
-    #for i in range(len(id)):
-        #ids.update({i:id[i]}) 
-        #abbreviations.update({i:abbreviation[i]}) 
-        #shortDisplayNames.update({i:shortDisplayName[i]}) 
-        #displayNames.update({i:displayName[i]}) 
-        #names.update({i:name[i]}) 
-        #nicknames.update({i:nickname[i]}) 
-        #locations.update({i:location[i]})
-        #if i < len(standingSummary):
-            #standingSummarys.update({i:standingSummary[i]})
-    
-    #rows={'created': {0: now_time}}
-    #rows.update({"id":ids})
-    #rows.update({"abbreviation":abbreviations}),
-    #rows.update({"shortDisplayName":shortDisplayNames})
-    #rows.update({"displayName":displayNames})
-    #rows.update({"name":names})
-    #rows.update({"nickname":nicknames})
-    #rows.update({"location":locations})
-    #rows.update({"standingSummary":standingSummarys})
-    
-    #rows={}
-    #for i in range(len(id)):
-        #rows[str(i)]={'id', id[i]}
-    #pdb.set_trace()
-    #df=pd.DataFrame(IDX,columns=['Index'])
-    #df['id']=id
-    #pdb.set_trace()
     print ("... creating teams JSON file")
     the_file = "{0}teams.json".format(settings.data_path)
     Path(settings.data_path).mkdir(parents=True, exist_ok=True)
@@ -280,57 +229,14 @@ def main(argv):
     df['location']=location
     df['standingSummary']=standingSummary
   
-    #pdb.set_trace()
     with open(the_file, 'w') as f:
         f.write(df.to_json(orient='index'))
-
-    #with open(the_file, 'w') as f:
-        #f.write(df.to_json(orient='index'))
-
-    #pdb.set_trace()
+    f.close()
     
     print ("... creating teams spreadsheet")
     writer = pd.ExcelWriter(excel_file, engine="xlsxwriter")
     df.to_excel(writer, sheet_name="Sheet1", index=False)
     writer.close()
-
-    
-    #with open('data.json', 'w', encoding='utf-8') as f:
-    #json.dump(data, f, ensure_ascii=False, indent=4)
-    
-    #with open(the_file, 'w') as f:
-        #f.write(str(rows))
-    #f.close()
-
-    #pdb.set_trace()
-    #pdb.set_trace()
-    #df = pd.DataFrame(rows)
-    #for i in range(len(id)):
-        #df[i]={"id": id[i]}
-        
-    #df['created']=now_time
-    #df['id']=ids
-    #df['abbreviation']=abbreviations
-    #df['shortDisplayName']=shortDisplayNames
-    #df['displayName']=displayNames
-    #df['name']=names
-    #df['nickname']=nicknames
-    #df['location']=locations
-    #df['standingSummary']=standingSummarys
-    #pdb.set_trace()
-    #writer = pd.ExcelWriter(excel_file, engine="xlsxwriter")
-    #df.to_excel(writer, sheet_name="Sheet1", index=False)
-    #writer.close()
-    #pdb.set_trace()
- 
-    #print ("... creating teams JSON file")
-    #excel_df = pd.read_excel(excel_file, sheet_name='Sheet1')
-    #json_str = excel_df.to_json()
-    #the_file = "{0}teams.json".format(settings.data_path)
-    #Path(settings.data_path).mkdir(parents=True, exist_ok=True)
-    #with open(the_file, 'w') as f:
-        #f.write(json_str)
-    #f.close()
 
     for root, dirs, files in os.walk(settings.data_path):
         for d in dirs:
