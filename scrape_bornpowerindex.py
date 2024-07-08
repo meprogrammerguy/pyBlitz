@@ -11,8 +11,6 @@ import csv
 import re
 from pathlib import Path
 from xlsxwriter import Workbook
-from thefuzz import fuzz
-from thefuzz import process
 
 import settings
 import pyBlitz

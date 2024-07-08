@@ -26,10 +26,6 @@ def GetNumber(item):
         idx.append("-1")
     return int(idx[0])
 
-def find_max_list(list):
-    list_len = len(list)
-    print(max(list_len))
-
 year = 0
 now = datetime.datetime.now()
 year = int(now.year)
