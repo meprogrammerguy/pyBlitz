@@ -127,10 +127,10 @@ def main(argv):
             for a_text in a_texts:
                 ABBR.append(a_text)
     abbrev=[]
-    LST=[]
+    #LST=[]
     for items in ABBR[4::8]:
         the_list=items.text.replace(',', '').split()
-        LST.append(the_list)
+        #LST.append(the_list)
         for each_one in the_list[:4:2]:
             if not each_one.isdigit():
                 abbrev.append(each_one)
