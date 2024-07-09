@@ -29,11 +29,27 @@ def GetFuzzyBest(t, m, u):
             match = matches[i]
             abbr = u[i]
             ratio = fuzz.ratio(t, match)
+            if abbr == "zzzz":
+                ratio = 0
             if the_max < ratio:
                 the_max = ratio
-                best = t, item, match, abbr, the_max
+                best = i, t, match, abbr, the_max
             best_lists[item] = best
-    return best_lists
+    the_best={}
+    for item in best_lists:
+        best=""
+        the_max=-1
+        ratio = best_lists[item][4]
+        abbr = best_lists[item][3]
+        index = best_lists[item][0]
+        if abbr == "zzzz":
+            ratio = 0
+        if the_max < ratio:
+            the_max = ratio
+            best = index, item, abbr, the_max
+        the_best[t]=best
+    u[the_best[t][0]] = "zzzz"
+    return the_best[t][0], the_best[t][2], the_best[t][3]
 
 urls = []
 urls.append("https://www.teamrankings.com/college-football/stat/plays-per-game")
@@ -85,12 +101,11 @@ for team in A:
             E.append(col[3].find(string=True))
             break
 
-print("... retrieving teams spreadsheet")
+print("... retrieving teams spreadsheet, adding abbreviations")
 teams_excel = "{0}teams.xlsx".format(settings.data_path)
 excel_df = pd.read_excel(teams_excel, sheet_name='Sheet1')
 teams_json = json.loads(excel_df.to_json())
 
-unpicked = teams_json["abbreviation"]
 matches={}
 matches["shortDisplayName"]=teams_json["shortDisplayName"]
 matches["displayName"]=teams_json["displayName"]
@@ -100,11 +115,12 @@ matches["location"]=teams_json["location"]
 
 abbrs=[]
 ratios=[]
+over=[]
 for team in A:
-    the_best = GetFuzzyBest(team, matches, unpicked)
-    print ("mainline")
-    print (str(the_best))
-    pdb.set_trace()
+    the_best = GetFuzzyBest(team, matches, teams_json["abbreviation"])
+    abbrs.append(the_best[1])
+    ratios.append(the_best[2])
+    over.append(" ")
 
 df=pd.DataFrame(IDX,columns=['Index'])
 df['Team']=A
@@ -112,7 +128,10 @@ df['PLpG3']=B
 df['PTpP3']=C
 df['OPLpG3']=D
 df['OPTpP3']=E
- 
+df['abbr guess']=abbrs
+df['confidence']=ratios
+df['abbr override']=over
+
 Path(settings.data_path).mkdir(parents=True, exist_ok=True) 
 with open(settings.data_path + 'teamrankings.json', 'w') as f:
     f.write(df.to_json(orient='index'))
