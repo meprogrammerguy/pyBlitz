@@ -18,6 +18,36 @@ from thefuzz import process
 import settings
 import pyBlitz
 
+def GetFuzzyBest(t, m, u):
+    item=[]
+    the_max=-1
+    best={}
+    for item in m:
+        print (m[str(item)])
+        #pdb.set_trace()
+        ratio = fuzz.ratio(t, m[str(item)])
+        print (ratio)
+        if the_max < ratio:
+            the_max = ratio
+            print ("item: " + str(item))
+            print ("unpicked: " + u[str(item)])
+            print ("ratio: " + str(ratio))
+            print ("max: " + str(the_max))
+            best = item, m[str(item)], u[str(item)], the_max
+            print (best)
+            #pdb.set_trace()
+        #u[str(item)] = " "
+        print ("team: " + t)
+        print ("best: " + str(best))
+        #pdb.set_trace()
+    #pdb.set_trace()
+    #print ("best: " + str(best))
+    #print (str(best[2]))
+    #print (str(best[3]))
+    #print (str(item))
+    #pdb.set_trace()
+    return best
+
 urls = []
 urls.append("https://www.teamrankings.com/college-football/stat/plays-per-game")
 urls.append("https://www.teamrankings.com/college-football/stat/points-per-play")
@@ -68,77 +98,45 @@ for team in A:
             E.append(col[3].find(string=True))
             break
 
+print("... retrieving teams spreadsheet")
+teams_excel = "{0}teams.xlsx".format(settings.data_path)
+excel_df = pd.read_excel(teams_excel, sheet_name='Sheet1')
+teams_json = json.loads(excel_df.to_json())
+
+unpicked = teams_json["abbreviation"]
+#matches = teams_json["shortDisplayName"] 88% (wrong)
+matches = teams_json["displayName"] # 64% (correct)
+#matches = teams_json["name"] 44% (wrong)
+#matches = teams_json["nickname"] 88% (wrong)
+#matches = teams_json["location"] 88% (wrong)
+
+#print (unpicked)
+abbrs=[]
+ratios=[]
+for team in A:
+    #pdb.set_trace()
+    the_best = GetFuzzyBest(team, matches, unpicked)
+    unpicked[str(the_best[0])] = " "
+    print (str(the_best))
+    abbrs.append(str(the_best[2]))
+    ratios.append(str(the_best[3]))
+    #pdb.set_trace()
+#pdb.set_trace()
+#unpicked = []
+#for element in teams_json:
+    #print (teams_json[element]["abbreviation"])
+    #print (picked["1"])
+ #   pdb.set_trace()
+
 df=pd.DataFrame(IDX,columns=['Index'])
 df['Team']=A
 df['PLpG3']=B
 df['PTpP3']=C
 df['OPLpG3']=D
 df['OPTpP3']=E
-
-print("... retrieving teams spreadsheet")
-teams_excel = "{0}teams.xlsx".format(settings.data_path)
-excel_df = pd.read_excel(teams_excel, sheet_name='Sheet1')
-teams_json = json.loads(excel_df.to_json())
-
-results={}
-Abbrev=[]
-index=-1
-for item in teams_json["abbreviation"]:
-    abbrev=teams_json["abbreviation"][str(item)]
-    matches={}
-    max_all_list=[]
-    for team in A:
-        match=[]
-        max_list=[]
-        to_match=teams_json["shortDisplayName"][str(item)]
-        match_fuzz=fuzz.ratio(team, to_match)
-        match.append({"shortDisplayName": match_fuzz})
-        max_list.append(match_fuzz)
-
-        to_match=teams_json["displayName"][str(item)]
-        match_fuzz=fuzz.ratio(team, to_match)
-        match.append({"displayName": match_fuzz})
-        max_list.append(match_fuzz)
-        
-        to_match=teams_json["name"][str(item)]
-        match_fuzz=fuzz.ratio(team, to_match)
-        match.append({"name": match_fuzz})
-        max_list.append(match_fuzz)
-
-        to_match=teams_json["nickname"][str(item)]
-        match_fuzz=fuzz.ratio(team, to_match)
-        match.append({"nickname": match_fuzz})
-        max_list.append(match_fuzz)
-
-        to_match=teams_json["location"][str(item)]
-        match_fuzz=fuzz.ratio(team, to_match)
-        match.append({"location": match_fuzz})
-        max_list.append(match_fuzz)
-        max_val = max(max_list)
-        matches[team]=max_val
-        #pdb.set_trace()
-    max_team=""
-    max_ratio=-1
-    for team in matches:
-        #print (team)
-        ratio=matches[team]
-        #print (ratio)
-        if ratio > max_ratio:
-            max_team=team
-            max_ratio=ratio
-            #print ("max team: " + max_team)
-            #print ("max ratio: " + str(max_ratio))
-            #pdb.set_trace()
-        #print ("max team: " + max_team)
-        #print ("max ratio: " + str(max_ratio))
-        #pdb.set_trace()
-    #pdb.set_trace()
-    #print (max_team)
-    #print (max_ratio)
-    results[abbrev]=max_team, max_ratio
-    #pdb.set_trace()
-pdb.set_trace()
-  
+df['abbreviation']=abbrs
+df['confidence']=ratios
+ 
 Path(settings.data_path).mkdir(parents=True, exist_ok=True) 
 with open(settings.data_path + 'teamrankings.json', 'w') as f:
     f.write(df.to_json(orient='index'))

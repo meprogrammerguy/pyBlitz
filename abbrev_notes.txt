@@ -1,0 +1,14 @@
+
+for team in A:
+    the_fuzz = GetBestAbbr("Alabama", teams_json, unpicked)
+    the_fuzz = ["ALA", 100] 
+    
+    shortDisplayName       like shortDisplayName,   88% (wrong)
+    displayName               x  displayName,       64% (correct)  
+    name                        name,               44% (wrong)           (only one string match!)
+    nickname                    nickname,           88% (wrong)        (after get working, try each one to find best match string)
+    location                    location,           88% (wrong)
+    
+                                BEST,               ABBR,   RATIO,  INDEX
+                                
+for unpicked pass list on all abbrev and remove the picked one
