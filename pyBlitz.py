@@ -8,8 +8,43 @@ import html5lib
 import pdb
 from collections import OrderedDict
 import re
+from thefuzz import fuzz
+from thefuzz import process
 
 import settings
+
+def GetFuzzyBest(t, m, u):
+    item=[]
+    best_lists={}
+    for item in m:
+        best=""
+        the_max=-1
+        matches=m[item]
+        for i in matches:
+            match = matches[i]
+            abbr = u[i]
+            ratio = fuzz.ratio(t, match)
+            if abbr == "zzzz":
+                ratio = 0
+            if the_max < ratio:
+                the_max = ratio
+                best = i, t, match, abbr, the_max
+            best_lists[item] = best
+    the_best={}
+    for item in best_lists:
+        best=""
+        the_max=-1
+        ratio = best_lists[item][4]
+        abbr = best_lists[item][3]
+        index = best_lists[item][0]
+        if abbr == "zzzz":
+            ratio = 0
+        if the_max < ratio:
+            the_max = ratio
+            best = index, item, abbr, the_max
+        the_best[t]=best
+    u[the_best[t][0]] = "zzzz"
+    return the_best[t][0], the_best[t][2], the_best[t][3]
 
 def ErrorToJSON(e, y):
     s = str(e)

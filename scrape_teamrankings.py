@@ -12,44 +12,9 @@ import contextlib
 import os
 import re
 from pathlib import Path
-from thefuzz import fuzz
-from thefuzz import process
 
 import settings
 import pyBlitz
-
-def GetFuzzyBest(t, m, u):
-    item=[]
-    best_lists={}
-    for item in m:
-        best=""
-        the_max=-1
-        matches=m[item]
-        for i in matches:
-            match = matches[i]
-            abbr = u[i]
-            ratio = fuzz.ratio(t, match)
-            if abbr == "zzzz":
-                ratio = 0
-            if the_max < ratio:
-                the_max = ratio
-                best = i, t, match, abbr, the_max
-            best_lists[item] = best
-    the_best={}
-    for item in best_lists:
-        best=""
-        the_max=-1
-        ratio = best_lists[item][4]
-        abbr = best_lists[item][3]
-        index = best_lists[item][0]
-        if abbr == "zzzz":
-            ratio = 0
-        if the_max < ratio:
-            the_max = ratio
-            best = index, item, abbr, the_max
-        the_best[t]=best
-    u[the_best[t][0]] = "zzzz"
-    return the_best[t][0], the_best[t][2], the_best[t][3]
 
 urls = []
 urls.append("https://www.teamrankings.com/college-football/stat/plays-per-game")
@@ -117,7 +82,7 @@ abbrs=[]
 ratios=[]
 over=[]
 for team in A:
-    the_best = GetFuzzyBest(team, matches, teams_json["abbreviation"])
+    the_best = pyBlitz.GetFuzzyBest(team, matches, teams_json["abbreviation"])
     abbrs.append(the_best[1])
     ratios.append(the_best[2])
     over.append(" ")
