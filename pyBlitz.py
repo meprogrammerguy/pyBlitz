@@ -13,7 +13,7 @@ from thefuzz import process
 
 import settings
 
-def GetFuzzyBest(t, m, u):
+def GetFuzzyBest(t, m, k):
     item=[]
     best_lists={}
     for item in m:
@@ -22,9 +22,11 @@ def GetFuzzyBest(t, m, u):
         matches=m[item]
         for i in matches:
             match = matches[i]
-            abbr = u[i]
+            #abbr = "KRUB"
+            #pdb.set_trace()
+            abbr = k[i]
             ratio = fuzz.ratio(t, match)
-            if abbr == "zzzz":
+            if abbr == "zzzz" or abbr == " ":
                 ratio = 0
             if the_max < ratio:
                 the_max = ratio
@@ -37,13 +39,13 @@ def GetFuzzyBest(t, m, u):
         ratio = best_lists[item][4]
         abbr = best_lists[item][3]
         index = best_lists[item][0]
-        if abbr == "zzzz":
+        if abbr == "zzzz" or abbr == " ":
             ratio = 0
         if the_max < ratio:
             the_max = ratio
             best = index, item, abbr, the_max
         the_best[t]=best
-    u[the_best[t][0]] = "zzzz"
+    #u[the_best[t][0]] = "zzzz"
     return the_best[t][0], the_best[t][2], the_best[t][3]
 
 def ErrorToJSON(e, y):

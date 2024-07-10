@@ -26,10 +26,18 @@ def GetNumber(item):
         idx.append("-1")
     return int(idx[0])
 
-def find_max_list(list):
-    list_len = len(list)
-    print(max(list_len))
-
+def SplitListInChunks(b, e, s, l):
+    begin = b
+    end = e
+    step = s
+    count=0
+    c={}
+    for y in range(begin, end, step): 
+        x = y
+        c[count]=l[x:x+step]
+        count+=1
+    return c
+    
 year = 0
 now = datetime.datetime.now()
 year = int(now.year)
@@ -37,7 +45,6 @@ if (len(sys.argv)>=2):
     year = GetNumber(sys.argv[1])
     if (year < 2002 or year > int(now.year)):
         year = int(now.year)
-#year -= 1
 current_working_directory = os.getcwd()
 
 def main(argv):
@@ -86,26 +93,54 @@ def main(argv):
     Path(settings.data_path).mkdir(parents=True, exist_ok=True)
 
     DATES=[]
-    SCHED={}
+    TEAMS={}
+    LINES={}
     for page in pages:
         dates = page.findAll('div', attrs = {'class':'rIczU uzVSX avctS McMna WtEci pdYhu seFhp'})
-        sched = page.findAll('div', attrs = {'class':'VZTD UeCOM rpjsZ ANPUN'})
+        teams = page.findAll('div', attrs = {'class':'VZTD UeCOM rpjsZ ANPUN'})
         for i in dates:
             DATES.append(i.text)
-        for x in range(len(sched)):
-            SCHED[DATES[x]]=(sched[x].text.split())
-    pdb.set_trace()
+        for i in range(len(teams)):
+            LINES=teams[i].text.split()
+            TEAMS[DATES[i]]=LINES
+
+    print("... retrieving teams spreadsheet")
+    teams_excel = "{0}teams.xlsx".format(settings.data_path)
+    excel_df = pd.read_excel(teams_excel, sheet_name='Sheet1')
+    teams_json = json.loads(excel_df.to_json())
+        
+    matches={}
+    matches["displayName"]=teams_json["displayName"]
+    returned=teams_json["displayName"]
+
+    IDX=[]
+    cdates=[]
+    cteam1=[]
+    cabbr1=[]
+    cabbr2=[]
+    the_line=[]
+    CHUNKS={}
+    index=0
+    for cdate in TEAMS:
+        print ("date: " + cdate)
+        CHUNKS = SplitListInChunks(0, len(TEAMS[cdate]), 16, TEAMS[cdate])
+        for item in CHUNKS:
+            print (CHUNKS[item])
+            pdb.set_trace()
            
     print ("... creating Odds JSON file")
     the_file = "{0}odds.json".format(settings.data_path)
     Path(settings.data_path).mkdir(parents=True, exist_ok=True)
     df=pd.DataFrame(IDX,columns=['Index'])
-  
+    df['Date'] = cdates
+    df['Team 1'] = cteam1
+    
     with open(the_file, 'w') as f:
         f.write(df.to_json(orient='index'))
     f.close()
     
     print ("... creating odds spreadsheet")
+    excel_file = "{0}odds.xlsx".format(settings.data_path)
     writer = pd.ExcelWriter(excel_file, engine="xlsxwriter")
     df.to_excel(writer, sheet_name="Sheet1", index=False)
     writer.close()

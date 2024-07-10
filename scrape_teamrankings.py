@@ -78,13 +78,16 @@ matches["name"]=teams_json["name"]
 matches["nickname"]=teams_json["nickname"]
 matches["location"]=teams_json["location"]
 
+picked=teams_json["abbreviation"]
+
 abbrs=[]
 ratios=[]
 over=[]
 for team in A:
-    the_best = pyBlitz.GetFuzzyBest(team, matches, teams_json["abbreviation"])
+    the_best = pyBlitz.GetFuzzyBest(team, matches, picked)
     abbrs.append(the_best[1])
     ratios.append(the_best[2])
+    picked[the_best[0]] = " "
     over.append(" ")
 
 df=pd.DataFrame(IDX,columns=['Index'])
