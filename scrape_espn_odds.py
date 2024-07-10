@@ -37,17 +37,17 @@ if (len(sys.argv)>=2):
     year = GetNumber(sys.argv[1])
     if (year < 2002 or year > int(now.year)):
         year = int(now.year)
-year -= 1
+#year -= 1
 current_working_directory = os.getcwd()
 
 def main(argv):
     url = []
-    test_files = "{0}/test/pages/schedule/{1}/*.html".format(current_working_directory, year)
+    test_files = "{0}/test/pages/schedule/{1}/odds.html".format(current_working_directory, year)
     url = glob.glob(test_files)
 
-    starturl = "http://www.espn.com/college-football/schedule"
+    starturl = "https://www.espn.com/college-football/odds"
 
-    print ("Scrape Teams Tool")
+    print ("Scrape Odds Tool")
     print ("**************************")
     if not url:
         test_mode=False
@@ -63,45 +63,11 @@ def main(argv):
     print ("Directory location: {0}".format(settings.data_path))
     print ("**************************")
     
-    now_time = str(now).split(".")[0]
-    excel_file = "{0}teams.xlsx".format(settings.data_path)
-    spreadsheet=False
-    if Path(excel_file).is_file():
-        if not test_mode:
-            print("... retrieving teams spreadsheet")
-            excel_df = pd.read_excel(excel_file, sheet_name='Sheet1')
-            teams_json = json.loads(excel_df.to_json())
-            spreadsheet=True
-            if "0" in teams_json["created"]:
-                if teams_json["created"]["0"] is None:
-                    spreadsheet=False
-                else:
-                    print(" ")
-                    print ("        spreadsheet created date shows: " + teams_json["created"]["0"])
-            else:
-                spreadsheet=False
-                
-    if spreadsheet:
-        if not test_mode:
-            print(" ")
-            print("===      To recreate: edit {0} and blank out the creation date, and rerun scraper ===".format(excel_file))
-            print(" ")
-            print ("done.")
-            sys.exit()
     Path(settings.data_path).mkdir(parents=True, exist_ok=True) 
     
     if not test_mode:
-        url.append("{0}/_/week/1/year/{1}/seasontype/3".format(starturl, year))   
-        if (year == int(now.year)):
-            for week in range(1, 17):
-                url.append("{0}/_/week/{1}/seasontype/2".format(starturl, week))
-            url.append("{0}/_/week/1/seasontype/3".format(starturl))                
-        else:
-            for week in range(1, 17):
-                url.append("{0}/_/week/{1}/year/{2}/seasontype/2".format(starturl, week, year))
-            url.append("{0}/_/week/1/year/{1}/seasontype/3".format(starturl, year))
-        pages = []
-        print("... fetching schedule pages")
+        url.append(starturl)   
+        print("... fetching odds page")
         for item in url:
             req = Request(url=item, \
             headers={'User-Agent':' Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0'})
@@ -119,121 +85,27 @@ def main(argv):
             pages.append(BeautifulSoup(page, "html5lib"))
     Path(settings.data_path).mkdir(parents=True, exist_ok=True)
 
-    ABBR=[]
+    DATES=[]
+    SCHED={}
     for page in pages:
-        tbodys = page.findAll('tbody', attrs = {'class':'Table__TBODY'})
-        for tbody in tbodys:
-            a_texts = tbody.findAll('a')
-            for a_text in a_texts:
-                ABBR.append(a_text)
+        dates = page.findAll('div', attrs = {'class':'rIczU uzVSX avctS McMna WtEci pdYhu seFhp'})
+        sched = page.findAll('div', attrs = {'class':'VZTD UeCOM rpjsZ ANPUN'})
+        for i in dates:
+            DATES.append(i.text)
+        for x in range(len(sched)):
+            SCHED[DATES[x]]=(sched[x].text.split())
+    pdb.set_trace()
            
-    abbrev=[]
-    for items in ABBR[4::8]:
-        the_list=items.text.replace(',', '').split()
-        for each_one in the_list[:4:2]:
-            if not each_one.isdigit():
-                abbrev.append(each_one)
-    abbrev = list(set(abbrev))
-
-    if not test_mode:
-        print("... fetching from espn API, saving locally")
-        for item in abbrev:
-            url = "https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/{0}".format(item)
-            req = Request(url=url, \
-            headers={'User-Agent':' Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0'})
-            try:
-                page = urlopen(req)
-            except HTTPError as e:
-                page = pyBlitz.ErrorToJSON(e, url)
-            soup = BeautifulSoup(page,"html5lib")
-
-            the_file = "{0}abbrev/{1}.json".format(settings.data_path, item.lower())
-            the_path = "{0}abbrev".format(settings.data_path)
-            Path(the_path).mkdir(parents=True, exist_ok=True)
-            with open(the_file, 'w') as f:
-                f.write(soup.text)
-        f.close()
-        
-    pages=[]
-    print("... retrieving espn API files locally")
-    for item in abbrev:
-        the_file = "{0}abbrev/{1}.json".format(settings.data_path, item.lower())
-        the_path = "{0}abbrev".format(settings.data_path)
-        Path(the_path).mkdir(parents=True, exist_ok=True)
-        with open(the_file, 'r') as f:
-            page = json.loads(f.read())
-        pages.append(page)
-    f.close()
-            
-    IDX=[]
-    id=[]
-    abbreviation=[]
-    shortDisplayName=[]
-    displayName=[]
-    name=[]
-    nickname=[]
-    location=[]
-    standingSummary=[]
-    index=len(pages)
-    created=[]
-    index=0
-    for page in pages:
-        if "team" in page:
-            team = page["team"]
-        else:
-            team = page
-        if "code" in team:
-            print ("error code: {0}".format(team["code"]))
-            if "message" in team:
-                print ("    message: {0}".format(team["message"]))
-            if "file" in team:
-                print ("    in file: {0}".format(team["file"]))
-            print ("... skipping")
-            continue
-        if "id" in team:
-            id.append(team["id"])
-            index+=1
-            IDX.append(index)
-            if "standingSummary" in team:
-                standingSummary.append(pyBlitz.CleanString(team["standingSummary"]))
-            else:
-                standingSummary.append(" ")
-            if index == 1:
-                created.append(now_time)
-            else:
-                created.append(" ")
-        if "abbreviation" in team:
-            abbreviation.append(team["abbreviation"])
-        if "shortDisplayName" in team:
-            shortDisplayName.append(pyBlitz.CleanString(team["shortDisplayName"]))
-        if "displayName" in team:
-            displayName.append(pyBlitz.CleanString(team["displayName"]))
-        if "name" in team:
-            name.append(pyBlitz.CleanString(team["name"]))
-        if "nickname" in team:
-            nickname.append(pyBlitz.CleanString(team["nickname"]))
-        if "location" in team:
-            location.append(pyBlitz.CleanString(team["location"]))
-
-    print ("... creating teams JSON file")
-    the_file = "{0}teams.json".format(settings.data_path)
+    print ("... creating Odds JSON file")
+    the_file = "{0}odds.json".format(settings.data_path)
     Path(settings.data_path).mkdir(parents=True, exist_ok=True)
     df=pd.DataFrame(IDX,columns=['Index'])
-    df['created']=created
-    df['id']=id
-    df['abbreviation']=abbreviation
-    df['shortDisplayName']=shortDisplayName
-    df['displayName']=displayName
-    df['name']=name
-    df['nickname']=nickname
-    df['location']=location
-    df['standingSummary']=standingSummary
   
     with open(the_file, 'w') as f:
         f.write(df.to_json(orient='index'))
     f.close()
     
-    print ("... creating teams spreadsheet")
+    print ("... creating odds spreadsheet")
     writer = pd.ExcelWriter(excel_file, engine="xlsxwriter")
     df.to_excel(writer, sheet_name="Sheet1", index=False)
     writer.close()

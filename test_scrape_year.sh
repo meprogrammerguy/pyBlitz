@@ -62,6 +62,11 @@ curl -H "Accept: application/json+v3" \
 curl -H "Accept: application/json+v3" \
     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/ala" \
     -o "ala.json"
+    
+#
+# espn odds scrape
+#
+curl -H "Accept: application/json+v3" "https://www.espn.com/college-football/odds" -o "odds.html"
 
 echo " "
 echo "done."

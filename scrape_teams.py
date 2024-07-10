@@ -38,7 +38,7 @@ current_working_directory = os.getcwd()
 
 def main(argv):
     url = []
-    test_files = "{0}/test/pages/schedule/{1}/*.html".format(current_working_directory, year)
+    test_files = "{0}/test/pages/schedule/{1}/w*.html".format(current_working_directory, year)
     url = glob.glob(test_files)
 
     starturl = "http://www.espn.com/college-football/schedule"
