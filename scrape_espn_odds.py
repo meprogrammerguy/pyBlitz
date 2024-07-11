@@ -37,7 +37,119 @@ def SplitListInChunks(b, e, s, l):
         c[count]=l[x:x+step]
         count+=1
     return c
-    
+
+def FirstUpper(s1):
+    #s1 = "asdfasdfasdfasdfasdfASDFASDFASDF"
+    m = re.search("[A-Z]", s1)
+    #if m:
+        #print ("Upper Case at position {0}".format(m.start()))
+    #else:
+        #print ("No Upper Case in that string")
+    return m.start()
+
+def ParseOddsStringToList(s):
+    fields=[]
+    returns={}
+    #
+    # field 1 time: "12:00 PM"  (length 8)
+    #
+    index=0
+    fields.append(s[:8])
+    index+=8
+    print ("***")
+    print ("field 1: " + fields[0])
+    #
+    # field 2 "Open"  (length 4)
+    #
+    fields.append(s[index:index+4])
+    index+=4
+    print ("field 2: " + fields[1])
+    #
+    # field 3 "Spread"  (length 6)
+    #
+    fields.append(s[index:index+6])
+    index+=6
+    print ("field 3: " + fields[2])
+    #
+    # field 4 "Total"  (length 5)
+    #
+    fields.append(s[index:index+5])
+    index+=5
+    print ("field 4: " + fields[3])
+    #
+    # field 5 "ML"  (length 2)
+    #
+    fields.append(s[index:index+2])
+    index+=2
+    print ("field 5: " + fields[4])
+    #
+    # field 6 Team 1 name end of parse is a: "("
+    #
+    left_text = s[index:len(s)].partition("(")[0]
+    fields.append(left_text)
+    index+=len(left_text)
+    print ("field 6: " + fields[5])
+    #
+    # field 7 (0-0) end of parse is a: ")"
+    #
+    left_text = s[index:len(s)].partition(")")[0]
+    left_text = left_text + ")"
+    fields.append(left_text)
+    index+=len(left_text)
+    print ("field 7: " + fields[6])
+    #
+    # field 8 Home/Away end of parse is a: ")"
+    #
+    left_text = s[index:len(s)].partition(")")[0]
+    left_text = left_text + ")"
+    fields.append(left_text)
+    index+=len(left_text)
+    print ("field 8: " + fields[7])
+    #
+    # field 9 odds end of parse is an uppercase letter
+    #
+    idx_f = FirstUpper(s[index:len(s)])
+    #pdb.set_trace()
+    fields.append(s[index:index+idx_f])
+    index+=idx_f
+    print ("field 9: " + fields[8])
+    #
+    # field 10 Team 2 name end of parse is a: "("
+    #
+    left_text = s[index:len(s)].partition("(")[0]
+    fields.append(left_text)
+    index+=len(left_text)
+    print ("field 10: " + fields[9])
+    #
+    # field 11 (0-0) end of parse is a: ")"
+    #
+    left_text = s[index:len(s)].partition(")")[0]
+    left_text = left_text + ")"
+    fields.append(left_text)
+    index+=len(left_text)
+    print ("field 11: " + fields[10])
+    #
+    # field 12 Home/Away end of parse is a: ")"
+    #
+    left_text = s[index:len(s)].partition(")")[0]
+    left_text = left_text + ")"
+    fields.append(left_text)
+    index+=len(left_text)
+    print ("field 12: " + fields[11])
+    #
+    # field 13 odds end of parse is a: ":" and back off 2
+    #
+    left_text = s[index:len(s)].partition(":")[0]
+    fields.append(left_text[:-2])
+    index+=(len(left_text) - 2)
+    print ("field 13: " + fields[12])
+    print ("***")
+    #pdb.set_trace()
+    returns["list"]=fields
+    returns["index"]=index
+    returns["slice"]=len(fields)
+    return returns
+
 year = 0
 now = datetime.datetime.now()
 year = int(now.year)
@@ -94,15 +206,23 @@ def main(argv):
 
     DATES=[]
     TEAMS={}
-    LINES={}
+    #LINES={}
     for page in pages:
         dates = page.findAll('div', attrs = {'class':'rIczU uzVSX avctS McMna WtEci pdYhu seFhp'})
         teams = page.findAll('div', attrs = {'class':'VZTD UeCOM rpjsZ ANPUN'})
         for i in dates:
             DATES.append(i.text)
         for i in range(len(teams)):
-            LINES=teams[i].text.split()
-            TEAMS[DATES[i]]=LINES
+            print ("Date: " + DATES[i])
+            print ("Line: " + teams[i].text)
+            returns={}
+            returns = ParseOddsStringToList(teams[i].text)
+            print (returns)
+            pdb.set_trace()
+
+            #LINES=teams[i].text.split()
+            #LINES=teams[i].text
+            #TEAMS[DATES[i]]=LINES
 
     print("... retrieving teams spreadsheet")
     teams_excel = "{0}teams.xlsx".format(settings.data_path)
@@ -116,24 +236,48 @@ def main(argv):
     IDX=[]
     cdates=[]
     cteam1=[]
-    cabbr1=[]
-    cabbr2=[]
-    the_line=[]
+    cteam2=[]
     CHUNKS={}
     index=0
     for cdate in TEAMS:
         print ("date: " + cdate)
+        print ("TEAMS[cdate]: " + str(TEAMS[cdate]))
+        #returns={}
+        #returns = ParseOddsStringToList(TEAMS[cdate])
+        pdb.set_trace()
         CHUNKS = SplitListInChunks(0, len(TEAMS[cdate]), 16, TEAMS[cdate])
+        pdb.set_trace()
         for item in CHUNKS:
             print (CHUNKS[item])
             pdb.set_trace()
-           
+            team1 = TEAMS[cdate][item+1] + " " + TEAMS[cdate][item+2] + " " + TEAMS[cdate][item+3]
+            #team1 = team1.replace('PMOpenSpreadTotalML', '')
+            the_best = pyBlitz.GetFuzzyBest(team1, matches, returned)
+            print ("team 1: " + team1)
+            print ("the_best: " + str(the_best))
+            cteam1.append(the_best[1])
+            #pdb.set_trace()
+            team2 = TEAMS[cdate][item+6] + " " + TEAMS[cdate][item+7] + " " + TEAMS[cdate][item+8]
+            #team2 = team2.replace('PMOpenSpreadTotalML', '')
+            the_best = pyBlitz.GetFuzzyBest(team2, matches, returned)
+            print ("team 2: " + team2)
+            print ("the_best: " + str(the_best))
+            pdb.set_trace()
+            cteam2.append(the_best[1])
+            cdates.append(cdate)
+            index+=1
+            IDX.append(index)
+            #pdb.set_trace()
+        #pdb.set_trace()
+    #pdb.set_trace()
+          
     print ("... creating Odds JSON file")
     the_file = "{0}odds.json".format(settings.data_path)
     Path(settings.data_path).mkdir(parents=True, exist_ok=True)
     df=pd.DataFrame(IDX,columns=['Index'])
     df['Date'] = cdates
     df['Team 1'] = cteam1
+    df['Team 2'] = cteam2
     
     with open(the_file, 'w') as f:
         f.write(df.to_json(orient='index'))
