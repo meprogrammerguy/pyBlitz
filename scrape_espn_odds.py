@@ -42,12 +42,7 @@ def flatten(xss):
     return [x for xs in xss for x in xs]
 
 def FirstUpper(s1):
-    #s1 = "asdfasdfasdfasdfasdfASDFASDFASDF"
     m = re.search("[A-Z]", s1)
-    #if m:
-        #print ("Upper Case at position {0}".format(m.start()))
-    #else:
-        #print ("No Upper Case in that string")
     return m.start()
 
 def ParseOddsStringToList(s):
@@ -156,7 +151,7 @@ def ParseOddsStringToList(s):
     index+=len(left_text)
     #print ("field 12: " + fields[11])
     #
-    # field 13 odds end of parse is a: ":" and back off 2
+    # field 13 odds end of parse is a: ":" and back off 2 or TDB
     #
     left_text = s[index:].partition(":")
     #print (left_text)
@@ -244,37 +239,23 @@ def main(argv):
 
     DATES=[]
     TEAMS={}
-    #OLINES=[]
     for page in pages:
         dates = page.findAll('div', attrs = {'class':'rIczU uzVSX avctS McMna WtEci pdYhu seFhp'})
         teams = page.findAll('div', attrs = {'class':'VZTD UeCOM rpjsZ ANPUN'})
         for i in dates:
             DATES.append(i.text)
         for i in range(len(teams)):
-            #print ("Date: " + DATES[i])
-            #print ("Line: " + teams[i].text)
             idx = 0
             returns={}
             LINES=[]
             while idx < len(teams[i].text):
-                #print(idx)              
-                #idx += 1
-                #s = teams[i].text[idx:]
-                #print (returns)
                 returns = ParseOddsStringToList(teams[i].text[idx:])
-                #print (returns)
                 idx+=returns["index"]
                 LINES.append(returns["list"])
-                #pdb.set_trace()
             
             flat=[]
             flat = flatten(LINES)
-            #OLINES=teams[i].text.split()
-            #pdb.set_trace()
-            #LINES=teams[i].text
             TEAMS[DATES[i]]=flat
-            #TEAMS[DATES[i]]=OLINES
-            #pdb.set_trace()
 
     print("... retrieving teams spreadsheet")
     teams_excel = "{0}teams.xlsx".format(settings.data_path)
@@ -290,55 +271,19 @@ def main(argv):
     cteam1=[]
     cteam2=[]
     index=0
-    #print (len(TEAMS))
-    #count=0
-    #pdb.set_trace()
     for cdate in TEAMS:
-        #count+=1
-        #if count == 16:
-            #print ("*** last one ***")
-            #pdb.set_trace()
-        #print ("******")        
-        #print ("date: " + cdate)
-        #print ("TEAMS[cdate]: " + str(TEAMS[cdate]))
-        #returns={}
-        #returns = ParseOddsStringToList(TEAMS[cdate])
-        #pdb.set_trace()
         CHUNKS={}
         CHUNKS = SplitListInChunks(0, len(TEAMS[cdate]), 13, TEAMS[cdate])
-        #print ("******")
-        #print ("All CHUNKS: " + str(CHUNKS))
-        #print (" ")
-        #pdb.set_trace()
         for item in CHUNKS:
-            #print ("++++++++++")
-            #print ("one CHUNK: " + str(CHUNKS[item]))
-            #print ("++++++++++")
-            #pdb.set_trace()
             team1 = CHUNKS[item][5]
-            #team1 = team1.replace('PMOpenSpreadTotalML', '')
             the_best = pyBlitz.GetFuzzyBest(team1, matches, returned)
-            #print ("team 1: " + team1)
-            #print ("the_best: " + str(the_best))
             cteam1.append(the_best[1])
-            #pdb.set_trace()
             team2 = CHUNKS[item][9]
-            #team2 = team2.replace('PMOpenSpreadTotalML', '')
             the_best = pyBlitz.GetFuzzyBest(team2, matches, returned)
-            #print ("team 2: " + team2)
-            #print ("the_best: " + str(the_best))
-            #pdb.set_trace()
             cteam2.append(the_best[1])
             cdates.append(cdate)
             index+=1
             IDX.append(index)
-            #if count == 16:
-                #print ("*** last one ***")
-                #pdb.set_trace()
-
-            #pdb.set_trace()
-        #pdb.set_trace()
-    #pdb.set_trace()
           
     print ("... creating Odds JSON file")
     the_file = "{0}odds.json".format(settings.data_path)
