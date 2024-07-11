@@ -38,6 +38,9 @@ def SplitListInChunks(b, e, s, l):
         count+=1
     return c
 
+def flatten(xss):
+    return [x for xs in xss for x in xs]
+
 def FirstUpper(s1):
     #s1 = "asdfasdfasdfasdfasdfASDFASDFASDF"
     m = re.search("[A-Z]", s1)
@@ -51,99 +54,134 @@ def ParseOddsStringToList(s):
     fields=[]
     returns={}
     #
-    # field 1 time: "12:00 PM"  (length 8)
+    # field 1 time: "12:00 PM" end of parse is an: "O"
     #
     index=0
-    fields.append(s[:8])
-    index+=8
-    print ("***")
-    print ("field 1: " + fields[0])
+    
+    left_text = s[index:].partition("O")[0]
+    fields.append(left_text)
+    index+=len(left_text)
+    #print ("***")
+    #print ("field 1: " + fields[0])
+
+    
+    
+    
+    #fields.append(s[:8])
+    #index+=8
+    #print ("field 1: " + fields[0])
     #
     # field 2 "Open"  (length 4)
     #
     fields.append(s[index:index+4])
     index+=4
-    print ("field 2: " + fields[1])
+    #print ("field 2: " + fields[1])
     #
     # field 3 "Spread"  (length 6)
     #
     fields.append(s[index:index+6])
     index+=6
-    print ("field 3: " + fields[2])
+    #print ("field 3: " + fields[2])
     #
     # field 4 "Total"  (length 5)
     #
     fields.append(s[index:index+5])
     index+=5
-    print ("field 4: " + fields[3])
+    #print ("field 4: " + fields[3])
     #
     # field 5 "ML"  (length 2)
     #
     fields.append(s[index:index+2])
     index+=2
-    print ("field 5: " + fields[4])
+    #print ("field 5: " + fields[4])
     #
     # field 6 Team 1 name end of parse is a: "("
     #
-    left_text = s[index:len(s)].partition("(")[0]
+    left_text = s[index:].partition("(")[0]
     fields.append(left_text)
     index+=len(left_text)
-    print ("field 6: " + fields[5])
+    #print ("field 6: " + fields[5])
     #
     # field 7 (0-0) end of parse is a: ")"
     #
-    left_text = s[index:len(s)].partition(")")[0]
+    left_text = s[index:].partition(")")[0]
     left_text = left_text + ")"
     fields.append(left_text)
     index+=len(left_text)
-    print ("field 7: " + fields[6])
+    #print ("field 7: " + fields[6])
     #
     # field 8 Home/Away end of parse is a: ")"
     #
-    left_text = s[index:len(s)].partition(")")[0]
+    left_text = s[index:].partition(")")[0]
     left_text = left_text + ")"
     fields.append(left_text)
     index+=len(left_text)
-    print ("field 8: " + fields[7])
+    #print ("field 8: " + fields[7])
     #
-    # field 9 odds end of parse is an uppercase letter
+    # field 9 odds end of parse is not a "TBD" but uppercase letter
     #
-    idx_f = FirstUpper(s[index:len(s)])
+    idx_f = FirstUpper(s[index:])
+    #not_TBD = s[index+idx_f:index+idx_f+3]
+    #print("not_TBD: " + not_TBD)
     #pdb.set_trace()
+    #if not_TBD == "TBD":
+        #fields.append(s[index:index+idx_f])
+        #index+=idx_f
+        #pdb.set_trace()
+    #else:
     fields.append(s[index:index+idx_f])
     index+=idx_f
-    print ("field 9: " + fields[8])
+    #print ("field 9: " + fields[8])
     #
     # field 10 Team 2 name end of parse is a: "("
     #
-    left_text = s[index:len(s)].partition("(")[0]
+    left_text = s[index:].partition("(")[0]
     fields.append(left_text)
     index+=len(left_text)
-    print ("field 10: " + fields[9])
+    #print ("field 10: " + fields[9])
     #
     # field 11 (0-0) end of parse is a: ")"
     #
-    left_text = s[index:len(s)].partition(")")[0]
+    left_text = s[index:].partition(")")[0]
     left_text = left_text + ")"
     fields.append(left_text)
     index+=len(left_text)
-    print ("field 11: " + fields[10])
+    #print ("field 11: " + fields[10])
     #
     # field 12 Home/Away end of parse is a: ")"
     #
-    left_text = s[index:len(s)].partition(")")[0]
+    left_text = s[index:].partition(")")[0]
     left_text = left_text + ")"
     fields.append(left_text)
     index+=len(left_text)
-    print ("field 12: " + fields[11])
+    #print ("field 12: " + fields[11])
     #
     # field 13 odds end of parse is a: ":" and back off 2
     #
-    left_text = s[index:len(s)].partition(":")[0]
-    fields.append(left_text[:-2])
-    index+=(len(left_text) - 2)
-    print ("field 13: " + fields[12])
-    print ("***")
+    left_text = s[index:].partition(":")
+    #print (left_text)
+    if left_text[1] == ":":
+        fields.append(left_text[0][:-2])
+        index+=(len(left_text[0])-2)
+        #print ("field 13: " + fields[12])
+    else:
+        # do TBD case here
+        left_text = s[index:].partition("TBD")
+        if left_text[1] == "TDB":
+            print ("found TBD")
+            pdb.set_trace()
+        else:
+            fields.append(left_text[0])
+            index+=len(left_text[0])
+    #print (str(left_text))
+        #print ("field 13: " + fields[12])
+        #pdb.set_trace()
+    #print ("***")
+    #pdb.set_trace()
+    #print (fields)
+    #flat=[]
+    #flat.append(flatten(fields))
+    #print (flat)
     #pdb.set_trace()
     returns["list"]=fields
     returns["index"]=index
@@ -206,23 +244,37 @@ def main(argv):
 
     DATES=[]
     TEAMS={}
-    #LINES={}
+    #OLINES=[]
     for page in pages:
         dates = page.findAll('div', attrs = {'class':'rIczU uzVSX avctS McMna WtEci pdYhu seFhp'})
         teams = page.findAll('div', attrs = {'class':'VZTD UeCOM rpjsZ ANPUN'})
         for i in dates:
             DATES.append(i.text)
         for i in range(len(teams)):
-            print ("Date: " + DATES[i])
-            print ("Line: " + teams[i].text)
+            #print ("Date: " + DATES[i])
+            #print ("Line: " + teams[i].text)
+            idx = 0
             returns={}
-            returns = ParseOddsStringToList(teams[i].text)
-            print (returns)
-            pdb.set_trace()
-
-            #LINES=teams[i].text.split()
+            LINES=[]
+            while idx < len(teams[i].text):
+                #print(idx)              
+                #idx += 1
+                #s = teams[i].text[idx:]
+                #print (returns)
+                returns = ParseOddsStringToList(teams[i].text[idx:])
+                #print (returns)
+                idx+=returns["index"]
+                LINES.append(returns["list"])
+                #pdb.set_trace()
+            
+            flat=[]
+            flat = flatten(LINES)
+            #OLINES=teams[i].text.split()
+            #pdb.set_trace()
             #LINES=teams[i].text
-            #TEAMS[DATES[i]]=LINES
+            TEAMS[DATES[i]]=flat
+            #TEAMS[DATES[i]]=OLINES
+            #pdb.set_trace()
 
     print("... retrieving teams spreadsheet")
     teams_excel = "{0}teams.xlsx".format(settings.data_path)
@@ -237,36 +289,53 @@ def main(argv):
     cdates=[]
     cteam1=[]
     cteam2=[]
-    CHUNKS={}
     index=0
+    #print (len(TEAMS))
+    #count=0
+    #pdb.set_trace()
     for cdate in TEAMS:
-        print ("date: " + cdate)
-        print ("TEAMS[cdate]: " + str(TEAMS[cdate]))
+        #count+=1
+        #if count == 16:
+            #print ("*** last one ***")
+            #pdb.set_trace()
+        #print ("******")        
+        #print ("date: " + cdate)
+        #print ("TEAMS[cdate]: " + str(TEAMS[cdate]))
         #returns={}
         #returns = ParseOddsStringToList(TEAMS[cdate])
-        pdb.set_trace()
-        CHUNKS = SplitListInChunks(0, len(TEAMS[cdate]), 16, TEAMS[cdate])
-        pdb.set_trace()
+        #pdb.set_trace()
+        CHUNKS={}
+        CHUNKS = SplitListInChunks(0, len(TEAMS[cdate]), 13, TEAMS[cdate])
+        #print ("******")
+        #print ("All CHUNKS: " + str(CHUNKS))
+        #print (" ")
+        #pdb.set_trace()
         for item in CHUNKS:
-            print (CHUNKS[item])
-            pdb.set_trace()
-            team1 = TEAMS[cdate][item+1] + " " + TEAMS[cdate][item+2] + " " + TEAMS[cdate][item+3]
+            #print ("++++++++++")
+            #print ("one CHUNK: " + str(CHUNKS[item]))
+            #print ("++++++++++")
+            #pdb.set_trace()
+            team1 = CHUNKS[item][5]
             #team1 = team1.replace('PMOpenSpreadTotalML', '')
             the_best = pyBlitz.GetFuzzyBest(team1, matches, returned)
-            print ("team 1: " + team1)
-            print ("the_best: " + str(the_best))
+            #print ("team 1: " + team1)
+            #print ("the_best: " + str(the_best))
             cteam1.append(the_best[1])
             #pdb.set_trace()
-            team2 = TEAMS[cdate][item+6] + " " + TEAMS[cdate][item+7] + " " + TEAMS[cdate][item+8]
+            team2 = CHUNKS[item][9]
             #team2 = team2.replace('PMOpenSpreadTotalML', '')
             the_best = pyBlitz.GetFuzzyBest(team2, matches, returned)
-            print ("team 2: " + team2)
-            print ("the_best: " + str(the_best))
-            pdb.set_trace()
+            #print ("team 2: " + team2)
+            #print ("the_best: " + str(the_best))
+            #pdb.set_trace()
             cteam2.append(the_best[1])
             cdates.append(cdate)
             index+=1
             IDX.append(index)
+            #if count == 16:
+                #print ("*** last one ***")
+                #pdb.set_trace()
+
             #pdb.set_trace()
         #pdb.set_trace()
     #pdb.set_trace()
