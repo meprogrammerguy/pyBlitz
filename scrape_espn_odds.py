@@ -26,8 +26,8 @@ def GetNumber(item):
         idx.append("-1")
     return int(idx[0])
 
-def SplitListInChunks(b, e, s, l):
-    begin = b
+def SplitListInChunks(e, s, l):
+    begin = 0
     end = e
     step = s
     count=0
@@ -86,15 +86,10 @@ def ParseOddsStringToList(c, i, s):
     #
     # field 6 Team 1 name end of parse is a: "("
     #
-    #remove_stupid = s[index:].replace("(OH)", "")
     left_text = s[index:].replace("(OH)", "").replace("(PA)", "").partition("(")
     fields.append(left_text[0])
     index+=len(left_text[0])
     print ("field 6: " + fields[5])
-    
-    #if c == 23:
-        #pdb.set_trace()
-
     #
     # field 7 (0-0) end of parse is a: ")"
     #
@@ -114,26 +109,14 @@ def ParseOddsStringToList(c, i, s):
     #
     # field 9 odds end of parse is first uppercase word
     #
-    #               OFF is valid (saw on count = 5)
-    #
-    #if c == 23:
-        #pdb.set_trace()
-    r_s = s[index:].replace("OFF", "off")
-    #print ("r_s: " + r_s)
-    idx_f = FirstUpper(r_s)
-    #print ("idx_f: " + str(idx_f))
-    #idx_f = FirstUpper(s[index:].replace("OFF", "off"))
+    idx_f = FirstUpper(s[index:].replace("OFF", "off"))
     fields.append(s[index:index+idx_f])
     index+=(idx_f)
     print ("field 9: " + fields[8])
-    #if c == 23:
-       # pdb.set_trace()
-
     #
     # field 10 Team 2 name end of parse is a: "("
     #
     left_text = s[index:].replace("(OH)", "").replace("(PA)", "").partition("(")
-    #left_text = s[index:].partition("(")
     fields.append(left_text[0])
     index+=len(left_text[0])
     print ("field 10: " + fields[9])
@@ -155,8 +138,6 @@ def ParseOddsStringToList(c, i, s):
     print ("field 12: " + fields[11])
     #
     # field 13 odds end of parse is a: ":" and back off 2
-    #
-    #           OFF is part of the odds, don't chop it
     #
     left_text = s[index:].replace("OFF", "off").replace("TBD", "??:?? AM").partition(":")
     if left_text[1]:
@@ -268,13 +249,15 @@ def main(argv):
     IDX=[]
     cdates=[]
     cteam1=[]
+    codds1=[]
     cteam2=[]
+    codds2=[]
     cwhere=[]
     ctime=[]
     index=0
     for cdate in TEAMS:
         CHUNKS={}
-        CHUNKS = SplitListInChunks(0, len(TEAMS[cdate]), chunks, TEAMS[cdate])
+        CHUNKS = SplitListInChunks(len(TEAMS[cdate]), chunks, TEAMS[cdate])
         for item in CHUNKS:
             if "Away" in CHUNKS[item][7]:
                 cwhere.append("away")
@@ -282,20 +265,23 @@ def main(argv):
                 if "Home" in CHUNKS[item][7]:
                     cwhere.append("home")
                 else:
-                    cwhere.append("neutral")             
+                    cwhere.append("neutral") 
+                    
             team1 = CHUNKS[item][5]
             the_best = pyBlitz.GetFuzzyBest(team1, matches, returned)
             cteam1.append(the_best[1])
+            
             team2 = CHUNKS[item][9]
             the_best = pyBlitz.GetFuzzyBest(team2, matches, returned)
             cteam2.append(the_best[1])
+            
             ctime.append(CHUNKS[item][0])
+            codds1.append(CHUNKS[item][8])
+            codds2.append(CHUNKS[item][12])
             cdates.append(cdate)
-            if "neutral" in cwhere:
-                pdb.set_trace()
             index+=1
             IDX.append(index)
-          
+    
     print ("... creating Odds JSON file")
     the_file = "{0}odds.json".format(settings.data_path)
     Path(settings.data_path).mkdir(parents=True, exist_ok=True)
@@ -304,8 +290,10 @@ def main(argv):
     df['Time'] = ctime
     df['Where'] = cwhere
     df['Team 1'] = cteam1
+    df['Odds 1'] = codds1
     df['Team 2'] = cteam2
-    
+    df['Odds 2'] = codds2
+
     with open(the_file, 'w') as f:
         f.write(df.to_json(orient='index'))
     f.close()
