@@ -86,12 +86,15 @@ def ParseOddsStringToList(c, i, s):
     #
     # field 6 Team 1 name end of parse is a: "("
     #
-    if c == 23:
-        pdb.set_trace()
-    left_text = s[index:].partition("(")
+    #remove_stupid = s[index:].replace("(OH)", "")
+    left_text = s[index:].replace("(OH)", "").replace("(PA)", "").partition("(")
     fields.append(left_text[0])
     index+=len(left_text[0])
     print ("field 6: " + fields[5])
+    
+    #if c == 23:
+        #pdb.set_trace()
+
     #
     # field 7 (0-0) end of parse is a: ")"
     #
@@ -113,18 +116,24 @@ def ParseOddsStringToList(c, i, s):
     #
     #               OFF is valid (saw on count = 5)
     #
-    idx_f = FirstUpper(s[index:])
-    s_valid = s[index:].partition("OFF")
-    o_idx=0
-    if s_valid[1] and (len(s_valid[0]) <= idx_f):
-        o_idx=3
-    fields.append(s[index:index+idx_f+o_idx])
-    index+=(idx_f+o_idx)
+    #if c == 23:
+        #pdb.set_trace()
+    r_s = s[index:].replace("OFF", "off")
+    #print ("r_s: " + r_s)
+    idx_f = FirstUpper(r_s)
+    #print ("idx_f: " + str(idx_f))
+    #idx_f = FirstUpper(s[index:].replace("OFF", "off"))
+    fields.append(s[index:index+idx_f])
+    index+=(idx_f)
     print ("field 9: " + fields[8])
+    #if c == 23:
+       # pdb.set_trace()
+
     #
     # field 10 Team 2 name end of parse is a: "("
     #
-    left_text = s[index:].partition("(")
+    left_text = s[index:].replace("(OH)", "").replace("(PA)", "").partition("(")
+    #left_text = s[index:].partition("(")
     fields.append(left_text[0])
     index+=len(left_text[0])
     print ("field 10: " + fields[9])
@@ -149,25 +158,18 @@ def ParseOddsStringToList(c, i, s):
     #
     #           OFF is part of the odds, don't chop it
     #
-    left_text = s[index:].partition(":")
-    idx_f = len(left_text[0])
-    s_valid = s[index:].partition("OFF")
-    o_idx=0
-    if s_valid[1] and (len(s_valid[0]) <= idx_f):
-        fields.append(s_valid[0] + "OFF")
-        index+=len(s_valid[0]) + 3
-    else:
-        if left_text[1]:
-            t_number=left_text[0][-2]
-            if t_number == "1":
-                fields.append(left_text[0][:-2])
-                index+=len(left_text[0][:-2])
-            else:
-                fields.append(left_text[0][:-1])
-                index+=len(left_text[0][:-1])
+    left_text = s[index:].replace("OFF", "off").replace("TBD", "??:?? AM").partition(":")
+    if left_text[1]:
+        t_number=left_text[0][-2]
+        if t_number == "1" or (t_number == "?"):
+            fields.append(left_text[0][:-2])
+            index+=len(left_text[0][:-2])
         else:
-            fields.append(s[index:])
-            index+=len(s[index:]) 
+            fields.append(left_text[0][:-1])
+            index+=len(left_text[0][:-1])
+    else:
+        fields.append(s[index:])
+        index+=len(s[index:]) 
     print ("field 13: " + fields[12])
     print (" index end: " + str(index))
     print ("***")
@@ -268,6 +270,7 @@ def main(argv):
     cteam1=[]
     cteam2=[]
     cwhere=[]
+    ctime=[]
     index=0
     for cdate in TEAMS:
         CHUNKS={}
@@ -286,6 +289,7 @@ def main(argv):
             team2 = CHUNKS[item][9]
             the_best = pyBlitz.GetFuzzyBest(team2, matches, returned)
             cteam2.append(the_best[1])
+            ctime.append(CHUNKS[item][0])
             cdates.append(cdate)
             if "neutral" in cwhere:
                 pdb.set_trace()
@@ -297,6 +301,7 @@ def main(argv):
     Path(settings.data_path).mkdir(parents=True, exist_ok=True)
     df=pd.DataFrame(IDX,columns=['Index'])
     df['Date'] = cdates
+    df['Time'] = ctime
     df['Where'] = cwhere
     df['Team 1'] = cteam1
     df['Team 2'] = cteam2
