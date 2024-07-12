@@ -45,57 +45,53 @@ def FirstUpper(s1):
     m = re.search("[A-Z]", s1)
     return m.start()
 
-def ParseOddsStringToList(s):
+def ParseOddsStringToList(c, i, s):
     fields=[]
     returns={}
     #
     # field 1 time: "12:00 PM" end of parse is an: "O"
     #
     index=0
-    
-    left_text = s[index:].partition("O")[0]
-    fields.append(left_text)
-    index+=len(left_text)
-    #print ("***")
-    #print ("field 1: " + fields[0])
-
-    
-    
-    
-    #fields.append(s[:8])
-    #index+=8
-    #print ("field 1: " + fields[0])
+    left_text = s[index:].partition("O")
+    fields.append(left_text[0])
+    index+=len(left_text[0])
+    print ("***")
+    print ("count: " + str(c))
+    print ("index start: " + str(i))
+    print ("field 1: " + fields[0])
     #
     # field 2 "Open"  (length 4)
     #
     fields.append(s[index:index+4])
     index+=4
-    #print ("field 2: " + fields[1])
+    print ("field 2: " + fields[1])
     #
     # field 3 "Spread"  (length 6)
     #
     fields.append(s[index:index+6])
     index+=6
-    #print ("field 3: " + fields[2])
+    print ("field 3: " + fields[2])
     #
     # field 4 "Total"  (length 5)
     #
     fields.append(s[index:index+5])
     index+=5
-    #print ("field 4: " + fields[3])
+    print ("field 4: " + fields[3])
     #
     # field 5 "ML"  (length 2)
     #
     fields.append(s[index:index+2])
     index+=2
-    #print ("field 5: " + fields[4])
+    print ("field 5: " + fields[4])
     #
     # field 6 Team 1 name end of parse is a: "("
     #
-    left_text = s[index:].partition("(")[0]
-    fields.append(left_text)
-    index+=len(left_text)
-    #print ("field 6: " + fields[5])
+    if c == 23:
+        pdb.set_trace()
+    left_text = s[index:].partition("(")
+    fields.append(left_text[0])
+    index+=len(left_text[0])
+    print ("field 6: " + fields[5])
     #
     # field 7 (0-0) end of parse is a: ")"
     #
@@ -103,7 +99,7 @@ def ParseOddsStringToList(s):
     left_text = left_text + ")"
     fields.append(left_text)
     index+=len(left_text)
-    #print ("field 7: " + fields[6])
+    print ("field 7: " + fields[6])
     #
     # field 8 Home/Away end of parse is a: ")"
     #
@@ -111,29 +107,27 @@ def ParseOddsStringToList(s):
     left_text = left_text + ")"
     fields.append(left_text)
     index+=len(left_text)
-    #print ("field 8: " + fields[7])
+    print ("field 8: " + fields[7])
     #
-    # field 9 odds end of parse is not a "TBD" but uppercase letter
+    # field 9 odds end of parse is first uppercase word
+    #
+    #               OFF is valid (saw on count = 5)
     #
     idx_f = FirstUpper(s[index:])
-    #not_TBD = s[index+idx_f:index+idx_f+3]
-    #print("not_TBD: " + not_TBD)
-    #pdb.set_trace()
-    #if not_TBD == "TBD":
-        #fields.append(s[index:index+idx_f])
-        #index+=idx_f
-        #pdb.set_trace()
-    #else:
-    fields.append(s[index:index+idx_f])
-    index+=idx_f
-    #print ("field 9: " + fields[8])
+    s_valid = s[index:].partition("OFF")
+    o_idx=0
+    if s_valid[1] and (len(s_valid[0]) <= idx_f):
+        o_idx=3
+    fields.append(s[index:index+idx_f+o_idx])
+    index+=(idx_f+o_idx)
+    print ("field 9: " + fields[8])
     #
     # field 10 Team 2 name end of parse is a: "("
     #
-    left_text = s[index:].partition("(")[0]
-    fields.append(left_text)
-    index+=len(left_text)
-    #print ("field 10: " + fields[9])
+    left_text = s[index:].partition("(")
+    fields.append(left_text[0])
+    index+=len(left_text[0])
+    print ("field 10: " + fields[9])
     #
     # field 11 (0-0) end of parse is a: ")"
     #
@@ -141,7 +135,7 @@ def ParseOddsStringToList(s):
     left_text = left_text + ")"
     fields.append(left_text)
     index+=len(left_text)
-    #print ("field 11: " + fields[10])
+    print ("field 11: " + fields[10])
     #
     # field 12 Home/Away end of parse is a: ")"
     #
@@ -149,38 +143,37 @@ def ParseOddsStringToList(s):
     left_text = left_text + ")"
     fields.append(left_text)
     index+=len(left_text)
-    #print ("field 12: " + fields[11])
+    print ("field 12: " + fields[11])
     #
-    # field 13 odds end of parse is a: ":" and back off 2 or TDB
+    # field 13 odds end of parse is a: ":" and back off 2
+    #
+    #           OFF is part of the odds, don't chop it
     #
     left_text = s[index:].partition(":")
-    #print (left_text)
-    if left_text[1] == ":":
-        fields.append(left_text[0][:-2])
-        index+=(len(left_text[0])-2)
-        #print ("field 13: " + fields[12])
+    idx_f = len(left_text[0])
+    s_valid = s[index:].partition("OFF")
+    o_idx=0
+    if s_valid[1] and (len(s_valid[0]) <= idx_f):
+        fields.append(s_valid[0] + "OFF")
+        index+=len(s_valid[0]) + 3
     else:
-        # do TBD case here
-        left_text = s[index:].partition("TBD")
-        if left_text[1] == "TDB":
-            print ("found TBD")
-            pdb.set_trace()
+        if left_text[1]:
+            t_number=left_text[0][-2]
+            if t_number == "1":
+                fields.append(left_text[0][:-2])
+                index+=len(left_text[0][:-2])
+            else:
+                fields.append(left_text[0][:-1])
+                index+=len(left_text[0][:-1])
         else:
-            fields.append(left_text[0])
-            index+=len(left_text[0])
-    #print (str(left_text))
-        #print ("field 13: " + fields[12])
-        #pdb.set_trace()
-    #print ("***")
-    #pdb.set_trace()
-    #print (fields)
-    #flat=[]
-    #flat.append(flatten(fields))
-    #print (flat)
-    #pdb.set_trace()
+            fields.append(s[index:])
+            index+=len(s[index:]) 
+    print ("field 13: " + fields[12])
+    print (" index end: " + str(index))
+    print ("***")
     returns["list"]=fields
     returns["index"]=index
-    returns["slice"]=len(fields)
+    returns["chunks"]=len(fields)
     return returns
 
 year = 0
@@ -239,6 +232,8 @@ def main(argv):
 
     DATES=[]
     TEAMS={}
+    chunks=0
+    count=0
     for page in pages:
         dates = page.findAll('div', attrs = {'class':'rIczU uzVSX avctS McMna WtEci pdYhu seFhp'})
         teams = page.findAll('div', attrs = {'class':'VZTD UeCOM rpjsZ ANPUN'})
@@ -249,8 +244,10 @@ def main(argv):
             returns={}
             LINES=[]
             while idx < len(teams[i].text):
-                returns = ParseOddsStringToList(teams[i].text[idx:])
+                returns = ParseOddsStringToList(count, idx, teams[i].text[idx:])
+                count+=1
                 idx+=returns["index"]
+                chunks=returns["chunks"]
                 LINES.append(returns["list"])
             
             flat=[]
@@ -270,11 +267,19 @@ def main(argv):
     cdates=[]
     cteam1=[]
     cteam2=[]
+    cwhere=[]
     index=0
     for cdate in TEAMS:
         CHUNKS={}
-        CHUNKS = SplitListInChunks(0, len(TEAMS[cdate]), 13, TEAMS[cdate])
+        CHUNKS = SplitListInChunks(0, len(TEAMS[cdate]), chunks, TEAMS[cdate])
         for item in CHUNKS:
+            if "Away" in CHUNKS[item][7]:
+                cwhere.append("away")
+            else:
+                if "Home" in CHUNKS[item][7]:
+                    cwhere.append("home")
+                else:
+                    cwhere.append("neutral")             
             team1 = CHUNKS[item][5]
             the_best = pyBlitz.GetFuzzyBest(team1, matches, returned)
             cteam1.append(the_best[1])
@@ -282,6 +287,8 @@ def main(argv):
             the_best = pyBlitz.GetFuzzyBest(team2, matches, returned)
             cteam2.append(the_best[1])
             cdates.append(cdate)
+            if "neutral" in cwhere:
+                pdb.set_trace()
             index+=1
             IDX.append(index)
           
@@ -290,6 +297,7 @@ def main(argv):
     Path(settings.data_path).mkdir(parents=True, exist_ok=True)
     df=pd.DataFrame(IDX,columns=['Index'])
     df['Date'] = cdates
+    df['Where'] = cwhere
     df['Team 1'] = cteam1
     df['Team 2'] = cteam2
     
