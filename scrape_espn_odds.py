@@ -26,116 +26,101 @@ def GetNumber(item):
         idx.append("-1")
     return int(idx[0])
 
-def SplitListInChunks(e, s, l):
-    begin = 0
-    end = e
-    step = s
-    count=0
-    c={}
-    for y in range(begin, end, step): 
-        x = y
-        c[count]=l[x:x+step]
-        count+=1
-    return c
-
-def flatten(xss):
-    return [x for xs in xss for x in xs]
-
 def FirstUpper(s1):
     m = re.search("[A-Z]", s1)
     return m.start()
 
 def ParseOddsStringToList(c, i, s):
-    fields=[]
+    fields={}
     returns={}
     #
     # field 1 time: "12:00 PM" end of parse is an: "O"
     #
     index=0
     left_text = s[index:].partition("O")
-    fields.append(left_text[0])
+    fields["time"] = left_text[0]
     index+=len(left_text[0])
     print ("***")
     print ("count: " + str(c))
     print ("index start: " + str(i))
-    print ("field 1: " + fields[0])
+    print ("field 1: " + fields["time"])
     #
     # field 2 "Open"  (length 4)
     #
-    fields.append(s[index:index+4])
+    fields["open"] = s[index:index+4]
     index+=4
-    print ("field 2: " + fields[1])
+    print ("field 2: " + fields["open"])
     #
     # field 3 "Spread"  (length 6)
     #
-    fields.append(s[index:index+6])
+    fields["spread"] = s[index:index+6]
     index+=6
-    print ("field 3: " + fields[2])
+    print ("field 3: " + fields["spread"])
     #
     # field 4 "Total"  (length 5)
     #
-    fields.append(s[index:index+5])
+    fields["total"] = s[index:index+5]
     index+=5
-    print ("field 4: " + fields[3])
+    print ("field 4: " + fields["total"])
     #
     # field 5 "ML"  (length 2)
     #
-    fields.append(s[index:index+2])
+    fields["ml"] = s[index:index+2]
     index+=2
-    print ("field 5: " + fields[4])
+    print ("field 5: " + fields["ml"])
     #
     # field 6 Team 1 name end of parse is a: "("
     #
     left_text = s[index:].replace("(OH)", "").replace("(PA)", "").partition("(")
-    fields.append(left_text[0])
+    fields["team1"] = left_text[0]
     index+=len(left_text[0])
-    print ("field 6: " + fields[5])
+    print ("field 6: " + fields["team1"])
     #
     # field 7 (0-0) end of parse is a: ")"
     #
     left_text = s[index:].partition(")")[0]
     left_text = left_text + ")"
-    fields.append(left_text)
+    fields["scores1"] = left_text
     index+=len(left_text)
-    print ("field 7: " + fields[6])
+    print ("field 7: " + fields["scores1"])
     #
     # field 8 Home/Away end of parse is a: ")"
     #
     left_text = s[index:].partition(")")[0]
     left_text = left_text + ")"
-    fields.append(left_text)
+    fields["where1"] = left_text
     index+=len(left_text)
-    print ("field 8: " + fields[7])
+    print ("field 8: " + fields["where1"])
     #
     # field 9 odds end of parse is first uppercase word
     #
     idx_f = FirstUpper(s[index:].replace("OFF", "off"))
-    fields.append(s[index:index+idx_f])
+    fields["odds1"] = s[index:index+idx_f]
     index+=(idx_f)
-    print ("field 9: " + fields[8])
+    print ("field 9: " + fields["odds1"])
     #
     # field 10 Team 2 name end of parse is a: "("
     #
     left_text = s[index:].replace("(OH)", "").replace("(PA)", "").partition("(")
-    fields.append(left_text[0])
+    fields["team2"] = left_text[0]
     index+=len(left_text[0])
-    print ("field 10: " + fields[9])
+    print ("field 10: " + fields["team2"])
     #
     # field 11 (0-0) end of parse is a: ")"
     #
     left_text = s[index:].partition(")")[0]
     left_text = left_text + ")"
-    fields.append(left_text)
+    fields["scores2"] = left_text
     index+=len(left_text)
-    print ("field 11: " + fields[10])
+    print ("field 11: " + fields["scores2"])
     #
     # field 12 Home/Away end of parse is a: ")"
     #
     left_text = s[index:].partition(")")[0]
     left_text = left_text + ")"
-    fields.append(left_text)
+    fields["where2"] = left_text
     index+=len(left_text)
-    print ("field 12: " + fields[11])
+    print ("field 12: " + fields["where2"])
     #
     # field 13 odds end of parse is a: ":" and back off 2
     #
@@ -143,15 +128,15 @@ def ParseOddsStringToList(c, i, s):
     if left_text[1]:
         t_number=left_text[0][-2]
         if t_number == "1" or (t_number == "?"):
-            fields.append(left_text[0][:-2])
+            fields["odds2"] = left_text[0][:-2]
             index+=len(left_text[0][:-2])
         else:
-            fields.append(left_text[0][:-1])
+            fields["odds2"] = left_text[0][:-1]
             index+=len(left_text[0][:-1])
     else:
-        fields.append(s[index:])
+        fields["odds2"] = s[index:]
         index+=len(s[index:]) 
-    print ("field 13: " + fields[12])
+    print ("field 13: " + fields["odds2"])
     print (" index end: " + str(index))
     print ("***")
     returns["list"]=fields
@@ -232,10 +217,7 @@ def main(argv):
                 idx+=returns["index"]
                 chunks=returns["chunks"]
                 LINES.append(returns["list"])
-            
-            flat=[]
-            flat = flatten(LINES)
-            TEAMS[DATES[i]]=flat
+            TEAMS[DATES[i]]=LINES
 
     print("... retrieving teams spreadsheet")
     teams_excel = "{0}teams.xlsx".format(settings.data_path)
@@ -256,28 +238,24 @@ def main(argv):
     ctime=[]
     index=0
     for cdate in TEAMS:
-        CHUNKS={}
-        CHUNKS = SplitListInChunks(len(TEAMS[cdate]), chunks, TEAMS[cdate])
-        for item in CHUNKS:
-            if "Away" in CHUNKS[item][7]:
+        for item in TEAMS[cdate]:
+            if "Away" in item["where1"]:
                 cwhere.append("away")
             else:
-                if "Home" in CHUNKS[item][7]:
+                if "Home" in item["where1"]:
                     cwhere.append("home")
                 else:
                     cwhere.append("neutral") 
-                    
-            team1 = CHUNKS[item][5]
-            the_best = pyBlitz.GetFuzzyBest(team1, matches, returned)
+
+            the_best = pyBlitz.GetFuzzyBest(item["team1"], matches, returned)
             cteam1.append(the_best[1])
             
-            team2 = CHUNKS[item][9]
-            the_best = pyBlitz.GetFuzzyBest(team2, matches, returned)
+            the_best = pyBlitz.GetFuzzyBest(item["team2"], matches, returned)
             cteam2.append(the_best[1])
             
-            ctime.append(CHUNKS[item][0])
-            codds1.append(CHUNKS[item][8])
-            codds2.append(CHUNKS[item][12])
+            ctime.append(item["time"])
+            codds1.append(item["odds1"])
+            codds2.append(item["odds2"])
             cdates.append(cdate)
             index+=1
             IDX.append(index)
