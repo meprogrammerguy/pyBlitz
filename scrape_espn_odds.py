@@ -31,19 +31,16 @@ def FirstUpper(s1):
     return m.start()
 
 def SplitOdds(l):
-    p_l = l.replace(" ", "~")
-    p_l = p_l.replace("o", " o")
+    p_l = l.replace("o", " o")
     p_l = p_l.replace("u", " u")
     p_l = p_l.replace("-", " -")
     p_l = p_l.replace("+", " +")
     p_l = p_l.replace("OFF", " OFF")
     p_l = p_l.replace("EVEN", " EVEN")
-    #print ("p_l: " + p_l)
     o_list=p_l.split()
-    #print ("o_list: " + str(o_list))
     return len(o_list), o_list
 
-def ParseOddsStringToList(c, i, s):
+def ParseOddsStringToList(i, s):
     fields={}
     returns={}
     #
@@ -51,11 +48,10 @@ def ParseOddsStringToList(c, i, s):
     #
     index=0
     left_text = s[index:].partition("O")
-    fields["time"] = s[index:len(left_text[0])]
+    fields["time"] = s[index:index+len(left_text[0])]
     index+=len(left_text[0])
-    print ("***")
-    print ("count: " + str(c))
-    print ("index start: " + str(i))
+    #print ("***")
+    #print ("index start: " + str(i))
     #print ("field 1: " + fields["time"])
     #
     # field 2 "Open"  (length 4)
@@ -93,7 +89,7 @@ def ParseOddsStringToList(c, i, s):
     #
     left_text = s[index:].partition(")")[0]
     left_text = left_text + ")"
-    fields["scores1"] = s[index:len(left_text)]
+    fields["scores1"] = s[index:index+len(left_text)]
     index+=len(left_text)
     #print ("field 7: " + fields["scores1"])
     #
@@ -101,7 +97,7 @@ def ParseOddsStringToList(c, i, s):
     #
     left_text = s[index:].partition(")")[0]
     left_text = left_text + ")"
-    fields["where1"] = s[index:len(left_text)]
+    fields["where1"] = s[index:index+len(left_text)]
     index+=len(left_text)
     #print ("field 8: " + fields["where1"])
     #
@@ -110,13 +106,9 @@ def ParseOddsStringToList(c, i, s):
     idx_f = FirstUpper(s[index:].replace("OFF", "off"))
     fields["odds1"] = s[index:index+idx_f]
     index+=(idx_f)
-    #print ("field 9: " + fields["odds1"])
     odds_count, odds_list = SplitOdds(fields["odds1"])
-    #print ("odds_count: " + str(odds_count))
-    #print ("odds_list: " + str(odds_list))
     fields["odds1"] = odds_list
-    print ("field 9: " + str(fields["odds1"]))
-    #pdb.set_trace()
+    #print ("field 9: " + str(fields["odds1"]))
     #
     # field 10 Team 2 name end of parse is a: "("
     #
@@ -129,7 +121,7 @@ def ParseOddsStringToList(c, i, s):
     #
     left_text = s[index:].partition(")")[0]
     left_text = left_text + ")"
-    fields["scores2"] = s[index:len(left_text)]
+    fields["scores2"] = s[index:index+len(left_text)]
     index+=len(left_text)
     #print ("field 11: " + fields["scores2"])
     #
@@ -137,7 +129,7 @@ def ParseOddsStringToList(c, i, s):
     #
     left_text = s[index:].partition(")")[0]
     left_text = left_text + ")"
-    fields["where2"] = s[index:len(left_text)]
+    fields["where2"] = s[index:index+len(left_text)]
     index+=len(left_text)
     #print ("field 12: " + fields["where2"])
     #
@@ -148,23 +140,22 @@ def ParseOddsStringToList(c, i, s):
         t_number=left_text[0][-2]
         if t_number == "1" or (t_number == "?"):
             t_idx = len(left_text[0][:-2])
-            fields["odds2"] = s[index:index+t_idx]  #left_text[0][:-2]
-            index+= t_idx                           #len(left_text[0][:-2])
+            fields["odds2"] = s[index:index+t_idx]
+            index+= t_idx
         else:
             t_idx = len(left_text[0][:-1])
-            fields["odds2"] = s[index:index+t_idx]  #left_text[0][:-1]
+            fields["odds2"] = s[index:index+t_idx]
             index+=t_idx
     else:
         fields["odds2"] = s[index:]
         index+=len(s[index:]) 
     odds_count, odds_list = SplitOdds(fields["odds2"])
     fields["odds2"] = odds_list
-    print ("field 13: " + str(fields["odds2"]))
+    #print ("field 13: " + str(fields["odds2"]))
     #print ("odds_count: " + str(odds_count))
     #print ("odds_list: " + str(odds_list))
-    #pdb.set_trace()
-    print (" index end: " + str(index))
-    print ("***")
+    #print (" index end: " + str(index))
+    #print ("***")
     returns["list"]=fields
     returns["index"]=index
     returns["chunks"]=len(fields)
@@ -195,7 +186,7 @@ def main(argv):
     else:
         test_mode=True
         print ("*** Test data ***")
-        print ("    data is from {0}/test/pages/schedule/{1}/".format(current_working_directory, year))
+        print ("    data is from {0}test/pages/schedule/{1}/".format(current_working_directory, year))
         print ("*** delete test data and re-run to go live ***")
     print (" ")
     print ("Year is: {0}".format(year))
@@ -203,7 +194,8 @@ def main(argv):
     print ("**************************")
     
     Path(settings.data_path).mkdir(parents=True, exist_ok=True) 
-    
+
+    pages = []
     if not test_mode:
         url.append(starturl)   
         print("... fetching odds page")
@@ -216,8 +208,7 @@ def main(argv):
                 page = pyBlitz.ErrorToJSON(e, url)
             pages.append(BeautifulSoup(page, "html5lib"))
     else:
-        pages = []
-        print("... fetching test schedule pages")
+        print("... fetching test odds page")
         for item in url:
             with open(item, 'r') as file:
                 page = file.read().rstrip()
@@ -226,7 +217,6 @@ def main(argv):
 
     DATES=[]
     TEAMS={}
-    chunks=0
     count=0
     for page in pages:
         dates = page.findAll('div', attrs = {'class':'rIczU uzVSX avctS McMna WtEci pdYhu seFhp'})
@@ -238,14 +228,12 @@ def main(argv):
             returns={}
             LINES=[]
             while idx < len(teams[i].text):
-                returns = ParseOddsStringToList(count, idx, teams[i].text[idx:])
-                count+=1
+                returns = ParseOddsStringToList(idx, teams[i].text[idx:])
                 idx+=returns["index"]
-                chunks=returns["chunks"]
                 LINES.append(returns["list"])
             TEAMS[DATES[i]]=LINES
 
-    print("... retrieving teams spreadsheet")
+    print("... retrieving teams JSON file")
     teams_excel = "{0}teams.xlsx".format(settings.data_path)
     excel_df = pd.read_excel(teams_excel, sheet_name='Sheet1')
     teams_json = json.loads(excel_df.to_json())
@@ -257,36 +245,37 @@ def main(argv):
     IDX=[]
     cdates=[]
     cteam1=[]
-    #codds1=[]
+    cspread1=[]
     cteam2=[]
-    #codds2=[]
+    cspread2=[]
     cwhere=[]
     ctime=[]
     index=0
     for cdate in TEAMS:
         for item in TEAMS[cdate]:
+            #pdb.set_trace()
             if "Away" in item["where1"]:
-                cwhere.append("away")
+                cwhere.append("Away")
             else:
                 if "Home" in item["where1"]:
-                    cwhere.append("home")
+                    cwhere.append("Home")
                 else:
-                    cwhere.append("neutral") 
+                    cwhere.append("Neutral") 
 
             the_best = pyBlitz.GetFuzzyBest(item["team1"], matches, returned)
             cteam1.append(the_best[1])
+            cspread1.append(item["odds1"][2])
             
             the_best = pyBlitz.GetFuzzyBest(item["team2"], matches, returned)
             cteam2.append(the_best[1])
-            
+            cspread2.append(item["odds2"][0])
+
             ctime.append(item["time"])
-            #codds1.append(item["odds1"])
-            #codds2.append(item["odds2"])
             cdates.append(cdate)
             index+=1
             IDX.append(index)
     
-    print ("... creating Odds JSON file")
+    print ("... creating odds JSON file")
     the_file = "{0}odds.json".format(settings.data_path)
     Path(settings.data_path).mkdir(parents=True, exist_ok=True)
     df=pd.DataFrame(IDX,columns=['Index'])
@@ -294,9 +283,9 @@ def main(argv):
     df['Time'] = ctime
     df['Where'] = cwhere
     df['Team 1'] = cteam1
-    #df['Odds 1'] = codds1
+    df['Spread 1'] = cspread1
     df['Team 2'] = cteam2
-    #df['Odds 2'] = codds2
+    df['Spread 2'] = cspread2
 
     with open(the_file, 'w') as f:
         f.write(df.to_json(orient='index'))
