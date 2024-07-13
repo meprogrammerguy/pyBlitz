@@ -30,6 +30,19 @@ def FirstUpper(s1):
     m = re.search("[A-Z]", s1)
     return m.start()
 
+def SplitOdds(l):
+    p_l = l.replace(" ", "~")
+    p_l = p_l.replace("o", " o")
+    p_l = p_l.replace("u", " u")
+    p_l = p_l.replace("-", " -")
+    p_l = p_l.replace("+", " +")
+    p_l = p_l.replace("OFF", " OFF")
+    p_l = p_l.replace("EVEN", " EVEN")
+    #print ("p_l: " + p_l)
+    o_list=p_l.split()
+    #print ("o_list: " + str(o_list))
+    return len(o_list), o_list
+
 def ParseOddsStringToList(c, i, s):
     fields={}
     returns={}
@@ -38,89 +51,95 @@ def ParseOddsStringToList(c, i, s):
     #
     index=0
     left_text = s[index:].partition("O")
-    fields["time"] = left_text[0]
+    fields["time"] = s[index:len(left_text[0])]
     index+=len(left_text[0])
     print ("***")
     print ("count: " + str(c))
     print ("index start: " + str(i))
-    print ("field 1: " + fields["time"])
+    #print ("field 1: " + fields["time"])
     #
     # field 2 "Open"  (length 4)
     #
     fields["open"] = s[index:index+4]
     index+=4
-    print ("field 2: " + fields["open"])
+    #print ("field 2: " + fields["open"])
     #
     # field 3 "Spread"  (length 6)
     #
     fields["spread"] = s[index:index+6]
     index+=6
-    print ("field 3: " + fields["spread"])
+    #print ("field 3: " + fields["spread"])
     #
     # field 4 "Total"  (length 5)
     #
     fields["total"] = s[index:index+5]
     index+=5
-    print ("field 4: " + fields["total"])
+    #print ("field 4: " + fields["total"])
     #
     # field 5 "ML"  (length 2)
     #
     fields["ml"] = s[index:index+2]
     index+=2
-    print ("field 5: " + fields["ml"])
+    #print ("field 5: " + fields["ml"])
     #
     # field 6 Team 1 name end of parse is a: "("
     #
     left_text = s[index:].replace("(OH)", "").replace("(PA)", "").partition("(")
     fields["team1"] = left_text[0]
     index+=len(left_text[0])
-    print ("field 6: " + fields["team1"])
+    #print ("field 6: " + fields["team1"])
     #
     # field 7 (0-0) end of parse is a: ")"
     #
     left_text = s[index:].partition(")")[0]
     left_text = left_text + ")"
-    fields["scores1"] = left_text
+    fields["scores1"] = s[index:len(left_text)]
     index+=len(left_text)
-    print ("field 7: " + fields["scores1"])
+    #print ("field 7: " + fields["scores1"])
     #
     # field 8 Home/Away end of parse is a: ")"
     #
     left_text = s[index:].partition(")")[0]
     left_text = left_text + ")"
-    fields["where1"] = left_text
+    fields["where1"] = s[index:len(left_text)]
     index+=len(left_text)
-    print ("field 8: " + fields["where1"])
+    #print ("field 8: " + fields["where1"])
     #
     # field 9 odds end of parse is first uppercase word
     #
     idx_f = FirstUpper(s[index:].replace("OFF", "off"))
     fields["odds1"] = s[index:index+idx_f]
     index+=(idx_f)
-    print ("field 9: " + fields["odds1"])
+    #print ("field 9: " + fields["odds1"])
+    odds_count, odds_list = SplitOdds(fields["odds1"])
+    #print ("odds_count: " + str(odds_count))
+    #print ("odds_list: " + str(odds_list))
+    fields["odds1"] = odds_list
+    print ("field 9: " + str(fields["odds1"]))
+    #pdb.set_trace()
     #
     # field 10 Team 2 name end of parse is a: "("
     #
     left_text = s[index:].replace("(OH)", "").replace("(PA)", "").partition("(")
     fields["team2"] = left_text[0]
     index+=len(left_text[0])
-    print ("field 10: " + fields["team2"])
+    #print ("field 10: " + fields["team2"])
     #
     # field 11 (0-0) end of parse is a: ")"
     #
     left_text = s[index:].partition(")")[0]
     left_text = left_text + ")"
-    fields["scores2"] = left_text
+    fields["scores2"] = s[index:len(left_text)]
     index+=len(left_text)
-    print ("field 11: " + fields["scores2"])
+    #print ("field 11: " + fields["scores2"])
     #
     # field 12 Home/Away end of parse is a: ")"
     #
     left_text = s[index:].partition(")")[0]
     left_text = left_text + ")"
-    fields["where2"] = left_text
+    fields["where2"] = s[index:len(left_text)]
     index+=len(left_text)
-    print ("field 12: " + fields["where2"])
+    #print ("field 12: " + fields["where2"])
     #
     # field 13 odds end of parse is a: ":" and back off 2
     #
@@ -128,15 +147,22 @@ def ParseOddsStringToList(c, i, s):
     if left_text[1]:
         t_number=left_text[0][-2]
         if t_number == "1" or (t_number == "?"):
-            fields["odds2"] = left_text[0][:-2]
-            index+=len(left_text[0][:-2])
+            t_idx = len(left_text[0][:-2])
+            fields["odds2"] = s[index:index+t_idx]  #left_text[0][:-2]
+            index+= t_idx                           #len(left_text[0][:-2])
         else:
-            fields["odds2"] = left_text[0][:-1]
-            index+=len(left_text[0][:-1])
+            t_idx = len(left_text[0][:-1])
+            fields["odds2"] = s[index:index+t_idx]  #left_text[0][:-1]
+            index+=t_idx
     else:
         fields["odds2"] = s[index:]
         index+=len(s[index:]) 
-    print ("field 13: " + fields["odds2"])
+    odds_count, odds_list = SplitOdds(fields["odds2"])
+    fields["odds2"] = odds_list
+    print ("field 13: " + str(fields["odds2"]))
+    #print ("odds_count: " + str(odds_count))
+    #print ("odds_list: " + str(odds_list))
+    #pdb.set_trace()
     print (" index end: " + str(index))
     print ("***")
     returns["list"]=fields
@@ -231,9 +257,9 @@ def main(argv):
     IDX=[]
     cdates=[]
     cteam1=[]
-    codds1=[]
+    #codds1=[]
     cteam2=[]
-    codds2=[]
+    #codds2=[]
     cwhere=[]
     ctime=[]
     index=0
@@ -254,8 +280,8 @@ def main(argv):
             cteam2.append(the_best[1])
             
             ctime.append(item["time"])
-            codds1.append(item["odds1"])
-            codds2.append(item["odds2"])
+            #codds1.append(item["odds1"])
+            #codds2.append(item["odds2"])
             cdates.append(cdate)
             index+=1
             IDX.append(index)
@@ -268,9 +294,9 @@ def main(argv):
     df['Time'] = ctime
     df['Where'] = cwhere
     df['Team 1'] = cteam1
-    df['Odds 1'] = codds1
+    #df['Odds 1'] = codds1
     df['Team 2'] = cteam2
-    df['Odds 2'] = codds2
+    #df['Odds 2'] = codds2
 
     with open(the_file, 'w') as f:
         f.write(df.to_json(orient='index'))
