@@ -40,6 +40,66 @@ def SplitOdds(l):
     o_list=p_l.split()
     return len(o_list), o_list
 
+def GetChance(s):
+    sign = "+"
+    if "-" in s:
+        sign = "-"
+    c_s = s.replace("-", "")
+    c_s = c_s.replace("+", "")
+    s_n = float(c_s)
+    #print (s_n)
+    ch={}
+    ch["0"]=50
+    ch["0.5"]=50
+    ch["1"]=51.2
+    ch["1.5"]=52.5
+    ch["2"]=53.4
+    ch["2.5"]=54.3
+    ch["3"]=57.4
+    ch["3.5"]=60.6
+    ch["4"]=61.9
+    ch["4.5"]=63.1
+    ch["5"]=64.1
+    ch["5.5"]=65.1
+    ch["6"]=66.4
+    ch["6.5"]=67.7
+    ch["7"]=70.3
+    ch["7.5"]=73
+    ch["8"]=73.8
+    ch["8.5"]=74.6
+    ch["9"]=75.1
+    ch["9.5"]=75.5
+    ch["10"]=77.4
+    ch["10.5"]=79.3
+    ch["11"]=79.9
+    ch["11.5"]=80.6
+    ch["12"]=81.6
+    ch["12.5"]=82.6
+    ch["13"]=83
+    ch["13.5"]=83.5
+    ch["14"]=85.1
+    ch["14.5"]=86.8
+    ch["15"]=87.4
+    ch["15.5"]=88.1
+    ch["16"]=88.6
+    ch["16.5"]=89.1
+    ch["17"]=91.4
+    ch["17.5"]=93.7
+    ch["18"]=95
+    ch["18.5"]=96.2
+    ch["19"]=97.3
+    ch["19.5"]=98.4
+    ch["20"]=100
+    if s_n > 20:
+        pct = 100
+    else:
+        pct = ch[c_s]
+    #print ("pct: " + str(pct))
+    if sign == "+":
+        pct = 100 - pct
+        #print ("neg pct: " + str(pct))
+    return "{:.1f}".format(pct)
+
 def ParseOddsStringToList(i, s):
     fields={}
     returns={}
@@ -250,6 +310,8 @@ def main(argv):
     cspread2=[]
     cwhere=[]
     ctime=[]
+    chance1=[]
+    chance2=[]
     index=0
     for cdate in TEAMS:
         for item in TEAMS[cdate]:
@@ -265,10 +327,12 @@ def main(argv):
             the_best = pyBlitz.GetFuzzyBest(item["team1"], matches, returned)
             cteam1.append(the_best[1])
             cspread1.append(item["odds1"][2])
+            chance1.append(GetChance(item["odds1"][2]) + "%")
             
             the_best = pyBlitz.GetFuzzyBest(item["team2"], matches, returned)
             cteam2.append(the_best[1])
             cspread2.append(item["odds2"][0])
+            chance2.append(GetChance(item["odds2"][0]) + "%")
 
             ctime.append(item["time"])
             cdates.append(cdate)
@@ -284,8 +348,10 @@ def main(argv):
     df['Where'] = cwhere
     df['Team 1'] = cteam1
     df['Spread 1'] = cspread1
+    df['Chance 1'] = chance1
     df['Team 2'] = cteam2
     df['Spread 2'] = cspread2
+    df['Chance 2'] = chance2
 
     with open(the_file, 'w') as f:
         f.write(df.to_json(orient='index'))
