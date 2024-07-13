@@ -16,6 +16,7 @@ import os, sys, stat
 import datetime
 from pathlib import Path
 import re
+import glob
 
 import settings
 import pyBlitz
@@ -36,15 +37,28 @@ if (len(sys.argv)>=2):
     year = GetNumber(sys.argv[1])
     if (year < 2002 or year > int(now.year)):
         year = int(now.year)
+current_working_directory = os.getcwd()
 
 def main(argv):
+    url = []
+    test_files = "{0}/test/pages/schedule/{1}/w*.html".format(current_working_directory, year)
+    url = glob.glob(test_files)
+
     starturl = "http://www.espn.com/college-football/schedule"
     path = "{0}{1}/{2}".format(settings.predict_root, year, settings.predict_sched)
 
     print ("Scrape Schedule Tool")
     print ("**************************")
-    print ("data is from {0}".format(starturl))
-    print
+    if not url:
+        test_mode=False
+        print ("*** Live ***")
+        print ("data is from {0}".format(starturl))
+    else:
+        test_mode=True
+        print ("*** Test data ***")
+        print ("    data is from {0}/test/pages/schedule/{1}/".format(current_working_directory, year))
+        print ("*** delete test data and re-run to go live ***")
+    print (" ")
     print ("Year is: {0}".format(year))
     print ("Directory location: {0}".format(path))
     print ("**************************")
@@ -52,26 +66,37 @@ def main(argv):
     Path(path).mkdir(parents=True, exist_ok=True) 
     for p in Path(path).glob("sched*.*"):
         p.unlink()
-
-    url = []
-    url.append("{0}/_/week/1/year/{1}/seasontype/3".format(starturl, year))   
-    if (year == int(now.year)):
-        for week in range(1, 17):
-            url.append("{0}/_/week/{1}/seasontype/2".format(starturl, week))
-        url.append("{0}/_/week/1/seasontype/3".format(starturl))                
-    else:
-        for week in range(1, 17):
-            url.append("{0}/_/week/{1}/year/{2}/seasontype/2".format(starturl, week, year))
-        url.append("{0}/_/week/1/year/{1}/seasontype/3".format(starturl, year))   
+        
     pages = []
-    for item in url:
-        req = Request(url=item,headers={'User-Agent':' Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0'})
-        try:
-            page = urlopen(req)
-        except HTTPError as e:
-            page = e.read()
-        pages.append(BeautifulSoup(page, "html5lib"))
-
+    if not test_mode:
+        url.append("{0}/_/week/1/year/{1}/seasontype/3".format(starturl, year))   
+        if (year == int(now.year)):
+            for week in range(1, 17):
+                url.append("{0}/_/week/{1}/seasontype/2".format(starturl, week))
+            url.append("{0}/_/week/1/seasontype/3".format(starturl))                
+        else:
+            for week in range(1, 17):
+                url.append("{0}/_/week/{1}/year/{2}/seasontype/2".format(starturl, week, year))
+            url.append("{0}/_/week/1/year/{1}/seasontype/3".format(starturl, year))   
+            
+        print("... fetching schedule pages")
+        for item in url:
+            req = Request(url=item, \
+                headers={'User-Agent':' Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0'})
+            try:
+                page = urlopen(req)
+            except HTTPError as e:
+                page = pyBlitz.ErrorToJSON(e, url)
+            pages.append(BeautifulSoup(page, "html5lib"))
+    else:
+        
+        print("... fetching test schedule pages")
+        for item in url:
+            with open(item, 'r') as file:
+                page = file.read().rstrip()
+            pages.append(BeautifulSoup(page, "html5lib"))
+            
+    pdb.set_trace()
     loop = 0
     for page in pages:
         loop+=1

@@ -40,7 +40,7 @@ def SplitOdds(l):
     o_list=p_l.split()
     return len(o_list), o_list
 
-def GetChance(s):
+def GetChance(s):       # static code came from betting_talk and merged here
     sign = "+"
     if "-" in s:
         sign = "-"
