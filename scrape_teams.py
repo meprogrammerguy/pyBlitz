@@ -133,6 +133,8 @@ def main(argv):
     if not test_mode:
         print("... fetching from espn API, saving locally")
         for item in abbrev:
+            if item == "M-OH":
+                item = "miami-oh"
             url = "https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/{0}".format(item)
             req = Request(url=url, \
             headers={'User-Agent':' Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0'})
@@ -152,6 +154,8 @@ def main(argv):
     pages=[]
     print("... retrieving espn API files locally")
     for item in abbrev:
+        if item == "M-OH":
+            item = "miami-oh"
         the_file = "{0}abbrev/{1}.json".format(settings.data_path, item.lower())
         the_path = "{0}abbrev".format(settings.data_path)
         Path(the_path).mkdir(parents=True, exist_ok=True)

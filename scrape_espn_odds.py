@@ -315,7 +315,6 @@ def main(argv):
     index=0
     for cdate in TEAMS:
         for item in TEAMS[cdate]:
-            #pdb.set_trace()
             if "Away" in item["where1"]:
                 cwhere.append("Away")
             else:

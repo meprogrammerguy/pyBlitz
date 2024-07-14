@@ -95,14 +95,11 @@ def main(argv):
             pages.append(BeautifulSoup(page, "html5lib"))
             
     SCHED={}
-    all_index = 0
     for page in pages:
         dates = page.findAll('div', attrs = {'class':'Table__Title'})
         tables = page.findAll('tbody', attrs = {'class':'Table__TBODY'})
         index = 0
         for lines in tables:
-            #pdb.set_trace()
-            cdate = dates[index].text
             rows = lines.findAll('tr')
             ROWS={}
             r_idx = 0
@@ -111,41 +108,12 @@ def main(argv):
                 COLS={}
                 c_idx = 0
                 for col in cols:
-                    print (col.text)
                     COLS[c_idx] = col.text
                     c_idx+=1
-                    #pdb.set_trace()
                 ROWS[r_idx] = COLS
                 r_idx+=1
-                #pdb.set_trace()
-            #pdb.set_trace()
-            #ROWS={}
-            #for r_idx in range(len(rows)):
-                #ROWS[r_idx] = rows[r_idx]
-                #ROWS[r_idx] = rows
-            #COLS={}
-            #for c_idx in range(len(cols)):
-                #COLS[c_idx] = cols[c_idx]
-                #COLS[c_idx] = cols
-            SCHED[cdate] = ROWS
-            all_index+=1
+            SCHED[dates[index].text] = ROWS
             index+=1
-    pdb.set_trace()
-    index=0
-    for loop in range(len(SCHED)):
-        #print ("date: " + SCHED[loop][0])
-        #print ("rows: " + str(len(SCHED[loop])))
-        #pdb.set_trace()
-        for row in range(len(SCHED[loop])):
-            #print (len(SCHED[loop][row]))
-            #print (SCHED[loop][row])
-            #pdb.set_trace()
-            for col in range(len(SCHED[loop][row])):
-                print (len(SCHED[loop][row][col]))
-                #print (SCHED[loop][row][col])
-                pdb.set_trace()
-
-        pdb.set_trace()
     pdb.set_trace()
     for root, dirs, files in os.walk(settings.predict_root):
         for d in dirs:
