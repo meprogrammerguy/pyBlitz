@@ -17,6 +17,7 @@ import datetime
 from pathlib import Path
 import re
 import glob
+from datetime import datetime
 
 import settings
 import pyBlitz
@@ -27,11 +28,8 @@ def GetNumber(item):
         idx.append("-1")
     return int(idx[0])
 
-def num_there(s):
-    return any(i.isdigit() for i in s)
-
 year = 0
-now = datetime.datetime.now()
+now = datetime.now()
 year = int(now.year)
 if (len(sys.argv)>=2):
     year = GetNumber(sys.argv[1])
@@ -114,7 +112,50 @@ def main(argv):
                 r_idx+=1
             SCHED[dates[index].text] = ROWS
             index+=1
-    pdb.set_trace()
+            
+    index = 0
+    IDX=[]
+    cdate=[]
+    teama=[]
+    where=[]
+    teamb=[]
+    for dates in SCHED:
+        for rows in SCHED[dates]:
+            print(SCHED[dates][rows])
+            #pdb.set_trace()
+            teama.append(pyBlitz.CleanString(SCHED[dates][rows][0]))
+            team_b = SCHED[dates][rows][1].partition("@")
+            if team_b[1]:
+                where.append("Away")
+            else:
+                where.append("Neutral")
+            teamb.append(pyBlitz.CleanString(team_b[2]))
+            yyyy_date = pd.to_datetime(dates, errors='coerce')
+            cdate.append(str(yyyy_date)[:10])
+            index+=1
+            IDX.append(index)
+            #pdb.set_trace()
+    #pdb.set_trace()
+    
+    print ("... creating sched JSON file")
+    filename = "{0}sched.json".format(path)
+    Path(path).mkdir(parents=True, exist_ok=True)
+    df=pd.DataFrame(IDX, columns=['Index'])
+    df['Date']=cdate
+    df['Team A']=teama
+    df['Where']=where
+    df['Team B']=teamb
+
+    with open(filename, 'w') as f:
+        f.write(df.to_json(orient='index'))
+    f.close()
+    
+    print ("... creating teams spreadsheet")
+    excel_file = "{0}sched.xlsx".format(path)
+    writer = pd.ExcelWriter(excel_file, engine="xlsxwriter")
+    df.to_excel(writer, sheet_name="Sheet1", index=False)
+    writer.close()
+
     for root, dirs, files in os.walk(settings.predict_root):
         for d in dirs:
             os.chmod(os.path.join(root, d), stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)

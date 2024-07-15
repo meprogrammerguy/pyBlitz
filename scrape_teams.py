@@ -164,18 +164,6 @@ def main(argv):
         pages.append(page)
     f.close()
 
-    print("... retrieving missing espn API files locally")
-    missing = []
-    missing_files = "{0}abbrev/missing/*.json".format(settings.data_path)
-    missing = glob.glob(missing_files)
-    the_path = "{0}abbrev/missing".format(settings.data_path)
-    for item in missing:
-        Path(the_path).mkdir(parents=True, exist_ok=True)
-        with open(item, 'r') as f:
-            page = json.loads(f.read())
-        pages.append(page)
-    f.close()
-
     IDX=[]
     id=[]
     abbreviation=[]
