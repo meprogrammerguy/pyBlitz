@@ -28,9 +28,22 @@ def GetNumber(item):
         idx.append("-1")
     return int(idx[0])
 
-def GetScores(s):
-    print (s)
-    return 88, 89
+def GetScores(f, s):
+    if s == "TBD":
+        return "?", "?"
+    t_s = s.partition(f)
+    swap = True
+    if t_s[1]:
+        if len(t_s[0]) == 0:
+            swap = False
+    else:
+        return "?", "?"
+    t_s = s.split(",")
+    s1 = GetNumber(t_s[0])
+    s2 = GetNumber(t_s[1])
+    if swap:
+        return s2, s1
+    return s1, s2
 
 year = 0
 now = datetime.now()
@@ -138,33 +151,36 @@ def main(argv):
     score2=[]
     for dates in SCHED:
         for rows in SCHED[dates]:
-            print(SCHED[dates][rows])
-            #print(SCHED[dates][rows][0])
-            the_best = pyBlitz.GetFuzzyBest(pyBlitz.CleanString(SCHED[dates][rows][0])[:10], matches, returned)
-            #print ("team1: " + the_best[1])
-            teama.append(the_best[1])
-            #pdb.set_trace()
-            abbrev1.append(teams_json["abbreviation"][the_best[0]])
-            #pdb.set_trace()
-            the_best = pyBlitz.GetFuzzyBest(pyBlitz.CleanString(SCHED[dates][rows][1])[2:12], matches, returned)
-            #print ("team2: " + the_best[1])
-            teamb.append(the_best[1])
-            abbrev2.append(teams_json["abbreviation"][the_best[0]])
+            first_team = pyBlitz.CleanString(SCHED[dates][rows][0])
+            second_team = pyBlitz.CleanString(SCHED[dates][rows][1])
+            if "TBD" in first_team:
+                teama.append("TBD")
+                first_abbrev = "TBD"
+            else:
+                the_best = pyBlitz.GetFuzzyBest(first_team[:10], matches, returned)
+                teama.append(the_best[1])
+                first_abbrev = teams_json["abbreviation"][the_best[0]]
+            abbrev1.append(first_abbrev)
+            if "TBD" in second_team:
+                teamb.append("TBD")
+                second_abbrev = "TBD"
+            else:
+                the_best = pyBlitz.GetFuzzyBest(second_team[2:12], matches, returned)
+                teamb.append(the_best[1])
+                second_abbrev = teams_json["abbreviation"][the_best[0]]
+            abbrev2.append(second_abbrev)
             cwhere = SCHED[dates][rows][1].partition("@")
             if cwhere[1]:
                 where.append("Away")
             else:
                 where.append("Neutral")
-            t_score1, t_score2 = GetScores(SCHED[dates][rows][2])
+            t_score1, t_score2 = GetScores(first_abbrev, SCHED[dates][rows][2])
             score1.append(t_score1)
             score2.append(t_score2)
-            #pdb.set_trace()
             yyyy_date = pd.to_datetime(dates, errors='coerce')
             cdate.append(str(yyyy_date)[:10])
             index+=1
             IDX.append(index)
-            #pdb.set_trace()
-    #pdb.set_trace()
     
     print ("... creating sched JSON file")
     filename = "{0}sched.json".format(path)
@@ -183,7 +199,7 @@ def main(argv):
         f.write(df.to_json(orient='index'))
     f.close()
     
-    print ("... creating teams spreadsheet")
+    print ("... creating sched spreadsheet")
     excel_file = "{0}sched.xlsx".format(path)
     writer = pd.ExcelWriter(excel_file, engine="xlsxwriter")
     df.to_excel(writer, sheet_name="Sheet1", index=False)
