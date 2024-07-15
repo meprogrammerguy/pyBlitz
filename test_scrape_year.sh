@@ -3,15 +3,18 @@
 # script to scrape schedule by year
 #   if page is there the scraper will use test data instead of "live"
 #
+green='\033[0;32m'
+red='\033[0;31m'
+NC='\033[0m'
 the_count=( "$#" )
 the_args=( "$@" )
 if [ $the_count -gt 1 ]
 then
-    echo "      test_scrape_year.sh"
+    echo -e "      ${red}test_scrape_year.sh${NC}"
     echo " "
-    echo "no arguments: current year, one argument: year in yyyy"
+    echo -e "${red}no arguments: current year, one argument: year in yyyy${NC}"
     echo " "
-    echo "... exiting"
+    echo -e "${red}... exiting${NC}"
     exit 1
 fi
 if [ $the_count -eq 0 ]
@@ -32,6 +35,7 @@ cd $schedule
 
 type=2 
 count=0
+echo -e "           ${green}weekly schedule scrape${NC}"
 while true
 do
     count=$[count + 1]
@@ -51,6 +55,7 @@ done
 #
 # bowl games scrape
 #
+echo -e "           ${green}bowl games scrape${NC}"
 week=01
 type=3
 curl -H "Accept: application/json+v3" \
@@ -59,13 +64,38 @@ curl -H "Accept: application/json+v3" \
 #
 # alabama json scrape
 #
+echo -e "           ${green}alabama team scrape${NC}"
 curl -H "Accept: application/json+v3" \
     "https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/ala" \
     -o "ala.json"
 #
 # espn odds scrape
 #
+echo -e "           ${green}ESPN odds scrape${NC}"
 curl -H "Accept: application/json+v3" "https://www.espn.com/college-football/odds" -o "odds.html"
+#
+# bornpowerindex scrape
+#
+echo -e "           ${green}bornpowerindex pages scrape${NC}"
+for i in $(seq 1 6);
+do
+    curl  -d "getClassName=on&class=$i&sort=team" \
+      -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" \
+      -H "Host: www.bornpowerindex.com" \
+      -H "Connection: keep-alive" \
+      -H "Content-Length: 33" \
+      -H "Cache-Control: max-age=0" \
+      -H "Origin: http://www.bornpowerindex.com" \
+      -H "Upgrade-Insecure-Requests: 1" \
+      -H "Content-Type: application/x-www-form-urlencoded" \
+      -H "User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36" \
+      -H "DNT: 1" \
+      -H "Referer: http://www.bornpowerindex.com/M_COL_FB_CLASS.shtml" \
+      -H "Accept-Encoding: gzip, deflate" \
+      -H "Accept-Language: en-US,en;q=0.9" \
+      -X POST "http://www.bornpowerindex.com/cgi-bin/DBRetrieve.pl" \
+      -o "bornpowerindex$i.html"
+done
 
 echo " "
-echo "done."
+echo -e "${green}done.${NC}"
