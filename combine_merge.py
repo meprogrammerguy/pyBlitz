@@ -47,7 +47,7 @@ print ("Combine Merge Tool")
 print ("**************************")
 print (" ")
 print ("This tool combines your merge spreadsheets into one master merge spreadsheet")
-print ("Make sure that your merge_stats, merge_abbreviation, and merge_schedule")
+print ("Make sure that your merge_stats, and merge_schedule")
 print ("spreadsheets are correct first")
 print (" ")
 

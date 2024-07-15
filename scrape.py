@@ -50,7 +50,7 @@ def RefreshStats():
     import scrape_teams
     import scrape_bornpowerindex
     import scrape_teamrankings
-    import scrape_espn_odds # (add bettingtalk data to this scraper)
+    import scrape_espn_odds
     import combine_merge
     import combine_stats
 

@@ -118,7 +118,7 @@ df['PLpG3']=B
 df['PTpP3']=C
 df['OPLpG3']=D
 df['OPTpP3']=E
-df['abbr guess']=abbrs
+df['abbr']=abbrs
 df['confidence']=ratios
 df['abbr override']=over
 

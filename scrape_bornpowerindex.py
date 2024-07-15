@@ -195,10 +195,44 @@ for row in table6[0].findAll("tr"):
         B.append(col[1].find(string=True))
         C.append(col[2].find(string=True))
 
+print("... retrieving teams spreadsheet, adding abbreviations")
+teams_excel = "{0}teams.xlsx".format(settings.data_path)
+excel_df = pd.read_excel(teams_excel, sheet_name='Sheet1')
+teams_json = json.loads(excel_df.to_json())
+
+matches={}
+matches["shortDisplayName"]=teams_json["shortDisplayName"]
+matches["displayName"]=teams_json["displayName"]
+matches["name"]=teams_json["name"]
+matches["nickname"]=teams_json["nickname"]
+matches["location"]=teams_json["location"]
+
+picked=teams_json["abbreviation"]
+
+abbrs=[]
+ratios=[]
+over=[]
+index=0
+for team in A:
+    if "DIVISION 1  FBS" in C[index]:
+        the_best = pyBlitz.GetFuzzyBest(team.lower(), matches, picked)
+        abbrs.append(the_best[1])
+        ratios.append(the_best[2])
+        picked[the_best[0]] = " "
+        over.append(" ")
+    else:
+        abbrs.append(" ")
+        ratios.append(" ")
+        over.append(" ")
+    index+=1
+
 df=pd.DataFrame(IDX,columns=['Index'])
 df['School']=A
 df['Ranking']=B
 df['Class']=C
+df['abbr']=abbrs
+df['confidence']=ratios
+df['abbr override']=over
 
 Path(settings.data_path).mkdir(parents=True, exist_ok=True) 
 with open(settings.data_path + 'bornpowerindex.json', 'w') as f:
