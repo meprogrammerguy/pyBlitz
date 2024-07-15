@@ -12,25 +12,47 @@ import contextlib
 import os
 import re
 from pathlib import Path
+import datetime
+import glob
 
 import settings
 import pyBlitz
 
-urls = []
-urls.append("https://www.teamrankings.com/college-football/stat/plays-per-game")
-urls.append("https://www.teamrankings.com/college-football/stat/points-per-play")
-urls.append("https://www.teamrankings.com/college-football/stat/opponent-points-per-game")
-urls.append("https://www.teamrankings.com/college-football/stat/opponent-points-per-play")
+current_working_directory = os.getcwd()
+year = 0
+now = datetime.datetime.now()
+year = int(now.year)
+url = []
+test_files = "{0}/test/pages/schedule/{1}/teamrankings*.html".format(current_working_directory, year)
+url = glob.glob(test_files)
 
 print ("Scrape Team Rankings Tool")
 print ("**************************")
 ratings_table = []
-for url in urls:
-    print ("data is from {0}".format(url))
-    with contextlib.closing(urlopen(url)) as page:
-        soup = BeautifulSoup(page, "html5lib")
-    ratings_table.append(soup.find('table', {"class":"tr-table datatable scrollable"}))
-
+if not url:
+    urls = []
+    urls.append("https://www.teamrankings.com/college-football/stat/plays-per-game")
+    urls.append("https://www.teamrankings.com/college-football/stat/points-per-play")
+    urls.append("https://www.teamrankings.com/college-football/stat/opponent-points-per-game")
+    urls.append("https://www.teamrankings.com/college-football/stat/opponent-points-per-play")
+    test_mode=False
+    print ("*** Live ***")
+    for starturl in urls:
+        print ("data is from {0}".format(starturl))
+        with contextlib.closing(urlopen(starturl)) as page:
+            soup = BeautifulSoup(page, "html5lib")
+        ratings_table.append(soup.find('table', {"class":"tr-table datatable scrollable"}))
+else:
+    test_mode=True
+    print ("*** Test data ***")
+    print ("    data is from {0}/test/pages/schedule/{1}/".format(current_working_directory, year))
+    print ("*** delete test data and re-run to go live ***")
+    print("... fetching test teamrankings pages")
+    for item in url:
+        with open(item, 'r', encoding="windows-1252") as file:
+            page = file.read().rstrip()
+        soup= BeautifulSoup(page, "html5lib")
+        ratings_table.append(soup.find('table', {"class":"tr-table datatable scrollable"}))
 print ("Directory Location: {0}".format(settings.data_path))
 print ("**************************")
 IDX=[]
