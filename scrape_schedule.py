@@ -28,6 +28,10 @@ def GetNumber(item):
         idx.append("-1")
     return int(idx[0])
 
+def GetScores(s):
+    print (s)
+    return 88, 89
+
 year = 0
 now = datetime.now()
 year = int(now.year)
@@ -113,23 +117,48 @@ def main(argv):
             SCHED[dates[index].text] = ROWS
             index+=1
             
+    print("... retrieving teams JSON file")
+    teams_excel = "{0}teams.xlsx".format(settings.data_path)
+    excel_df = pd.read_excel(teams_excel, sheet_name='Sheet1')
+    teams_json = json.loads(excel_df.to_json())
+        
+    matches={}
+    matches["location"]=teams_json["location"]
+    returned=teams_json["location"]
+
     index = 0
     IDX=[]
     cdate=[]
     teama=[]
+    abbrev1=[]
+    score1=[]
     where=[]
     teamb=[]
+    abbrev2=[]
+    score2=[]
     for dates in SCHED:
         for rows in SCHED[dates]:
             print(SCHED[dates][rows])
+            #print(SCHED[dates][rows][0])
+            the_best = pyBlitz.GetFuzzyBest(pyBlitz.CleanString(SCHED[dates][rows][0])[:10], matches, returned)
+            #print ("team1: " + the_best[1])
+            teama.append(the_best[1])
             #pdb.set_trace()
-            teama.append(pyBlitz.CleanString(SCHED[dates][rows][0]))
-            team_b = SCHED[dates][rows][1].partition("@")
-            if team_b[1]:
+            abbrev1.append(teams_json["abbreviation"][the_best[0]])
+            #pdb.set_trace()
+            the_best = pyBlitz.GetFuzzyBest(pyBlitz.CleanString(SCHED[dates][rows][1])[2:12], matches, returned)
+            #print ("team2: " + the_best[1])
+            teamb.append(the_best[1])
+            abbrev2.append(teams_json["abbreviation"][the_best[0]])
+            cwhere = SCHED[dates][rows][1].partition("@")
+            if cwhere[1]:
                 where.append("Away")
             else:
                 where.append("Neutral")
-            teamb.append(pyBlitz.CleanString(team_b[2]))
+            t_score1, t_score2 = GetScores(SCHED[dates][rows][2])
+            score1.append(t_score1)
+            score2.append(t_score2)
+            #pdb.set_trace()
             yyyy_date = pd.to_datetime(dates, errors='coerce')
             cdate.append(str(yyyy_date)[:10])
             index+=1
@@ -142,9 +171,13 @@ def main(argv):
     Path(path).mkdir(parents=True, exist_ok=True)
     df=pd.DataFrame(IDX, columns=['Index'])
     df['Date']=cdate
-    df['Team A']=teama
+    df['Team 1']=teama
+    df['Abbrev 1']=abbrev1
+    df['Score 1']=score1
     df['Where']=where
-    df['Team B']=teamb
+    df['Team 2']=teamb
+    df['Abbrev 2']=abbrev2
+    df['Score 2']=score2
 
     with open(filename, 'w') as f:
         f.write(df.to_json(orient='index'))

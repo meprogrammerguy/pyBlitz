@@ -334,7 +334,9 @@ def main(argv):
             chance2.append(GetChance(item["odds2"][0]) + "%")
 
             ctime.append(item["time"])
-            cdates.append(cdate)
+            y_date = cdate + ", " + str(year)
+            yyyy_date = pd.to_datetime(y_date, errors='coerce')
+            cdates.append(str(yyyy_date)[:10])
             index+=1
             IDX.append(index)
     
