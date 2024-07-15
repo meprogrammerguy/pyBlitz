@@ -80,7 +80,7 @@ echo -e "           ${green}bornpowerindex pages scrape${NC}"
 for i in $(seq 1 6);
 do
     curl  -d "getClassName=on&class=$i&sort=team" \
-      -H "Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" \
+      -H "Accept: application/json+v3text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" \
       -H "Host: www.bornpowerindex.com" \
       -H "Connection: keep-alive" \
       -H "Content-Length: 33" \
@@ -96,6 +96,22 @@ do
       -X POST "http://www.bornpowerindex.com/cgi-bin/DBRetrieve.pl" \
       -o "bornpowerindex$i.html"
 done
+#
+# scrape teamrankings pages
+#
+echo -e "           ${green}teamrankings pages scrape${NC}"
+curl -H "Accept: application/json+v3" \
+    "https://www.teamrankings.com/college-football/stat/plays-per-game" \
+    -o "teamrankings_ppg.html"
+curl -H "Accept: application/json+v3" \
+    "https://www.teamrankings.com/college-football/stat/points-per-play" \
+    -o "teamrankings_ppp.html"
+curl -H "Accept: application/json+v3" \
+    "https://www.teamrankings.com/college-football/stat/opponent-points-per-game" \
+    -o "teamrankings_oppg.html"
+curl -H "Accept: application/json+v3" \
+    "https://www.teamrankings.com/college-football/stat/opponent-points-per-play" \
+    -o "teamrankings_oppp.html"
 
 echo " "
 echo -e "${green}done.${NC}"

@@ -11,93 +11,135 @@ import csv
 import re
 from pathlib import Path
 from xlsxwriter import Workbook
+import os, sys, stat, time
+import datetime
+import glob
 
 import settings
 import pyBlitz
 
-url = 'http://www.bornpowerindex.com/cgi-bin/DBRetrieve.pl'
+current_working_directory = os.getcwd()
+year = 0
+now = datetime.datetime.now()
+year = int(now.year)
+url = []
+test_files = "{0}/test/pages/schedule/{1}/bornpowerindex*.html".format(current_working_directory, year)
+url = glob.glob(test_files)
+
+starturl = 'http://www.bornpowerindex.com/cgi-bin/DBRetrieve.pl'
 
 print ("Scrape Born Power Index Tool")
 print ("**************************")
-print ("data is from {0}".format(url))
+if not url:
+    test_mode=False
+    print ("*** Live ***")
+    print ("data is from {0}".format(starturl))
+else:
+    test_mode=True
+    print ("*** Test data ***")
+    print ("    data is from {0}/test/pages/schedule/{1}/".format(current_working_directory, year))
+    print ("*** delete test data and re-run to go live ***")
+
 print ("Directory Location: {0}".format(settings.data_path))
 print ("**************************")
 
-data1 = {
-    "getClassName": "on",
-    "class": "1",
-    "sort": "team"
-}
+if not test_mode:
+    data1 = {
+        "getClassName": "on",
+        "class": "1",
+        "sort": "team"
+    }
 
-data2 = {
-    "getClassName": "on",
-    "class": "2",
-    "sort": "team"
-}
+    data2 = {
+        "getClassName": "on",
+        "class": "2",
+        "sort": "team"
+    }
 
-data3 = {
-    "getClassName": "on",
-    "class": "3",
-    "sort": "team"
-}
+    data3 = {
+        "getClassName": "on",
+        "class": "3",
+        "sort": "team"
+    }
 
-data4 = {
-    "getClassName": "on",
-    "class": "4",
-    "sort": "team"
-}
+    data4 = {
+        "getClassName": "on",
+        "class": "4",
+        "sort": "team"
+    }
 
-data5 = {
-    "getClassName": "on",
-    "class": "5",
-    "sort": "team"
-}
+    data5 = {
+        "getClassName": "on",
+        "class": "5",
+        "sort": "team"
+    }
 
-data6 = {
-    "getClassName": "on",
-    "class": "6",
-    "sort": "team"
-}
+    data6 = {
+        "getClassName": "on",
+        "class": "6",
+        "sort": "team"
+    }
 
-headers = {
-    "Host": "www.bornpowerindex.com",
-    "Connection": "keep-alive",
-    "Content-Length": "33",
-    "Cache-Control": "max-age=0",
-    "Origin": "http://www.bornpowerindex.com",
-    "Upgrade-Insecure-Requests": "1",
-    "Content-Type": "application/x-www-form-urlencoded",
-    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
-    "DNT": "1",
-    "Referer": "http://www.bornpowerindex.com/M_COL_FB_CLASS.shtml",
-    "Accept-Encoding": "gzip, deflate",
-    "Accept-Language": "en-US,en;q=0.9"
-}
+    headers = {
+        "Host": "www.bornpowerindex.com",
+        "Connection": "keep-alive",
+        "Content-Length": "33",
+        "Cache-Control": "max-age=0",
+        "Origin": "http://www.bornpowerindex.com",
+        "Upgrade-Insecure-Requests": "1",
+        "Content-Type": "application/x-www-form-urlencoded",
+        "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
+        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8",
+        "DNT": "1",
+        "Referer": "http://www.bornpowerindex.com/M_COL_FB_CLASS.shtml",
+        "Accept-Encoding": "gzip, deflate",
+        "Accept-Language": "en-US,en;q=0.9"
+    }
 
-r = requests.post(url, data=data1, headers=headers)
-soup = BeautifulSoup(r.content, "html5lib")
-table1 = soup.findAll("table")
+    r = requests.post(starturl, data=data1, headers=headers)
+    soup = BeautifulSoup(r.content, "html5lib")
+    table1 = soup.findAll("table")
 
-r = requests.post(url, data=data2, headers=headers)
-soup = BeautifulSoup(r.content, "html5lib")
-table2 = soup.findAll("table")
+    r = requests.post(starturl, data=data2, headers=headers)
+    soup = BeautifulSoup(r.content, "html5lib")
+    table2 = soup.findAll("table")
 
-r = requests.post(url, data=data3, headers=headers)
-soup = BeautifulSoup(r.content, "html5lib")
-table3 = soup.findAll("table")
+    r = requests.post(starturl, data=data3, headers=headers)
+    soup = BeautifulSoup(r.content, "html5lib")
+    table3 = soup.findAll("table")
 
-r = requests.post(url, data=data4, headers=headers)
-soup = BeautifulSoup(r.content, "html5lib")
-table4 = soup.findAll("table")
+    r = requests.post(starturl, data=data4, headers=headers)
+    soup = BeautifulSoup(r.content, "html5lib")
+    table4 = soup.findAll("table")
 
-r = requests.post(url, data=data5, headers=headers)
-soup = BeautifulSoup(r.content, "html5lib")
-table5 = soup.findAll("table")
+    r = requests.post(starturl, data=data5, headers=headers)
+    soup = BeautifulSoup(r.content, "html5lib")
+    table5 = soup.findAll("table")
 
-r = requests.post(url, data=data6, headers=headers)
-soup = BeautifulSoup(r.content, "html5lib")
-table6 = soup.findAll("table")
+    r = requests.post(starturl, data=data6, headers=headers)
+    soup = BeautifulSoup(r.content, "html5lib")
+    table6 = soup.findAll("table")
+else:
+    print("... fetching test bornpowerindex pages")
+    index=0
+    for item in url:
+        index+=1
+        with open(item, 'r', encoding="windows-1252") as file:
+            page = file.read().rstrip()
+        soup= BeautifulSoup(page, "html5lib")
+        if index == 1:
+            table1 = soup.findAll("table")
+        if index == 2:
+            table2 = soup.findAll("table")
+        if index == 3:
+            table3 = soup.findAll("table")
+        if index == 4:
+            table4 = soup.findAll("table")
+        if index == 5:
+            table5 = soup.findAll("table")
+        if index == 6:
+            table6 = soup.findAll("table")
+Path(settings.data_path).mkdir(parents=True, exist_ok=True)
 
 IDX=[]
 A=[]
