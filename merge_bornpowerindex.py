@@ -40,10 +40,12 @@ else:
 IDX=[]
 teams=[]
 abbrs=[]
+classes=[]
 bpi_teams=[]
 bpis=[]
 cons=[]
 over=[]
+index=0
 for item in teams_json["displayName"]:
     team = teams_json["displayName"][item]
     abbr = teams_json["abbreviation"][item]
@@ -53,26 +55,48 @@ for item in teams_json["displayName"]:
         bpi_team = bpi_json["team"][bpi_item]
         bpi = bpi_json["bpi"][bpi_item]
         con = bpi_json["confidence"][bpi_item]
+        bclass = bpi_json["class"][bpi_item]
         if abbr == bpi_abbr:
             found = True
             bpi_teams.append(bpi_team)
             bpis.append(bpi)
             cons.append(con)
+            classes.append(bclass)
+       
     teams.append(team)
     abbrs.append(abbr)
     over.append(" ")
-    IDX.append(item)
+    index+=1
+    IDX.append(index)
     if not found:
         bpi_teams.append(" ")
         bpis.append(" ")
-        cons.append(" ")
-    
+        classes.append(" ")
+        cons.append(0)
+for bpi_item in bpi_json["abbr"]:
+    bpi_abbr = bpi_json["abbr"][bpi_item]
+    bpi_team = bpi_json["team"][bpi_item]
+    bpi = bpi_json["bpi"][bpi_item]
+    con = bpi_json["confidence"][bpi_item]
+    bclass = bpi_json["class"][bpi_item]
+    if bpi_abbr == " ":
+        bpi_teams.append(bpi_team)
+        bpis.append(bpi)
+        cons.append(0)
+        classes.append(bclass)
+        teams.append(" ")
+        abbrs.append(" ")
+        over.append(" ")
+        index+=1
+        IDX.append(index)
+        
 print ("... creating merge_bornpowerindex JSON file")
 the_file = "{0}merge_bornpowerindex.json".format(settings.data_path)
 Path(settings.data_path).mkdir(parents=True, exist_ok=True)
 df=pd.DataFrame(IDX,columns=['Index'])
 df['team']=teams
 df['abbr']=abbrs
+df['class']=classes
 df['bpi']=bpis
 df['confidence']=cons
 df['bpi team']=bpi_teams

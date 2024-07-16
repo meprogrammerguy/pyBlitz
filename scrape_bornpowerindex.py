@@ -212,10 +212,15 @@ abbrs=[]
 ratios=[]
 index=0
 for team in A:
-    the_best = pyBlitz.GetFuzzyBest(team.lower(), matches, picked)
-    abbrs.append(the_best[1])
-    ratios.append(the_best[2])
-    picked[the_best[0]] = " "
+    bclass = C[index]
+    if "DIVISION 1  FBS" in bclass:
+        the_best = pyBlitz.GetFuzzyBest(team.lower(), matches, picked)
+        abbrs.append(the_best[1])
+        ratios.append(the_best[2])
+        picked[the_best[0]] = " "
+    else:
+        abbrs.append(" ")
+        ratios.append(0)    
     index+=1
 
 df=pd.DataFrame(IDX,columns=['Index'])
