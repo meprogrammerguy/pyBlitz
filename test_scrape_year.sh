@@ -77,9 +77,7 @@ curl -H "Accept: application/json+v3" "https://www.espn.com/college-football/odd
 # bornpowerindex scrape
 #
 echo -e "           ${green}bornpowerindex pages scrape${NC}"
-for i in $(seq 1 6);
-do
-    curl  -d "getClassName=on&class=$i&sort=team" \
+curl  -d "getClassName=on&class=1&sort=team" \
       -H "Accept: application/json+v3text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8" \
       -H "Host: www.bornpowerindex.com" \
       -H "Connection: keep-alive" \
@@ -94,8 +92,7 @@ do
       -H "Accept-Encoding: gzip, deflate" \
       -H "Accept-Language: en-US,en;q=0.9" \
       -X POST "http://www.bornpowerindex.com/cgi-bin/DBRetrieve.pl" \
-      -o "bornpowerindex$i.html"
-done
+      -o "bornpowerindex.html"
 #
 # scrape teamrankings pages
 #

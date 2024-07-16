@@ -20,7 +20,8 @@ def main(argv):
     print ("done.")
 
 def RefreshMerge():
-    import merge_abbreviation
+    import merge_bornpowerindex
+    import merge_teamrankings
     import merge_schedule
     import merge_stats
     import combine_merge

@@ -22,8 +22,8 @@ current_working_directory = os.getcwd()
 year = 0
 now = datetime.datetime.now()
 year = int(now.year)
-url = []
-test_files = "{0}/test/pages/schedule/{1}/bornpowerindex*.html".format(current_working_directory, year)
+
+test_files = "{0}/test/pages/schedule/{1}/bornpowerindex.html".format(current_working_directory, year)
 url = glob.glob(test_files)
 
 starturl = 'http://www.bornpowerindex.com/cgi-bin/DBRetrieve.pl'
@@ -33,7 +33,7 @@ print ("**************************")
 if not url:
     test_mode=False
     print ("*** Live ***")
-    print ("data is from {0}".format(starturl))
+    print ("data is from http://www.bornpowerindex.com")
 else:
     test_mode=True
     print ("*** Test data ***")
@@ -49,37 +49,6 @@ if not test_mode:
         "class": "1",
         "sort": "team"
     }
-
-    data2 = {
-        "getClassName": "on",
-        "class": "2",
-        "sort": "team"
-    }
-
-    data3 = {
-        "getClassName": "on",
-        "class": "3",
-        "sort": "team"
-    }
-
-    data4 = {
-        "getClassName": "on",
-        "class": "4",
-        "sort": "team"
-    }
-
-    data5 = {
-        "getClassName": "on",
-        "class": "5",
-        "sort": "team"
-    }
-
-    data6 = {
-        "getClassName": "on",
-        "class": "6",
-        "sort": "team"
-    }
-
     headers = {
         "Host": "www.bornpowerindex.com",
         "Connection": "keep-alive",
@@ -95,56 +64,20 @@ if not test_mode:
         "Accept-Encoding": "gzip, deflate",
         "Accept-Language": "en-US,en;q=0.9"
     }
-
     r = requests.post(starturl, data=data1, headers=headers)
     soup = BeautifulSoup(r.content, "html5lib")
     table1 = soup.findAll("table")
-
-    r = requests.post(starturl, data=data2, headers=headers)
-    soup = BeautifulSoup(r.content, "html5lib")
-    table2 = soup.findAll("table")
-
-    r = requests.post(starturl, data=data3, headers=headers)
-    soup = BeautifulSoup(r.content, "html5lib")
-    table3 = soup.findAll("table")
-
-    r = requests.post(starturl, data=data4, headers=headers)
-    soup = BeautifulSoup(r.content, "html5lib")
-    table4 = soup.findAll("table")
-
-    r = requests.post(starturl, data=data5, headers=headers)
-    soup = BeautifulSoup(r.content, "html5lib")
-    table5 = soup.findAll("table")
-
-    r = requests.post(starturl, data=data6, headers=headers)
-    soup = BeautifulSoup(r.content, "html5lib")
-    table6 = soup.findAll("table")
 else:
     print("... fetching test bornpowerindex pages")
-    index=0
-    for item in url:
-        index+=1
-        with open(item, 'r', encoding="windows-1252") as file:
-            page = file.read().rstrip()
-        soup= BeautifulSoup(page, "html5lib")
-        if index == 1:
-            table1 = soup.findAll("table")
-        if index == 2:
-            table2 = soup.findAll("table")
-        if index == 3:
-            table3 = soup.findAll("table")
-        if index == 4:
-            table4 = soup.findAll("table")
-        if index == 5:
-            table5 = soup.findAll("table")
-        if index == 6:
-            table6 = soup.findAll("table")
+    with open(url[0], 'r', encoding="windows-1252") as file:
+        page = file.read().rstrip()
+    soup= BeautifulSoup(page, "html5lib")
+    table1 = soup.findAll("table")
 Path(settings.data_path).mkdir(parents=True, exist_ok=True)
 
 IDX=[]
 A=[]
 B=[]
-C=[]
 index=0
 for row in table1[0].findAll("tr"):
     col=row.findAll('td')
@@ -153,48 +86,7 @@ for row in table1[0].findAll("tr"):
         IDX.append(index)
         A.append(pyBlitz.CleanString(col[0].find(string=True)))
         B.append(col[1].find(string=True))
-        C.append(col[2].find(string=True))
-for row in table2[0].findAll("tr"):
-    col=row.findAll('td')
-    if len(col)>0 and col[0].find(string=True)!="School":
-        index+=1
-        IDX.append(index)
-        A.append(pyBlitz.CleanString(col[0].find(string=True)))
-        B.append(col[1].find(string=True))
-        C.append(col[2].find(string=True))
-for row in table3[0].findAll("tr"):
-    col=row.findAll('td')
-    if len(col)>0 and col[0].find(string=True)!="School":
-        index+=1
-        IDX.append(index)
-        A.append(pyBlitz.CleanString(col[0].find(string=True)))
-        B.append(col[1].find(string=True))
-        C.append(col[2].find(string=True))
-for row in table4[0].findAll("tr"):
-    col=row.findAll('td')
-    if len(col)>0 and col[0].find(string=True)!="School":
-        index+=1
-        IDX.append(index)
-        A.append(pyBlitz.CleanString(col[0].find(string=True)))
-        B.append(col[1].find(string=True))
-        C.append(col[2].find(string=True))
-for row in table5[0].findAll("tr"):
-    col=row.findAll('td')
-    if len(col)>0 and col[0].find(string=True)!="School":
-        index+=1
-        IDX.append(index)
-        A.append(pyBlitz.CleanString(col[0].find(string=True)))
-        B.append(col[1].find(string=True))
-        C.append(col[2].find(string=True))
-for row in table6[0].findAll("tr"):
-    col=row.findAll('td')
-    if len(col)>0 and col[0].find(string=True)!="School":
-        index+=1
-        IDX.append(index)
-        A.append(pyBlitz.CleanString(col[0].find(string=True)))
-        B.append(col[1].find(string=True))
-        C.append(col[2].find(string=True))
-
+        
 print("... retrieving teams spreadsheet, adding abbreviations")
 teams_excel = "{0}teams.xlsx".format(settings.data_path)
 excel_df = pd.read_excel(teams_excel, sheet_name='Sheet1')
@@ -211,28 +103,19 @@ picked=teams_json["abbreviation"]
 
 abbrs=[]
 ratios=[]
-over=[]
 index=0
 for team in A:
-    if "DIVISION 1  FBS" in C[index]:
-        the_best = pyBlitz.GetFuzzyBest(team.lower(), matches, picked)
-        abbrs.append(the_best[1])
-        ratios.append(the_best[2])
-        picked[the_best[0]] = " "
-        over.append(" ")
-    else:
-        abbrs.append(" ")
-        ratios.append(" ")
-        over.append(" ")
+    the_best = pyBlitz.GetFuzzyBest(team.lower(), matches, picked)
+    abbrs.append(the_best[1])
+    ratios.append(the_best[2])
+    picked[the_best[0]] = " "
     index+=1
 
 df=pd.DataFrame(IDX,columns=['Index'])
-df['School']=A
-df['Ranking']=B
-df['Class']=C
+df['team']=A
 df['abbr']=abbrs
+df['bpi']=B
 df['confidence']=ratios
-df['abbr override']=over
 
 Path(settings.data_path).mkdir(parents=True, exist_ok=True) 
 with open(settings.data_path + 'bornpowerindex.json', 'w') as f:

@@ -104,23 +104,20 @@ picked=teams_json["abbreviation"]
 
 abbrs=[]
 ratios=[]
-over=[]
 for team in A:
     the_best = pyBlitz.GetFuzzyBest(team, matches, picked)
     abbrs.append(the_best[1])
     ratios.append(the_best[2])
     picked[the_best[0]] = " "
-    over.append(" ")
 
 df=pd.DataFrame(IDX,columns=['Index'])
-df['Team']=A
+df['team']=A
+df['abbr']=abbrs
 df['PLpG3']=B
 df['PTpP3']=C
 df['OPLpG3']=D
 df['OPTpP3']=E
-df['abbr']=abbrs
 df['confidence']=ratios
-df['abbr override']=over
 
 Path(settings.data_path).mkdir(parents=True, exist_ok=True) 
 with open(settings.data_path + 'teamrankings.json', 'w') as f:
