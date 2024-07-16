@@ -22,8 +22,8 @@ def main(argv):
 def RefreshMerge():
     import merge_bornpowerindex
     import merge_teamrankings
-    import merge_schedule
-    import merge_stats
+    #import merge_schedule  (dont need?)
+    #import merge_stats     (dont need?)
     import combine_merge
 
 if __name__ == "__main__":
