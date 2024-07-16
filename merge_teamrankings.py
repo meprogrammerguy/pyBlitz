@@ -47,6 +47,7 @@ PLpG3s=[]
 PTpP3s=[]
 OPLpG3s=[]
 OPTpP3s=[]
+index=0
 for item in teams_json["displayName"]:
     team = teams_json["displayName"][item]
     abbr = teams_json["abbreviation"][item]
@@ -71,10 +72,11 @@ for item in teams_json["displayName"]:
     teams.append(team)
     abbrs.append(abbr)
     over.append(" ")
-    IDX.append(item)
+    index+=1
+    IDX.append(index)
     if not found:
         rank_teams.append(" ")
-        cons.append(" ")
+        cons.append(0)
         PLpG3s.append(" ")
         PTpP3s.append(" ")
         OPLpG3s.append(" ")
