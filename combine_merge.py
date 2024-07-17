@@ -57,34 +57,31 @@ teams=[]
 abbrs=[]
 rank_teams=[]
 bpi_teams=[]
+bpi_overs={}
+rank_overs={}
 index=0
 for item in teams_json["displayName"]:
-    team = teams_json["displayName"][item]
-    abbr = teams_json["abbreviation"][item]
+    team = str(teams_json["displayName"][item]).strip()
+    abbr = str(teams_json["abbreviation"][item]).strip()
     bpi_found = False
     for bpi_item in bpi_json["abbr"]:
-        bpi_team = bpi_json["bpi team"][bpi_item]
-        bpi_abbr = bpi_json["abbr"][bpi_item]
-        #bpi_over = bpi_json["override"][bpi_item]
-        #if bpi_over is None:
-            #bpi_over = bpi_team
+        bpi_team = str(bpi_json["bpi team"][bpi_item]).strip()
+        bpi_abbr = str(bpi_json["abbr"][bpi_item]).strip()
+        bpi_over = str(bpi_json["override"][bpi_item]).strip()
         if abbr == bpi_abbr:
             bpi_found = True
+            if bpi_over:
+                bpi_overs[item] = bpi_over
             bpi_teams.append(bpi_team)
     rank_found = False
     for rank_item in rank_json["abbr"]:
-        rank_team = rank_json["rankings team"][rank_item]
-        rank_abbr = rank_json["abbr"][rank_item]
-        #rank_over = rank_json["override"][rank_item]
-        #rank_over_found = True
-        #if rank_over is None:
-            #rank_over_found = False
-            #rank_over = rank_team
+        rank_team = str(rank_json["rankings team"][rank_item]).strip()
+        rank_abbr = str(rank_json["abbr"][rank_item]).strip()
+        rank_over = str(rank_json["override"][rank_item]).strip()
         if abbr == rank_abbr:
             rank_found = True
-            #if rank_over_found:
-                #rank_teams.append(rank_over)
-            #else:
+            if rank_over:
+                rank_overs[item] = rank_over
             rank_teams.append(rank_team)
     teams.append(team)
     abbrs.append(abbr)
@@ -94,7 +91,12 @@ for item in teams_json["displayName"]:
         bpi_teams.append(" ")
     if not rank_found:
         rank_teams.append(" ")
-#pdb.set_trace()    
+
+for ovr in bpi_overs:
+    bpi_teams[int(ovr)] = bpi_overs[str(ovr)]
+for ovr in rank_overs:
+    rank_teams[int(ovr)] = rank_overs[str(ovr)]
+    
 print ("... creating merge JSON file")
 the_file = "{0}merge.json".format(settings.data_path)
 Path(settings.data_path).mkdir(parents=True, exist_ok=True)
