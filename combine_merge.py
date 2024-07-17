@@ -65,6 +65,9 @@ for item in teams_json["displayName"]:
     for bpi_item in bpi_json["abbr"]:
         bpi_team = bpi_json["bpi team"][bpi_item]
         bpi_abbr = bpi_json["abbr"][bpi_item]
+        bpi_over = bpi_json["override"][bpi_item]
+        if bpi_over > " ":
+            bpi_team = bpi_over
         if abbr == bpi_abbr:
             bpi_found = True
             bpi_teams.append(bpi_team)
@@ -72,6 +75,9 @@ for item in teams_json["displayName"]:
     for rank_item in rank_json["abbr"]:
         rank_team = rank_json["rankings team"][rank_item]
         rank_abbr = rank_json["abbr"][rank_item]
+        rank_over = rank_json["override"][rank_item]
+        if rank_over > " ":
+            rank_team = rank_over
         if abbr == rank_abbr:
             rank_found = True
             rank_teams.append(rank_team)
