@@ -65,9 +65,9 @@ for item in teams_json["displayName"]:
     for bpi_item in bpi_json["abbr"]:
         bpi_team = bpi_json["bpi team"][bpi_item]
         bpi_abbr = bpi_json["abbr"][bpi_item]
-        bpi_over = bpi_json["override"][bpi_item]
-        if bpi_over > " ":
-            bpi_team = bpi_over
+        #bpi_over = bpi_json["override"][bpi_item]
+        #if bpi_over is None:
+            #bpi_over = bpi_team
         if abbr == bpi_abbr:
             bpi_found = True
             bpi_teams.append(bpi_team)
@@ -75,11 +75,16 @@ for item in teams_json["displayName"]:
     for rank_item in rank_json["abbr"]:
         rank_team = rank_json["rankings team"][rank_item]
         rank_abbr = rank_json["abbr"][rank_item]
-        rank_over = rank_json["override"][rank_item]
-        if rank_over > " ":
-            rank_team = rank_over
+        #rank_over = rank_json["override"][rank_item]
+        #rank_over_found = True
+        #if rank_over is None:
+            #rank_over_found = False
+            #rank_over = rank_team
         if abbr == rank_abbr:
             rank_found = True
+            #if rank_over_found:
+                #rank_teams.append(rank_over)
+            #else:
             rank_teams.append(rank_team)
     teams.append(team)
     abbrs.append(abbr)
@@ -89,7 +94,7 @@ for item in teams_json["displayName"]:
         bpi_teams.append(" ")
     if not rank_found:
         rank_teams.append(" ")
-    
+#pdb.set_trace()    
 print ("... creating merge JSON file")
 the_file = "{0}merge.json".format(settings.data_path)
 Path(settings.data_path).mkdir(parents=True, exist_ok=True)
