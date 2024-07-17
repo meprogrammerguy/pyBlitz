@@ -78,9 +78,8 @@ for i in range(len(teams), len(bpi_teams)):
         teams.append(" ")
         abbrs.append(" ")
         over.append(" ")
-        index+=1
-        IDX.append(index)
-   
+        IDX.append(i)
+
 print ("... creating merge_bornpowerindex JSON file")
 the_file = "{0}merge_bornpowerindex.json".format(settings.data_path)
 Path(settings.data_path).mkdir(parents=True, exist_ok=True)

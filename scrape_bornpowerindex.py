@@ -214,7 +214,7 @@ idx=0
 for team in A:
     bclass = str(C[idx]).strip()
     if "DIVISION 1  FBS" in bclass:
-        the_best = pyBlitz.GetFuzzyBest(team.lower()[:10], matches, picked)
+        the_best = pyBlitz.GetFuzzyBest(team.lower(), matches, picked)
         abbrs.append(the_best[1])
         ratios.append(the_best[2])
         picked[the_best[0]] = " "
