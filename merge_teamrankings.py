@@ -47,8 +47,8 @@ if (os.path.exists(file)):
     overrides = over_json["override"]
     over = False
     for item in over_json["override"]:
-        test = str(over_json["override"][item]).strip()
-        if test != "None":
+        test = over_json["override"][item]
+        if (str(test).strip() > "") and (test != None):
             over = True
             break
     if over:
@@ -78,7 +78,7 @@ for item in teams_json["displayName"]:
 
     teams.append(team)
     abbrs.append(abbr)
-    over.append("")
+    over.append(" ")
     index+=1
     IDX.append(index)
     if not found:

@@ -47,8 +47,8 @@ if (os.path.exists(file)):
     overrides = over_json["override"]
     over = False
     for item in over_json["override"]:
-        test = str(over_json["override"][item]).strip()
-        if test != "None":
+        test = over_json["override"][item]
+        if (str(test).strip() > "") and (test != None):
             over = True
             break
     if over:
@@ -57,8 +57,9 @@ if (os.path.exists(file)):
         print ("...     remove the overrides or delete merge_bornpowerindex.xlsx")
         print ("... exiting")
         print ("***")
+        pdb.set_trace()
         exit()
-    
+
 IDX=[]
 teams=[]
 abbrs=[]
@@ -78,17 +79,11 @@ for item in teams_json["displayName"]:
        
     teams.append(team)
     abbrs.append(abbr)
-    over.append("")
+    over.append(" ")
     index+=1
     IDX.append(index)
     if not found:
         bpi_teams.append(" ")
-
-#for i in range(len(teams), len(bpi_teams)):
-        #teams.append(" ")
-        #abbrs.append(" ")
-        #over.append("")
-        #IDX.append(i)
 
 print ("... creating merge_bornpowerindex JSON file")
 the_file = "{0}merge_bornpowerindex.json".format(settings.data_path)
