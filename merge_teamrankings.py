@@ -36,6 +36,28 @@ if (os.path.exists(file)):
 else:
     print ("teamrankings files are missing, run the scrape_teamrankings tool to create")
     exit()
+    
+print("... checking for existing overrides in merge_teamrankings")
+print (" ")
+file = '{0}merge_teamrankings.xlsx'.format(settings.data_path)
+if (os.path.exists(file)):
+    over_excel = "{0}merge_teamrankings.xlsx".format(settings.data_path)
+    excel_df = pd.read_excel(over_excel, sheet_name='Sheet1')
+    over_json = json.loads(excel_df.to_json())
+    overrides = over_json["override"]
+    over = False
+    for item in over_json["override"]:
+        test = str(over_json["override"][item]).strip()
+        if test != "None":
+            over = True
+            break
+    if over:
+        print ("*** warning, some overrides have been found ***")
+        print ("...     if you really want to run")
+        print ("...     remove the overrides or delete merge_teamrankings.xlsx")
+        print ("... exiting")
+        print ("***")
+        exit()
 
 IDX=[]
 teams=[]
@@ -56,7 +78,7 @@ for item in teams_json["displayName"]:
 
     teams.append(team)
     abbrs.append(abbr)
-    over.append(" ")
+    over.append("")
     index+=1
     IDX.append(index)
     if not found:

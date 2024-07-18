@@ -37,6 +37,28 @@ else:
     print ("bornpowerindex files are missing, run the scrape_bornpowerindex tool to create")
     exit()
 
+print("... checking for existing overrides in merge_bornpowerindex")
+print (" ")
+file = '{0}merge_bornpowerindex.xlsx'.format(settings.data_path)
+if (os.path.exists(file)):
+    over_excel = "{0}merge_bornpowerindex.xlsx".format(settings.data_path)
+    excel_df = pd.read_excel(over_excel, sheet_name='Sheet1')
+    over_json = json.loads(excel_df.to_json())
+    overrides = over_json["override"]
+    over = False
+    for item in over_json["override"]:
+        test = str(over_json["override"][item]).strip()
+        if test != "None":
+            over = True
+            break
+    if over:
+        print ("*** warning, some overrides have been found ***")
+        print ("...     if you really want to run")
+        print ("...     remove the overrides or delete merge_bornpowerindex.xlsx")
+        print ("... exiting")
+        print ("***")
+        exit()
+    
 IDX=[]
 teams=[]
 abbrs=[]
@@ -56,17 +78,17 @@ for item in teams_json["displayName"]:
        
     teams.append(team)
     abbrs.append(abbr)
-    over.append(" ")
+    over.append("")
     index+=1
     IDX.append(index)
     if not found:
         bpi_teams.append(" ")
 
-for i in range(len(teams), len(bpi_teams)):
-        teams.append(" ")
-        abbrs.append(" ")
-        over.append(" ")
-        IDX.append(i)
+#for i in range(len(teams), len(bpi_teams)):
+        #teams.append(" ")
+        #abbrs.append(" ")
+        #over.append("")
+        #IDX.append(i)
 
 print ("... creating merge_bornpowerindex JSON file")
 the_file = "{0}merge_bornpowerindex.json".format(settings.data_path)

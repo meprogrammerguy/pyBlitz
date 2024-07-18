@@ -94,10 +94,10 @@ excel_df = pd.read_excel(teams_excel, sheet_name='Sheet1')
 teams_json = json.loads(excel_df.to_json())
 
 matches={}
-matches["shortDisplayName"]=teams_json["shortDisplayName"]
-matches["displayName"]=teams_json["displayName"]
-matches["name"]=teams_json["name"]
-matches["nickname"]=teams_json["nickname"]
+matches["shortDisplayName"]=teams_json["shortDisplayName"] # play with these to get the most confidence
+#matches["displayName"]=teams_json["displayName"]
+#matches["name"]=teams_json["name"]
+#matches["nickname"]=teams_json["nickname"]
 matches["location"]=teams_json["location"]
 
 picked=teams_json["abbreviation"]
