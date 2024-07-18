@@ -63,12 +63,12 @@ index = 0
 for item in merge_json["team"]:
     team = str(merge_json["team"][item]).strip()
     abbr = str(merge_json["abbr"][item]).strip()
-    merge_rank_team = str(merge_json["rankings team"][item]).strip()
-    if merge_rank_team == "?":
-        merge_rank_team = ""
-    merge_bpi_team = str(merge_json["bpi team"][item]).strip()
-    if merge_bpi_team == "?":
-        merge_bpi_team = ""
+    merge_rank_team = merge_json["rankings team"][item]
+    if (str(merge_rank_team).strip() == "?") or (merge_rank_team == None):
+        merge_rank_team = " "
+    merge_bpi_team = merge_json["bpi team"][item]
+    if (str(merge_bpi_team).strip() == "?") or (merge_bpi_team == None):
+        merge_bpi_team = " "
     bpi_found = False
     for bpi_item in bpi_json["team"]:
         bpi_team = str(bpi_json["team"][bpi_item]).strip()
