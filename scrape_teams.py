@@ -135,6 +135,11 @@ def main(argv):
         for item in abbrev:
             if item == "M-OH":
                 item = "miami-oh"
+            if item == "OSU":
+                item = "ohio-st"
+            if item == "CAL":
+                item = "california"
+
             url = "https://site.api.espn.com/apis/site/v2/sports/football/college-football/teams/{0}".format(item)
             req = Request(url=url, \
             headers={'User-Agent':' Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0'})
@@ -156,6 +161,11 @@ def main(argv):
     for item in abbrev:
         if item == "M-OH":
             item = "miami-oh"
+        if item == "OSU":
+            item = "ohio-st"
+        if item == "CAL":
+            item = "california"
+
         the_file = "{0}abbrev/{1}.json".format(settings.data_path, item.lower())
         the_path = "{0}abbrev".format(settings.data_path)
         Path(the_path).mkdir(parents=True, exist_ok=True)
