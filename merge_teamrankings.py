@@ -41,12 +41,7 @@ IDX=[]
 teams=[]
 abbrs=[]
 rank_teams=[]
-cons=[]
 over=[]
-PLpG3s=[]
-PTpP3s=[]
-OPLpG3s=[]
-OPTpP3s=[]
 index=0
 for item in teams_json["displayName"]:
     team = teams_json["displayName"][item]
@@ -55,19 +50,9 @@ for item in teams_json["displayName"]:
     for rank_item in rank_json["abbr"]:
         rank_abbr = rank_json["abbr"][rank_item]
         rank_team = rank_json["team"][rank_item]
-        con = rank_json["confidence"][rank_item]
-        PLpG3 = rank_json["PLpG3"][rank_item]
-        PTpP3 = rank_json["PTpP3"][rank_item]
-        OPLpG3 = rank_json["OPLpG3"][rank_item]
-        OPTpP3 = rank_json["OPTpP3"][rank_item]
         if abbr == rank_abbr:
             found = True
             rank_teams.append(rank_team)
-            cons.append(con)
-            PLpG3s.append(PLpG3)
-            PTpP3s.append(PTpP3)
-            OPLpG3s.append(OPLpG3)
-            OPTpP3s.append(OPTpP3)
 
     teams.append(team)
     abbrs.append(abbr)
@@ -76,11 +61,6 @@ for item in teams_json["displayName"]:
     IDX.append(index)
     if not found:
         rank_teams.append(" ")
-        cons.append(0)
-        PLpG3s.append(" ")
-        PTpP3s.append(" ")
-        OPLpG3s.append(" ")
-        OPTpP3s.append(" ")
     
 print ("... creating merge_teamrankings JSON file")
 the_file = "{0}merge_teamrankings.json".format(settings.data_path)
@@ -88,11 +68,6 @@ Path(settings.data_path).mkdir(parents=True, exist_ok=True)
 df=pd.DataFrame(IDX,columns=['Index'])
 df['team']=teams
 df['abbr']=abbrs
-df['PLpG3']=PLpG3s
-df['PTpP3']=PTpP3s
-df['OPLpG3']=OPLpG3s
-df['OPTpP3']=OPTpP3s
-df['confidence']=cons
 df['rankings team']=rank_teams
 df['override']=over
   

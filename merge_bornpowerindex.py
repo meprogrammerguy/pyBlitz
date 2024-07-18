@@ -40,10 +40,7 @@ else:
 IDX=[]
 teams=[]
 abbrs=[]
-classes=[]
 bpi_teams=[]
-bpis=[]
-cons=[]
 over=[]
 index=0
 for item in teams_json["displayName"]:
@@ -53,15 +50,9 @@ for item in teams_json["displayName"]:
     for bpi_item in bpi_json["abbr"]:
         bpi_abbr = str(bpi_json["abbr"][bpi_item]).strip()
         bpi_team = str(bpi_json["team"][bpi_item]).strip()
-        bpi = str(bpi_json["bpi"][bpi_item]).strip()
-        con = str(bpi_json["confidence"][bpi_item]).strip()
-        bclass = str(bpi_json["class"][bpi_item]).strip()
         if abbr == bpi_abbr:
             found = True
             bpi_teams.append(bpi_team)
-            bpis.append(bpi)
-            cons.append(con)
-            classes.append(bclass)
        
     teams.append(team)
     abbrs.append(abbr)
@@ -70,9 +61,6 @@ for item in teams_json["displayName"]:
     IDX.append(index)
     if not found:
         bpi_teams.append(" ")
-        bpis.append(" ")
-        classes.append(" ")
-        cons.append(0)
 
 for i in range(len(teams), len(bpi_teams)):
         teams.append(" ")
@@ -86,9 +74,6 @@ Path(settings.data_path).mkdir(parents=True, exist_ok=True)
 df=pd.DataFrame(IDX,columns=['Index'])
 df['team']=teams
 df['abbr']=abbrs
-df['class']=classes
-df['bpi']=bpis
-df['confidence']=cons
 df['bpi team']=bpi_teams
 df['override']=over
   
