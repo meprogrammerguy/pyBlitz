@@ -85,15 +85,16 @@ for item in teams_json["displayName"]:
     if not found:
         bpi_teams.append(" ")
 
-print ("... creating merge_bornpowerindex JSON file")
-the_file = "{0}merge_bornpowerindex.json".format(settings.data_path)
-Path(settings.data_path).mkdir(parents=True, exist_ok=True)
 df=pd.DataFrame(IDX,columns=['Index'])
 df['team']=teams
 df['abbr']=abbrs
 df['bpi team']=bpi_teams
 df['override']=over
   
+print ("... creating merge_bornpowerindex JSON file")
+the_file = "{0}json/merge_bornpowerindex.json".format(settings.data_path)
+the_path = "{0}json/".format(settings.data_path)
+Path(the_path).mkdir(parents=True, exist_ok=True)
 with open(the_file, 'w') as f:
     f.write(df.to_json(orient='index'))
 f.close()

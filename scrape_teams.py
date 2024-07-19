@@ -225,8 +225,9 @@ def main(argv):
             location.append(pyBlitz.CleanString(team["location"]))
 
     print ("... creating teams JSON file")
-    the_file = "{0}teams.json".format(settings.data_path)
-    Path(settings.data_path).mkdir(parents=True, exist_ok=True)
+    the_file = "{0}json/teams.json".format(settings.data_path)
+    the_path = "{0}json/".format(settings.data_path)
+    Path(the_path).mkdir(parents=True, exist_ok=True)
     df=pd.DataFrame(IDX,columns=['Index'])
     df['created']=created
     df['id']=id

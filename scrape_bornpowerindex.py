@@ -230,8 +230,10 @@ df['class']=C
 df['bpi']=B
 df['confidence']=ratios
 
-Path(settings.data_path).mkdir(parents=True, exist_ok=True) 
-with open(settings.data_path + 'bornpowerindex.json', 'w') as f:
+the_file = "{0}json/bornpowerindex.json".format(settings.data_path)
+the_path = "{0}json/".format(settings.data_path)
+Path(the_path).mkdir(parents=True, exist_ok=True) 
+with open(the_file, 'w') as f:
     f.write(df.to_json(orient='index'))
 f.close()
 

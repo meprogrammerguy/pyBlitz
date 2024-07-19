@@ -112,9 +112,6 @@ for i in range(start, end):
     G.append(0)
     H.append(0)
 
-print ("... creating stats JSON file")
-the_file = "{0}stats.json".format(settings.data_path)
-Path(settings.data_path).mkdir(parents=True, exist_ok=True)
 df=pd.DataFrame(IDX,columns=['Index'])
 df['team']=T
 df['abbr']=AB
@@ -127,6 +124,10 @@ df['PTpP3']=F
 df['OPLpG3']=G
 df['OPTpP3']=H
   
+print ("... creating stats JSON file")
+the_file = "{0}json/stats.json".format(settings.data_path)
+the_path = "{0}json/".format(settings.data_path)
+Path(the_path).mkdir(parents=True, exist_ok=True)
 with open(the_file, 'w') as f:
     f.write(df.to_json(orient='index'))
 f.close()

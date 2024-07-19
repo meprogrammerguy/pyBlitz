@@ -182,9 +182,6 @@ def main(argv):
             index+=1
             IDX.append(index)
     
-    print ("... creating sched JSON file")
-    filename = "{0}sched.json".format(path)
-    Path(path).mkdir(parents=True, exist_ok=True)
     df=pd.DataFrame(IDX, columns=['Index'])
     df['Date']=cdate
     df['Team 1']=teama
@@ -195,7 +192,11 @@ def main(argv):
     df['Abbrev 2']=abbrev2
     df['Score 2']=score2
 
-    with open(filename, 'w') as f:
+    print ("... creating sched JSON file")
+    the_file = "{0}json/sched.json".format(settings.data_path)
+    the_path = "{0}json/".format(settings.data_path)
+    Path(the_path).mkdir(parents=True, exist_ok=True)
+    with open(the_file, 'w') as f:
         f.write(df.to_json(orient='index'))
     f.close()
     
