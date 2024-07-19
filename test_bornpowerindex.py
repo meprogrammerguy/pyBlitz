@@ -24,7 +24,7 @@ def GetNumber(item):
 print ("Test bornpowerindex spreadsheet validation Tool")
 print ("****************************************************************")
 print (" ")
-print ("Makes sure that your merge bornpowerindex spreadsheet has been run")
+print ("Makes sure that your merge_bornpowerindex spreadsheet is correct")
 print (" ")
 
 print("... retrieving merge spreadsheet")
@@ -43,7 +43,7 @@ if (os.path.exists(bpi_file)):
     excel_df = pd.read_excel(bpi_file, sheet_name='Sheet1')
     bpi_json = json.loads(excel_df.to_json())
 else:
-    print ("        *** run scrape_bornpowerindex tool and then come back ***")
+    print ("        *** run scrape_bornpowerindex, merge_bornpowerindex, and combine_merge and then come back ***")
     exit()
 
 AllTeam=[]
@@ -76,7 +76,7 @@ if bads:
     print (" ")
     print ("... fail")
 else:
-        print ("... pass")
+    print ("... pass")
 print (" ")
 print ("****************************************************************")
 print ("done.")
