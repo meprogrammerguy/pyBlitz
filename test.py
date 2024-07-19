@@ -20,7 +20,8 @@ def main(argv):
     print ("done.")
 
 def RunTests():
-    import test_abbreviations
+    import test_teamrankings
+    import test_bornpowerindex
     import test_schedule
     import test_stats
     import test_merge

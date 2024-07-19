@@ -2,6 +2,7 @@
 
 import json
 import pdb
+import pandas as pd
 import csv
 from collections import OrderedDict
 import os.path
@@ -9,103 +10,86 @@ from pathlib import Path
 import datetime
 import re
 import sys, getopt
+from datetime import datetime
 
 import settings
 import scrape_schedule
 
-def GetTeams(dict_merge):
-    A=[]
-    for team in dict_merge.values():
-        A.append(team["BPI"])
-    return A
-
-def GetKey(team, dict_merge, team_list):
-    key = {}
-    loop = -1
-    index = -1
-    for itm in dict_merge.values():
-        loop += 1
-        if (team == itm["scheduled"]):
-            if (index != -1):
-                print ("*** {0} is used for {1}[{2}] and {3}[{4}] in merge file"
-                    .format(team, team_list[index], index, team_list[loop], loop))
-            else:
-                index = loop
-                key = itm
-    return key, index
-
-def GetWeek(item):
-    filename = os.path.basename(str(item))
-    idx = re.findall(r'\d+', str(filename))
+def GetNumber(item):
+    idx = re.findall(r'\d+', str(item))
     if (len(idx) == 0):
-        idx.append("0")
+        idx.append("-1")
     return int(idx[0])
-
-def GetSchedFiles(path, templatename):
-    A = []
-    for p in Path(path).glob(templatename):
-        A.append(str(p))
-    file_list = []
-    for item in range(0, 16):
-        file_list.append("?")
-    for item in A:
-        idx = GetWeek(item)
-        if (len(file_list) > idx):
-            file_list[idx] = item
-    file_list = [x for x in file_list if x != "?"]
-    return file_list
 
 print ("Test Schedule spreadsheet validation Tool")
 print ("****************************************************************")
 print (" ")
-print ("Makes sure that your merge Schedule spreadsheet is set up correctly")
+print ("Makes sure that your scrape schedule spreadsheet has been run")
 print ("    == be aware that some teams may not be there (unranked teams)")
 print ("    == for these match-ups a prediction will not be possible")
-print ("    == (but a very, very, good guess is to go with the other team)")
+print ("    == (but a very, very, good guess is to pick the 'better' team)")
 print (" ")
 
-now = datetime.datetime.now()
+year = 0
+now = datetime.now()
 year = int(now.year)
+if (len(sys.argv)>=2):
+    year = GetNumber(sys.argv[1])
+    if (year < 2002 or year > int(now.year)):
+        year = int(now.year)
+current_working_directory = os.getcwd()
 path = "{0}{1}/{2}".format(settings.predict_root, year, settings.predict_sched)
 
-file = '{0}merge.json'.format(settings.data_path)
-if (not os.path.exists(file)):
-    print ("merge.json file is missing, run the combine_merge tool to create")
+print("... retrieving merge spreadsheet")
+file = '{0}merge.xlsx'.format(settings.data_path)
+if (os.path.exists(file)):
+    merge_excel = "{0}merge.xlsx".format(settings.data_path)
+    excel_df = pd.read_excel(merge_excel, sheet_name='Sheet1')
+    merge_json = json.loads(excel_df.to_json())
+else:
+    print ("        *** run combine_merge tool and then come back ***")
     exit()
-with open(file) as merge_file:
-    dict_merge = json.load(merge_file, object_pairs_hook=OrderedDict)
 
 scrape_schedule.year = year
 scrape_schedule.main(sys.argv[1:])
-schedule_files = GetSchedFiles(path, "sched*.json")
 
-if (not os.path.exists(schedule_files[0])):
-    print ("schedule files are missing, run the scrape_schedule tool to create")
+print("... retrieving sched spreadsheet")
+file = '{0}sched.xlsx'.format(path)
+if (os.path.exists(file)):
+    sched_excel = "{0}sched.xlsx".format(path)
+    excel_df = pd.read_excel(sched_excel, sheet_name='Sheet1')
+    sched_json = json.loads(excel_df.to_json())
+else:
+    print ("        *** run scrape_schedule tool and then come back ***")
     exit()
 
-list_schedule = []
-for file in schedule_files:
-    with open(file) as schedule_file:
-        list_schedule.append(json.load(schedule_file, object_pairs_hook=OrderedDict))
 AllTeam=[]
-for idx in range(len(schedule_files)):
-    for item in list_schedule[idx].values():
-        AllTeam.append(item["TeamA"])
-        AllTeam.append(item["TeamA"])
+for item in sched_json["Team 1"]:
+    AllTeam.append(str(sched_json["Team 1"][str(item)]).strip())
+for item in sched_json["Team 2"]:
+    AllTeam.append(str(sched_json["Team 2"][str(item)]).strip())
 team_set = set(AllTeam)
 teams = list(team_set)
 teams.sort()
-#pdb.set_trace()
 
-team_list = GetTeams(dict_merge)
+MergeTeam=[]
+for item in merge_json["team"]:
+    MergeTeam.append(str(merge_json["team"][str(item)]).strip())
+merge_set = set(MergeTeam)
+merges = list(merge_set)
+merges.sort()
 
-for item in teams:
-    #pdb.set_trace()
-    team, index = GetKey(item, dict_merge, team_list)
-    if (index == -1):
-        print ("*** warning: could not find schedule team [{0}] in merge file".format(item))
-    #else:
-        #print ("BPI [{0}], teamrankings [{1}]".format(team_list[index], item))
+s = set(merges)
+bads = [x for x in teams if x not in s]
 
+print (" ")
+if bads:
+    print ("*** warning: could not find these teams in the merge sheet")
+    print (" ")
+    for bad in bads:
+        print ("         " + bad)
+else:
+        print ("... pass")
+print (" ")
 print ("****************************************************************")
 print ("done.")
