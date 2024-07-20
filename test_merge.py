@@ -226,6 +226,6 @@ if bpibads:
 else:
     print ("bornpowerindex teams")
     print ("... pass")
-
+input("press enter for more results...")                
 print ("****************************************************************")
 print ("done.")

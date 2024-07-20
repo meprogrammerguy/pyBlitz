@@ -17,7 +17,7 @@ def main(argv):
     print ("===")
     print ("**************************")
     RunTests()
-    print ("done.")
+    print ("all tests done.")
 
 def RunTests():
     import test_teamrankings

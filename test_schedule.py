@@ -96,7 +96,9 @@ if bads:
     print (" ")
     print ("... fail")
 else:
-        print ("... pass")
+    print ("scheduled teams")
+    print ("... pass")
+input("press enter for more results...")                
 print (" ")
 print ("****************************************************************")
 print ("done.")

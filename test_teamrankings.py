@@ -76,7 +76,9 @@ if bads:
     print (" ")
     print ("... fail")
 else:
+    print ("teamrankings teams")
     print ("... pass")
+input("press enter for more results...")                
 print (" ")
 print ("****************************************************************")
 print ("done.")
