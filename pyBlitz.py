@@ -157,52 +157,13 @@ def CleanString(data):
     data =  re.sub("Ã©","e", data)
     return unidecode(data)
 
-def GetPercent(thespread, dict_percent):
-    aPercent = 0
-    bPercent = 0
-    flip = False
-    if (thespread < 0):
-        thespread = abs(thespread)
-        flip = True
-    if (thespread >= 19.5):
-        if (flip):
-            bPercent = 100
-            aPercent = 0
-        else:
-            aPercent = 100
-            bPercent = 0
-    else:
-        for item in dict_percent.values():
-            if ("+" in item['Spread']):
-                spread = 20
-                if (flip):
-                    bPercent = 100
-                    aPercent = 0
-                else:
-                    aPercent = 100
-                    bPercent = 0
-                break
-            else:
-                spread = myFloat(item['Spread'])
-            if (spread >= thespread and thespread < (spread + .5)):
-                if (flip):
-                    bPercent = GetFloat(item["Favorite"])
-                    aPercent = GetFloat(item["Underdog"])
-                else:
-                    aPercent = GetFloat(item["Favorite"])
-                    bPercent = GetFloat(item["Underdog"])
-                break          
-    return aPercent, bPercent
-
 def Chance(teama, teamb, homeTeam = 'Neutral', verbose = True):
     EffMgn = Spread(teama, teamb, verbose = False, homeTeam = homeTeam)
     if (verbose):
         print ("Chance(efficiency margin) {0}".format(EffMgn))
     results = GetChance(EffMgn)
-    #pdb.set_trace()
     aPercent = results["answer"]
     bPercent = results["opposite"]
-    #aPercent, bPercent = GetChance(EffMgn)
     if (verbose):
         if homeTeam == "Neutral":
             print ("Chance({0}) {1}%".format(teama["BPI"], aPercent),
@@ -297,17 +258,10 @@ def Calculate(first, second, neutral, verbose):
         else:
             info = "Visiting team: {0} verses Home team: {1}".format(first, second)
             print (info)
+            
     file = "{0}json/stats.json".format(settings.data_path)
     with open(file) as stats_file:
         dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
-    file = "{0}json/odds.json".format(settings.data_path)
-    if (not os.path.exists(file)):
-        info = "Calculate() - odds file is missing, run the scrape_espn_odds tool to create"
-        settings.exceptions.append(info)
-        print (info)
-        exit()
-    with open(file) as percent_file:
-        dict_percent = json.load(percent_file, object_pairs_hook=OrderedDict)
 
     teama, teamb = findTeams(first, second, dict_stats, verbose = verbose)
     if (not teama and not teamb):
@@ -322,18 +276,31 @@ def Calculate(first, second, neutral, verbose):
     if (teamb):
         classb = teamb["Class"].lower().strip()
     if (classa == "?" and classb == "?"):
-        settings.exceptions.append("Calculate() - [{0}] team playing [{1}] team,  Cannot predict, Fix merge spreadsheet(s)".format(classa, classb))
-        dict_score = {'teama':first, 'scorea':"0", 'chancea':"0" ,'teamb':second, 'scoreb':"0", 'chanceb':"0", 'spread': 0, 'tempo':"0"}
+        e_txt = "Calculate() - [{0}] team playing [{1}] team,  Cannot predict, Fix merge spreadsheet(s)" \
+            .format(classa, classb)
+        settings.exceptions.append(e_txt)
+        dict_score = \
+        {
+            'teama':first, 'scorea':"0", 'chancea':"0" ,'teamb':second, 'scoreb':"0", 'chanceb':"0", 'spread': 0, 'tempo':"0"
+        }
         print ("Warning: {0} playing {1}, Cannot Predict, Fix merge spreadsheet(s)".format(first, second))
         return dict_score
     else:
         if (classa == "division 1  fbs" and classb != "division 1  fbs"):
             settings.exceptions.append("Calculate() - [{0}] team playing [{1}] team, {2} wins".format(classa, classb, first))
-            dict_score = {'teama':first, 'scorea':"0", 'chancea':"100" ,'teamb':second, 'scoreb':"0", 'chanceb':"0", 'spread': 0, 'tempo':"0"}
+            dict_score = \
+            {
+                'teama':first, 'scorea':"0", 'chancea':"100" ,'teamb':second, 'scoreb':"0", \
+                'chanceb':"0", 'spread': 0, 'tempo':"0"
+            }
             return dict_score
         if (classa != "division 1  fbs" and classb == "division 1  fbs"):
             settings.exceptions.append("Calculate() - [{0}] team playing [{1}] team, {2} wins".format(classa, classb, second))
-            dict_score = {'teama':first, 'scorea':"0", 'chancea':"0" ,'teamb':second, 'scoreb':"0", 'chanceb':"100", 'spread': 0, 'tempo':"0"}
+            dict_score = \
+            {
+                'teama':first, 'scorea':"0", 'chancea':"0" ,'teamb':second, 'scoreb':"0", 'chanceb':"100", \
+                'spread': 0, 'tempo':"0"
+            }
             return dict_score
     if (not neutral):
         chancea, chanceb =  Chance(teama, teamb, homeTeam = teamb["BPI"], verbose = verbose)
@@ -346,7 +313,8 @@ def Calculate(first, second, neutral, verbose):
 
     tempo = Tempo(teama, teamb, verbose = verbose)
 
-    dict_score = {'teama':first, 'scorea':"{0}".format(scorea), 'chancea':"{0}".format(chancea) ,'teamb':second, 'scoreb':"{0}".format(scoreb), 'chanceb':"{0}"
+    dict_score = {'teama':first, 'scorea':"{0}".format(scorea), 'chancea':"{0}".format(chancea) , \
+        'teamb':second, 'scoreb':"{0}".format(scoreb), 'chanceb':"{0}"
         .format(chanceb), 'spread': round(spread, 3), 'tempo':"{0}".format(int(round(tempo))) }
     if (verbose):
         print ("Calculate(dict_score) {0}".format(dict_score))
