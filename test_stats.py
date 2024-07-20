@@ -97,8 +97,8 @@ else:
     exit()
     
 tTeam=[]
-for item in team_json["displayName"]:
-    tTeam.append(str(team_json["displayName"][str(item)]).strip())
+for item in team_json["shortDisplayName"]:
+    tTeam.append(str(team_json["shortDisplayName"][str(item)]).strip())
 tteam_set = set(tTeam)
 tteams = list(tteam_set)
 tteams.sort()

@@ -137,7 +137,7 @@ def main(argv):
         
     matches={}
     matches["location"]=teams_json["location"]
-    returned=teams_json["displayName"]
+    returned=teams_json["shortDisplayName"]
 
     index = 0
     IDX=[]
