@@ -75,7 +75,7 @@ def main(argv):
             exit()
 
         Path(settings.data_path).mkdir(parents=True, exist_ok=True) 
-        stat_file = "{0}stats.json".format(settings.data_path)
+        stat_file = "{0}json/stats.json".format(settings.data_path)
         if (not CurrentStatsFile(stat_file)):
             RefreshStats()
         ds = {}

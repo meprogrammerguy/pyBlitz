@@ -277,9 +277,7 @@ def Score(teama, teamb, verbose = True, homeTeam = 'Neutral'):
     return aScore, bScore
 
 def Spread(teama, teamb, verbose = True, homeTeam = 'Neutral'):
-    #EMdiff = (myFloat(teama['Ranking']) - myFloat(teamb['Ranking']))
     EMdiff = (myFloat(teamb['Ranking']) - myFloat(teama['Ranking']))
-    #pdb.set_trace()
     EffMgn = 0
     if (homeTeam.lower().strip() == teama["BPI"].lower().strip()):
         EffMgn = EMdiff + settings.homeAdvantage
@@ -342,7 +340,7 @@ def Calculate(first, second, neutral, verbose):
         scorea, scoreb = Score(teama, teamb, verbose = verbose, homeTeam = teamb["BPI"])
         spread = Spread(teama, teamb, verbose = verbose, homeTeam = teamb["BPI"])
     else:
-        chancea, chanceb =  Chance(teama, teamb, dict_percent, verbose = verbose)
+        chancea, chanceb =  Chance(teama, teamb, verbose = verbose)
         scorea, scoreb = Score(teama, teamb, verbose = verbose)
         spread = Spread(teama, teamb, verbose = verbose)
 
