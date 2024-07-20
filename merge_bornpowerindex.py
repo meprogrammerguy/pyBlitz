@@ -57,7 +57,6 @@ if (os.path.exists(file)):
         print ("...     remove the overrides or delete merge_bornpowerindex.xlsx")
         print ("... exiting")
         print ("***")
-        pdb.set_trace()
         exit()
 
 IDX=[]

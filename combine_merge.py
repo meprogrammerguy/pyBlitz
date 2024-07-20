@@ -62,47 +62,47 @@ rank_overs={}
 index=0
 for item in teams_json["displayName"]:
     team = teams_json["displayName"][item]
-    abbr = str(teams_json["abbreviation"][item]).strip()
-    bpi_found = False
-    for bpi_item in bpi_json["abbr"]:
-        bpi_team = bpi_json["bpi team"][bpi_item]
-        bpi_abbr = str(bpi_json["abbr"][bpi_item]).strip()
+    abbr = teams_json["abbreviation"][item]
+    for bpi_item in bpi_json["team"]:
+        key_team = bpi_json["team"][bpi_item]
+        bpi_team = str(bpi_json["bpi team"][bpi_item]).strip()
+        if (bpi_team.strip() == "?") or (bpi_team.strip() == "") or (bpi_team == "None") or (bpi_team == None):
+            bpi_team = " "
         bpi_over = str(bpi_json["override"][bpi_item]).strip()
-        if abbr == bpi_abbr:
-            bpi_found = True
-            if bpi_over:
+        if (bpi_over.strip() == "?") or (bpi_over.strip() == "") or (bpi_over == "None") or (bpi_over == None):
+            bpi_over = " "
+        if team == key_team:
+            if len(bpi_over.strip()) > 0:
                 bpi_overs[item] = bpi_over
             bpi_teams.append(bpi_team)
-    rank_found = False
-    for rank_item in rank_json["abbr"]:
-        rank_team = rank_json["rankings team"][rank_item]
-        rank_abbr = str(rank_json["abbr"][rank_item]).strip()
-        rank_over = str(rank_json["override"][rank_item]).strip()        
-        if abbr == rank_abbr:
-            rank_found = True
-            if rank_over:
+    for rank_item in rank_json["team"]:
+        key_team = str(rank_json["team"][rank_item]).strip()
+        rank_team = str(rank_json["rankings team"][rank_item]).strip()
+        if (rank_team.strip() == "?") or (rank_team.strip() == "") or (rank_team == "None") or (rank_team == None):
+            rank_team = " "
+        rank_over = str(rank_json["override"][rank_item]).strip()      
+        if (rank_over.strip() == "?") or (rank_over.strip() == "") or (rank_over == "None") or (rank_over == None):
+            rank_over = " "
+        if team == key_team:
+            if len(rank_over.strip()) > 0:
                 rank_overs[item] = rank_over
             rank_teams.append(rank_team)
     teams.append(team)
     abbrs.append(abbr)
     index+=1
     IDX.append(index)
-    if not bpi_found:
-        bpi_teams.append(" ")
-    if not rank_found:
-        rank_teams.append(" ")
 
 for ovr in bpi_overs:
     bpi_team = bpi_overs[str(ovr)]
-    if (str(bpi_team).strip() == "?") or (bpi_team == "None") or (bpi_team == None):
+    if (bpi_team == "None") or (bpi_team == None):
         bpi_team = ""
-    if len(bpi_team) > 0:
+    if len(bpi_team.strip()) > 0:
         bpi_teams[int(ovr)] = bpi_team
 for ovr in rank_overs:
     rank_team = rank_overs[str(ovr)]
-    if (str(rank_team).strip() == "?") or (rank_team == "None") or (bpi_team == None):
+    if (rank_team == "None") or (bpi_team == None):
         rank_team = "" 
-    if len(rank_team) > 0:
+    if len(rank_team.strip()) > 0:
         rank_teams[int(ovr)] = rank_team
     
 df=pd.DataFrame(IDX,columns=['Index'])

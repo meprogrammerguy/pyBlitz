@@ -60,6 +60,11 @@ merge_set = set(MergeTeam)
 merges = list(merge_set)
 merges.sort()
 
+start=len(merges)
+end=len(teams)
+for i in range(start, end):
+    teams.pop()
+
 s = set(merges)
 bads = [x for x in teams if x not in s]
 

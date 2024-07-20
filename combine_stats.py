@@ -12,6 +12,20 @@ import re
 import settings
 import pyBlitz
 
+def GetData(k, v, j, l):
+    results={}
+    if (v.strip() == "?") or (v.strip() == "") or (v == "None") or (v == None):
+        v = ""
+        for i in l:
+            results[i] = " "
+        return results
+    for i in j[k]:
+        t = str(j[k][i]).strip()
+        if t == v.strip():
+            for x in l:
+                results[x] = j[x][i]
+    return results
+
 print ("Combine Stats Tool")
 print ("**************************")
 print (" ")
@@ -61,56 +75,41 @@ G=[]
 H=[]
 index = 0
 for item in merge_json["team"]:
-    team = str(merge_json["team"][item]).strip()
+    team = merge_json["team"][item].strip()
     abbr = str(merge_json["abbr"][item]).strip()
-    merge_rank_team = merge_json["rankings team"][item]
-    if (str(merge_rank_team).strip() == "?") or (merge_rank_team == None):
+    merge_rank_team = str(merge_json["rankings team"][item]).strip()
+    if (merge_rank_team.strip() == "?") or (merge_rank_team.strip() == "") or (merge_rank_team == "None") \
+        or (merge_rank_team == None):
         merge_rank_team = " "
-    merge_bpi_team = merge_json["bpi team"][item]
-    if (str(merge_bpi_team).strip() == "?") or (merge_bpi_team == None):
+    rank_data = GetData("team", merge_rank_team , rank_json, ["PLpG3", "PTpP3", "OPLpG3", "OPTpP3"])
+    merge_bpi_team = str(merge_json["bpi team"][item]).strip()
+    if (merge_bpi_team.strip() == "?") or (merge_bpi_team.strip() == "") or (merge_bpi_team == "None") \
+        or (merge_bpi_team == None):
         merge_bpi_team = " "
-    bpi_found = False
-    for bpi_item in bpi_json["team"]:
-        bpi_team = str(bpi_json["team"][bpi_item]).strip()
-        bpi = str(bpi_json["bpi"][bpi_item]).strip()
-        bpi_class = str(bpi_json["class"][bpi_item]).strip()
-        if merge_bpi_team == bpi_team:
-            bpi_found = True
-            C.append(bpi)
-            D.append(bpi_class)
-    rank_found = False
-    for rank_item in rank_json["team"]:
-        rank_team = str(rank_json["team"][rank_item]).strip()
-        rank_PLpG3 = str(rank_json["PLpG3"][rank_item]).strip()
-        rank_PTpP3 = str(rank_json["PTpP3"][rank_item]).strip()
-        rank_OPLpG3 = str(rank_json["OPLpG3"][rank_item]).strip()
-        rank_OPTpP3 = str(rank_json["OPTpP3"][rank_item]).strip()
-        if merge_rank_team == rank_team:
-            rank_found = True
-            E.append(rank_PLpG3)
-            F.append(rank_PTpP3)
-            G.append(rank_OPLpG3)
-            H.append(rank_OPTpP3)
+    bpi_data = GetData("team", merge_bpi_team , bpi_json, ["bpi", "class"])
     T.append(team)
     AB.append(abbr)
     A.append(merge_bpi_team)
     B.append(merge_rank_team)
+    if bpi_data:
+        C.append(bpi_data["bpi"])
+        D.append(bpi_data["class"])
+    else:
+        C.append("xxx")
+        D.append("xxx")
+    
+    if rank_data:
+        E.append(rank_data["PLpG3"])
+        F.append(rank_data["PTpP3"])
+        G.append(rank_data["OPLpG3"])
+        H.append(rank_data["OPTpP3"])
+    else:
+        E.append("xxx")
+        F.append("xxx")
+        G.append("xxx")
+        H.append("xxx")    
     index+=1
     IDX.append(index)
-
-start=len(C)
-end=len(T)
-for i in range(start, end):
-    C.append(0)
-    D.append(" ")
-    
-start=len(E)
-end=len(T)
-for i in range(start, end):
-    E.append(0)
-    F.append(0)
-    G.append(0)
-    H.append(0)
 
 df=pd.DataFrame(IDX,columns=['Index'])
 df['team']=T
