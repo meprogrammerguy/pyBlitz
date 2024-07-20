@@ -23,6 +23,8 @@ def RunTests():
     import test_teamrankings
     import test_bornpowerindex
     import test_schedule
+    import test_merge
+    import test_stats
 
 if __name__ == "__main__":
   main(sys.argv[1:])
