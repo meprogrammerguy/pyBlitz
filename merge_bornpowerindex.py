@@ -65,8 +65,8 @@ abbrs=[]
 bpi_teams=[]
 over=[]
 index=0
-for item in teams_json["displayName"]:
-    team = str(teams_json["displayName"][item]).strip()
+for item in teams_json["shortDisplayName"]:
+    team = str(teams_json["shortDisplayName"][item]).strip()
     abbr = str(teams_json["abbreviation"][item]).strip()
     found = False
     for bpi_item in bpi_json["abbr"]:

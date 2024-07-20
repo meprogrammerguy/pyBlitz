@@ -65,8 +65,8 @@ abbrs=[]
 rank_teams=[]
 over=[]
 index=0
-for item in teams_json["displayName"]:
-    team = teams_json["displayName"][item]
+for item in teams_json["shortDisplayName"]:
+    team = teams_json["shortDisplayName"][item]
     abbr = teams_json["abbreviation"][item]
     found = False
     for rank_item in rank_json["abbr"]:

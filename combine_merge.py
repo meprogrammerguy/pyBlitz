@@ -18,7 +18,7 @@ print ("Combine Merge Tool")
 print ("**************************")
 print (" ")
 print ("This tool combines your merge spreadsheets into one master merge spreadsheet")
-print ("Make sure that your merge_bornpowerindex, and merge_team_rankings")
+print ("Make sure that your merge_bornpowerindex, and merge_teamrankings")
 print ("spreadsheets are correct first")
 print (" ")
 
@@ -60,8 +60,8 @@ bpi_teams=[]
 bpi_overs={}
 rank_overs={}
 index=0
-for item in teams_json["displayName"]:
-    team = teams_json["displayName"][item]
+for item in teams_json["shortDisplayName"]:
+    team = teams_json["shortDisplayName"][item]
     abbr = teams_json["abbreviation"][item]
     for bpi_item in bpi_json["team"]:
         key_team = bpi_json["team"][bpi_item]

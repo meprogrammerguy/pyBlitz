@@ -10,6 +10,7 @@ from collections import OrderedDict
 import re
 from thefuzz import fuzz
 from thefuzz import process
+from unidecode import unidecode
 
 import settings
 
@@ -91,12 +92,9 @@ def GetFloat(item):
     return myFloat(idx[0])
 
 def CleanString(data):
-    if (chr(233) in data):
-        data = "SAN JOSE STATE"
-    if (chr(8217) in data):
-        data = "HAWAII"
-    data =  re.sub(' +',' ', data)
-    return re.sub("'",'', data)
+    data =  re.sub("'","", data)
+    data =  re.sub("Ã©","e", data)
+    return unidecode(data)
 
 def GetPercent(thespread, dict_percent):
     aPercent = 0
@@ -239,10 +237,10 @@ def Calculate(first, second, neutral, verbose):
         else:
             info = "Visiting team: {0} verses Home team: {1}".format(first, second)
             print (info)
-    file = "{0}stats.json".format(settings.data_path)
+    file = "{0}json/stats.json".format(settings.data_path)
     with open(file) as stats_file:
         dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
-    file = "{0}bettingtalk.json".format(settings.data_path)
+    file = "{0}json/bettingtalk.json".format(settings.data_path)
     if (not os.path.exists(file)):
         info = "Calculate() - bettingtalk file is missing, run the scrape_bettingtalk tool to create"
         settings.exceptions.append(info)

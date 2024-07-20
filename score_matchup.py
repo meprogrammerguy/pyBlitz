@@ -19,8 +19,11 @@ def CurrentStatsFile(filename):
     return True
 
 def RefreshStats():
+    import scrape_teams
     import scrape_bornpowerindex
     import scrape_teamrankings
+    import scrape_schedule
+    import scrape_espn_odds
     import combine_stats
 
 def main(argv):
@@ -88,9 +91,11 @@ def main(argv):
         if (not ds):
             exit()
         if (neutral):
-            print ("{0} {1}% vs {2} {3}% {4}-{5}".format(ds["teama"], ds["chancea"], ds["teamb"], ds["chanceb"], ds["scorea"], ds["scoreb"]))
+            print ("{0} {1}% vs {2} {3}% {4}-{5}".format(ds["teama"], ds["chancea"], ds["teamb"], ds["chanceb"], \
+                ds["scorea"], ds["scoreb"]))
         else:
-            print ("{0} {1}% at {2} {3}% {4}-{5}".format(ds["teama"], ds["chancea"], ds["teamb"], ds["chanceb"], ds["scorea"], ds["scoreb"]))
+            print ("{0} {1}% at {2} {3}% {4}-{5}".format(ds["teama"], ds["chancea"], ds["teamb"], ds["chanceb"], \
+                ds["scorea"], ds["scoreb"]))
 
 def usage():
     usage = """
