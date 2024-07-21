@@ -65,10 +65,10 @@ for item in teams_json["shortDisplayName"]:
     abbr = teams_json["abbreviation"][item]
     for bpi_item in bpi_json["team"]:
         key_team = bpi_json["team"][bpi_item]
-        bpi_team = str(bpi_json["bpi team"][bpi_item]).strip()
+        bpi_team = pyBlitz.CleanString(str(bpi_json["bpi team"][bpi_item]).strip())
         if (bpi_team.strip() == "?") or (bpi_team.strip() == "") or (bpi_team == "None") or (bpi_team == None):
             bpi_team = " "
-        bpi_over = str(bpi_json["override"][bpi_item]).strip()
+        bpi_over = pyBlitz.CleanString(str(bpi_json["override"][bpi_item]).strip())
         if (bpi_over.strip() == "?") or (bpi_over.strip() == "") or (bpi_over == "None") or (bpi_over == None):
             bpi_over = " "
         if team == key_team:
@@ -77,10 +77,10 @@ for item in teams_json["shortDisplayName"]:
             bpi_teams.append(bpi_team)
     for rank_item in rank_json["team"]:
         key_team = str(rank_json["team"][rank_item]).strip()
-        rank_team = str(rank_json["rankings team"][rank_item]).strip()
+        rank_team = pyBlitz.CleanString(str(rank_json["rankings team"][rank_item]).strip())
         if (rank_team.strip() == "?") or (rank_team.strip() == "") or (rank_team == "None") or (rank_team == None):
             rank_team = " "
-        rank_over = str(rank_json["override"][rank_item]).strip()      
+        rank_over = pyBlitz.CleanString(str(rank_json["override"][rank_item]).strip())   
         if (rank_over.strip() == "?") or (rank_over.strip() == "") or (rank_over == "None") or (rank_over == None):
             rank_over = " "
         if team == key_team:
@@ -97,13 +97,13 @@ for ovr in bpi_overs:
     if (bpi_team == "None") or (bpi_team == None):
         bpi_team = ""
     if len(bpi_team.strip()) > 0:
-        bpi_teams[int(ovr)] = bpi_team
+        bpi_teams[int(ovr)] = pyBlitz.CleanString(bpi_team)
 for ovr in rank_overs:
     rank_team = rank_overs[str(ovr)]
     if (rank_team == "None") or (bpi_team == None):
         rank_team = "" 
     if len(rank_team.strip()) > 0:
-        rank_teams[int(ovr)] = rank_team
+        rank_teams[int(ovr)] = pyBlitz.CleanString(rank_team)
     
 df=pd.DataFrame(IDX,columns=['Index'])
 df['team']=teams

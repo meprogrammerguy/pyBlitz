@@ -193,8 +193,9 @@ def main(argv):
     df['Score 2']=score2
 
     print ("... creating sched JSON file")
-    the_file = "{0}json/sched.json".format(settings.data_path)
-    the_path = "{0}json/".format(settings.data_path)
+    the_file = "{0}{1}/{2}json/sched.json".format(settings.predict_root, year, settings.predict_sched)
+    the_path = "{0}{1}/{2}json/".format(settings.predict_root, year, settings.predict_sched)
+
     Path(the_path).mkdir(parents=True, exist_ok=True)
     with open(the_file, 'w') as f:
         f.write(df.to_json(orient='index'))

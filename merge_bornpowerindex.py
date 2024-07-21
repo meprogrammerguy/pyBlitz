@@ -66,12 +66,12 @@ bpi_teams=[]
 over=[]
 index=0
 for item in teams_json["shortDisplayName"]:
-    team = str(teams_json["shortDisplayName"][item]).strip()
+    team = pyBlitz.CleanString(str(teams_json["shortDisplayName"][item]).strip())
     abbr = str(teams_json["abbreviation"][item]).strip()
     found = False
     for bpi_item in bpi_json["abbr"]:
-        bpi_abbr = str(bpi_json["abbr"][bpi_item]).strip()
-        bpi_team = str(bpi_json["team"][bpi_item]).strip()
+        bpi_abbr = pyBlitz.CleanString(str(bpi_json["abbr"][bpi_item]).strip())
+        bpi_team = pyBlitz.CleanString(str(bpi_json["team"][bpi_item]).strip())
         if abbr == bpi_abbr:
             found = True
             bpi_teams.append(bpi_team)

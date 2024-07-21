@@ -71,7 +71,7 @@ for item in teams_json["shortDisplayName"]:
     found = False
     for rank_item in rank_json["abbr"]:
         rank_abbr = rank_json["abbr"][rank_item]
-        rank_team = rank_json["team"][rank_item]
+        rank_team = pyBlitz.CleanString(rank_json["team"][rank_item])
         if abbr == rank_abbr:
             found = True
             rank_teams.append(rank_team)

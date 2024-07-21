@@ -75,14 +75,14 @@ G=[]
 H=[]
 index = 0
 for item in merge_json["team"]:
-    team = merge_json["team"][item].strip()
+    team =  pyBlitz.CleanString(merge_json["team"][item].strip())
     abbr = str(merge_json["abbr"][item]).strip()
-    merge_rank_team = str(merge_json["rankings team"][item]).strip()
+    merge_rank_team =  pyBlitz.CleanString(str(merge_json["rankings team"][item]).strip())
     if (merge_rank_team.strip() == "?") or (merge_rank_team.strip() == "") or (merge_rank_team == "None") \
         or (merge_rank_team == None):
         merge_rank_team = " "
     rank_data = GetData("team", merge_rank_team , rank_json, ["PLpG3", "PTpP3", "OPLpG3", "OPTpP3"])
-    merge_bpi_team = str(merge_json["bpi team"][item]).strip()
+    merge_bpi_team =  pyBlitz.CleanString(str(merge_json["bpi team"][item]).strip())
     if (merge_bpi_team.strip() == "?") or (merge_bpi_team.strip() == "") or (merge_bpi_team == "None") \
         or (merge_bpi_team == None):
         merge_bpi_team = " "

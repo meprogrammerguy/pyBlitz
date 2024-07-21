@@ -151,48 +151,48 @@ for row in table1[0].findAll("tr"):
         index+=1
         IDX.append(index)
         A.append(pyBlitz.CleanString(col[0].find(string=True)))
-        B.append(col[1].find(string=True))
-        C.append(col[2].find(string=True))
+        B.append(pyBlitz.CleanString(col[1].find(string=True)))
+        C.append(pyBlitz.CleanString(col[2].find(string=True)))
 for row in table2[0].findAll("tr"):
     col=row.findAll('td')
     if len(col)>0 and col[0].find(string=True)!="School":
         index+=1
         IDX.append(index)
         A.append(pyBlitz.CleanString(col[0].find(string=True)))
-        B.append(col[1].find(string=True))
-        C.append(col[2].find(string=True))
+        B.append(pyBlitz.CleanString(col[1].find(string=True)))
+        C.append(pyBlitz.CleanString(col[2].find(string=True)))
 for row in table3[0].findAll("tr"):
     col=row.findAll('td')
     if len(col)>0 and col[0].find(string=True)!="School":
         index+=1
         IDX.append(index)
         A.append(pyBlitz.CleanString(col[0].find(string=True)))
-        B.append(col[1].find(string=True))
-        C.append(col[2].find(string=True))
+        B.append(pyBlitz.CleanString(col[1].find(string=True)))
+        C.append(pyBlitz.CleanString(col[2].find(string=True)))
 for row in table4[0].findAll("tr"):
     col=row.findAll('td')
     if len(col)>0 and col[0].find(string=True)!="School":
         index+=1
         IDX.append(index)
         A.append(pyBlitz.CleanString(col[0].find(string=True)))
-        B.append(col[1].find(string=True))
-        C.append(col[2].find(string=True))
+        B.append(pyBlitz.CleanString(col[1].find(string=True)))
+        C.append(pyBlitz.CleanString(col[2].find(string=True)))
 for row in table5[0].findAll("tr"):
     col=row.findAll('td')
     if len(col)>0 and col[0].find(string=True)!="School":
         index+=1
         IDX.append(index)
         A.append(pyBlitz.CleanString(col[0].find(string=True)))
-        B.append(col[1].find(string=True))
-        C.append(col[2].find(string=True))
+        B.append(pyBlitz.CleanString(col[1].find(string=True)))
+        C.append(pyBlitz.CleanString(col[2].find(string=True)))
 for row in table6[0].findAll("tr"):
     col=row.findAll('td')
     if len(col)>0 and col[0].find(string=True)!="School":
         index+=1
         IDX.append(index)
         A.append(pyBlitz.CleanString(col[0].find(string=True)))
-        B.append(col[1].find(string=True))
-        C.append(col[2].find(string=True))
+        B.append(pyBlitz.CleanString(col[1].find(string=True)))
+        C.append(pyBlitz.CleanString(col[2].find(string=True)))
         
 print("... retrieving teams spreadsheet, adding abbreviations")
 teams_excel = "{0}teams.xlsx".format(settings.data_path)
@@ -213,7 +213,7 @@ ratios=[]
 idx=0
 for team in A:
     bclass = str(C[idx]).strip()
-    if "DIVISION 1  FBS" in bclass:
+    if "DIVISION 1 FBS" in bclass:
         the_best = pyBlitz.GetFuzzyBest(team.lower(), matches, picked)
         abbrs.append(the_best[1])
         ratios.append(the_best[2])

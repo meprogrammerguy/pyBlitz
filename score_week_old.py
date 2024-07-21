@@ -16,12 +16,13 @@ from shutil import copyfile
 import settings
 
 def main(argv):
-    stat_file = settings.data_path + "json/stats.json"
+    stat_file = settings.data_path + "stats.json"
+    merge_file = settings.data_path + "merge.json"
     week = "current"
     verbose = False
     test = False
     try:
-        opts, args = getopt.getopt(argv, "hs:w:vt", ["help", "stat_file=", "week=", "verbose", "test"])
+        opts, args = getopt.getopt(argv, "hs:m:w:vt", ["help", "stat_file=", "merge_file=", "week=", "verbose", "test"])
     except getopt.GetoptError as err:
         print(err)
         usage()
@@ -40,6 +41,8 @@ def main(argv):
             stat_file = a
         elif o in ("-w", "--week"):
             week = a
+        elif o in ("-m", "--merge_file"):
+            merge_file = a
         else:
             assert False, "unhandled option"
     if (test):
@@ -49,13 +52,14 @@ def main(argv):
         else:
             print ("Test result - fail")
     else:
-        PredictTournament(week, stat_file, verbose)
+        PredictTournament(week, stat_file, merge_file, verbose)
 
 def usage():
     usage = """
     -h --help                 Prints this help
     -v --verbose              Increases the information level
     -s --stat_file            stats file (json file format)
+    -m --merge_file           merge file (csv/spreadsheet file format)
     -t --test                 runs test routine to check calculations
     -w --week                 week to predict
                                 [current, all, 1-16] default is current
@@ -73,8 +77,7 @@ def EarliestUnpickedWeek(list_schedule):
     return 0
 
 def GetWeekRange(week, list_schedule):
-    #max_range = len(list_schedule)
-    max_range = 16 # there is now only one sched file (not 16)
+    max_range = len(list_schedule)
     if (week[0].lower() == "a"):
         return range(0, max_range)
     if (week[0].lower() == "c"):
@@ -110,22 +113,19 @@ def CurrentStatsFile(filename):
         return False
     stat = os.path.getmtime(filename)
     stat_date = datetime.fromtimestamp(stat)
-    if str(stat_date.date()) < str(datetime.now().date())[:10]:
+    if stat_date.date() < datetime.now().date():
         return False
     return True
 
 def RefreshStats():
-    import scrape_teams
     import scrape_bornpowerindex
     import scrape_teamrankings
-    import scrape_schedule
-    import scrape_espn_odds
     import combine_stats
 
-def FindTeams(teama, teamb, dict_stats):
+def FindTeams(teama, teamb, dict_merge):
     FoundA = ""
     FoundB = ""
-    for item in dict_stats.values():
+    for item in dict_merge.values():
         if (teama.lower().strip()== item["scheduled"].lower().strip()):
             FoundA = item["BPI"]
         if (teamb.lower().strip() == item["scheduled"].lower().strip()):
@@ -134,10 +134,10 @@ def FindTeams(teama, teamb, dict_stats):
             break
     return FoundA, FoundB
 
-def FindAbbr(teama, teamb, dict_stats):
+def FindAbbr(teama, teamb, dict_merge):
     FoundAbbrA = ""
     FoundAbbrB = ""
-    for item in dict_stats.values():
+    for item in dict_merge.values():
         stats = item["BPI"].lower().strip()
         div = item["class"].lower().strip()
         abbr = item["abbr"].strip()
@@ -153,7 +153,7 @@ def SaveOffFiles(path, file_list):
         filename = os.path.basename(str(item))
         week_path = os.path.dirname(item)
         idx =  GetIndex(filename)
-        statname = "{0}/stats{1}.json".format(stats_path, idx)
+        statname = "{0}/stats{1}.json".format(week_path, idx)
         dest_file = "{0}{1}".format(path, filename)
         if (os.path.exists(dest_file)):
             os.remove(dest_file)
@@ -166,45 +166,50 @@ def SaveOffFiles(path, file_list):
 def SaveStats(output_file, week_path, stat_file):
     filename = os.path.basename(output_file)
     idx =  GetIndex(filename)
-    dest_file = "{0}stats{1}.json".format(stats_path, idx)
+    dest_file = "{0}stats{1}.json".format(week_path, idx)
     copyfile(stat_file, dest_file)
     
-def GetDatesByWeek(j):
-    wd={}
-    return wd
-
-def PredictTournament(week, stat_file, verbose):
+def PredictTournament(week, stat_file, merge_file, verbose):
     now = datetime.now()
     year = int(now.year)
     week_path = "{0}{1}/".format(settings.predict_root, year)
-    stats_path = "{0}{1}/json/".format(settings.predict_root, year)
-    sched_file = "{0}{1}/{2}sched.json".format(settings.predict_root, year, settings.predict_sched)
-    sched_path = "{0}{1}/{2}json/".format(settings.predict_root, year, settings.predict_sched)
+    sched_path = "{0}{1}/{2}".format(settings.predict_root, year, settings.predict_sched)
     saved_path = "{0}{1}/{2}".format(settings.predict_root, year, settings.predict_saved)
     weekly_files = GetSchedFiles(week_path, "week*.csv")
     SaveOffFiles(saved_path, weekly_files)
     for p in Path(week_path).glob("week*.csv"):
         p.unlink()
-    for p in Path(stats_path).glob("stats*.json"):
+    for p in Path(week_path).glob("stats*.json"):
         p.unlink()
     if (not CurrentStatsFile(stat_file)):
-        print ("refreshing stats stuff")
         RefreshStats()
-    if (not os.path.exists(sched_file)):
-        print ("schedule file is missing, run the scrape_schedule tool to create")
+    scrape_schedule.year = now.year
+    scrape_schedule.main(sys.argv[1:])
+    schedule_files = GetSchedFiles(sched_path, "sched*.json")
+    if (not schedule_files):
+        scrape_schedule.year = now.year
+        scrape_schedule.main(sys.argv[1:])
+        schedule_files = GetSchedFiles(sched_path, "sched*.json")
+    if (not schedule_files):
+        print ("schedule files are missing, run the scrape_schedule tool to create")
         exit()
-    with open(sched_file) as schedule_file:
-        json_sched = json.load(schedule_file, object_pairs_hook=OrderedDict)
+    dict_merge = []
+    if (not os.path.exists(merge_file)):
+        print ("master merge file is missing, run the combine_merge tool to create")
+        exit()
+    with open(merge_file) as mergefile:
+        dict_merge = json.load(mergefile, object_pairs_hook=OrderedDict)
     if (not os.path.exists(stat_file)):
         print ("statistics file is missing, run the combine_stats tool to create")
         exit()
     with open(stat_file) as stats_file:
         dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
-    week_dates={}
-    week_dates = GetDatesByWeek(json_sched)
-    pdb.set_trace()
+    list_schedule = []
+    for file in schedule_files:
+        with open(file) as schedule_file:
+            item = json.load(schedule_file, object_pairs_hook=OrderedDict)
+            list_schedule.append(item)
     weeks = GetWeekRange(week, list_schedule)
-    pdb.set_trace()
     idx = GetIndex(week)
     if ((idx < 1) or (idx > len(schedule_files))):
         week = max(weeks) + 1
@@ -213,6 +218,7 @@ def PredictTournament(week, stat_file, verbose):
     print ("Weekly Prediction Tool")
     print ("**************************")
     print ("Statistics file:\t{0}".format(stat_file))
+    print ("Team Merge file:\t{0}".format(merge_file))
     print ("\trunning for Week: {0}".format(week))
     print ("\tDirectory Location: {0}".format(week_path))
     print ("**************************")
@@ -222,8 +228,8 @@ def PredictTournament(week, stat_file, verbose):
             list_predict.append(["Index", "Year", "Date", "TeamA", "AbbrA", "ChanceA", "ScoreA", "Spread", "TeamB", "AbbrB", "ChanceB", "ScoreB", "Exceptions"])
             index = 0
             for item in list_schedule[idx].values():
-                teama, teamb = FindTeams(item["TeamA"], item["TeamB"], dict_stats)
-                abbra, abbrb = FindAbbr(teama, teamb, dict_stats)
+                teama, teamb = FindTeams(item["TeamA"], item["TeamB"], dict_merge)
+                abbra, abbrb = FindAbbr(teama, teamb, dict_merge)
                 neutral = False
                 if (item["Home"].lower().strip() == "neutral"):
                     neutral = True

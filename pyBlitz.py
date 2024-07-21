@@ -153,8 +153,10 @@ def GetFloat(item):
     return myFloat(idx[0])
 
 def CleanString(data):
+    data =  re.sub("’","", data)
     data =  re.sub("'","", data)
     data =  re.sub("Ã©","e", data)
+    data = re.sub(' +', ' ', data)
     return unidecode(data)
 
 def Chance(teama, teamb, homeTeam = 'Neutral', verbose = True):
