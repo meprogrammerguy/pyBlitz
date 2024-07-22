@@ -170,7 +170,7 @@ if teambads:
     for bad in teambads:
         print ("         " + bad)
     print (" ")
-    print (str(len(teambads)) + " team(s) not found in merge sheet.")
+    print (str(len(teambads)) + " team(s) not found in stats sheet.")
     print (" ")
     print ("... fail")
 else:
@@ -179,7 +179,7 @@ else:
 input("press enter for more results...")                
 print (" ")
 if schedbads:
-    print ("*** warning: could not find these scheduled teams in the merge sheet")
+    print ("*** warning: could not find these scheduled teams in the stats sheet")
     print ("*** TBD as a team means the schedule is not yet firmed up (this is ok)")
     print ("*** some errors won't be correctable so do your best, then re-run")
     print (" ")
@@ -187,7 +187,7 @@ if schedbads:
     for bad in schedbads:
         print ("         " + bad)
     print (" ")
-    print (str(len(schedbads)) + " team(s) not found in merge sheet.")
+    print (str(len(schedbads)) + " team(s) not found in stats sheet.")
     print (" ")
     print ("... fail")
 else:
@@ -196,14 +196,14 @@ else:
 input("press enter for more results...")        
 print (" ")
 if rankbads:
-    print ("*** warning: could not find these teamrankings teams in the merge sheet")
+    print ("*** warning: could not find these teamrankings teams in the stats sheet")
     print ("*** some errors won't be correctable so do your best, then re-run")
     print (" ")
     print (" ")
     for bad in rankbads:
         print ("         " + bad)
     print (" ")
-    print (str(len(rankbads)) + " team(s) not found in merge sheet.")
+    print (str(len(rankbads)) + " team(s) not found in stats sheet.")
     print (" ")
     print ("... fail")
 else:
@@ -212,7 +212,7 @@ else:
 input("press enter for more results...")                
 print (" ")
 if bpibads:
-    print ("*** warning: could not find these bornpowerindex teams in the merge sheet")
+    print ("*** warning: could not find these bornpowerindex teams in the stats sheet")
     print ("*** the bornpowerindex has every team in the universe (so lots of warnings will happen)")
     print ("*** some errors won't be correctable so do your best, then re-run")
     print (" ")
@@ -220,7 +220,7 @@ if bpibads:
     for bad in bpibads:
         print ("         " + bad)
     print (" ")
-    print (str(len(bpibads)) + " team(s) not found in merge sheet.")
+    print (str(len(bpibads)) + " team(s) not found in stats sheet.")
     print (" ")
     print ("... fail")
 else:

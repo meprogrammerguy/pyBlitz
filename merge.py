@@ -25,6 +25,7 @@ def RefreshMerge():
     import scrape_teamrankings
     import scrape_schedule
     import scrape_espn_odds
+    import combine_merge
     import combine_stats
 
 if __name__ == "__main__":

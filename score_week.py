@@ -12,6 +12,7 @@ from datetime import datetime
 import re
 import scrape_schedule
 from shutil import copyfile
+import pandas as pd
 
 import settings
 
@@ -171,6 +172,38 @@ def SaveStats(output_file, week_path, stat_file):
     
 def GetDatesByWeek(j):
     wd={}
+    Sdates=[]
+    for item in j.values():
+        Sdates.append(item["Date"].strip())
+    scheddate_set = set(Sdates)
+    dates = list(scheddate_set)
+    dates.sort()
+    idx=0
+    for x in range(25):
+        bw = dates[idx]
+        df = pd.Timestamp(bw)
+        bdow = df.dayofweek
+        idx2=0
+        last = False
+        for y in range(bdow, 7):
+            if idx + idx2 >= len(dates):
+                last = True
+                lw = dates[len(dates) - 1]
+                break
+            ew = dates[idx + idx2]
+            idx2+=1
+        df = pd.Timestamp(ew)
+        edow = df.dayofweek
+        if edow <= bdow:
+            ew = bw
+            idx2-=1
+        idx+=idx2
+        print (x)
+        if last:
+             break
+        wd[x+1] = [bw, ew]
+    wd[x+1] = [bw, lw]
+    print (str(wd))
     return wd
 
 def PredictTournament(week, stat_file, verbose):
@@ -178,7 +211,7 @@ def PredictTournament(week, stat_file, verbose):
     year = int(now.year)
     week_path = "{0}{1}/".format(settings.predict_root, year)
     stats_path = "{0}{1}/json/".format(settings.predict_root, year)
-    sched_file = "{0}{1}/{2}sched.json".format(settings.predict_root, year, settings.predict_sched)
+    sched_file = "{0}{1}/{2}json/sched.json".format(settings.predict_root, year, settings.predict_sched)
     sched_path = "{0}{1}/{2}json/".format(settings.predict_root, year, settings.predict_sched)
     saved_path = "{0}{1}/{2}".format(settings.predict_root, year, settings.predict_saved)
     weekly_files = GetSchedFiles(week_path, "week*.csv")
