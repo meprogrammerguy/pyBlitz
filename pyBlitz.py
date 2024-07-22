@@ -120,11 +120,12 @@ def findTeams(first, second, dict_stats, verbose = True):
     teama = {}
     teamb = {}
     for item in dict_stats.values():
-        if (item["BPI"].lower().strip() == first.lower().strip()):
+        if (item["team"].lower().strip() == first.lower().strip() \
+            and item["BPI"].strip() > "" and item["teamrankings"].strip() > ""):
             teama = item
-        if (item["BPI"].lower().strip() == second.lower().strip()):
+        if (item["team"].lower().strip() == second.lower().strip() \
+            and item["BPI"].strip() > "" and item["teamrankings"].strip() > ""):
             teamb = item
-
     if (not teama and not teamb):
         log = "findTeams() - Could not find stats for either team [{0}] or [{1}]".format(first, second)
         settings.exceptions.append(log)
@@ -159,23 +160,21 @@ def CleanString(data):
     data = re.sub(' +', ' ', data)
     return unidecode(data)
 
-def Chance(teama, teamb, homeTeam = 'Neutral', verbose = True):
-    EffMgn = Spread(teama, teamb, verbose = False, homeTeam = homeTeam)
+def Chance(teama, teamb, neutral, verbose):
+    EffMgn = Spread(teama, teamb, neutral, verbose)
     if (verbose):
         print ("Chance(efficiency margin) {0}".format(EffMgn))
     results = GetChance(EffMgn)
     aPercent = results["answer"]
     bPercent = results["opposite"]
     if (verbose):
-        if homeTeam == "Neutral":
-            print ("Chance({0}) {1}%".format(teama["BPI"], aPercent),
-                "vs. Chance({0}) {1}%".format(teamb["BPI"], bPercent))
+        if neutral:
+            print ("Chance({0}) {1}%".format(teama, aPercent), "vs. Chance({0}) {1}%".format(teamb, bPercent))
         else:
-            print ("Chance({0}) {1}%".format(teama["BPI"], aPercent),
-                "at Chance({0}) {1}%".format(teamb["BPI"], bPercent))
+            print ("Chance({0}) {1}%".format(teama, aPercent), "at Chance({0}) {1}%".format(teamb, bPercent))
     return aPercent, bPercent
 
-def Tempo(teama, teamb, verbose = True):
+def Tempo(teama, teamb, verbose):
     TdiffaScore = myFloat(teama['PLpG3']) * myFloat(teama['PTpP3'])
     TdiffaOScore = myFloat(teama['OPLpG3']) * myFloat(teama['OPTpP3'])
     TdiffbScore = myFloat(teamb['PLpG3']) * myFloat(teamb['PTpP3'])
@@ -191,15 +190,15 @@ def Test(verbose):
     # Actual Score: 24-6
     # venue was: Mercedes-Benz Super dome in New Orleans, Louisiana (Neutral Field "The Sugar Bowl")
 
-    teama = {'BPI':"alabama", 'Ranking':118.5, 'PLpG3':64.7, 'PTpP3':.356, 'OPLpG3':18.7, 'OPTpP3':.246, \
+    teama = {'team':"alabama", 'Ranking':118.5, 'PLpG3':64.7, 'PTpP3':.356, 'OPLpG3':18.7, 'OPTpP3':.246, \
         'Result1':65.1, 'Result2':17}
-    teamb = {'BPI':"clemson", 'Ranking':113, 'PLpG3':79.3, 'PTpP3':.328, 'OPLpG3':12.3, 'OPTpP3':.199, \
+    teamb = {'team':"clemson", 'Ranking':113, 'PLpG3':79.3, 'PTpP3':.328, 'OPLpG3':12.3, 'OPTpP3':.199, \
         'Result1':34.9,'Result2':11}
 
     if (verbose):
         print ("Test #1 Alabama vs Clemson on 1/1/18")
         print ("        Neutral field, Testing Chance() routine")
-    chancea, chanceb =  Chance(teama, teamb, homeTeam = 'Neutral', verbose = verbose)
+    chancea, chanceb =  Chance(teama, teamb, True, verbose)
     if (str(teama['Result1']) == chancea):
         result += 1
     if (str(teamb['Result1']) == chanceb):
@@ -213,7 +212,7 @@ def Test(verbose):
     if (verbose):
         print ("Test #2 Alabama vs Clemson on 1/1/18")
         print ("        Neutral field, testing Score() routine")
-    scorea, scoreb = Score(teama, teamb, verbose = verbose, homeTeam = 'Neutral')
+    scorea, scoreb = Score(teama, teamb, True, True)
     if (teama['Result2'] == scorea):
         result += 1
     if (teamb['Result2'] == scoreb):
@@ -222,11 +221,11 @@ def Test(verbose):
         return True
     return False
 
-def Score(teama, teamb, verbose = True, homeTeam = 'Neutral'):
-    tempo = Tempo(teama, teamb, False)
+def Score(teama, teamb, neutral, verbose):
+    tempo = Tempo(teama, teamb, verbose)
     if (verbose):
         print ("Score(tempo) {0}".format(tempo))
-    EffMgn = Spread(teama, teamb, verbose = False, homeTeam = homeTeam)
+    EffMgn = Spread(teama, teamb, neutral, verbose)
     if (verbose):
         print ("Score(efficiency margin) {0}".format(EffMgn))
     aScore = round((tempo/2.0) - (EffMgn / 2.0))
@@ -236,18 +235,16 @@ def Score(teama, teamb, verbose = True, homeTeam = 'Neutral'):
     if (bScore < 0):
         bScore = 0
     if (verbose):
-        print ("Score({0}) {1} at Score({2}) {3}".format(teama["BPI"], aScore, teamb["BPI"], bScore))
+        print ("Score({0}) {1} at Score({2}) {3}".format(teama["team"], aScore, teamb["team"], bScore))
     return aScore, bScore
 
-def Spread(teama, teamb, verbose = True, homeTeam = 'Neutral'):
-    EMdiff = (myFloat(teamb['Ranking']) - myFloat(teama['Ranking']))
+def Spread(teama, teamb, neutral, verbose):
+    EMdiff = (myFloat(str(teamb['Ranking'])) - myFloat(str(teama['Ranking'])))
     EffMgn = 0
-    if (homeTeam.lower().strip() == teama["BPI"].lower().strip()):
-        EffMgn = EMdiff + settings.homeAdvantage
-    elif (homeTeam.lower().strip() == teamb["BPI"].lower().strip()):
-        EffMgn = EMdiff - settings.homeAdvantage
-    else:
+    if neutral:
         EffMgn = EMdiff
+    else:
+        EffMgn = EMdiff + settings.homeAdvantage
     if (verbose):
         print ("Spread(efficiency margin) {0}".format(EffMgn))
     return EffMgn
@@ -258,14 +255,14 @@ def Calculate(first, second, neutral, verbose):
             info = "{0} verses {1} at a neutral location".format(first, second)
             print (info)
         else:
-            info = "Visiting team: {0} verses Home team: {1}".format(first, second)
+            info = "Visiting team: {0} at Home team: {1}".format(first, second)
             print (info)
             
     file = "{0}json/stats.json".format(settings.data_path)
     with open(file) as stats_file:
         dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
 
-    teama, teamb = findTeams(first, second, dict_stats, verbose = verbose)
+    teama, teamb = findTeams(first, second, dict_stats, verbose)
     if (not teama and not teamb):
         info = "Calculate() - [{0}] and [{1}] missing from stats, can't predict".format(first, second)
         settings.exceptions.append(info)
@@ -273,10 +270,14 @@ def Calculate(first, second, neutral, verbose):
         return {}
     classa = "?"
     if (teama):
-        classa = teama["Class"].lower().strip()
+        classa = teama["Class"].strip()
+        if classa == "":
+            classa = "?"
     classb = "?"
     if (teamb):
-        classb = teamb["Class"].lower().strip()
+        classb = teamb["Class"].strip()
+        if classb == "":
+            classb = "?"
     if (classa == "?" and classb == "?"):
         e_txt = "Calculate() - [{0}] team playing [{1}] team,  Cannot predict, Fix merge spreadsheet(s)" \
             .format(classa, classb)
@@ -288,7 +289,7 @@ def Calculate(first, second, neutral, verbose):
         print ("Warning: {0} playing {1}, Cannot Predict, Fix merge spreadsheet(s)".format(first, second))
         return dict_score
     else:
-        if (classa == "division 1  fbs" and classb != "division 1  fbs"):
+        if (classa == "DIVISION 1 FBS" and classb != "DIVISION 1 FBS"):
             settings.exceptions.append("Calculate() - [{0}] team playing [{1}] team, {2} wins".format(classa, classb, first))
             dict_score = \
             {
@@ -296,7 +297,7 @@ def Calculate(first, second, neutral, verbose):
                 'chanceb':"0", 'spread': 0, 'tempo':"0"
             }
             return dict_score
-        if (classa != "division 1  fbs" and classb == "division 1  fbs"):
+        if (classa != "DIVISION 1 FBS" and classb == "DIVISION 1 FBS"):
             settings.exceptions.append("Calculate() - [{0}] team playing [{1}] team, {2} wins".format(classa, classb, second))
             dict_score = \
             {
@@ -304,16 +305,10 @@ def Calculate(first, second, neutral, verbose):
                 'spread': 0, 'tempo':"0"
             }
             return dict_score
-    if (not neutral):
-        chancea, chanceb =  Chance(teama, teamb, homeTeam = teamb["BPI"], verbose = verbose)
-        scorea, scoreb = Score(teama, teamb, verbose = verbose, homeTeam = teamb["BPI"])
-        spread = Spread(teama, teamb, verbose = verbose, homeTeam = teamb["BPI"])
-    else:
-        chancea, chanceb =  Chance(teama, teamb, verbose = verbose)
-        scorea, scoreb = Score(teama, teamb, verbose = verbose)
-        spread = Spread(teama, teamb, verbose = verbose)
-
-    tempo = Tempo(teama, teamb, verbose = verbose)
+    chancea, chanceb =  Chance(teama, teamb, neutral, verbose)
+    scorea, scoreb = Score(teama, teamb, neutral, verbose)
+    spread = Spread(teama, teamb, neutral, verbose)
+    tempo = Tempo(teama, teamb, verbose)
 
     dict_score = {'teama':first, 'scorea':"{0}".format(scorea), 'chancea':"{0}".format(chancea) , \
         'teamb':second, 'scoreb':"{0}".format(scoreb), 'chanceb':"{0}"

@@ -59,7 +59,7 @@ def usage():
     -s --stat_file            stats file (json file format)
     -t --test                 runs test routine to check calculations
     -w --week                 week to predict
-                                [current, all, 1-16] default is current
+
     """
     print (usage) 
 
@@ -127,10 +127,10 @@ def FindTeams(teama, teamb, dict_stats):
     FoundA = ""
     FoundB = ""
     for item in dict_stats.values():
-        if (teama.lower().strip()== item["scheduled"].lower().strip()):
-            FoundA = item["BPI"]
-        if (teamb.lower().strip() == item["scheduled"].lower().strip()):
-            FoundB = item["BPI"]
+        if (teama.lower().strip() == item["team"].lower().strip()):
+            FoundA = item["team"]
+        if (teamb.lower().strip() == item["team"].lower().strip()):
+            FoundB = item["team"]
         if (FoundA and FoundB):
             break
     return FoundA, FoundB
@@ -139,12 +139,12 @@ def FindAbbr(teama, teamb, dict_stats):
     FoundAbbrA = ""
     FoundAbbrB = ""
     for item in dict_stats.values():
-        stats = item["BPI"].lower().strip()
-        div = item["class"].lower().strip()
+        stats = item["team"].strip()
+        div = item["Class"].strip()
         abbr = item["abbr"].strip()
-        if (teama.lower().strip() == stats and div == "division 1  fbs"):
+        if (teama.strip() == stats and div == "DIVISION 1 FBS"):
             FoundAbbrA = abbr
-        if (teamb.lower().strip() == stats and div == "division 1  fbs"):
+        if (teamb.strip() == stats and div == "DIVISION 1 FBS"):
             FoundAbbrB = abbr
     return FoundAbbrA, FoundAbbrB
 
@@ -192,18 +192,16 @@ def GetDatesByWeek(j):
                 break
             ew = dates[idx + idx2]
             idx2+=1
+        if last:
+            break
         df = pd.Timestamp(ew)
         edow = df.dayofweek
         if edow <= bdow:
             ew = bw
             idx2-=1
         idx+=idx2
-        print (x)
-        if last:
-             break
         wd[x+1] = [bw, ew]
     wd[x+1] = [bw, lw]
-    print (str(wd))
     return wd
 
 def PredictTournament(week, stat_file, verbose):
@@ -233,59 +231,58 @@ def PredictTournament(week, stat_file, verbose):
         exit()
     with open(stat_file) as stats_file:
         dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
-    week_dates={}
     week_dates = GetDatesByWeek(json_sched)
-    pdb.set_trace()
-    weeks = GetWeekRange(week, list_schedule)
-    pdb.set_trace()
-    idx = GetIndex(week)
-    if ((idx < 1) or (idx > len(schedule_files))):
-        week = max(weeks) + 1
-    if (min(weeks) >= 1):
-        weeks = range(min(weeks) - 1, max(weeks) + 1)
     print ("Weekly Prediction Tool")
     print ("**************************")
     print ("Statistics file:\t{0}".format(stat_file))
     print ("\trunning for Week: {0}".format(week))
     print ("\tDirectory Location: {0}".format(week_path))
     print ("**************************")
-    for idx in range(len(schedule_files)):
-        if (idx in weeks):
-            list_predict = []
-            list_predict.append(["Index", "Year", "Date", "TeamA", "AbbrA", "ChanceA", "ScoreA", "Spread", "TeamB", "AbbrB", "ChanceB", "ScoreB", "Exceptions"])
-            index = 0
-            for item in list_schedule[idx].values():
-                teama, teamb = FindTeams(item["TeamA"], item["TeamB"], dict_stats)
-                abbra, abbrb = FindAbbr(teama, teamb, dict_stats)
-                neutral = False
-                if (item["Home"].lower().strip() == "neutral"):
-                    neutral = True
-                settings.exceptions = []
-                dict_score = pyBlitz.Calculate(teama, teamb, neutral, verbose)
-                errors = " "
-                if (settings.exceptions):
-                    for itm in settings.exceptions:
-                        errors += itm + ", "
-                errors = errors[:-2]
-                index += 1
-                if (len(dict_score) > 0):
-                    list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"],
-                        abbra, dict_score["chancea"], dict_score["scorea"], dict_score["spread"], item["TeamB"], abbrb, dict_score["chanceb"], dict_score["scoreb"], errors])
-                    #print ("{0} {1}% vs {2} {3}% {4}-{5}".format(item["TeamA"], dict_score["chancea"], item["TeamB"], dict_score["chanceb"], dict_score["scorea"], dict_score["scoreb"]))
-                else:
-                    list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], abbra, "?", "?", "?", item["TeamB"], abbrb, "?", "?",
-                        "Warning: cannot predict, both teams missing, fix the merge spreadsheets"])
-                    print ("Warning: Neither {0} or {1} have been found, \n\t Suggest reviewing/fixing the merge spreadsheet(s) and re-run".format( item["TeamA"], item["TeamB"]))
-            Path(week_path).mkdir(parents=True, exist_ok=True)
-            output_file = "{0}week{1}.csv".format(week_path, week)
-            SaveStats(output_file, week_path, stat_file)
-            predict_sheet = open(output_file, 'w', newline='')
-            csvwriter = csv.writer(predict_sheet)
-            for row in list_predict:
-                csvwriter.writerow(row)
-            predict_sheet.close()
-            print ("{0} has been created.".format(output_file))
-    
+    list_predict = []
+    list_predict.append(["Index", "Date", "TeamA", "AbbrA", "ChanceA", "ScoreA", "Spread", "TeamB", \
+        "AbbrB", "ChanceB", "ScoreB", "Exceptions"])
+    index = 0
+    for item in json_sched.values():
+        start_date = week_dates[int(week)][0]
+        end_date = week_dates[int(week)][1]
+        if start_date >= item["Date"] and end_date <= item["Date"]:
+            teama, teamb = FindTeams(item["Team 1"], item["Team 2"], dict_stats)
+            abbra, abbrb = FindAbbr(teama, teamb, dict_stats)
+            neutral = False
+            if (item["Where"].lower().strip() == "neutral"):
+                neutral = True
+            settings.exceptions = []
+            dict_score = pyBlitz.Calculate(teama, teamb, neutral, verbose)
+            pdb.set_trace()
+            errors = " "
+            if (settings.exceptions):
+                for itm in settings.exceptions:
+                    errors += itm + ", "
+            errors = errors[:-2]
+            index += 1
+            pdb.set_trace()
+            if (len(dict_score) > 0):
+                list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], \
+                    abbra, dict_score["chancea"], dict_score["scorea"], dict_score["spread"], item["TeamB"], \
+                    abbrb, dict_score["chanceb"], dict_score["scoreb"], errors])
+            else:
+                list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], abbra, "?", \
+                    "?", "?", item["TeamB"], abbrb, "?", "?",
+                    "Warning: cannot predict, both teams missing, fix the merge spreadsheets"])
+                print ("Warning: Neither {0} or {1} have been found, \n\t Suggest reviewing/fixing " \
+                    "the merge spreadsheet(s) and re-run".format( item["TeamA"], item["TeamB"]))
+        #pdb.set_trace()
+    pdb.set_trace()
+    Path(week_path).mkdir(parents=True, exist_ok=True)
+    output_file = "{0}week{1}.csv".format(week_path, week)
+    SaveStats(output_file, week_path, stat_file)
+    predict_sheet = open(output_file, 'w', newline='')
+    csvwriter = csv.writer(predict_sheet)
+    for row in list_predict:
+        csvwriter.writerow(row)
+    predict_sheet.close()
+    print ("{0} has been created.".format(output_file))
+    pdb.set_trace()    
     import measure_results
     # How are we doing? Let's find Out!
     file = "{0}results.json".format(saved_path)
