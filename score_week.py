@@ -4,7 +4,6 @@ import sys, getopt
 import pyBlitz
 from collections import OrderedDict
 import json
-#import csv
 import pdb
 import os.path
 from pathlib import Path
@@ -15,8 +14,24 @@ from shutil import copyfile
 import pandas as pd
 import glob
 import xlsxwriter
+import measure_results
 
 import settings
+
+def GetNumber(item):
+    idx = re.findall(r'\d+', str(item))
+    if (len(idx) == 0):
+        idx.append("-1")
+    return int(idx[0])
+
+year = 0
+now = datetime.now()
+year = int(now.year)
+if (len(sys.argv)>=3):
+    year = GetNumber(sys.argv[2])
+    if (year < 2002 or year > int(now.year)):
+        year = int(now.year)
+current_working_directory = os.getcwd()
 
 def main(argv):
     stat_file = settings.data_path + "json/stats.json"
@@ -56,7 +71,7 @@ def usage():
     -s --stat_file            stats file (json file format)
     -t --test                 runs test routine to check calculations
     -w --week                 week to predict (use week 99 for the bowl games)
-
+                                    (add the year to run for past years)
     """
     print (usage) 
 
@@ -80,7 +95,8 @@ def RefreshStats():
     import scrape_teams
     import scrape_bornpowerindex
     import scrape_teamrankings
-    import scrape_schedule
+    scrape_schedule.year = year
+    scrape_schedule.main(sys.argv[1:])
     import scrape_espn_odds
     import combine_stats
 
@@ -132,8 +148,6 @@ def SaveStats(output_file, week_path, stat_file):
     copyfile(stat_file, dest_file)
     
 def PredictTournament(week, stat_file):
-    now = datetime.now()
-    year = int(now.year)
     week_path = "{0}{1}/".format(settings.predict_root, year)
     sched_file = "{0}{1}/{2}json/sched.json".format(settings.predict_root, year, settings.predict_sched)
     saved_path = "{0}{1}/{2}".format(settings.predict_root, year, settings.predict_saved)
@@ -156,10 +170,10 @@ def PredictTournament(week, stat_file):
         exit()
     with open(stat_file) as stats_file:
         dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
-    #week_dates = GetDatesByWeek(json_sched)
     print ("Weekly Prediction Tool")
     print ("**************************")
     print ("Statistics file:\t{0}".format(stat_file))
+    print ("Year is: {0}".format(year))
     print ("\trunning for Week: {0}".format(week))
     print ("\tDirectory Location: {0}".format(week_path))
     print ("**************************")
@@ -196,7 +210,6 @@ def PredictTournament(week, stat_file):
     output_file = "{0}week{1}.xlsx".format(week_path, week)
     SaveStats(output_file, week_path, stat_file)
     print ("... creating prediction spreadsheet")
-    #excel_file = "{0}week{1}.xlsx".format(week_path, week)    
     workbook = xlsxwriter.Workbook(output_file)
     worksheet = workbook.add_worksheet()
     for row_num, row_data in enumerate(list_predict):
@@ -204,8 +217,11 @@ def PredictTournament(week, stat_file):
             worksheet.write(row_num, col_num, col_data)
     workbook.close()
     print ("{0} has been created.".format(output_file))
-    pdb.set_trace()    
-    import measure_results
+    #import measure_results
+    
+    measure_results.year = year
+    measure_results.main(sys.argv[1:])
+    pdb.set_trace()
     # How are we doing? Let's find Out!
     file = "{0}results.json".format(saved_path)
     if (os.path.exists(file)):

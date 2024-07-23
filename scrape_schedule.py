@@ -83,7 +83,6 @@ def main(argv):
         p.unlink()
         
     pages = {}
-    #weeks = []
     if not test_mode:
         url.append("{0}/_/week/1/year/{1}/seasontype/3".format(starturl, year))   
         if (year == int(now.year)):
@@ -105,10 +104,8 @@ def main(argv):
                 page = pyBlitz.ErrorToJSON(e, url)
             if "seasontype/3" in item:
                 week = 99
-                #weeks.append(99)
             else:
                 week = idx
-                #weeks.append(idx)
             pages[idx] = week, BeautifulSoup(page, "html5lib")
             idx+=1
 
@@ -121,12 +118,10 @@ def main(argv):
             w_item = item.split("-")
             if "t3" in w_item[3]:
                 week= 99
-                #weeks.append(99)
             else:
                 
                 week = re.findall(r'\d+', w_item[1])
                 week = int(week[0])
-                #weeks.append(idx)
             pages[idx] = week, BeautifulSoup(page, "html5lib")
             idx+=1
 
@@ -172,11 +167,9 @@ def main(argv):
     score2=[]
     for dates in SCHED:
         week = SCHED[dates][0]
-        #print (week)
         for rows in SCHED[dates][1]:
             first_team = pyBlitz.CleanString(SCHED[dates][1][rows][0])
             second_team = pyBlitz.CleanString(SCHED[dates][1][rows][1])
-            #pdb.set_trace()
             if "TBD" in first_team:
                 teama.append("TBD")
                 first_abbrev = "TBD"
@@ -242,4 +235,4 @@ def main(argv):
     print ("done.")
 
 if __name__ == "__main__":
-  main(sys.argv[1:])
+    main(sys.argv[1:])
