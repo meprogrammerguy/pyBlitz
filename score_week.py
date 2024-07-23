@@ -186,9 +186,7 @@ def PredictTournament(week, stat_file, verbose):
     now = datetime.now()
     year = int(now.year)
     week_path = "{0}{1}/".format(settings.predict_root, year)
-    #stats_path = "{0}{1}/json/".format(settings.predict_root, year)
     sched_file = "{0}{1}/{2}json/sched.json".format(settings.predict_root, year, settings.predict_sched)
-    #sched_path = "{0}{1}/{2}json/".format(settings.predict_root, year, settings.predict_sched)
     saved_path = "{0}{1}/{2}".format(settings.predict_root, year, settings.predict_saved)
     weekly_files = GetSchedFiles(week_path, "week*.csv")
     SaveOffFiles(saved_path, week_path, weekly_files)
@@ -222,23 +220,14 @@ def PredictTournament(week, stat_file, verbose):
     index = 0
     for item in json_sched.values():
         start_date = week_dates[int(week)][0]
-        #print (item["Date"])
         end_date = week_dates[int(week)][1]
-        #if start_date == "2024-08-29":
-            #print ("start")
-            #if start_date >= item["Date"] and item["Date"] <= end_date:
-                #print ("got inside")
-                #pdb.set_trace()
         if start_date >= item["Date"] and item["Date"] <= end_date:
-        #if start_date >= item["Date"] and end_date <= item["Date"]:
             teama, teamb = FindTeams(item["Team 1"], item["Team 2"], dict_stats)
             abbra, abbrb = FindAbbr(teama, teamb, dict_stats)
             neutral = False
             if (item["Where"].lower().strip() == "neutral"):
                 neutral = True
             settings.exceptions = []
-            print (teama)
-            print (teamb)
             dict_score = pyBlitz.Calculate(teama, teamb, neutral, verbose)
             errors = " "
             if (settings.exceptions):

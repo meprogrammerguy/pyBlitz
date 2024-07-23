@@ -66,10 +66,10 @@ for item in teams_json["shortDisplayName"]:
     for bpi_item in bpi_json["team"]:
         key_team = bpi_json["team"][bpi_item]
         bpi_team = pyBlitz.CleanString(str(bpi_json["bpi team"][bpi_item]).strip())
-        if (bpi_team.strip() == "?") or (bpi_team.strip() == "") or (bpi_team == "None") or (bpi_team == None):
+        if (bpi_team.strip() == "") or (bpi_team == "None") or (bpi_team == None):
             bpi_team = " "
         bpi_over = pyBlitz.CleanString(str(bpi_json["override"][bpi_item]).strip())
-        if (bpi_over.strip() == "?") or (bpi_over.strip() == "") or (bpi_over == "None") or (bpi_over == None):
+        if (bpi_over.strip() == "") or (bpi_over == "None") or (bpi_over == None):
             bpi_over = " "
         if team == key_team:
             if len(bpi_over.strip()) > 0:
@@ -78,10 +78,10 @@ for item in teams_json["shortDisplayName"]:
     for rank_item in rank_json["team"]:
         key_team = str(rank_json["team"][rank_item]).strip()
         rank_team = pyBlitz.CleanString(str(rank_json["rankings team"][rank_item]).strip())
-        if (rank_team.strip() == "?") or (rank_team.strip() == "") or (rank_team == "None") or (rank_team == None):
+        if (rank_team.strip() == "") or (rank_team == "None") or (rank_team == None):
             rank_team = " "
         rank_over = pyBlitz.CleanString(str(rank_json["override"][rank_item]).strip())   
-        if (rank_over.strip() == "?") or (rank_over.strip() == "") or (rank_over == "None") or (rank_over == None):
+        if (rank_over.strip() == "") or (rank_over == "None") or (rank_over == None):
             rank_over = " "
         if team == key_team:
             if len(rank_over.strip()) > 0:
