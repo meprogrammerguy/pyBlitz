@@ -42,13 +42,13 @@ do
     week=$(printf "%02d" $count)
     curl -H "Accept: application/json+v3" \
         "https://www.espn.com/college-football/schedule/_/week/$week/year/$year/seasontype/$type" \
-        -o "w$week-y$year-t$type.html"
+        -o "-w$week-y$year-t$type.html"
         
-    test=$(cat "$HOME/git/pyBlitz/test/pages/schedule/$year/w$week-y$year-t$type.html" | grep ">No Data Available<")
+    test=$(cat "$HOME/git/pyBlitz/test/pages/schedule/$year/-w$week-y$year-t$type.html" | grep ">No Data Available<")
     if [[ $test ]]
     then
         echo "week: $week I am done"
-        rm "$HOME/git/pyBlitz/test/pages/schedule/$year/w$week-y$year-t$type.html"
+        rm "$HOME/git/pyBlitz/test/pages/schedule/$year/-w$week-y$year-t$type.html"
         break
     fi
 done
@@ -60,7 +60,7 @@ week=01
 type=3
 curl -H "Accept: application/json+v3" \
     "https://www.espn.com/college-football/schedule/_/week/$week/year/$year/seasontype/$type" \
-    -o "w$week-y$year-t$type.html"
+    -o "-w$week-y$year-t$type.html"
 #
 # alabama json scrape
 #

@@ -4,7 +4,7 @@ import sys, getopt
 import pyBlitz
 from collections import OrderedDict
 import json
-import csv
+#import csv
 import pdb
 import os.path
 from pathlib import Path
@@ -13,26 +13,24 @@ import re
 import scrape_schedule
 from shutil import copyfile
 import pandas as pd
+import glob
+import xlsxwriter
 
 import settings
 
 def main(argv):
     stat_file = settings.data_path + "json/stats.json"
     week = "current"
-    verbose = False
     test = False
     try:
-        opts, args = getopt.getopt(argv, "hs:w:vt", ["help", "stat_file=", "week=", "verbose", "test"])
+        opts, args = getopt.getopt(argv, "hs:w:t", ["help", "stat_file=", "week=", "test"])
     except getopt.GetoptError as err:
         print(err)
         usage()
         sys.exit(2)
     output = None
-    verbose = False
     for o, a in opts:
-        if o in ("-v", "--verbose"):
-            verbose = True
-        elif o in ("-t", "--test"):
+        if o in ("-t", "--test"):
             test = True
         elif o in ("-h", "--help"):
             usage()
@@ -44,21 +42,20 @@ def main(argv):
         else:
             assert False, "unhandled option"
     if (test):
-        testResult = pyBlitz.Test(verbose)
+        testResult = pyBlitz.Test()
         if (testResult):
             print ("Test result - pass")
         else:
             print ("Test result - fail")
     else:
-        PredictTournament(week, stat_file, verbose)
+        PredictTournament(week, stat_file)
 
 def usage():
     usage = """
     -h --help                 Prints this help
-    -v --verbose              Increases the information level
     -s --stat_file            stats file (json file format)
     -t --test                 runs test routine to check calculations
-    -w --week                 week to predict
+    -w --week                 week to predict (use week 99 for the bowl games)
 
     """
     print (usage) 
@@ -69,20 +66,6 @@ def GetIndex(item):
     if (len(idx) == 0):
         idx.append("0")
     return int(idx[0])
-
-def GetSchedFiles(path, templatename):
-    A = []
-    for p in Path(path).glob(templatename):
-        A.append(str(p))
-    file_list = []
-    for item in range(0, 19):
-        file_list.append("?")
-    for item in A:
-        idx = GetIndex(item)
-        if (len(file_list) > idx):
-            file_list[idx] = item
-    file_list = [x for x in file_list if x != "?"]
-    return file_list
 
 def CurrentStatsFile(filename):
     if (not os.path.exists(filename)):
@@ -148,49 +131,15 @@ def SaveStats(output_file, week_path, stat_file):
     dest_file = "{0}stats{1}.json".format(week_path, idx)
     copyfile(stat_file, dest_file)
     
-def GetDatesByWeek(j):
-    wd={}
-    Sdates=[]
-    for item in j.values():
-        Sdates.append(item["Date"].strip())
-    scheddate_set = set(Sdates)
-    dates = list(scheddate_set)
-    dates.sort()
-    idx=0
-    for x in range(25):
-        bw = dates[idx]
-        df = pd.Timestamp(bw)
-        bdow = df.dayofweek
-        idx2=0
-        last = False
-        for y in range(bdow, 7):
-            if idx + idx2 >= len(dates):
-                last = True
-                lw = dates[len(dates) - 1]
-                break
-            ew = dates[idx + idx2]
-            idx2+=1
-        if last:
-            break
-        df = pd.Timestamp(ew)
-        edow = df.dayofweek
-        if edow <= bdow:
-            ew = bw
-            idx2-=1
-        idx+=idx2
-        wd[x+1] = [bw, ew]
-    wd[x+1] = [bw, lw]
-    return wd
-
-def PredictTournament(week, stat_file, verbose):
+def PredictTournament(week, stat_file):
     now = datetime.now()
     year = int(now.year)
     week_path = "{0}{1}/".format(settings.predict_root, year)
     sched_file = "{0}{1}/{2}json/sched.json".format(settings.predict_root, year, settings.predict_sched)
     saved_path = "{0}{1}/{2}".format(settings.predict_root, year, settings.predict_saved)
-    weekly_files = GetSchedFiles(week_path, "week*.csv")
+    weekly_files = glob.glob("{0}week*.xlsx".format(week_path))
     SaveOffFiles(saved_path, week_path, weekly_files)
-    for p in Path(week_path).glob("week*.csv"):
+    for p in Path(week_path).glob("week*.xlsx"):
         p.unlink()
     for p in Path(week_path).glob("stats*.json"):
         p.unlink()
@@ -207,7 +156,7 @@ def PredictTournament(week, stat_file, verbose):
         exit()
     with open(stat_file) as stats_file:
         dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
-    week_dates = GetDatesByWeek(json_sched)
+    #week_dates = GetDatesByWeek(json_sched)
     print ("Weekly Prediction Tool")
     print ("**************************")
     print ("Statistics file:\t{0}".format(stat_file))
@@ -219,16 +168,14 @@ def PredictTournament(week, stat_file, verbose):
         "AbbrB", "ChanceB", "ScoreB", "Exceptions"])
     index = 0
     for item in json_sched.values():
-        start_date = week_dates[int(week)][0]
-        end_date = week_dates[int(week)][1]
-        if start_date >= item["Date"] and item["Date"] <= end_date:
+        if int(week) == int(item["Week"]):
             teama, teamb = FindTeams(item["Team 1"], item["Team 2"], dict_stats)
             abbra, abbrb = FindAbbr(teama, teamb, dict_stats)
             neutral = False
             if (item["Where"].lower().strip() == "neutral"):
                 neutral = True
             settings.exceptions = []
-            dict_score = pyBlitz.Calculate(teama, teamb, neutral, verbose)
+            dict_score = pyBlitz.Calculate(teama, teamb, neutral)
             errors = " "
             if (settings.exceptions):
                 for itm in settings.exceptions:
@@ -246,13 +193,16 @@ def PredictTournament(week, stat_file, verbose):
                 print ("Warning: Neither {0} or {1} have been found, \n\t Suggest reviewing/fixing " \
                     "the merge spreadsheet(s) and re-run".format( item["Team 1"], item["Team 2"]))
     Path(week_path).mkdir(parents=True, exist_ok=True)
-    output_file = "{0}week{1}.csv".format(week_path, week)
+    output_file = "{0}week{1}.xlsx".format(week_path, week)
     SaveStats(output_file, week_path, stat_file)
-    predict_sheet = open(output_file, 'w', newline='')
-    csvwriter = csv.writer(predict_sheet)
-    for row in list_predict:
-        csvwriter.writerow(row)
-    predict_sheet.close()
+    print ("... creating prediction spreadsheet")
+    #excel_file = "{0}week{1}.xlsx".format(week_path, week)    
+    workbook = xlsxwriter.Workbook(output_file)
+    worksheet = workbook.add_worksheet()
+    for row_num, row_data in enumerate(list_predict):
+        for col_num, col_data in enumerate(row_data):
+            worksheet.write(row_num, col_num, col_data)
+    workbook.close()
     print ("{0} has been created.".format(output_file))
     pdb.set_trace()    
     import measure_results

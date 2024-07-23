@@ -116,7 +116,7 @@ def ErrorToJSON(e, y):
     x = "<http>{" + x + "}</http>"
     return x
 
-def findTeams(first, second, dict_stats, verbose = True):
+def findTeams(first, second, dict_stats):
     teama = {}
     teamb = {}
     for item in dict_stats.values():
@@ -160,31 +160,28 @@ def CleanString(data):
     data = re.sub(' +', ' ', data)
     return unidecode(data)
 
-def Chance(teama, teamb, neutral, verbose):
-    EffMgn = Spread(teama, teamb, neutral, verbose)
-    if (verbose):
-        print ("Chance(efficiency margin) {0}".format(EffMgn))
+def Chance(teama, teamb, neutral):
+    EffMgn = Spread(teama, teamb, neutral)
+    print ("Chance(efficiency margin) {0}".format(EffMgn))
     results = GetChance(EffMgn)
     aPercent = results["answer"]
     bPercent = results["opposite"]
-    if (verbose):
-        if neutral:
-            print ("Chance({0}) {1}%".format(teama, aPercent), "vs. Chance({0}) {1}%".format(teamb, bPercent))
-        else:
-            print ("Chance({0}) {1}%".format(teama, aPercent), "at Chance({0}) {1}%".format(teamb, bPercent))
+    if neutral:
+        print ("Chance({0}) {1}%".format(teama, aPercent), "vs. Chance({0}) {1}%".format(teamb, bPercent))
+    else:
+        print ("Chance({0}) {1}%".format(teama, aPercent), "at Chance({0}) {1}%".format(teamb, bPercent))
     return aPercent, bPercent
 
-def Tempo(teama, teamb, verbose):
+def Tempo(teama, teamb):
     TdiffaScore = myFloat(teama['PLpG3']) * myFloat(teama['PTpP3'])
     TdiffaOScore = myFloat(teama['OPLpG3']) * myFloat(teama['OPTpP3'])
     TdiffbScore = myFloat(teamb['PLpG3']) * myFloat(teamb['PTpP3'])
     TdiffbOScore = myFloat(teamb['OPLpG3']) * myFloat(teamb['OPTpP3'])
     Tdiff = (TdiffaScore + TdiffbScore + TdiffaOScore + TdiffbOScore)/2.0
-    if (verbose):
-        print ("Tempo(tempo) {0}".format(Tdiff))
+    print ("Tempo(tempo) {0}".format(Tdiff))
     return Tdiff
 
-def Test(verbose):
+def Test():
     result = 0
     # Alabama, Clemson on 1/1/18 (stats from 1/7/18)
     # Actual Score: 24-6
@@ -195,23 +192,21 @@ def Test(verbose):
     teamb = {'team':"clemson", 'Ranking':113, 'PLpG3':79.3, 'PTpP3':.328, 'OPLpG3':12.3, 'OPTpP3':.199, \
         'Result1':34.9,'Result2':11}
 
-    if (verbose):
-        print ("Test #1 Alabama vs Clemson on 1/1/18")
-        print ("        Neutral field, Testing Chance() routine")
-    chancea, chanceb =  Chance(teama, teamb, True, verbose)
+    print ("Test #1 Alabama vs Clemson on 1/1/18")
+    print ("        Neutral field, Testing Chance() routine")
+    chancea, chanceb =  Chance(teama, teamb, True)
     if (str(teama['Result1']) == chancea):
         result += 1
     if (str(teamb['Result1']) == chanceb):
         result += 1
-    if (verbose and result == 2):
+    if (result == 2):
         print ("Test #1 - pass")
         print ("*****************************")
-    if (verbose and result != 2):
+    if (result != 2):
         print ("Test #1 - fail")
         print ("*****************************")
-    if (verbose):
-        print ("Test #2 Alabama vs Clemson on 1/1/18")
-        print ("        Neutral field, testing Score() routine")
+    print ("Test #2 Alabama vs Clemson on 1/1/18")
+    print ("        Neutral field, testing Score() routine")
     scorea, scoreb = Score(teama, teamb, True, True)
     if (teama['Result2'] == scorea):
         result += 1
@@ -221,48 +216,43 @@ def Test(verbose):
         return True
     return False
 
-def Score(teama, teamb, neutral, verbose):
-    tempo = Tempo(teama, teamb, verbose)
-    if (verbose):
-        print ("Score(tempo) {0}".format(tempo))
-    EffMgn = Spread(teama, teamb, neutral, verbose)
-    if (verbose):
-        print ("Score(efficiency margin) {0}".format(EffMgn))
+def Score(teama, teamb, neutral):
+    tempo = Tempo(teama, teamb)
+    print ("Score(tempo) {0}".format(tempo))
+    EffMgn = Spread(teama, teamb, neutral)
+    print ("Score(efficiency margin) {0}".format(EffMgn))
     aScore = round((tempo/2.0) - (EffMgn / 2.0))
     bScore = round((tempo/2.0) + (EffMgn /2.0))
     if (aScore < 0):
         aScore = 0
     if (bScore < 0):
         bScore = 0
-    if (verbose):
-        print ("Score({0}) {1} at Score({2}) {3}".format(teama["team"], aScore, teamb["team"], bScore))
+    print ("Score({0}) {1} at Score({2}) {3}".format(teama["team"], aScore, teamb["team"], bScore))
     return aScore, bScore
 
-def Spread(teama, teamb, neutral, verbose):
+def Spread(teama, teamb, neutral):
     EMdiff = (myFloat(str(teamb['Ranking'])) - myFloat(str(teama['Ranking'])))
     EffMgn = 0
     if neutral:
         EffMgn = EMdiff
     else:
         EffMgn = EMdiff + settings.homeAdvantage
-    if (verbose):
-        print ("Spread(efficiency margin) {0}".format(EffMgn))
+    print ("Spread(efficiency margin) {0}".format(EffMgn))
     return EffMgn
 
-def Calculate(first, second, neutral, verbose):
-    if (verbose):
-        if (neutral):
-            info = "{0} verses {1} at a neutral location".format(first, second)
-            print (info)
-        else:
-            info = "Visiting team: {0} at Home team: {1}".format(first, second)
-            print (info)
+def Calculate(first, second, neutral):
+    if (neutral):
+        info = "{0} verses {1} at a neutral location".format(first, second)
+        print (info)
+    else:
+        info = "Visiting team: {0} at Home team: {1}".format(first, second)
+        print (info)
             
     file = "{0}json/stats.json".format(settings.data_path)
     with open(file) as stats_file:
         dict_stats = json.load(stats_file, object_pairs_hook=OrderedDict)
 
-    teama, teamb = findTeams(first, second, dict_stats, verbose)
+    teama, teamb = findTeams(first, second, dict_stats)
     if (not teama and not teamb):
         info = "Calculate() - [{0}] and [{1}] missing from stats, can't predict".format(first, second)
         settings.exceptions.append(info)
@@ -314,14 +304,13 @@ def Calculate(first, second, neutral, verbose):
                 'spread': "0", 'tempo':"0"
             }
             return dict_score
-    chancea, chanceb =  Chance(teama, teamb, neutral, verbose)
-    scorea, scoreb = Score(teama, teamb, neutral, verbose)
-    spread = Spread(teama, teamb, neutral, verbose)
-    tempo = Tempo(teama, teamb, verbose)
+    chancea, chanceb =  Chance(teama, teamb, neutral)
+    scorea, scoreb = Score(teama, teamb, neutral)
+    spread = Spread(teama, teamb, neutral)
+    tempo = Tempo(teama, teamb)
 
     dict_score = {'teama':first, 'scorea':"{0}".format(scorea), 'chancea':"{0}".format(chancea) , \
         'teamb':second, 'scoreb':"{0}".format(scoreb), 'chanceb':"{0}"
         .format(chanceb), 'spread': round(spread, 3), 'tempo':"{0}".format(int(round(tempo))) }
-    if (verbose):
-        print ("Calculate(dict_score) {0}".format(dict_score))
+    print ("Calculate(dict_score) {0}".format(dict_score))
     return dict_score

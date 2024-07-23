@@ -56,7 +56,7 @@ current_working_directory = os.getcwd()
 
 def main(argv):
     url = []
-    test_files = "{0}/test/pages/schedule/{1}/w*.html".format(current_working_directory, year)
+    test_files = "{0}/test/pages/schedule/{1}/-w*.html".format(current_working_directory, year)
     url = glob.glob(test_files)
 
     starturl = "http://www.espn.com/college-football/schedule"
@@ -83,7 +83,7 @@ def main(argv):
         p.unlink()
         
     pages = {}
-    weeks = []
+    #weeks = []
     if not test_mode:
         url.append("{0}/_/week/1/year/{1}/seasontype/3".format(starturl, year))   
         if (year == int(now.year)):
@@ -105,10 +105,10 @@ def main(argv):
                 page = pyBlitz.ErrorToJSON(e, url)
             if "seasontype/3" in item:
                 week = 99
-                weeks.append(99)
+                #weeks.append(99)
             else:
-                week = idx + 1
-                weeks.append(idx)
+                week = idx
+                #weeks.append(idx)
             pages[idx] = week, BeautifulSoup(page, "html5lib")
             idx+=1
 
@@ -118,12 +118,15 @@ def main(argv):
         for item in url:
             with open(item, 'r') as file:
                 page = file.read().rstrip()
-            if "-t3" in item:
+            w_item = item.split("-")
+            if "t3" in w_item[3]:
                 week= 99
-                weeks.append(99)
+                #weeks.append(99)
             else:
-                week = idx + 1
-                weeks.append(idx)
+                
+                week = re.findall(r'\d+', w_item[1])
+                week = int(week[0])
+                #weeks.append(idx)
             pages[idx] = week, BeautifulSoup(page, "html5lib")
             idx+=1
 
@@ -200,7 +203,7 @@ def main(argv):
             score2.append(t_score2)
             yyyy_date = pd.to_datetime(dates, errors='coerce')
             cdate.append(str(yyyy_date)[:10])
-            cweek.append(week)
+            cweek.append("{:02d}".format(week))
             index+=1
             IDX.append(index)
 
@@ -234,7 +237,8 @@ def main(argv):
         for d in dirs:
             os.chmod(os.path.join(root, d), stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)
         for f in files:
-            os.chmod(os.path.join(root, f), stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP | stat.S_IWGRP | stat.S_IROTH | stat.S_IWOTH)
+            os.chmod(os.path.join(root, f), stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP | stat.S_IWGRP | \
+                stat.S_IROTH | stat.S_IWOTH)
     print ("done.")
 
 if __name__ == "__main__":
