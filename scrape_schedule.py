@@ -82,7 +82,8 @@ def main(argv):
     for p in Path(path).glob("sched*.*"):
         p.unlink()
         
-    pages = []
+    pages = {}
+    weeks = []
     if not test_mode:
         url.append("{0}/_/week/1/year/{1}/seasontype/3".format(starturl, year))   
         if (year == int(now.year)):
@@ -94,6 +95,7 @@ def main(argv):
                 url.append("{0}/_/week/{1}/year/{2}/seasontype/2".format(starturl, week, year))
             url.append("{0}/_/week/1/year/{1}/seasontype/3".format(starturl, year))   
         print("... fetching schedule pages")
+        idx=0
         for item in url:
             req = Request(url=item, \
                 headers={'User-Agent':' Mozilla/5.0 (Windows NT 6.1; WOW64; rv:12.0) Gecko/20100101 Firefox/12.0'})
@@ -101,18 +103,34 @@ def main(argv):
                 page = urlopen(req)
             except HTTPError as e:
                 page = pyBlitz.ErrorToJSON(e, url)
-            pages.append(BeautifulSoup(page, "html5lib"))
+            if "seasontype/3" in item:
+                week = 99
+                weeks.append(99)
+            else:
+                week = idx + 1
+                weeks.append(idx)
+            pages[idx] = week, BeautifulSoup(page, "html5lib")
+            idx+=1
+
     else:
         print("... fetching test schedule pages")
+        idx=0
         for item in url:
             with open(item, 'r') as file:
                 page = file.read().rstrip()
-            pages.append(BeautifulSoup(page, "html5lib"))
-            
+            if "-t3" in item:
+                week= 99
+                weeks.append(99)
+            else:
+                week = idx + 1
+                weeks.append(idx)
+            pages[idx] = week, BeautifulSoup(page, "html5lib")
+            idx+=1
+
     SCHED={}
-    for page in pages:
-        dates = page.findAll('div', attrs = {'class':'Table__Title'})
-        tables = page.findAll('tbody', attrs = {'class':'Table__TBODY'})
+    for item in pages:
+        dates = pages[item][1].findAll('div', attrs = {'class':'Table__Title'})
+        tables = pages[item][1].findAll('tbody', attrs = {'class':'Table__TBODY'})
         index = 0
         for lines in tables:
             rows = lines.findAll('tr')
@@ -127,9 +145,8 @@ def main(argv):
                     c_idx+=1
                 ROWS[r_idx] = COLS
                 r_idx+=1
-            SCHED[dates[index].text] = ROWS
+            SCHED[dates[index].text] = pages[item][0], ROWS
             index+=1
-            
     print("... retrieving teams JSON file")
     teams_excel = "{0}teams.xlsx".format(settings.data_path)
     excel_df = pd.read_excel(teams_excel, sheet_name='Sheet1')
@@ -141,6 +158,7 @@ def main(argv):
 
     index = 0
     IDX=[]
+    cweek=[]
     cdate=[]
     teama=[]
     abbrev1=[]
@@ -150,9 +168,12 @@ def main(argv):
     abbrev2=[]
     score2=[]
     for dates in SCHED:
-        for rows in SCHED[dates]:
-            first_team = pyBlitz.CleanString(SCHED[dates][rows][0])
-            second_team = pyBlitz.CleanString(SCHED[dates][rows][1])
+        week = SCHED[dates][0]
+        #print (week)
+        for rows in SCHED[dates][1]:
+            first_team = pyBlitz.CleanString(SCHED[dates][1][rows][0])
+            second_team = pyBlitz.CleanString(SCHED[dates][1][rows][1])
+            #pdb.set_trace()
             if "TBD" in first_team:
                 teama.append("TBD")
                 first_abbrev = "TBD"
@@ -169,20 +190,22 @@ def main(argv):
                 teamb.append(the_best[1])
                 second_abbrev = teams_json["abbreviation"][the_best[0]]
             abbrev2.append(second_abbrev)
-            cwhere = SCHED[dates][rows][1].partition("@")
+            cwhere = SCHED[dates][1][rows][1].partition("@")
             if cwhere[1]:
                 where.append("Away")
             else:
                 where.append("Neutral")
-            t_score1, t_score2 = GetScores(first_abbrev, SCHED[dates][rows][2])
+            t_score1, t_score2 = GetScores(first_abbrev, SCHED[dates][1][rows][2])
             score1.append(t_score1)
             score2.append(t_score2)
             yyyy_date = pd.to_datetime(dates, errors='coerce')
             cdate.append(str(yyyy_date)[:10])
+            cweek.append(week)
             index+=1
             IDX.append(index)
-    
+
     df=pd.DataFrame(IDX, columns=['Index'])
+    df['Week']=cweek
     df['Date']=cdate
     df['Team 1']=teama
     df['Abbrev 1']=abbrev1
