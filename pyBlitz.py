@@ -269,12 +269,12 @@ def Calculate(first, second, neutral, verbose):
         print (info)
         return {}
     classa = "?"
-    if (teama):
+    if teama:
         classa = teama["Class"].strip()
         if classa == "":
             classa = "?"
     classb = "?"
-    if (teamb):
+    if teamb:
         classb = teamb["Class"].strip()
         if classb == "":
             classb = "?"
@@ -284,17 +284,26 @@ def Calculate(first, second, neutral, verbose):
         settings.exceptions.append(e_txt)
         dict_score = \
         {
-            'teama':first, 'scorea':"0", 'chancea':"0" ,'teamb':second, 'scoreb':"0", 'chanceb':"0", 'spread': 0, 'tempo':"0"
+            'teama':first, 'scorea':"0", 'chancea':"0" ,'teamb':second, 'scoreb':"0", 'chanceb':"0", 'spread': "0", 'tempo':"0"
         }
         print ("Warning: {0} playing {1}, Cannot Predict, Fix merge spreadsheet(s)".format(first, second))
         return dict_score
     else:
+        if (classa != "DIVISION 1 FBS" and classb != "DIVISION 1 FBS"):
+            settings.exceptions.append("Calculate() - [{0}] team playing [{1}] team, no stats found". \
+                format(classa, classb, second))
+            dict_score = \
+            {
+                'teama':first, 'scorea':"0", 'chancea':"0" ,'teamb':second, 'scoreb':"0", 'chanceb':"0", \
+                'spread': "0", 'tempo':"0"
+            }
+            return dict_score
         if (classa == "DIVISION 1 FBS" and classb != "DIVISION 1 FBS"):
             settings.exceptions.append("Calculate() - [{0}] team playing [{1}] team, {2} wins".format(classa, classb, first))
             dict_score = \
             {
                 'teama':first, 'scorea':"0", 'chancea':"100" ,'teamb':second, 'scoreb':"0", \
-                'chanceb':"0", 'spread': 0, 'tempo':"0"
+                'chanceb':"0", 'spread': "0", 'tempo':"0"
             }
             return dict_score
         if (classa != "DIVISION 1 FBS" and classb == "DIVISION 1 FBS"):
@@ -302,7 +311,7 @@ def Calculate(first, second, neutral, verbose):
             dict_score = \
             {
                 'teama':first, 'scorea':"0", 'chancea':"0" ,'teamb':second, 'scoreb':"0", 'chanceb':"100", \
-                'spread': 0, 'tempo':"0"
+                'spread': "0", 'tempo':"0"
             }
             return dict_score
     chancea, chanceb =  Chance(teama, teamb, neutral, verbose)

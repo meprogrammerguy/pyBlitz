@@ -63,28 +63,6 @@ def usage():
     """
     print (usage) 
 
-def EarliestUnpickedWeek(list_schedule):
-    current_date = datetime.now().date()
-    for i, e in reversed(list(enumerate(list_schedule))):
-        for item in e.values():
-            str_date = "{0}, {1}".format(item["Date"], item["Year"])
-            dt_obj = datetime.strptime(str_date, '%A, %B %d, %Y')
-            if (current_date >= dt_obj.date()):
-                return i + 2
-    return 0
-
-def GetWeekRange(week, list_schedule):
-    #max_range = len(list_schedule)
-    max_range = 16 # there is now only one sched file (not 16)
-    if (week[0].lower() == "a"):
-        return range(0, max_range)
-    if (week[0].lower() == "c"):
-        return range(EarliestUnpickedWeek(list_schedule) - 1, EarliestUnpickedWeek(list_schedule))
-    idx = GetIndex(week)
-    if ((idx < 1) or (idx > max_range)):
-        return range(EarliestUnpickedWeek(list_schedule) - 1, EarliestUnpickedWeek(list_schedule))
-    return range(int(week) - 1, int(week))
-
 def GetIndex(item):
     filename = os.path.basename(str(item))
     idx = re.findall(r'\d+', str(filename))
@@ -148,18 +126,18 @@ def FindAbbr(teama, teamb, dict_stats):
             FoundAbbrB = abbr
     return FoundAbbrA, FoundAbbrB
 
-def SaveOffFiles(path, file_list):
-    Path(path).mkdir(parents=True, exist_ok=True) 
+def SaveOffFiles(spath, wpath, file_list):
+    Path(spath).mkdir(parents=True, exist_ok=True)
     for item in file_list:
         filename = os.path.basename(str(item))
         week_path = os.path.dirname(item)
         idx =  GetIndex(filename)
-        statname = "{0}/stats{1}.json".format(stats_path, idx)
-        dest_file = "{0}{1}".format(path, filename)
+        dest_file = "{0}{1}".format(spath, filename)
         if (os.path.exists(dest_file)):
             os.remove(dest_file)
         copyfile(item, dest_file)
-        dest_file = "{0}stats{1}.json".format(path, idx)
+        statname = "{0}stats{1}.json".format(wpath, idx)
+        dest_file = "{0}stats{1}.json".format(spath, idx)
         if (os.path.exists(dest_file)):
             os.remove(dest_file)
         copyfile(statname, dest_file)
@@ -167,7 +145,7 @@ def SaveOffFiles(path, file_list):
 def SaveStats(output_file, week_path, stat_file):
     filename = os.path.basename(output_file)
     idx =  GetIndex(filename)
-    dest_file = "{0}stats{1}.json".format(stats_path, idx)
+    dest_file = "{0}stats{1}.json".format(week_path, idx)
     copyfile(stat_file, dest_file)
     
 def GetDatesByWeek(j):
@@ -208,15 +186,15 @@ def PredictTournament(week, stat_file, verbose):
     now = datetime.now()
     year = int(now.year)
     week_path = "{0}{1}/".format(settings.predict_root, year)
-    stats_path = "{0}{1}/json/".format(settings.predict_root, year)
+    #stats_path = "{0}{1}/json/".format(settings.predict_root, year)
     sched_file = "{0}{1}/{2}json/sched.json".format(settings.predict_root, year, settings.predict_sched)
-    sched_path = "{0}{1}/{2}json/".format(settings.predict_root, year, settings.predict_sched)
+    #sched_path = "{0}{1}/{2}json/".format(settings.predict_root, year, settings.predict_sched)
     saved_path = "{0}{1}/{2}".format(settings.predict_root, year, settings.predict_saved)
     weekly_files = GetSchedFiles(week_path, "week*.csv")
-    SaveOffFiles(saved_path, weekly_files)
+    SaveOffFiles(saved_path, week_path, weekly_files)
     for p in Path(week_path).glob("week*.csv"):
         p.unlink()
-    for p in Path(stats_path).glob("stats*.json"):
+    for p in Path(week_path).glob("stats*.json"):
         p.unlink()
     if (not CurrentStatsFile(stat_file)):
         print ("refreshing stats stuff")
@@ -244,35 +222,40 @@ def PredictTournament(week, stat_file, verbose):
     index = 0
     for item in json_sched.values():
         start_date = week_dates[int(week)][0]
+        #print (item["Date"])
         end_date = week_dates[int(week)][1]
-        if start_date >= item["Date"] and end_date <= item["Date"]:
+        #if start_date == "2024-08-29":
+            #print ("start")
+            #if start_date >= item["Date"] and item["Date"] <= end_date:
+                #print ("got inside")
+                #pdb.set_trace()
+        if start_date >= item["Date"] and item["Date"] <= end_date:
+        #if start_date >= item["Date"] and end_date <= item["Date"]:
             teama, teamb = FindTeams(item["Team 1"], item["Team 2"], dict_stats)
             abbra, abbrb = FindAbbr(teama, teamb, dict_stats)
             neutral = False
             if (item["Where"].lower().strip() == "neutral"):
                 neutral = True
             settings.exceptions = []
+            print (teama)
+            print (teamb)
             dict_score = pyBlitz.Calculate(teama, teamb, neutral, verbose)
-            pdb.set_trace()
             errors = " "
             if (settings.exceptions):
                 for itm in settings.exceptions:
                     errors += itm + ", "
             errors = errors[:-2]
             index += 1
-            pdb.set_trace()
             if (len(dict_score) > 0):
-                list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], \
-                    abbra, dict_score["chancea"], dict_score["scorea"], dict_score["spread"], item["TeamB"], \
+                list_predict.append([str(index), item["Date"], item["Team 1"], \
+                    abbra, dict_score["chancea"], dict_score["scorea"], dict_score["spread"], item["Team 2"], \
                     abbrb, dict_score["chanceb"], dict_score["scoreb"], errors])
             else:
-                list_predict.append([str(index), item["Year"], item["Date"], item["TeamA"], abbra, "?", \
-                    "?", "?", item["TeamB"], abbrb, "?", "?",
+                list_predict.append([str(index), item["Date"], item["Team 1"], abbra, "?", \
+                    "?", "?", item["Team 2"], abbrb, "?", "?",
                     "Warning: cannot predict, both teams missing, fix the merge spreadsheets"])
                 print ("Warning: Neither {0} or {1} have been found, \n\t Suggest reviewing/fixing " \
-                    "the merge spreadsheet(s) and re-run".format( item["TeamA"], item["TeamB"]))
-        #pdb.set_trace()
-    pdb.set_trace()
+                    "the merge spreadsheet(s) and re-run".format( item["Team 1"], item["Team 2"]))
     Path(week_path).mkdir(parents=True, exist_ok=True)
     output_file = "{0}week{1}.csv".format(week_path, week)
     SaveStats(output_file, week_path, stat_file)
