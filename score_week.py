@@ -34,7 +34,8 @@ if (len(sys.argv)>=3):
 current_working_directory = os.getcwd()
 
 def main(argv):
-    stat_file = settings.data_path + "json/stats.json"
+    stats_path = "{0}json/".format(settings.data_path)
+    stat_file = stats_path + "stats.json"
     week = "current"
     test = False
     try:
@@ -132,11 +133,14 @@ def SaveOffFiles(spath, wpath, file_list):
         week_path = os.path.dirname(item)
         idx =  GetIndex(filename)
         dest_file = "{0}{1}".format(spath, filename)
+        Path(wpath).mkdir(parents=True, exist_ok=True)
         if (os.path.exists(dest_file)):
             os.remove(dest_file)
         copyfile(item, dest_file)
-        statname = "{0}stats{1}.json".format(wpath, idx)
-        dest_file = "{0}stats{1}.json".format(spath, idx)
+        statname = "{0}json/stats{1}.json".format(wpath, idx)
+        dest_file = "{0}json/stats{1}.json".format(spath, idx)
+        dest_path = "{0}json/".format(spath, idx)
+        Path(dest_path).mkdir(parents=True, exist_ok=True)
         if (os.path.exists(dest_file)):
             os.remove(dest_file)
         copyfile(statname, dest_file)
@@ -144,18 +148,21 @@ def SaveOffFiles(spath, wpath, file_list):
 def SaveStats(output_file, week_path, stat_file):
     filename = os.path.basename(output_file)
     idx =  GetIndex(filename)
-    dest_file = "{0}stats{1}.json".format(week_path, idx)
+    dest_file = "{0}json/stats{1}.json".format(week_path, idx)
+    spath = "{0}json/".format(week_path)
+    Path(spath).mkdir(parents=True, exist_ok=True)
     copyfile(stat_file, dest_file)
     
 def PredictTournament(week, stat_file):
     week_path = "{0}{1}/".format(settings.predict_root, year)
+    stats_path = "{0}{1}json/".format(settings.predict_root, year)
     sched_file = "{0}{1}/{2}json/sched.json".format(settings.predict_root, year, settings.predict_sched)
     saved_path = "{0}{1}/{2}".format(settings.predict_root, year, settings.predict_saved)
     weekly_files = glob.glob("{0}week*.xlsx".format(week_path))
     SaveOffFiles(saved_path, week_path, weekly_files)
     for p in Path(week_path).glob("week*.xlsx"):
         p.unlink()
-    for p in Path(week_path).glob("stats*.json"):
+    for p in Path(stats_path).glob("stats*.json"):
         p.unlink()
     if (not CurrentStatsFile(stat_file)):
         print ("refreshing stats stuff")
@@ -217,8 +224,6 @@ def PredictTournament(week, stat_file):
             worksheet.write(row_num, col_num, col_data)
     workbook.close()
     print ("{0} has been created.".format(output_file))
-    #import measure_results
-    
     measure_results.year = year
     measure_results.main(sys.argv[1:])
     # How are we doing? Let's find Out!

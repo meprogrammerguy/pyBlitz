@@ -28,7 +28,6 @@ def CalcPercent(total, skip, correct):
         return None
 
 def GetPercent(item):
-    #pdb.set_trace()
     newstr = item.replace("%", "")
     newstr = newstr.replace("?", "")
     if (newstr.strip()==""):
@@ -109,7 +108,7 @@ def main(argv):
     Path(saved_path).mkdir(parents=True, exist_ok=True)
     file = '{0}week1.xlsx'.format(saved_path)
     if (not os.path.exists(file)):
-        print ("Weekly files are missing, run the score_week tool to create")
+        print ("Cannot measure results until week 2 or later, exiting")
         exit()
 
     week_files = glob.glob("{0}week*.xlsx".format(saved_path))
