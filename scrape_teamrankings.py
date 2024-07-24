@@ -12,25 +12,47 @@ import contextlib
 import os
 import re
 from pathlib import Path
+import datetime
+import glob
 
 import settings
 import pyBlitz
 
-urls = []
-urls.append("https://www.teamrankings.com/college-football/stat/plays-per-game")
-urls.append("https://www.teamrankings.com/college-football/stat/points-per-play")
-urls.append("https://www.teamrankings.com/college-football/stat/opponent-points-per-game")
-urls.append("https://www.teamrankings.com/college-football/stat/opponent-points-per-play")
+current_working_directory = os.getcwd()
+year = 0
+now = datetime.datetime.now()
+year = int(now.year)
+url = []
+test_files = "{0}/test/pages/schedule/{1}/teamrankings*.html".format(current_working_directory, year)
+url = glob.glob(test_files)
 
 print ("Scrape Team Rankings Tool")
 print ("**************************")
 ratings_table = []
-for url in urls:
-    print ("data is from {0}".format(url))
-    with contextlib.closing(urlopen(url)) as page:
-        soup = BeautifulSoup(page, "html5lib")
-    ratings_table.append(soup.find('table', {"class":"tr-table datatable scrollable"}))
-
+if not url:
+    urls = []
+    urls.append("https://www.teamrankings.com/college-football/stat/plays-per-game")
+    urls.append("https://www.teamrankings.com/college-football/stat/points-per-play")
+    urls.append("https://www.teamrankings.com/college-football/stat/opponent-points-per-game")
+    urls.append("https://www.teamrankings.com/college-football/stat/opponent-points-per-play")
+    test_mode=False
+    print ("*** Live ***")
+    for starturl in urls:
+        print ("data is from {0}".format(starturl))
+        with contextlib.closing(urlopen(starturl)) as page:
+            soup = BeautifulSoup(page, "html5lib")
+        ratings_table.append(soup.find('table', {"class":"tr-table datatable scrollable"}))
+else:
+    test_mode=True
+    print ("*** Test data ***")
+    print ("    data is from {0}/test/pages/schedule/{1}/".format(current_working_directory, year))
+    print ("*** delete test data and re-run to go live ***")
+    print("... fetching test teamrankings pages")
+    for item in url:
+        with open(item, 'r', encoding="windows-1252") as file:
+            page = file.read().rstrip()
+        soup= BeautifulSoup(page, "html5lib")
+        ratings_table.append(soup.find('table', {"class":"tr-table datatable scrollable"}))
 print ("Directory Location: {0}".format(settings.data_path))
 print ("**************************")
 IDX=[]
@@ -42,51 +64,69 @@ E=[]
 index=0
 for row in ratings_table[0].findAll("tr"):
     col=row.findAll('td')
-    if len(col)>0 and col[1].find(text=True)!="Team":
+    if len(col)>0 and col[1].find(string=True)!="Team":
         index+=1
         IDX.append(index)
-        A.append(pyBlitz.CleanString(col[1].find(text=True)))
-        B.append(col[3].find(text=True))
+        A.append(pyBlitz.CleanString(col[1].find(string=True)))
+        B.append(col[3].find(string=True))
 for team in A:
     for row in ratings_table[1].findAll("tr"):
         col=row.findAll('td')
-        if len(col)>0 and col[1].find(text=True)==team:
-            C.append(col[3].find(text=True))
+        if len(col)>0 and col[1].find(string=True)==team:
+            C.append(col[3].find(string=True))
             break
 for team in A:
     for row in ratings_table[2].findAll("tr"):
         col=row.findAll('td')
-        if len(col)>0 and col[1].find(text=True)==team:
-            D.append(col[3].find(text=True))
+        if len(col)>0 and col[1].find(string=True)==team:
+            D.append(col[3].find(string=True))
             break
 for team in A:
     for row in ratings_table[3].findAll("tr"):
         col=row.findAll('td')
-        if len(col)>0 and col[1].find(text=True)==team:
-            E.append(col[3].find(text=True))
+        if len(col)>0 and col[1].find(string=True)==team:
+            E.append(col[3].find(string=True))
             break
 
+print("... retrieving teams spreadsheet, adding abbreviations")
+teams_excel = "{0}teams.xlsx".format(settings.data_path)
+excel_df = pd.read_excel(teams_excel, sheet_name='Sheet1')
+teams_json = json.loads(excel_df.to_json())
+
+matches={}
+matches["shortDisplayName"]=teams_json["shortDisplayName"] # play with these to get the most confidence
+#matches["displayName"]=teams_json["displayName"]
+#matches["name"]=teams_json["name"]
+#matches["nickname"]=teams_json["nickname"]
+matches["location"]=teams_json["location"]
+
+picked=teams_json["abbreviation"]
+
+abbrs=[]
+ratios=[]
+for team in A:
+    the_best = pyBlitz.GetFuzzyBest(team, matches, picked)
+    abbrs.append(the_best[1])
+    ratios.append(the_best[2])
+    picked[the_best[0]] = " "
+
 df=pd.DataFrame(IDX,columns=['Index'])
-df['Team']=A
+df['team']=A
+df['abbr']=abbrs
 df['PLpG3']=B
 df['PTpP3']=C
 df['OPLpG3']=D
 df['OPTpP3']=E
+df['confidence']=ratios
 
-Path(settings.data_path).mkdir(parents=True, exist_ok=True) 
-with open(settings.data_path + 'teamrankings.json', 'w') as f:
+the_file = "{0}json/teamrankings.json".format(settings.data_path)
+the_path = "{0}json/".format(settings.data_path)
+Path(the_path).mkdir(parents=True, exist_ok=True) 
+with open(the_file, 'w') as f:
     f.write(df.to_json(orient='index'))
 
-with open(settings.data_path + "teamrankings.json") as stats_json:
-    dict_stats = json.load(stats_json, object_pairs_hook=OrderedDict)
-stats_sheet = open(settings.data_path + 'teamrankings.csv', 'w', newline='')
-csvwriter = csv.writer(stats_sheet)
-count = 0
-for row in dict_stats.values():
-    if (count == 0):
-        header = row.keys()
-        csvwriter.writerow(header)
-        count += 1
-    csvwriter.writerow(row.values())
-stats_sheet.close()
+writer = pd.ExcelWriter(settings.data_path + "teamrankings.xlsx", engine="xlsxwriter")
+df.to_excel(writer, sheet_name="Sheet1", index=False)
+writer.close()
+
 print ("done.")

@@ -2,201 +2,127 @@
 
 import json
 import pdb
-import pandas as pd
+from fuzzywuzzy import fuzz
+from fuzzywuzzy import process
 import csv
 from collections import OrderedDict
 import os.path
 from pathlib import Path
 import re
-from datetime import datetime
+import pandas as pd
 
 import settings
 import pyBlitz
-
-def GetCount(item):
-    filename = os.path.basename(str(item))
-    idx = re.findall(r'\d+', str(filename))
-    if (len(idx) == 0):
-        idx.append("0")
-    return int(idx[0])
-
-def GetSchedFiles(path, templatename):
-    A = []
-    for p in Path(path).glob(templatename):
-        A.append(str(p))
-    file_list = []
-    for item in range(0, 16):
-        file_list.append("?")
-    for item in A:
-        idx = GetCount(item)
-        if (len(file_list) > idx):
-            file_list[idx] = item
-    file_list = [x for x in file_list if x != "?"]
-    return file_list
-
-def GetIndex(BPI_list, team, tclass):
-    index = -1
-    loop = -1
-    for itm in BPI_list:
-        loop += 1
-        if (itm.lower().strip() == team.lower().strip() and tclass[loop].upper().strip() == "DIVISION 1  FBS"):
-            index = loop
-    return index
 
 print ("Combine Merge Tool")
 print ("**************************")
 print (" ")
 print ("This tool combines your merge spreadsheets into one master merge spreadsheet")
-print ("Make sure that your merge_stats, merge_abbreviation, and merge_schedule")
+print ("Make sure that your merge_bornpowerindex, and merge_teamrankings")
 print ("spreadsheets are correct first")
 print (" ")
 
-file = '{0}merge_stats.csv'.format(settings.data_path)
-if (not os.path.exists(file)):
-    print ("Warning *** The merge_stats.csv file does not exist ***")
-    print ("        *** run merge_stats tool and then come back ***")
+print("... retrieving teams JSON file")
+file = '{0}teams.xlsx'.format(settings.data_path)
+if (os.path.exists(file)):
+    teams_excel = "{0}teams.xlsx".format(settings.data_path)
+    excel_df = pd.read_excel(teams_excel, sheet_name='Sheet1')
+    teams_json = json.loads(excel_df.to_json())
+else:
+    print ("teams files are missing, run the scrape_teams tool to create")
     exit()
-dict_stats_merge = []
-with open(file) as stats_file:
-    reader = csv.DictReader(stats_file)
-    for row in reader:
-        dict_stats_merge.append(row)
-file = '{0}merge_abbreviation.csv'.format(settings.data_path)
-if (not os.path.exists(file)):
-    print ("Warning *** The merge_abbreviation.csv file does not exist ***")
-    print ("        *** run merge_abbreviations tool and then come back ***")
+
+print("... retrieving merge_bornpowerindex JSON file")
+file = '{0}merge_bornpowerindex.xlsx'.format(settings.data_path)
+if (os.path.exists(file)):
+    bpi_excel = "{0}merge_bornpowerindex.xlsx".format(settings.data_path)
+    excel_df = pd.read_excel(bpi_excel, sheet_name='Sheet1')
+    bpi_json = json.loads(excel_df.to_json())
+else:
+    print ("merge_bornpowerindex files are missing, run the merge_bornpowerindex tool to create")
     exit()
-dict_abbr_merge = []
-with open(file) as abbr_file:
-    reader = csv.DictReader(abbr_file)
-    for row in reader:
-        dict_abbr_merge.append(row)
 
-file = '{0}bornpowerindex.json'.format(settings.data_path)
-if (not os.path.exists(file)):
-    print ("bornpowerindex file is missing, run the scrape_bornpowerindex tool to create")
+print("... retrieving merge_teamrankings JSON file")
+file = '{0}merge_teamrankings.xlsx'.format(settings.data_path)
+if (os.path.exists(file)):
+    rank_excel = "{0}merge_teamrankings.xlsx".format(settings.data_path)
+    excel_df = pd.read_excel(rank_excel, sheet_name='Sheet1')
+    rank_json = json.loads(excel_df.to_json())
+else:
+    print ("merge_teamrankings files are missing, run the merge_teamrankings tool to create")
     exit()
-with open(file) as stats_file:
-    dict_bpi = json.load(stats_file, object_pairs_hook=OrderedDict)
-
-
-file = '{0}teamrankings.json'.format(settings.data_path)
-if (not os.path.exists(file)):
-    print ("teamrankings file is missing, run the scrape_teamrankings tool to create")
-    exit()
-with open(file) as stats_file:
-    dict_teamrankings = json.load(stats_file, object_pairs_hook=OrderedDict)
-
-file = '{0}abbreviation.json'.format(settings.data_path)
-if (not os.path.exists(file)):
-    print ("abbreviation file is missing, run the scrape_abbreviation tool to create")
-    exit()
-with open(file) as abbr_file:
-    dict_abbr = json.load(abbr_file, object_pairs_hook=OrderedDict)
-
-dict_sched_merge = []
-file = '{0}merge_schedule.csv'.format(settings.data_path)
-if (not os.path.exists(file)):
-    print ("merge_schedule file is missing, run the merge_schedule tool to create")
-    exit()
-with open(file) as sched_file:
-    reader = csv.DictReader(sched_file)
-    for row in reader:
-        dict_sched_merge.append(row)
-
-now = datetime.now()
-path = "{0}{1}/{2}".format(settings.predict_root, int(now.year), settings.predict_sched)
-schedule_files = GetSchedFiles(path, "sched*.json")
-list_schedule = []
-for file in schedule_files:
-    with open(file) as schedule_file:
-        list_schedule.append(json.load(schedule_file, object_pairs_hook=OrderedDict))
 
 IDX=[]
-A=[]
-B=[]
-C=[]
-D=[]
-E=[]
-F=[]
-index = 0
-for row in dict_bpi.values():   #Main key put every one in
-    A.append(row["School"])
-    B.append("?")
-    C.append("?")
-    D.append("?")
-    E.append("?")
-    F.append(row["Class"])
+teams=[]
+abbrs=[]
+rank_teams=[]
+bpi_teams=[]
+bpi_overs={}
+rank_overs={}
+index=0
+for item in teams_json["shortDisplayName"]:
+    team = teams_json["shortDisplayName"][item]
+    abbr = teams_json["abbreviation"][item]
+    for bpi_item in bpi_json["team"]:
+        key_team = bpi_json["team"][bpi_item]
+        bpi_team = pyBlitz.CleanString(str(bpi_json["bpi team"][bpi_item]).strip())
+        if (bpi_team.strip() == "") or (bpi_team == "None") or (bpi_team == None):
+            bpi_team = " "
+        bpi_over = pyBlitz.CleanString(str(bpi_json["override"][bpi_item]).strip())
+        if (bpi_over.strip() == "") or (bpi_over == "None") or (bpi_over == None):
+            bpi_over = " "
+        if team == key_team:
+            if len(bpi_over.strip()) > 0:
+                bpi_overs[item] = bpi_over
+            bpi_teams.append(bpi_team)
+    for rank_item in rank_json["team"]:
+        key_team = str(rank_json["team"][rank_item]).strip()
+        rank_team = pyBlitz.CleanString(str(rank_json["rankings team"][rank_item]).strip())
+        if (rank_team.strip() == "") or (rank_team == "None") or (rank_team == None):
+            rank_team = " "
+        rank_over = pyBlitz.CleanString(str(rank_json["override"][rank_item]).strip())   
+        if (rank_over.strip() == "") or (rank_over == "None") or (rank_over == None):
+            rank_over = " "
+        if team == key_team:
+            if len(rank_over.strip()) > 0:
+                rank_overs[item] = rank_over
+            rank_teams.append(rank_team)
+    teams.append(team)
+    abbrs.append(abbr)
     index+=1
-    IDX.append(str(index))
+    IDX.append(index)
 
-for item in dict_stats_merge:
-    teamrankings = pyBlitz.CleanString(item['teamrankings'])
-    team = pyBlitz.CleanString(item['BPI'])
-    if (item['corrected BPI'].strip() != ""):
-        team = pyBlitz.CleanString(item['corrected BPI'])
-    index = GetIndex(A, team, F)    
-    for row in dict_teamrankings.values():
-        if(row['Team'].lower().strip()==teamrankings.lower().strip()):
-            if (index > -1):
-                B[index] = teamrankings
-                break
-
-for item in dict_abbr_merge:
-    abbr_team = pyBlitz.CleanString(item['abbr team'])
-    stats = pyBlitz.CleanString(item["stats team"].lower().strip())
-    if (item["corrected stats team"].lower().strip()):
-        stats =  pyBlitz.CleanString(item["corrected stats team"].lower().strip())
-    abbr = item["abbreviation"].strip()
-    if (item["corrected abbr"].strip()):
-        abbr =  item["corrected abbr"].strip()
-    index = GetIndex(A, stats, F)    
-    for row in dict_abbr.values():
-        if(row['Team'].lower().strip()==abbr_team.lower().strip()):
-            if (index > -1):
-                D[index] = abbr_team
-                E[index] = abbr
-                break
-
-for item in dict_sched_merge:
-    scheduled = pyBlitz.CleanString(item['scheduled team'])
-    stats = pyBlitz.CleanString(item["stats team"].lower().strip())
-    if (item["corrected stats team"].lower().strip()):
-        stats =  pyBlitz.CleanString(item["corrected stats team"].lower().strip())
-    index = GetIndex(A, stats, F)    
-    for idx in range(len(schedule_files)):
-        for row in list_schedule[idx].values():
-            if(row['TeamA'].lower().strip()==scheduled.lower().strip()):
-                if (index > -1):
-                    C[index] = scheduled
-                    break
-            if(row['TeamB'].lower().strip()==scheduled.lower().strip()):
-                if (index > -1):
-                    C[index] = scheduled
-                    break
-
+for ovr in bpi_overs:
+    bpi_team = bpi_overs[str(ovr)]
+    if (bpi_team == "None") or (bpi_team == None):
+        bpi_team = ""
+    if len(bpi_team.strip()) > 0:
+        bpi_teams[int(ovr)] = pyBlitz.CleanString(bpi_team)
+for ovr in rank_overs:
+    rank_team = rank_overs[str(ovr)]
+    if (rank_team == "None") or (bpi_team == None):
+        rank_team = "" 
+    if len(rank_team.strip()) > 0:
+        rank_teams[int(ovr)] = pyBlitz.CleanString(rank_team)
+    
 df=pd.DataFrame(IDX,columns=['Index'])
-df['BPI']=A
-df['teamrankings']=B
-df['scheduled']=C
-df['abbr team']=D
-df['abbr']=E
-df['class']=F
-
-with open(settings.data_path + 'merge.json', 'w') as f:
+df['team']=teams
+df['abbr']=abbrs
+df['rankings team']=rank_teams
+df['bpi team']=bpi_teams
+  
+print ("... creating merge JSON file")
+the_file = "{0}json/merge.json".format(settings.data_path)
+the_path = "{0}json/".format(settings.data_path)
+Path(the_path).mkdir(parents=True, exist_ok=True)
+with open(the_file, 'w') as f:
     f.write(df.to_json(orient='index'))
+f.close()
+    
+print ("... creating merge spreadsheet")
+the_file = "{0}merge.xlsx".format(settings.data_path)
+writer = pd.ExcelWriter(the_file, engine="xlsxwriter")
+df.to_excel(writer, sheet_name="Sheet1", index=False)
+writer.close()
 
-with open(settings.data_path + "merge.json") as merge_json:
-    dict_merge = json.load(merge_json, object_pairs_hook=OrderedDict)
-
-merge_sheet = open(settings.data_path + 'merge.csv', 'w', newline='')
-csvwriter = csv.writer(merge_sheet)
-count = 0
-for row in dict_merge.values():
-    if (count == 0):
-        header = row.keys()
-        csvwriter.writerow(header)
-        count += 1
-    csvwriter.writerow(row.values())
-merge_sheet.close()
 print ("done.")

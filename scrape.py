@@ -47,10 +47,10 @@ def CurrentSchedFile(filename, year):
     return True
 
 def RefreshStats():
-    import scrape_abbreviations
-    import scrape_bettingtalk
+    import scrape_teams
     import scrape_bornpowerindex
     import scrape_teamrankings
+    import scrape_espn_odds
     import combine_merge
     import combine_stats
 

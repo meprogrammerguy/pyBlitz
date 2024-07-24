@@ -20,10 +20,13 @@ def main(argv):
     print ("done.")
 
 def RefreshMerge():
-    import merge_abbreviation
-    import merge_schedule
-    import merge_stats
+    import scrape_teams
+    import scrape_bornpowerindex
+    import scrape_teamrankings
+    import scrape_schedule
+    import scrape_espn_odds
     import combine_merge
+    import combine_stats
 
 if __name__ == "__main__":
   main(sys.argv[1:])

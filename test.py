@@ -17,13 +17,14 @@ def main(argv):
     print ("===")
     print ("**************************")
     RunTests()
-    print ("done.")
+    print ("all tests done.")
 
 def RunTests():
-    import test_abbreviations
+    import test_teamrankings
+    import test_bornpowerindex
     import test_schedule
-    import test_stats
     import test_merge
+    import test_stats
 
 if __name__ == "__main__":
   main(sys.argv[1:])

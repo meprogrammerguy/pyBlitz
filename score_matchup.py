@@ -19,28 +19,27 @@ def CurrentStatsFile(filename):
     return True
 
 def RefreshStats():
+    import scrape_teams
     import scrape_bornpowerindex
     import scrape_teamrankings
+    import scrape_schedule
+    import scrape_espn_odds
     import combine_stats
 
 def main(argv):
     first = ""
     second = ""
-    verbose = False
     neutral = False
     test = False
     try:
-        opts, args = getopt.getopt(argv, "hf:s:vnt", ["help", "first=", "second=", "verbose", "neutral","test"])
+        opts, args = getopt.getopt(argv, "hf:s:nt", ["help", "first=", "second=", "neutral","test"])
     except getopt.GetoptError as err:
         print(err)
         usage()
         sys.exit(2)
     output = None
-    verbose = False
     for o, a in opts:
-        if o in ("-v", "--verbose"):
-            verbose = True
-        elif o in ("-n", "--neutral"):
+        if o in ("-n", "--neutral"):
             neutral = True
         elif o in ("-t", "--test"):
             test = True
@@ -53,15 +52,12 @@ def main(argv):
             second = a
         else:
             assert False, "unhandled option"
-    if (not first and not second):
-        verbose = True
     print ("Score Matchup Tool")
     print ("**************************")
-    if (verbose):
-        usage()
-        print ("**************************")
+    usage()
+    print ("**************************")
     if (test):
-        testResult = pyBlitz.Test(verbose)
+        testResult = pyBlitz.Test()
         if (testResult):
             print ("Test result - pass")
         else:
@@ -72,12 +68,12 @@ def main(argv):
             exit()
 
         Path(settings.data_path).mkdir(parents=True, exist_ok=True) 
-        stat_file = "{0}stats.json".format(settings.data_path)
+        stat_file = "{0}json/stats.json".format(settings.data_path)
         if (not CurrentStatsFile(stat_file)):
             RefreshStats()
         ds = {}
         settings.exceptions = []
-        ds = pyBlitz.Calculate(first, second, neutral, verbose)
+        ds = pyBlitz.Calculate(first, second, neutral)
         if (settings.exceptions):
             print (" ")
             print ("\t*** Warnings ***")
@@ -88,14 +84,15 @@ def main(argv):
         if (not ds):
             exit()
         if (neutral):
-            print ("{0} {1}% vs {2} {3}% {4}-{5}".format(ds["teama"], ds["chancea"], ds["teamb"], ds["chanceb"], ds["scorea"], ds["scoreb"]))
+            print ("{0} {1}% vs {2} {3}% {4}-{5}".format(ds["teama"], ds["chancea"], ds["teamb"], ds["chanceb"], \
+                ds["scorea"], ds["scoreb"]))
         else:
-            print ("{0} {1}% at {2} {3}% {4}-{5}".format(ds["teama"], ds["chancea"], ds["teamb"], ds["chanceb"], ds["scorea"], ds["scoreb"]))
+            print ("{0} {1}% at {2} {3}% {4}-{5}".format(ds["teama"], ds["chancea"], ds["teamb"], ds["chanceb"], \
+                ds["scorea"], ds["scoreb"]))
 
 def usage():
     usage = """
     -h --help                 Prints this
-    -v --verbose              Increases the information level
     -f --first                First Team  (The Away Team)
     -s --second               Second Team (The Home Team)
     -n --neutral              Playing on a neutral Field
