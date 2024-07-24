@@ -34,12 +34,10 @@ if (len(sys.argv)>=3):
 current_working_directory = os.getcwd()
 
 def main(argv):
-    stats_path = "{0}json/".format(settings.data_path)
-    stat_file = stats_path + "stats.json"
     week = "current"
     test = False
     try:
-        opts, args = getopt.getopt(argv, "hs:w:t", ["help", "stat_file=", "week=", "test"])
+        opts, args = getopt.getopt(argv, "hw:t", ["help", "week=", "test"])
     except getopt.GetoptError as err:
         print(err)
         usage()
@@ -51,8 +49,6 @@ def main(argv):
         elif o in ("-h", "--help"):
             usage()
             exit()
-        elif o in ("-s", "--stat_file"):
-            stat_file = a
         elif o in ("-w", "--week"):
             week = a
         else:
@@ -64,12 +60,11 @@ def main(argv):
         else:
             print ("Test result - fail")
     else:
-        PredictTournament(week, stat_file)
+        PredictTournament(week)
 
 def usage():
     usage = """
     -h --help                 Prints this help
-    -s --stat_file            stats file (json file format)
     -t --test                 runs test routine to check calculations
     -w --week                 week to predict (use week 99 for the bowl games)
                                     (add the year to run for past years)
@@ -153,7 +148,8 @@ def SaveStats(output_file, week_path, stat_file):
     Path(spath).mkdir(parents=True, exist_ok=True)
     copyfile(stat_file, dest_file)
     
-def PredictTournament(week, stat_file):
+def PredictTournament(week):
+    stat_file = settings.data_path + "json/stats.json"
     week_path = "{0}{1}/".format(settings.predict_root, year)
     stats_path = "{0}{1}json/".format(settings.predict_root, year)
     sched_file = "{0}{1}/{2}json/sched.json".format(settings.predict_root, year, settings.predict_sched)
