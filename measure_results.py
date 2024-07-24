@@ -13,6 +13,7 @@ import sys
 import glob
 
 import settings
+import pyBlitz
 import scrape_schedule
 
 def GetNumber(item):
@@ -76,6 +77,19 @@ def GetActualScores(score1, score2):
         return -1, -1
     return scorea, scoreb
 
+def HaveIWon(d, ta, tb, sa, sb):
+    #pdb.set_trace()
+    return True
+
+def myPercent(v1, v2):
+    if v2 <= 0:
+        return "0%"
+    try:
+        answer = float(v1/v2)
+    except ValueError:
+        return 0
+    return str("{:.0f}".format(answer*100)) + "%"
+
 year = 0
 now = datetime.now()
 year = int(now.year)
@@ -118,7 +132,7 @@ def main(argv):
         teams_json = json.loads(excel_df.to_json())
         teams_json['Week'] = GetIndex(file)
         list_week.append(teams_json)
-    
+ 
     IDX=[]
     W=[]
     index = 0
@@ -126,13 +140,34 @@ def main(argv):
     U=[]
     C=[]
     P=[]
-    index+=1
-    IDX.append(index)
-    W.append(1)
-    T.append(2) 
-    U.append(3)
-    C.append(4)
-    P.append(5)
+    for item in list_week:
+        week = item["Week"]
+        total_games = len(item["Index"])
+        W.append("{:02d}".format(week))
+        T.append(total_games)
+        index+=1
+        IDX.append(index)
+        count_predicted=0
+        count_wins=0
+        for i in range(len(item["Index"])):
+            scorea = item["ScoreA"][str(i)]
+            if str(scorea).strip() == "?":
+                scorea = "0"
+            scoreb = item["ScoreB"][str(i)]
+            if str(scoreb).strip() == "?":
+                scoreb = "0"
+            if int(scorea) + int(scoreb) > 0:
+                game_won = HaveIWon(item["Date"][str(i)], item["TeamA"][str(i)], \
+                    item["TeamB"][str(i)], item["ScoreA"][str(i)], item["ScoreB"][str(i)])
+                if game_won:
+                    count_wins+=1
+                count_predicted+=1
+        U.append(total_games - count_predicted)
+        C.append(count_wins)
+        P.append(myPercent(count_predicted, count_wins))
+        #pdb.set_trace()
+        
+    #pdb.set_trace()
     
     df=pd.DataFrame(IDX,columns=['Index'])
     df['Week']=W

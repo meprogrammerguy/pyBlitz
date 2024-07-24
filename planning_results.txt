@@ -1,2 +1,0 @@
-Index	Week		Total Games			Count Unpredicted	Count Correct			Percent Correct
-		01		(week row count)		(week blanks)		get wins from sched 		calculate this one
