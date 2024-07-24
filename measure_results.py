@@ -121,104 +121,40 @@ def main(argv):
         list_week.append(teams_json)
     
     IDX=[]
-    A=[]
-    B=[]
-    C=[]
-    D=[]
-    E=[]
+    W=[]
     index = 0
-    alltotal = 0
-    allskip = 0
-    allcorrect = 0
-    count = 0
-    total = 0
-    skip = 0
-    correct = 0
-    for item in json_sched.values():
-        week = int(item["Week"])
-        total += 1
-        chancea = -1
-        abbra = ""
-        abbrb = ""
-        teama = ""
-        teamb = ""
-        if (index < len(list_week) and list_week[index]["Week"] == week):
-            chancea = GetPercent(list_week[index]["ChanceA"])
-            chanceb = GetPercent(list_week[index]["ChanceB"])
-            pdb.set_trace()
-            abbra = list_week[index]["AbbrA"]
-            abbrb = list_week[index]["AbbrB"]
-            teama = list_week[index]["TeamA"]
-            teamb = list_week[index]["TeamB"]
-        index += 1
-        scorea, scoreb = GetActualScores(item["Score 1"], item["Score 2"])
-        if ((int(chancea) == 0 and int(chanceb) == 0) or scorea < 0 or scoreb < 0):
-            if (teama != "" and teamb != "" and "tickets" not in item["Score 1"]):
-                if (item["Score1 "].lower() == "canceled"):
-                    print ("***\nGame skipped\n\n\t[{0} vs {1}] \n\tabbreviation(s) [{2}] [{3}] Score {4}\n\tcanceled\n***\n"
-                        .format(teama, teamb, abbra, abbrb, item["Score"]))
-                elif (item["Score 1"].lower() == "postponed"):
-                    print ("***\nGame skipped\n\n\t[{0} vs {1}] \n\tabbreviation(s) [{2}] [{3}] Score {4}\n\tpostponed\n***\n"
-                        .format(teama, teamb, abbra, abbrb, item["Score 1"]))
-                else:
-                    if (item["Score 1"] != "?"):
-                        print ("***\nGame skipped\n\n\t[{0} vs {1}] \n\tabbreviation(s) [{2}] [{3}] Score {4}\n\treview your merge files\n***\n".format(teama, teamb, abbra, abbrb, item["Score 1"]))
-            skip += 1
-        else:
-            if (chancea >= 50 and (scorea >= scoreb)):
-                correct += 1
-            if (chancea < 50 and (scorea < scoreb)):
-                correct += 1
-        count += 1
-        IDX.append(count)
-        A.append(week)
-        B.append(total)
-        C.append(skip)
-        D.append(correct)
-        E.append(CalcPercent(total, skip, correct))
-        print ("week{0} total={1}, skip={2}, correct={3} Percent={4}%".format(week, total, skip, correct, \
-            CalcPercent(total, skip, correct)))
-        alltotal = alltotal + total
-        allskip = allskip + skip
-        allcorrect = allcorrect + correct
-    count += 1
-    IDX.append(count)
-    A.append(99)
-    B.append(alltotal)
-    C.append(allskip)
-    D.append(allcorrect)
-    E.append(CalcPercent(alltotal, allskip, allcorrect))
-
-    print ("====================================================================")
-    print ("Totals total={0}, skip={1}, correct={2} Percent={3}%".format(alltotal, allskip, allcorrect, \
-        CalcPercent(alltotal, allskip, allcorrect)))
-    print ("====================================================================")
-
+    T=[]
+    U=[]
+    C=[]
+    P=[]
+    index+=1
+    IDX.append(index)
+    W.append(1)
+    T.append(2) 
+    U.append(3)
+    C.append(4)
+    P.append(5)
+    
     df=pd.DataFrame(IDX,columns=['Index'])
-    df['Week']=A
-    df['Total Games']=B
-    df['Count Unpredicted']=C
-    df['Count Correct']=D
-    df['Percent Correct']=E
+    df['Week']=W
+    df['Total Games']=T
+    df['Count Unpredicted']=U
+    df['Count Correct']=C
+    df['Percent Correct']=P
 
-    file = "{0}results.json".format(saved_path)
-    with open(file, 'w') as f:
+    print ("... creating results JSON file")
+    the_file = "{0}json/results.json".format(saved_path)
+    the_path = "{0}json/".format(saved_path)
+    Path(the_path).mkdir(parents=True, exist_ok=True)
+    with open(the_file, 'w') as f:
         f.write(df.to_json(orient='index'))
-
-    with open(file) as results_json:
-        dict_results = json.load(results_json, object_pairs_hook=OrderedDict)
-
-    file = "{0}results.csv".format(saved_path)
-    results_sheet = open(file, 'w', newline='')
-    csvwriter = csv.writer(results_sheet)
-    count = 0
-    for row in dict_results.values():
-        if (count == 0):
-            header = row.keys()
-            csvwriter.writerow(header)
-            count += 1
-        csvwriter.writerow(row.values())
-    results_sheet.close()
+    f.close()
+    
+    print ("... creating results spreadsheet")
+    excel_file = "{0}results.xlsx".format(saved_path)
+    writer = pd.ExcelWriter(excel_file, engine="xlsxwriter")
+    df.to_excel(writer, sheet_name="Sheet1", index=False)
+    writer.close()
     print ("done.")
 
 if __name__ == "__main__":

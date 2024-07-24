@@ -221,9 +221,8 @@ def PredictTournament(week, stat_file):
     
     measure_results.year = year
     measure_results.main(sys.argv[1:])
-    pdb.set_trace()
     # How are we doing? Let's find Out!
-    file = "{0}results.json".format(saved_path)
+    file = "{0}json/results.json".format(saved_path)
     if (os.path.exists(file)):
         dict_results = []
         last_week = GetIndex(week) - 1
