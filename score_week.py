@@ -212,6 +212,11 @@ def PredictTournament(week):
     Path(week_path).mkdir(parents=True, exist_ok=True)
     output_file = "{0}week{1}.xlsx".format(week_path, week)
     SaveStats(output_file, week_path, stat_file)
+    if len(list_predict) <= 1:
+        print ("... no results found for week {0}".format(week))
+        print ("... exiting")
+        print ("done.")
+        exit()
     print ("... creating prediction spreadsheet")
     workbook = xlsxwriter.Workbook(output_file)
     worksheet = workbook.add_worksheet()
@@ -232,14 +237,19 @@ def PredictTournament(week):
         if (len(dict_results) > 0):
             for idx in range(len(dict_results)):
                 for item in dict_results[idx].values():
-                    if (last_week > 0 and last_week == item["Week"]):
+                    lweek = item["Week"]
+                    if lweek == "bowls":
+                        lweek = "99"
+                    if lweek == "totals":
+                        lweek = "999"
+                    if (last_week > 0 and last_week == int(lweek)):
                         print ("=================================================")
-                        print ("For week{0}, winning percent was: {1}%".
+                        print ("For week {0}, winning percent was: {1}".
                             format(last_week, item["Percent Correct"]))
                         print ("=================================================")
-                    if (item["Week"] == 99):
+                    if (int(lweek) == 999):
                         print ("=================================================")
-                        print ("For this year so far, winning percent is: {0}%".
+                        print ("For this year so far, winning percent is: {0}".
                             format(item["Percent Correct"]))
                         print ("=================================================")
     print ("done.")

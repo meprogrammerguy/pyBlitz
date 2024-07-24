@@ -22,19 +22,6 @@ def GetNumber(item):
         idx.append("-1")
     return int(idx[0])
 
-def CalcPercent(total, skip, correct):
-    try:
-        return  round(correct / (total - skip) * 100., 2)
-    except ZeroDivisionError:
-        return None
-
-def GetPercent(item):
-    newstr = item.replace("%", "")
-    newstr = newstr.replace("?", "")
-    if (newstr.strip()==""):
-        return -1
-    return float(newstr)
-
 def GetIndex(item):
     filename = os.path.basename(str(item))
     idx = re.findall(r'\d+', str(filename))
@@ -42,44 +29,23 @@ def GetIndex(item):
         idx.append("-1")
     return int(idx[0])
 
-def GetFiles(path, templatename):
-    A = []
-    files = Path(path).glob(templatename)
-    for p in files:
-        A.append(p)
-    file_list = []
-    for item in range(0, 19):
-        file_list.append("?")
-    for item in A:
-        idx = GetIndex(item)
-        if (len(file_list) > idx):
-            file_list[idx] = item
-    file_list = [x for x in file_list if x != "?"]
-    return file_list
-
-def CurrentScheduleFiles(filename):
-    stat = os.path.getmtime(filename)
-    stat_date = datetime.fromtimestamp(stat)
-    if stat_date.date() < datetime.now().date():
-        return False
-    return True
-
 def RefreshScheduleFiles():
     scrape_schedule.year = year
     scrape_schedule.main(sys.argv[1:])
 
-def GetActualScores(score1, score2):
-    if (score1.strip() == "canceled"):
-        return -3, -3
-    if (score1.strip() == "postponed"):
-        return -2, -2
-    if (score1.strip() == "?"):   # not yet Played Game
-        return -1, -1
-    return scorea, scoreb
-
-def HaveIWon(d, ta, tb, sa, sb):
-    #pdb.set_trace()
-    return True
+def HaveIWon(d, ta, tb, sa, sb, j):
+    have_won = False
+    for x in j:
+        teama_won = False
+        if (d == j[x]["Date"]) and (ta == j[x]["Team 1"]) and (tb ==  j[x]["Team 2"]):
+            if j[x]["Score 1"] > j[x]["Score 1"]:
+                teama_won = True
+                if sa > sb:
+                    have_won = True
+            else:
+                if sb > sa:
+                    have_won = True
+    return have_won
 
 def myPercent(v1, v2):
     if v2 <= 0:
@@ -98,6 +64,7 @@ if (len(sys.argv)>=2):
     if (year < 2002 or year > int(now.year)):
         year = int(now.year)
 current_working_directory = os.getcwd()
+
 def main(argv):
     saved_path = "{0}{1}/{2}".format(settings.predict_root, year, settings.predict_saved)
     sched_path = "{0}{1}/{2}".format(settings.predict_root, year, settings.predict_sched)
@@ -140,10 +107,17 @@ def main(argv):
     U=[]
     C=[]
     P=[]
+    grand_total_games = 0
+    grand_count_predicted = 0
+    grand_count_wins = 0
     for item in list_week:
         week = item["Week"]
         total_games = len(item["Index"])
-        W.append("{:02d}".format(week))
+        grand_total_games+=total_games
+        if week == 99:
+            W.append("bowls")
+        else:
+            W.append("{:03d}".format(week))
         T.append(total_games)
         index+=1
         IDX.append(index)
@@ -158,17 +132,24 @@ def main(argv):
                 scoreb = "0"
             if int(scorea) + int(scoreb) > 0:
                 game_won = HaveIWon(item["Date"][str(i)], item["TeamA"][str(i)], \
-                    item["TeamB"][str(i)], item["ScoreA"][str(i)], item["ScoreB"][str(i)])
+                    item["TeamB"][str(i)], item["ScoreA"][str(i)], item["ScoreB"][str(i)], json_sched)
                 if game_won:
                     count_wins+=1
                 count_predicted+=1
+        grand_count_predicted+=count_predicted
+        grand_count_wins+=count_wins
         U.append(total_games - count_predicted)
         C.append(count_wins)
-        P.append(myPercent(count_predicted, count_wins))
-        #pdb.set_trace()
-        
-    #pdb.set_trace()
-    
+        P.append(myPercent(count_wins, count_predicted))
+
+    W.append("totals")             #grand totals row
+    T.append(grand_total_games)
+    index+=1
+    IDX.append(index)
+    U.append(grand_total_games - grand_count_predicted)
+    C.append(grand_count_wins)
+    P.append(myPercent(grand_count_wins, grand_count_predicted))
+
     df=pd.DataFrame(IDX,columns=['Index'])
     df['Week']=W
     df['Total Games']=T
