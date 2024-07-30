@@ -1,14 +1,54 @@
 #!/usr/bin/env python3
 
-import os.path
+import os, os.path
 import sys, getopt
 from datetime import datetime
 from pathlib import Path
 import pdb
+from pynotifier import NotificationClient, Notification
+from pynotifier.backends import platform
+import subprocess
+from collections import OrderedDict
+import pandas as pd
+from collections import OrderedDict
+import json
 
 import settings
 import pyBlitz
 
+def GetShorterTeams(f, s, db):
+    first = ""
+    second = ""
+    for item in db["displayName"]:
+        if f == db["displayName"][item]:
+            first = db["shortDisplayName"][item]
+        if s == db["displayName"][item]:
+            second = db["shortDisplayName"][item]
+        if first and second:
+            break
+    return first, second
+
+def ParseResult(s):
+    result={}
+    y = s.splitlines()
+    t1 = y[1].split("data: ")
+    t2 = y[3].split("data: ")
+    chk = y[4].split("form: ")
+    chk2 = chk[1].split("|")
+    result["first"] = t1[1]
+    result["second"] = t2[1]
+    if "TRUE" in chk2[0]:
+        verbose = True
+    else:
+        verbose = False
+    if "TRUE" in chk2[1]:
+        neutral = True
+    else:
+        neutral = False
+    result["verbose"] = verbose
+    result["neutral"] = neutral
+    return result
+    
 def CurrentStatsFile(filename):
     if (not os.path.exists(filename)):
         return False
@@ -27,6 +67,17 @@ def RefreshStats():
     import combine_stats
 
 def main(argv):
+    cwd = os.getcwd()
+    
+    print("... retrieving teams spreadsheet")
+    team_file = '{0}teams.xlsx'.format(settings.data_path)
+    if (os.path.exists(team_file)):
+        excel_df = pd.read_excel(team_file, sheet_name='Sheet1')
+        team_json = json.loads(excel_df.to_json())
+    else:
+        print ("    *** run scrape_teams and then come back ***")
+        exit()
+
     first = ""
     second = ""
     neutral = False
@@ -63,8 +114,17 @@ def main(argv):
         else:
             print ("Test result - fail")
     else:
+        run_gui = '{0}/score_matchup_gui.sh'.format(cwd)
+        from_bash = subprocess.run([run_gui], capture_output=True)
+        result = ParseResult(from_bash.stdout.decode("utf-8"))
+        first, second = GetShorterTeams(result["first"], result["second"], team_json)
+        verbose = result["verbose"]
+        neutral = result["neutral"]
         if (not first and not second):
-            print ("you must input the team names to run this tool, (first and second arguments)")
+            print ("Score Matchup Tool")
+            print ("**************************")
+            usage()
+            print ("**************************")
             exit()
 
         Path(settings.data_path).mkdir(parents=True, exist_ok=True) 
@@ -84,11 +144,18 @@ def main(argv):
         if (not ds):
             exit()
         if (neutral):
-            print ("{0} {1}% vs {2} {3}% {4}-{5}".format(ds["teama"], ds["chancea"], ds["teamb"], ds["chanceb"], \
-                ds["scorea"], ds["scoreb"]))
+            answer = "{0} {1}% vs {2} {3}% {4}-{5}".format(ds["teama"], ds["chancea"], ds["teamb"], ds["chanceb"], \
+                ds["scorea"], ds["scoreb"])
         else:
-            print ("{0} {1}% at {2} {3}% {4}-{5}".format(ds["teama"], ds["chancea"], ds["teamb"], ds["chanceb"], \
-                ds["scorea"], ds["scoreb"]))
+            answer = "{0} {1}% at {2} {3}% {4}-{5}".format(ds["teama"], ds["chancea"], ds["teamb"], ds["chanceb"], \
+                ds["scorea"], ds["scoreb"])
+        print (answer)
+        blitz_icon = '{0}/football.ico'.format(cwd)
+        c = NotificationClient()
+        c.register_backend(platform.Backend())
+        notification = Notification(title='pyBlitz Predictor', message=answer,\
+            icon_path=blitz_icon, duration=20)
+        c.notify_all(notification)
 
 def usage():
     usage = """
