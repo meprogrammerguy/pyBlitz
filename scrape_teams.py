@@ -248,11 +248,19 @@ def main(argv):
     df.to_excel(writer, sheet_name="Sheet1", index=False)
     writer.close()
 
+    print ("... creating teams.txt")
+    the_file = "{0}teams.txt".format(settings.data_path)
+    f = open(the_file, "w")
+    for team in displayName:
+        f.write(team + "\n")
+    f.close()
+
     for root, dirs, files in os.walk(settings.data_path):
         for d in dirs:
             os.chmod(os.path.join(root, d), stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)
         for f in files:
-            os.chmod(os.path.join(root, f), stat.S_IRUSR | stat.S_IWUSR | stat.S_IRGRP | stat.S_IWGRP | stat.S_IROTH | stat.S_IWOTH)
+            os.chmod(os.path.join(root, f), stat.S_IRUSR | stat.S_IWUSR | \
+            stat.S_IRGRP | stat.S_IWGRP | stat.S_IROTH | stat.S_IWOTH)
     print ("done.")
 
 if __name__ == "__main__":

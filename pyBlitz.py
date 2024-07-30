@@ -167,9 +167,9 @@ def Chance(teama, teamb, neutral):
     aPercent = results["answer"]
     bPercent = results["opposite"]
     if neutral:
-        print ("Chance({0}) {1}%".format(teama, aPercent), "vs. Chance({0}) {1}%".format(teamb, bPercent))
+        print ("Chance({0}) {1}%".format(teama['team'], aPercent), "vs. Chance({0}) {1}%".format(teamb['team'], bPercent))
     else:
-        print ("Chance({0}) {1}%".format(teama, aPercent), "at Chance({0}) {1}%".format(teamb, bPercent))
+        print ("Chance({0}) {1}%".format(teama['team'], aPercent), "at Chance({0}) {1}%".format(teamb['team'], bPercent))
     return aPercent, bPercent
 
 def Tempo(teama, teamb):
@@ -207,7 +207,7 @@ def Test():
         print ("*****************************")
     print ("Test #2 Alabama vs Clemson on 1/1/18")
     print ("        Neutral field, testing Score() routine")
-    scorea, scoreb = Score(teama, teamb, True, True)
+    scorea, scoreb = Score(teama, teamb, True)
     if (teama['Result2'] == scorea):
         result += 1
     if (teamb['Result2'] == scoreb):
