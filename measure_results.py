@@ -2,7 +2,6 @@
 
 import json
 import pdb
-import csv
 from collections import OrderedDict
 import os.path
 from pathlib import Path
@@ -38,7 +37,7 @@ def HaveIWon(d, ta, tb, sa, sb, j):
     for x in j:
         teama_won = False
         if (d == j[x]["Date"]) and (ta == j[x]["Team 1"]) and (tb ==  j[x]["Team 2"]):
-            if j[x]["Score 1"] > j[x]["Score 1"]:
+            if j[x]["Score 1"] > j[x]["Score 2"]:
                 teama_won = True
                 if sa > sb:
                     have_won = True
